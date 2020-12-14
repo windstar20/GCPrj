@@ -18,8 +18,9 @@ public class ListController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
 		NoticeService service = new NoticeService();
-		List<Notice> list = service.getList();
+		List<Notice> list = service.getList(1, 10, null, null);
 		
 		request.setAttribute("list", list);
 		

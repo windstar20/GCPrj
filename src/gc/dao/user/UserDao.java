@@ -19,4 +19,5 @@ public interface UserDao {
 	
 	User get(int id);
 	List<User> getList();
+	List<UserView> gitList();
 }

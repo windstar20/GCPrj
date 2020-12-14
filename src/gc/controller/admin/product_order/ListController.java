@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import gc.entity.productOrder.ProductOrder;
+import gc.entity.productOrder.view.ProductOrderView;
 import gc.service.productOrder.ProductOrderService;
 
 
@@ -21,15 +22,21 @@ public class ListController extends HttpServlet{
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int page=1; // 페이지 수
+		int size=10; // 페이지당 보여지는 글 갯수
 		
+		ProductOrderService service = new ProductOrderService();
+		request.getParameter(name)
+		
+		List<ProductOrderView> totalList = service.getList();
 		
 		
 		
 
-		ProductOrderService service = new ProductOrderService();
-		List<ProductOrder> list = service.getList();
+		List<ProductOrderView> list = service.getViewList(page,size);
 		
 		request.setAttribute("list", list);
+		
 		request.getRequestDispatcher("list.jsp").forward(request, response);
 	 
 		

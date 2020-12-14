@@ -12,8 +12,8 @@ import java.util.List;
 
 import gc.dao.jdbc.DBContext;
 import gc.dao.productOrder.ProductOrderDao;
-import gc.dao.productOrder.entity.ProductOrderView;
 import gc.entity.productOrder.ProductOrder;
+import gc.entity.productOrder.view.ProductOrderView;
 
 public class JdbcProductOrderDao implements ProductOrderDao{
 
@@ -200,7 +200,7 @@ public ProductOrder get(int id) {
 public List<ProductOrder> getList() {
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = DBContext.URL;
-	String sql = "SELECT * FROM PRODUCT_ORDER_VIEW";
+	String sql = "SELECT * FROM PRODUCT_ORDER";
 
 	List<ProductOrder> list = new ArrayList<>();
 	//1. 드라이버 로드하기
@@ -212,6 +212,119 @@ public List<ProductOrder> getList() {
 		Statement st = con.createStatement();
 		//4. 결과집합 사용하기
 		ResultSet rs = st.executeQuery(sql);
+
+		while(rs.next()) {
+			int id;
+		    int number;
+		    int basketId;
+		    String senderName;
+		    String senderPhone;
+		    String senderEmail;
+		    String receiverName;
+		    String receiverPhone;
+		    String receiverAddress;
+		    Date regdate;
+		    int totalPrice;
+
+			
+			id = rs.getInt("id");
+			number = rs.getInt("\"NUMBER\"");
+			basketId = rs.getInt("basket_id");
+			senderName = rs.getString("sender_name");
+			senderPhone = rs.getString("sender_phone");
+			senderEmail = rs.getString("sender_email");
+			receiverName = rs.getString("receiver_name");
+			receiverPhone = rs.getString("receiver_phone");
+			receiverAddress = rs.getString("receiver_address");
+			regdate = rs.getDate("regdate");
+			totalPrice = rs.getInt("total_price");
+
+			
+			ProductOrder p = new ProductOrder(
+					id,
+					number,
+					basketId,
+					senderName,
+					senderPhone,
+					senderEmail,
+					receiverName,
+					receiverPhone,
+					receiverAddress,
+					regdate,
+					totalPrice
+					);
+
+
+
+			list.add(p);
+		}
+		rs.close();
+		st.close();
+		con.close();
+
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
+
+	return list;
+}
+
+
+@Override
+public List<ProductOrderView> getViewList(int startIndex, int endIndex) {
+	String field="";
+	String query="";
+	List<String> orderState=null;
+	List<String> cancelState=null;
+	Date startDate=null;
+	Date endDate=null;
+	
+	return getViewList(startIndex, endIndex, field, query, orderState, cancelState, startDate, endDate);
+}
+
+
+@Override
+public List<ProductOrderView> getViewList(int startIndex) {
+	int endIndex=0;
+	String field="";
+	String query="";
+	List<String> orderState=null;
+	List<String> cancelState=null;
+	Date startDate=null;
+	Date endDate=null;
+	
+	return getViewList(startIndex, endIndex, field, query, orderState, cancelState, startDate, endDate);
+	
+}
+
+
+@Override
+public List<ProductOrderView> getViewList(int startIndex, int endIndex, String field, String query,
+		List<String> orderState, List<String> cancelState, Date startDate, Date endDate) {
+	
+	String driver = "oracle.jdbc.driver.OracleDriver";
+	String url = DBContext.URL;
+	String sql = "SELECT * " + 
+			"FROM (SELECT ROWNUM NUM, N.* FROM PRODUCT_ORDER_VIEW N) " + 
+			"WHERE NUM BETWEEN ? AND ?";
+
+	List<ProductOrderView> list = new ArrayList<>();
+	//1. 드라이버 로드하기
+	try {
+		Class.forName(driver);
+		//2. 연결하기
+		Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+		//3. 명령어를 옮겨주기 위한 객체 생성
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, startIndex);
+		st.setInt(2, endIndex);
+		//4. 결과집합 사용하기
+		ResultSet rs = st.executeQuery();
 
 		while(rs.next()) {
 			int id;
@@ -244,26 +357,26 @@ public List<ProductOrder> getList() {
 			productCount= rs.getInt("product_count");
 
 			
-			ProductOrder p = new ProductOrder(
-					id,
-					number,
-					basketId,
-					senderName,
-					senderPhone,
-					senderEmail,
-					receiverName,
-					receiverPhone,
-					receiverAddress,
-					regdate,
-					totalPrice,
-					productName,
-					productCount
-					);
-
-
-
+			ProductOrderView p = new ProductOrderView();
+			
+			p.setId(id);
+			p.setNumber(number);
+			p.setBasketId(basketId);
+			p.setSenderName(senderName);
+			p.setSenderPhone(senderPhone);
+			p.setSenderEmail(senderEmail);
+			p.setReceiverName(receiverName);
+			p.setReceiverPhone(receiverPhone);
+			p.setReceiverAddress(receiverAddress);
+			p.setRegdate(regdate);
+			p.setTotalPrice(totalPrice);
+			p.setProductName(productName);
+			p.setProductCount(productCount);
+			
 			list.add(p);
 		}
+		
+		
 		rs.close();
 		st.close();
 		con.close();
@@ -281,25 +394,7 @@ public List<ProductOrder> getList() {
 }
 
 
-@Override
-public List<ProductOrder> getList(int startIndex, int endIndex) {
-	// TODO Auto-generated method stub
-	return null;
-}
 
-
-@Override
-public List<ProductOrder> getList(int startIndex) {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-
-@Override
-public List<ProductOrderView> getViewList(int statrtIndex, int endIndex) {
-	// TODO Auto-generated method stub
-	return null;
-}
 
 
 

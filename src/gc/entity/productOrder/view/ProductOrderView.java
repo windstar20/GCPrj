@@ -1,9 +1,9 @@
-package gc.dao.productOrder.entity;
+package gc.entity.productOrder.view;
 
 import gc.entity.productOrder.ProductOrder;
 
 public class ProductOrderView extends ProductOrder{
-
+	
 	private String productName;
 	private int productCount;
 	
@@ -11,8 +11,8 @@ public class ProductOrderView extends ProductOrder{
 		// TODO Auto-generated constructor stub
 	}
 
+	
 	public ProductOrderView(String productName, int productCount) {
-		super();
 		this.productName = productName;
 		this.productCount = productCount;
 	}

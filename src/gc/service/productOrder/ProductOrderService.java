@@ -13,6 +13,7 @@ import java.util.List;
 import gc.dao.productOrder.ProductOrderDao;
 import gc.dao.productOrder.jdbc.JdbcProductOrderDao;
 import gc.entity.productOrder.ProductOrder;
+import gc.entity.productOrder.view.ProductOrderView;
 
 
 public class ProductOrderService {
@@ -46,20 +47,21 @@ public class ProductOrderService {
 
 	
 
-	public List<ProductOrder> getList(int page, int size) {
+	public List<ProductOrder> getList() {
+
+		
+		return productOrderDao.getList();
+	};
+
+	public List<ProductOrderView> getViewList(int page, int size) {
 
 		int startIndex = 0 + (page-1)*size;
 		int endIndex = size*page-1;
 		
-		return productOrderDao.getList(startIndex, endIndex);
+		return productOrderDao.getViewList(startIndex, endIndex);
 	};
 
-
 	
-	public List<ProductOrder> getList(String keyword, List<Integer> orderState, List<Integer> cancelState, Date startDate, Date endDate, int size, Date regdate, String senderName, int totalPrice ) {
-
-		return productOrderDao.getList(totalPrice, totalPrice);
-	}
 	
 
 

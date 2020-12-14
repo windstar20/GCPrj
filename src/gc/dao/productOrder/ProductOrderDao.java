@@ -3,8 +3,8 @@ package gc.dao.productOrder;
 import java.util.Date;
 import java.util.List;
 
-import gc.dao.productOrder.entity.ProductOrderView;
 import gc.entity.productOrder.ProductOrder;
+import gc.entity.productOrder.view.ProductOrderView;
 
 
 // SQL의 자바 함수화
@@ -17,7 +17,14 @@ public interface ProductOrderDao {
 	
 	ProductOrder get(int id);
 	
+	
+	List<ProductOrder> getList();
+	
+	//========================
+	List<ProductOrderView> getViewList(int startIndex, int endIndex);
+	List<ProductOrderView> getViewList(int startIndex);
+	
+	List<ProductOrderView> getViewList(int startIndex, int endIndex, String field, String query, List<String> orderState, List<String> cancelState, Date startDate, Date endDate);
 
-	List<ProductOrderView> getViewList(int statrtIndex, int endIndex);
-	List<ProductOrderView> getViewList(int statrtIndex);
+	
 }

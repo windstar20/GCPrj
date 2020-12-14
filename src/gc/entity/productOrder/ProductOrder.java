@@ -29,7 +29,6 @@ public class ProductOrder {
 
 	public ProductOrder(int id, int number, int basketId, String senderName, String senderPhone, String senderEmail,
 			String receiverName, String receiverPhone, String receiverAddress, Date regdate, int totalPrice) {
-		super();
 		this.id = id;
 		this.number = number;
 		this.basketId = basketId;

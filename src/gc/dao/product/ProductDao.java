@@ -2,7 +2,10 @@ package gc.dao.product;
 
 import java.util.List;
 
-import gc.entity.Product;
+import gc.entity.product.Product;
+import gc.entity.product.view.ProductView;
+
+
 
 public interface ProductDao {
 	
@@ -17,6 +20,9 @@ public interface ProductDao {
 	int display(int id);
 	int displayAll(int[] ids);
 	
+	List<ProductView> getViewList();
+	List<ProductView> getViewList(int startIndex, int endIndex);
+	List<ProductView> getViewList(int startIndex, int endIndex, String field, String query);
 	
 	
 }

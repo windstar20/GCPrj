@@ -13,7 +13,7 @@ import gc.service.product.ProductListService;
 @WebServlet("/admin/product/edit")
 public class EditController extends HttpServlet{
 	
-	@Override    //detail.jsp에서  수정버튼을 누르면 이곳에서 처리
+	@Override    //detail.jsp�뿉�꽌  �닔�젙踰꾪듉�쓣 �늻瑜대㈃ �씠怨녹뿉�꽌 泥섎━
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int id = Integer.parseInt(request.getParameter("id"));
@@ -22,7 +22,6 @@ public class EditController extends HttpServlet{
 
 		request.setAttribute("p", p);				
 		request.getRequestDispatcher("edit.jsp").forward(request, response);
-
 
 	}
 	

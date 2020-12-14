@@ -25,6 +25,5 @@ public class ListController extends HttpServlet{
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/admin/product/list.jsp").forward(request, response);
 		
-		
 	}
 }

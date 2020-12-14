@@ -38,8 +38,8 @@
         <ul class="aside-menu">
           <li>회원관리</li>
           <ul>
-            <li><a href="userlist.html">회원 리스트</a></li>
-            <li><a href="usermana.html">회원등급 관리</a></li>
+            <li><a href="list">회원 리스트</a></li>
+            <li><a href="mana">회원등급 관리</a></li>
             <li><a href="leaveuserlist.html">탈퇴회원 리스트</a></li>
             <li><a href="point.html">적립금 설정</a></li>
           </ul>

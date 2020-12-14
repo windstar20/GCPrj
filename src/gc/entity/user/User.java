@@ -14,6 +14,7 @@ public class User {
 	private Date regdate;
 	private String email;
 	private String address;
+	private int warningCount;
 	private String recommendName;
 	private int ratingId;
 
@@ -22,7 +23,7 @@ public class User {
 	}
 
 	public User(int id, String nicname, String pwd, String name, String gender, int age, String phone, Date regdate,
-			String email, String address, String recommendName, int ratingId) {
+			String email, String address, int warningCount, String recommendName, int ratingId) {
 		super();
 		this.id = id;
 		this.nicname = nicname;
@@ -34,15 +35,18 @@ public class User {
 		this.regdate = regdate;
 		this.email = email;
 		this.address = address;
+		this.warningCount = warningCount;
 		this.recommendName = recommendName;
 		this.ratingId = ratingId;
 	}
+
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", nicname=" + nicname + ", pwd=" + pwd + ", name=" + name + ", gender=" + gender
 				+ ", age=" + age + ", phone=" + phone + ", regdate=" + regdate + ", email=" + email + ", address="
-				+ address + ", recommendName=" + recommendName + ", ratingId=" + ratingId + "]";
+				+ address + ", warningCount=" + warningCount + ", recommendName=" + recommendName + ", ratingId="
+				+ ratingId + "]";
 	}
 
 	public int getId() {
@@ -123,6 +127,14 @@ public class User {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public int getWarningCount() {
+		return warningCount;
+	}
+
+	public void setWarningCount(int warningCount) {
+		this.warningCount = warningCount;
 	}
 
 	public String getRecommendName() {

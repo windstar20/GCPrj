@@ -22,7 +22,7 @@ public class JdbcUserDao implements UserDao {
 		
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "INSERT INTO MEMBER(NICNAME,PWD,NAME,GENDER,AGE,PHONE,EMAIL,ADDRESS,RECOMMEND_NAME)"
+		String sql = "INSERT INTO \"USER\"(ID,NICNAME,PWD,NAME,GENDER,AGE,PHONE,EMAIL,ADDRESS,RECOMMEND_NAME)"
 				+ "VALUES(?,?,?,?,?,?,?,?,?,?)"; 
 		
 		try {   
@@ -30,15 +30,16 @@ public class JdbcUserDao implements UserDao {
 			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);
 			
-			st.setString(0, user.getNicname());
-			st.setString(1, user.getPwd());
-			st.setString(2, user.getName());
-			st.setString(3, user.getGender());
-			st.setInt(4, user.getAge());
-			st.setString(5, user.getPhone());
-			st.setString(6, user.getEmail());
-			st.setString(7, user.getAddress());
-			st.setString(8, user.getRecommendName());
+			st.setInt(1, user.getId());
+			st.setString(2, user.getNicname());
+			st.setString(3, user.getPwd());
+			st.setString(4, user.getName());
+			st.setString(5, user.getGender());
+			st.setInt(6, user.getAge());
+			st.setString(7, user.getPhone());
+			st.setString(8, user.getEmail());
+			st.setString(9, user.getAddress());
+			st.setString(10, user.getRecommendName());
 			
 			result = st.executeUpdate();  
 			
@@ -62,12 +63,24 @@ public class JdbcUserDao implements UserDao {
 		
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "UPDATE NOTICE SET TITLE=?, CONTENT=? WHERE ID=?";
-		
+		String sql = "UPDATE \"USER\" SET WHERE ID=?,NICNAME=?,PWD=?,PHONE=?,EMAIL=?,ADDRESS=?"
+				+ " VALUES(?,?,?,?,?,?)";
+				
 		try {
 			Class.forName(driver);
 			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, user.getId());
+			st.setString(2, user.getNicname());
+			st.setString(3, user.getPwd());
+			st.setString(4, user.getPhone());
+			st.setString(5, user.getEmail());
+			st.setString(6, user.getAddress());
+			
+			result = st.executeUpdate();
+			
+			st.close();
+			con.close();
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -82,8 +95,34 @@ public class JdbcUserDao implements UserDao {
 
 	@Override
 	public int delete(int id) {
+		int result = 0;
 		
-		return 0;
+		String driver = "oracle.jdbc.driver.OracleDriver";
+		String url = DBContext.URL;
+		String sql = "DELETE \"USER\" WHERE ID=?";
+				
+				
+		try {
+			Class.forName(driver);
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, id);			
+			
+			result = st.executeUpdate();
+			
+			st.close();
+			con.close();
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
 	}
 
 	
@@ -94,7 +133,7 @@ public class JdbcUserDao implements UserDao {
 
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM MEMBER WHERE ID="+id; 
+		String sql = "SELECT * FROM \"USER\" WHERE ID="+id; 
 	
 		
 		try {
@@ -105,19 +144,22 @@ public class JdbcUserDao implements UserDao {
 			
 			
 			if(rs.next()){
-				 String nicname = rs.getNString("nicname");
-			     String pwd = rs.getNString("pwd");
-			     String name = rs.getNString("name");
-			     String gender = rs.getNString("gender");
+				
+				 id = rs.getInt("id");
+			     String nicname = rs.getString("nicname");
+			     String pwd = "1";
+			     String name = rs.getString("name");
+			     String gender = rs.getString("gender");
 			     int age = rs.getInt("age");
-			     String phone = rs.getNString("phone");
+			     String phone = rs.getString("phone");
 			     Date regdate = rs.getDate("regdate") ;
-			     String email = rs.getNString("email");
-			     String address = rs.getNString("address");
-			     String recommendName = rs.getString("recommend_Name");
+			     String email = rs.getString("email");
+			     String address = rs.getString("address");
+			     String recommendName = rs.getString("recommend_name");
 			     int ratingId = rs.getInt("rating_id");
+			     int warningCount = rs.getInt("warning_count");
 			     
-			     u = new User(
+			      u = new User(
 			    		 	id,
 			    		    nicname,
 			    		    pwd,
@@ -128,6 +170,7 @@ public class JdbcUserDao implements UserDao {
 			    		    regdate,
 			    		    email,
 			    		    address,
+			    		    warningCount,
 			    		    recommendName,
 			    		    ratingId
 			    		    );
@@ -153,7 +196,7 @@ public class JdbcUserDao implements UserDao {
 	public List<User> getList() {
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM MEMBER"; 
+		String sql = "SELECT * FROM \"USER\""; 
 	
 		List<User>list = new ArrayList<>();
 		
@@ -166,17 +209,18 @@ public class JdbcUserDao implements UserDao {
 			
 			while(rs.next()){
 				 int id = rs.getInt("id");
-			     String nicname = rs.getNString("nicname");
-			     String pwd = rs.getNString("pwd");
-			     String name = rs.getNString("name");
-			     String gender = rs.getNString("gender");
+			     String nicname = rs.getString("nicname");
+			     String pwd = "1";
+			     String name = rs.getString("name");
+			     String gender = rs.getString("gender");
 			     int age = rs.getInt("age");
-			     String phone = rs.getNString("phone");
+			     String phone = rs.getString("phone");
 			     Date regdate = rs.getDate("regdate") ;
-			     String email = rs.getNString("email");
-			     String address = rs.getNString("address");
+			     String email = rs.getString("email");
+			     String address = rs.getString("address");
 			     String recommendName = rs.getString("recommend_name");
 			     int ratingId = rs.getInt("rating_id");
+			     int warningCount = rs.getInt("warning_count");
 			     
 			     User u = new User(
 			    		 	id,
@@ -189,6 +233,7 @@ public class JdbcUserDao implements UserDao {
 			    		    regdate,
 			    		    email,
 			    		    address,
+			    		    warningCount,
 			    		    recommendName,
 			    		    ratingId
 			    		    );

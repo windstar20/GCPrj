@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+/* -----------------怨듯넻------------ */
+
+html {
+  font-family: "Nanum Gothic", sans-serif;
+}
+input,
+select {
+  outline: 0;
+}
+.logo {
+  background: url(../../image/logo.png) no-repeat center;
+  height: 100px;
+  width: 300px;
+  background-size: contain;
+}
+
+.logo-bar {
+  background-color: gray;
+  display: flex;
+  min-height: 50px;
+}
+.header > nav > ul {
+  background-color: darkgray;
+  display: flex;
+  min-height: 100px;
+}
+
+.header > nav > ul > li {
+  box-sizing: border-box;
+  flex-basis: 210px;
+  min-width: 150px;
+  color: white;
+  font-weight: bold;
+  border-right: 1px solid #979797;
+  border-top: 1px solid #979797;
+  border-bottom: 1px solid #979797;
+  text-align: center;
+  line-height: 100px; /*�닔吏� 媛��슫�뜲 �젙�젹*/
+}
+.header > nav > ul > li > a {
+  text-decoration: none;
+}
+.header > nav > ul > li:first-child {
+  border-left: 1px solid #979797;
+}
+.header > nav > ul > li:last-child {
+  border-right: 1px solid #979797;
+}
+
+.logout {
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+}
+.logo-img {
+  width: 300px;
+}
+
+/*--------------------------*/
+.body {
+  display: flex;
+  min-height: 666px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.body > .aside {
+  box-sizing: border-box;
+  --background-color: red;
+  flex-basis: 210px;
+  min-width: 210px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+/*------------------------------*/
+.main-section {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.main {
+  min-width: 700px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.main-head {
+  background-color: #f2f2f2;
+  flex-basis: 42px;
+  /*text �꽭濡� 媛��슫�뜲 �젙�젹*/
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main-head > span {
+  font-weight: lighter;
+  font-size: 10px;
+}
+
+.main-body {
+  padding: 35px 40px 0 20px;
+  flex-grow: 1;
+}
+
+.aside {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+.aside-title {
+  background-color: red;
+  display: inline-block;
+  flex-basis: 42px;
+  margin-bottom: 10px;
+}
+
+.aside-menu {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  --background-color: blue;
+  flex-grow: 1;
+}
+.aside-menu > li {
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+.aside-menu > ul > li > a {
+  font-size: 0.8em;
+  margin-left: 20px;
+  line-height: 25px;
+  text-decoration: none;
+}
+.aside-menu > ul > li > a::before {
+  content: "> ";
+  font-size: 1px;
+  position: relative;
+  top: -3px;
+}
+.aside-current {
+  font-weight: bold;
+  color: rosybrown;
+}
+/*-------------------------------------------*/
+.footer {
+  min-height: 100px;
+  background-color: black;
+}
+
+/* -------------product-detail----------- */

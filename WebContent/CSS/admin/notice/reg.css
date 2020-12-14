@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"); /* -----------------공통------------ */
+html {
+  font-family: "Nanum Gothic", sans-serif;
+}
+h1.no-display {
+  display: none;
+}
+
+.logo {
+  background: url(../image/logo.png) no-repeat center;
+  height: 100px;
+  width: 300px;
+  background-size: contain;
+}
+
+.logo-bar {
+  background-color: gray;
+  display: flex;
+  min-height: 50px;
+}
+.header > nav > ul {
+  background-color: darkgray;
+  display: flex;
+  min-height: 100px;
+}
+
+.header > nav > ul > li {
+  box-sizing: border-box;
+  flex-basis: 210px;
+  min-width: 210px;
+  color: white;
+  font-weight: bold;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+.header > nav > ul > li:first-child {
+  border-left: 1px solid black;
+}
+.header > nav > ul > li:last-child {
+  border-right: 1px solid black;
+}
+.logout {
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+}
+.logo-img {
+  width: 300px;
+}
+.body {
+  display: flex;
+  min-height: 650px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.body > .aside {
+  box-sizing: border-box;
+  --background-color: red;
+  flex-basis: 210px;
+  min-width: 210px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+.body > .main-section {
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 700px;
+  flex-basis: 100%;
+  --background-color: blue;
+  display: flex;
+  flex-direction: column;
+}
+.main-title {
+  background-color: #f2f2f2;
+  flex-basis: 42px;
+  /*text 세로 가운데 정렬*/
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main-title > span {
+  font-weight: lighter;
+  font-size: 10px;
+  padding-right: 50px;
+}
+.main {
+  padding: 35px;
+  flex-grow: 1;
+}
+.aside {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+.aside-title {
+  background-color: red;
+  display: inline-block;
+  flex-basis: 42px;
+}
+.aside-menu {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  --background-color: blue;
+  flex-grow: 1;
+}
+.aside-menu > li {
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+.aside-menu > ul > li > a {
+  font-size: 0.8em;
+  font-weight: normal;
+  margin-left: 20px;
+  line-height: 25px;
+}
+.aside-menu > ul > li > a::before {
+  content: "> ";
+  font-size: 1px;
+  position: relative;
+  top: -3px;
+}
+
+.footer {
+  min-height: 100px;
+  background-color: black;
+}
+/* -------------admin-notice-reg----------- */
+
+.content{
+    width: 100%;
+    height: 100%;
+    margin: 35px;
+  }
+
+.table-wrap{
+    line-height: 40px;
+    font-size: 15px;
+    width: 90%;
+    border: 1px solid #111;
+    border-collapse: collapse;
+  }
+
+  .table-wrap th{
+    font-family: "맑은 고딕", sans-serif;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.1);
+    width: 120px;
+  }
+
+.td-small{
+  width: 640px;
+}
+
+.texta{
+    width: 100%;
+}
+
+.btn{
+    position: relative;
+    width: 20%;
+    top: 20px;
+    left: 43%;  
+  }

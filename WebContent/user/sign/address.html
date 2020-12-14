@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- ======== 도로명 ====================> -->
+    <table>우편번호 검색</table>
+    <table>
+        <tr>
+            <td>도로명 주소찾기</td>
+            <td>지번 주소찾기</td>
+        </tr>
+    </table>
+    <div style="background: rgb(241, 235, 235);text-align: center;">
+        <input type="radio" name="address">도로명 + 건물번호
+        <input type="radio" name="address">동(읍/면) + 지번
+        <input type="radio" name="address">건물명(아파트명)
+    </div>
+    <table style="background: #979797;">
+        <tr>
+            <th>시도</th>
+            <td>
+                <select>
+                    <option>서울</option>
+                    <option>인천</option>
+                    <option>제주도</option>
+                </select>
+            </td>
+            <th>시군구</th>
+            <td>
+                <select>
+                    <option>선택</option>
+                    <option>강남구</option>
+                    <option>서귀포시</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>검색어</th>
+            <td>
+                도로명 :
+                <input type="text"> 
+            </td>
+            <td>
+                + 건물번호 : 
+                <input type="text">
+            </td>
+        </tr>
+    </table>
+    <section class="btn1">
+        <input type="button" value="완료"> 
+    </section>
+    
+    <script>
+        window.onload = function(){
+            var section = document.getElementsByClassName("btn1")[0];
+            var btn = section.getElementsByTagName("input")[0];
+
+                // btn.onclick = function(){
+                //     var address = opener.document.getElementsById("address");
+                //     var postcode = address.getElementsByTagName("input")[0];
+                //     postcode.value = "12345";
+                //     window.close();
+                // }
+
+            btn.onclick = function(){
+                var postcode = opener.document.getElementsByClassName("address2")[0];
+                postcode.value = "34567";
+                window.close();
+            }
+            
+        }
+    </script>
+</body>
+</html>

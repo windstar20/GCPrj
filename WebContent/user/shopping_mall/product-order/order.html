@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>근처 | 주문/결제</title>
+  </head>
+  <body>
+    <header id="header" class="header">
+      <div class="logo-bar"><h1>근처</h1></div>
+    </header>
+    <section>
+      <main id="main" class="main">
+        <div class="main-header">
+          <h1>주문/결제</h1>
+          <span>주문결제 > 결제완료</span>
+        </div>
+        <form action="" method="POST">
+          <div class="main-body">
+            <h1 class="no-display">주문 정보</h1>
+            <h1>구매자정보</h1>
+            <table class="sender-info">
+              <tr>
+                <th>이름</th>
+                <td><input type="text" name="sender-name" /></td>
+              </tr>
+              <tr>
+                <th>이메일</th>
+                <td><input type="text" name="sender-email" /></td>
+              </tr>
+              <tr>
+                <th>휴대폰 번호</th>
+                <td><input type="text" name="sender-phone" /></td>
+              </tr>
+            </table>
+            <h1>받는사람정보</h1>
+            <table class="receiver-info">
+              <tr>
+                <th>이름</th>
+                <td><input type="text" name="receiver-name" /></td>
+              </tr>
+              <tr>
+                <th>배송주소</th>
+                <td><input type="text" name="receiver-address" /></td>
+              </tr>
+              <tr>
+                <th>연락처</th>
+                <td><input type="text" name="receiver-phone" /></td>
+              </tr>
+              <tr>
+                <th>배송 요청사항</th>
+                <td>
+                  <span>직접 받고 부재 시 문 앞</span>
+                  <button>변경</button>
+                </td>
+              </tr>
+            </table>
+
+            <div>
+              <h1>상품 정보</h1>
+              <table class="order-info">
+                <tr>
+                  <th><span>모레(금) 12/11 도착 예정</span></th>
+                </tr>
+                <tr>
+                  <td>
+                    <span
+                      >칼로바이 퍼펙트 파워쉐이크 초코맛 단백질보충제,2kg</span
+                    >
+                    <span>수량 1개/무료배송</span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div>
+              <h1>결제정보</h1>
+              <table class="payment-info">
+                <tr>
+                  <th>총상품가격</th>
+                  <td>56,810원</td>
+                </tr>
+                <tr>
+                  <th>배송비</th>
+                  <td>0원</td>
+                </tr>
+                <tr>
+                  <th>총결제금액</th>
+                  <td>56,810원</td>
+                </tr>
+                <tr>
+                  <th>결제방법</th>
+                  <td>
+                    <input type="radio" name="method" id="계좌이체" />계좌이체
+                    <input
+                      type="radio"
+                      name="method"
+                      id="신용/체크카드"
+                    />신용/체크카드
+                    <input type="radio" name="method" id="법인카드" />법인카드
+                    <input type="radio" name="method" id="휴대폰" />휴대폰
+                    <input
+                      type="radio"
+                      name="method"
+                      id="무통장입금(가상계좌)"
+                    />무통장입금(가상계좌)
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div>
+              <input type="submit" value="결제하기" />
+            </div>
+          </div>
+        </form>
+      </main>
+    </section>
+    <footer></footer>
+  </body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주문관리-포인트 충전 내역</title>
+    <link rel="stylesheet" href="../../CSS/reset.css" />
+    <link rel="stylesheet" href="../../CSS/style.css" />
+    <link rel="stylesheet" href="../../CSS/admin/admin.css" />
+    <link
+      rel="stylesheet"
+      href="../../CSS/admin/product-order/order-list.css"
+    />
+  </head>
+  <body>
+    <header id="header" class="header">
+      <div class="logo-bar">
+        <h1 class="no-display">근처</h1>
+        <a href=""><div class="logo"></div></a>
+        <ul>
+          <li><button class="logout">로그아웃</button></li>
+        </ul>
+      </div>
+      <nav id="nav" class="nav">
+        <h1 class="no-display">메뉴</h1>
+        <ul>
+          <li><a href="#">기본설정</a></li>
+          <li><a href="#">상품관리</a></li>
+          <li><a href="#">주문관리</a></li>
+          <li><a href="#">회원관리</a></li>
+          <li><a href="#">게시판관리</a></li>
+          <li><a href="#">고객센터</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body" class="body">
+      <aside class="aside">
+        <h1 class="aside-title img-button">주문관리</h1>
+        <ul class="aside-menu">
+          <li>쇼핑몰 주문 관리</li>
+          <ul>
+            <li><a href="product-order-list">주문 목록</a></li>
+          </ul>
+          <br />
+          <li>포인트 결제 관리</li>
+          <ul>
+            <li>
+              <a href="point-charge-list.html" class="aside-current"
+                >포인트 충전 내역</a
+              >
+            </li>
+            <li>
+              <a href="point-use-list.html">포인트 사용 내역</a>
+            </li>
+          </ul>
+          <br />
+        </ul>
+      </aside>
+      <section class="main-section">
+        <main id="main" class="main">
+          <div class="main-head">
+            <h1>포인트 충전 내역</h1>
+            <span> home > 상품관리 > 포인트 충전 내역 </span>
+          </div>
+          <div class="main-body">
+            <section>
+              <h1 class="table-title">검색</h1>
+              <form action="">
+                <table class="search-table">
+                  <!-- 첫번째 줄 시작-->
+                  <tr>
+                    <th>회원명</th>
+                    <td>
+                      <input type="text" name="" id="" />
+                    </td>
+                  </tr>
+                  <!-- 첫번째 줄 끝 -->
+                  <!-- 두번째 줄 시작 -->
+                  <tr>
+                    <th>결제 상태</th>
+                    <td>
+                      <input type="checkbox" name="" id="" /><span>전체</span>
+                      <input type="checkbox" name="" id="" /><span
+                        >입금대기</span
+                      >
+                      <input type="checkbox" name="" id="" /><span
+                        >결제완료</span
+                      >
+                    </td>
+                  </tr>
+                  <!-- 두번째 줄 끝 -->
+                  <!-- 세번째 줄 시작 -->
+                  <tr>
+                    <th>정렬 방법</th>
+                    <td>
+                      <button>결제 금액</button>
+                      <button>결제 날짜</button>
+                    </td>
+                  </tr>
+                  <!-- 세번째 줄 끝 -->
+                </table>
+                <input class="search-button" type="submit" value="검색" />
+              </form>
+            </section>
+            <!-- 테이블 끝 -->
+            <section>
+              <section>
+                <h1 class="table-title">포인트 충전 목록</h1>
+                <ul class="table-sum">
+                  <li>검색결과 : 0건</li>
+                  <li>총결제금액 : 0원</li>
+                  <li>
+                    <select name="" id="">
+                      <option value="">5개 출력</option>
+                      <option value="">10개 출력</option>
+                      <option value="">20개 출력</option>
+                      <option value="">50개 출력</option>
+                      <option value="">100개 출력</option>
+                    </select>
+                  </li>
+                </ul>
+              </section>
+              <!-- 테이블 시작 -->
+              <div class="sort-bar">
+                <h1 class="no-display">정렬</h1>
+                <ul>
+                  <li>
+                    주문일 <span class="img-button up-button">up</span>
+                    <span class="img-button down-button">down</span>
+                  </li>
+                  <li>
+                    주문자 <span class="img-button up-button">up</span>
+                    <span class="img-button down-button">down</span>
+                  </li>
+                  <li>
+                    결제금액 <span class="img-button up-button">up</span>
+                    <span class="img-button down-button">down</span>
+                  </li>
+                </ul>
+              </div>
+              <table class="order-list-table">
+                <thead>
+                  <tr>
+                    <th><input type="checkbox" name="" id="" /></th>
+                    <th>번호</th>
+                    <th>주문번호(주문내역)</th>
+                    <th>주문일</th>
+                    <th>입금일</th>
+                    <th>주문자</th>
+                    <th>수령인</th>
+                    <th>결제금액</th>
+                    <th>결제방법<br />입금자명</th>
+                    <th>주문상태</th>
+                    <th>관리</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- 첫번째 행 시작 -->
+                  <tr>
+                    <td><input type="checkbox" name="" id="" /></td>
+                    <td>1</td>
+                    <td>
+                      23345A53561D <br /><br />
+                      [빈폴] 빈폴1988 맨투맨/셔츠
+                    </td>
+                    <td>2015-12-02 20:08</td>
+                    <td></td>
+                    <td>
+                      이수철 <br />
+                      <span>(010-1234-5678)</span>
+                    </td>
+                    <td>
+                      전홍준 <br />
+                      <span>(010-1234-5678)</span>
+                    </td>
+                    <td>329,000원</td>
+                    <td>무통장<br />입금자명</td>
+                    <td>입금대기</td>
+                    <td>
+                      <input
+                        class="select-button"
+                        type="button"
+                        value="입금확인"
+                      />
+                      <input
+                        class="select-button"
+                        type="button"
+                        value="상세보기"
+                      />
+                      <input
+                        class="select-button"
+                        type="button"
+                        value="주문취소"
+                      />
+                    </td>
+                  </tr>
+                  <!-- 첫번째 행 끝 -->
+                  <!-- 두번째 행 시작 -->
+                  <tr>
+                    <td><input type="checkbox" name="" id="" /></td>
+                    <td>1</td>
+                    <td>
+                      23345A53561D <br /><br />
+                      [빈폴] 빈폴1988 맨투맨/셔츠
+                    </td>
+                    <td>2015-12-02 20:08</td>
+                    <td></td>
+                    <td>
+                      이수철 <br />
+                      <span>(010-1234-5678)</span>
+                    </td>
+                    <td>
+                      전홍준 <br />
+                      <span>(010-1234-5678)</span>
+                    </td>
+                    <td>329,000원</td>
+                    <td>무통장<br />입금자명</td>
+                    <td>입금대기</td>
+                    <td>
+                      <input
+                        class="select-button"
+                        type="button"
+                        value="입금확인"
+                      />
+                      <input
+                        class="select-button"
+                        type="button"
+                        value="상세보기"
+                      />
+                      <input
+                        class="select-button"
+                        type="button"
+                        value="주문취소"
+                      />
+                    </td>
+                  </tr>
+                  <!-- 두번째 행 끝 -->
+                </tbody>
+              </table>
+            </section>
+          </div>
+        </main>
+      </section>
+    </div>
+    <section>
+      <footer id="footer" class="footer">
+        <h1>푸터</h1>
+      </footer>
+    </section>
+  </body>
+</html>

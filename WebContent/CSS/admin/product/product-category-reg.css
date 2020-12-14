@@ -1,0 +1,277 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+/* -----------------공통------------ */
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+ /* -----------------����------------ */
+html {
+  font-family: "Nanum Gothic", sans-serif;
+}
+h1.no-display {
+  display: none;
+}
+ul, li{
+  list-style: none;
+  padding-left: 0px;
+}
+a{
+  text-decoration: none;
+ 
+}
+
+input,
+select {
+  outline: 0;
+}
+.logo {
+  background: url("../../../image/logo.png") no-repeat center;
+  height: 100px;
+  width: 300px;
+  background-size: contain;
+}
+
+.logo-bar {
+  background-color: gray;
+  display: flex;
+  min-height: 50px;
+  position: relative;
+}
+.header > nav > ul {
+  background-color: darkgray;
+  display: flex;
+  min-height: 100px;
+}
+
+.header > nav > ul > li {
+  box-sizing: border-box;
+  flex-basis: 210px;
+  min-width: 210px;
+  color: white;
+  font-weight: bold;
+  border-right: 1px solid #979797;
+  border-top: 1px solid #979797;
+  border-bottom: 1px solid #979797;
+  text-align: center;
+  line-height: 100px; /*수직 가운데 정렬*/
+}
+.header > nav > ul > li > a {
+  text-decoration: none;
+}
+.header > nav > ul > li:first-child {
+  border-left: 1px solid #979797;
+}
+.header > nav > ul > li:last-child {
+  border-right: 1px solid #979797;
+}
+
+.logout {
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  top: 40px;
+}
+
+
+.logo-img {
+  width: 300px;
+}
+
+/*?-----------body---------------*/
+.body {
+  display: flex;
+  min-height: 666px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.body > .aside {
+  box-sizing: border-box;
+  --background-color: red;
+  flex-basis: 210px;
+  min-width: 210px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+/*?-------------aside-----------------*/
+.aside {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+.aside-title {
+  background-color: red;
+  display: inline-block;
+  flex-basis: 42px;
+  margin-bottom: 10px;
+}
+
+.aside-menu {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  --background-color: blue;
+  flex-grow: 1;
+}
+.aside-menu > li {
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+.aside-menu > ul > li > a {
+  font-size: 0.8em;
+  margin-left: 20px;
+  line-height: 25px;
+  text-decoration: none;
+}
+.aside-menu > ul > li > a::before {
+  content: "> ";
+  font-size: 1px;
+  position: relative;
+  top: -3px;
+}
+.aside-current {
+  font-weight: bold;
+}
+/*? -------------main----------- */
+.body > .main-section {
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 700px;
+  flex-basis: 100%;
+  --background-color: blue;
+  display: flex;
+  flex-direction: column;
+}
+.main-title{
+  display: flex;
+  height: 42px;
+  background: rgb(195, 200, 183);
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.main-title>h1{
+  margin-left: 15px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.main-title > span {
+  font-weight: lighter;
+  font-size: 10px;
+}
+
+.main{
+    padding: 20px 40px 40px 40px;
+}
+.main>h1{
+  padding-left: 17px;
+  display: block;
+  font-weight: bold;
+  font-size: 17px;
+  position: relative;
+  margin-top: 10px;
+}
+
+.main>h1:before{
+  content: "▶ ";
+  /* font-size: 10px; */
+  text-align: center;
+  position: absolute;
+  left: -2px;
+}
+
+ /**===============테이블 공통스타일=============== */
+.product-table{  
+  margin-top: 10px;
+  --border: solid 1px red;
+  width: 1010px;
+  border-collapse: collapse;
+
+}
+.product-table tr{
+  height: 40px;
+} 
+    .product-table th{  
+      background: #f2f2f2;
+      /* border: solid black 1px 1px 1px 0px; */
+      width: 180px;
+      border-top: black solid 1px;
+      border-bottom: black solid 1px;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .product-table td{
+      background: rgb(219, 222, 228);
+      border-top: black solid 1px;
+      border-bottom: black solid 1px;
+      padding-left: 5px;     
+      font-size: 14px; 
+    }
+    .product-basic-info td>input[type=text]{
+      --margin-left: 30px;
+      width: 300px;
+      height: 25px;     
+    }
+    .button{
+      width: 70px;
+      height: 30px;
+    }
+
+
+
+    .application {
+      width: 1010px;
+      margin-top: 10px;
+      /* text-align: right; */
+      display: flex;
+      justify-content: flex-end;
+      
+    }
+    .application>input[type="text"]{
+      width: 300px;
+      margin-right: 10px;
+    }
+
+    .application>input[type="submit"] {      
+      width: 70px;
+      height: 30px;
+      background: rgb(182, 177, 177); 
+      margin-right: 10px;   
+      border-radius: 5px;    
+      font-size: 15px; 
+      border: none;
+      
+    }
+
+    .application>a{
+      display: inline-block;
+      text-align: center;
+      background: rgb(182, 177, 177); 
+      width: 70px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+      border-radius: 5px; 
+      font-size: 15px; 
+      text-decoration: none;
+    }
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+/*? -------------footer----------- */
+.footer {
+  min-height: 100px;
+  background-color: black;
+}
+

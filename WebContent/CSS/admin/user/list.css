@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"); /* -----------------공통------------ */
+
+/* ====================    body  ===============================/ */
+ .body .aside .aside-title{
+   background: url(../../../image/admin/member-aside.png) no-repeat center;
+   width: 208px;
+   height: 42px;
+   background-size: contain;
+ }
+
+
+/* ===============  main  ================================================ */
+
+      .main-section{
+      }
+      .main table{
+        width: 100%; /* table 너비 끝까지 */
+        border: 1px solid black;
+        border-left: none;
+        flex-shrink: 0;
+        
+      }
+    
+      .main table tr th{
+        background: #f2f2f2;
+        font-weight: bold;
+        padding: 5px 40px 5px 10px;  /* th 공간 갖기 */
+      }
+
+      .main-body table tr td{ 
+        padding: 0px 10px;  
+      }
+      .main tr:first-child td span:nth-child(4){  /*일반 회원*/
+        color:greenyellow;
+      }
+      .main tr:first-child td span:nth-child(5){  /*우수 회원*/
+        color:BLUE;
+      }
+      .main tr:first-child td span:nth-child(6){  /*프리미엄 회원*/
+        color:orange;
+      }
+      .main>table tr td [type="text"]{
+        background:#f2f2f2;
+        border: none;
+        outline: none;
+      }
+      /* .main>table tr td .sel-text:{ 클릭시 text box 색 변환
+        background: black;
+      } */
+
+      .main .find{ /* 검색 버튼 중앙 이동 */
+        text-align: center;
+        padding: 10px;
+      }
+        .main .find .find-button{
+            background: url(../../../image/admin/amdin-search.png) no-repeat center;
+            width: 140px;
+            height: 44px;   
+            text-align: center;
+        }
+    .main table thead{
+      background: rgb(165, 215, 243);
+    }
+
+    .main .page-list{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    }
+   
+    .main .page-list ul li{
+      padding: 0px 10px;
+        float: left;
+        
+      }
+      .main .page-list ul li:hover{
+        color: red;
+        font-size: 25px;
+      }
+.footer {
+  min-height: 100px;
+  background-color: black;
+}
+/* -------------product-detail----------- */

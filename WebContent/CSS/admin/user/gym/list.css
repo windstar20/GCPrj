@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"); /* -----------------공통------------ */
+html {
+  font-family: "Nanum Gothic", sans-serif;
+}
+.logo {
+  /* background: url(../image/logo.png) no-repeat center; */
+  background: url(../../../image/logo.png) no-repeat center;
+  height: 100px;
+  width: 300px;
+  background-size: contain;
+}
+
+.logo-bar {
+  background-color: gray;
+  display: flex;
+  min-height: 50px;
+}
+.header > nav > ul {
+  background-color: darkgray;
+  display: flex;
+  min-height: 100px;
+}
+
+.header > nav > ul > li {
+  box-sizing: border-box;
+  flex-basis: 210px;
+  min-width: 210px;
+  color: white;
+  font-weight: bold;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+.header > nav > ul > li:first-child {
+  border-left: 1px solid black;
+}
+.header > nav > ul > li:last-child {
+  border-right: 1px solid black;
+}
+.logout {
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+}
+.logo-img {
+  width: 300px;
+}
+
+/* ====================    body  ===============================/ */
+
+.body {
+  display: flex;
+  min-height: 650px;
+  width: 100%;
+  box-sizing: border-box;
+}
+/* .body > .aside {
+  box-sizing: border-box;
+  min-width: 210px;
+  border-right: 1px solid #f2f2f2;
+  flex: 0 0 210px;
+  display: flex;
+  flex-direction: column;
+}
+
+.aside-title{
+  background: #f2f2f2;
+  flex-basis: 42px;
+  text-align: center;
+  line-height: 42px;
+} */
+/* .aside-menu {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  --background-color: blue;
+  flex-grow: 1;
+}
+.aside-menu li {
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  padding-top: 20px;
+}
+.aside-menu > ul > li > a {
+  font-size: 0.8em;
+  font-weight: normal;
+  margin-left: 20px;
+  line-height: 25px;
+}
+.aside-menu > ul > li > a::before {
+  content: "> ";
+  font-size: 1px;
+  position: relative;
+  top: -3px;
+} */
+
+/* ===============  main  ================================================ */
+
+.body > .main-section { /* main 기본 폰트 */
+  font-family: "맑은 고딕","고딕",Arial, Helvetica, sans-serif;
+  flex: 1 0 auto;
+  min-width: 700px;
+  display: flex;
+  flex-direction: column;
+}
+
+  .body > .main-section .main-title {
+    background-color: #f2f2f2;
+    flex-basis: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+    .body > .main-section .main-title > span {
+      font-weight: lighter;
+      font-size: 10px;
+    }
+
+  .main-section .main {
+    padding: 35px 10px 0 40px;
+    flex-grow: 1;
+    width: auto;
+  }
+
+    .main-section .main h1{
+      font-weight: bold;
+      font-size: 20px;
+    }
+      .main table{
+        width: 100%; /* table 너비 끝까지 */
+      }
+
+      .main table tr th{
+        background: #f2f2f2;
+        font-weight: bold;
+        padding: 5px 40px 5px 5px;  /* th 공간 갖기 */
+      }
+
+      .main>table tr td{ 
+        font-family: "돋움",Arial, Helvetica, sans-serif;
+        padding: 0px 10px;  
+      }
+      /* input 폰트 색 다르게==============================/ */
+      /* .main tr:first-child td span{ 
+        color: yellow; */
+        /* background:red;
+      } */
+      .main>table tr td [type="text"]{
+        background:#f2f2f2;
+        border: none;
+        outline: none;
+      }
+      /* .main>table tr td .sel-text:{ 클릭시 text box 색 변환
+        background: black;
+      } */
+      .main .del-button{
+        padding: 1px;
+        text-align: right;
+      }
+
+      .main .find{ /* 검색 버튼 중앙 이동 */
+        text-align: center;
+        padding: 10px;
+      }
+        .main .find .find-button{
+            background: url(../image/btn-search.png) no-repeat center;
+            width: 49px;
+            height: 23px;   
+           
+        }
+    .main table thead tr th{
+      background: rgb(165, 215, 243);
+      text-align: left;
+    }
+    .main table tbody td{
+      text-align: left;
+    }
+
+.footer {
+  min-height: 100px;
+  background-color: gray;
+  text-align: center;
+}
+/* -------------product-detail----------- */

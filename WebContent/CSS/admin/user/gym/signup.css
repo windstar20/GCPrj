@@ -1,0 +1,27 @@
+.logo {
+    /* background: url(../image/logo.png) no-repeat center; */
+    background: url(../../../image/logo.png) no-repeat center;
+    height: 100px;
+    width: 300px;
+    background-size: contain;
+}
+.logo-bar {
+    background-color: gray;
+    display: flex;
+    min-height: 50px;
+}
+.main{
+    text-align: center;
+    padding: 50px
+}
+.main-table{
+    margin-left: auto;
+    margin-right: auto;
+}
+.no-display{
+    display: none;
+}
+.second-table{
+    margin-left: auto;
+    margin-right: auto;
+}

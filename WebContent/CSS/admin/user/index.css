@@ -1,0 +1,73 @@
+h1{
+    font-weight: bold;
+}
+
+.main-body form{
+    display: flex;
+    flex-direction: column;
+}
+
+.user-button{
+    height: 42px;
+    width: 208px;
+    background: url(../../../image/admin/member-aside.png) no-repeat center;
+}
+
+table{
+    margin-top: 10px;
+    border-collapse: collapse;
+    width: 1000px;
+}
+
+    table th,
+    table td{
+        border-top: 1px solid #D8D8D8;
+        border-bottom: 1px solid #D8D8D8;
+        padding-left: 10px;
+        padding-top: 7px;
+        height: 30px;
+    }
+
+    table th{
+        border-right: 1px solid #D8D8D8;
+        background: #f4f4f4;
+        font-weight: bold;
+        width: 191px;
+        text-align: center;
+    }
+
+    table input[type="text"]{
+        width: 100px;
+    }
+
+.table-section{
+    margin-top: 20px;
+}
+
+.inner-table{
+    margin: 10px;
+    width: 700px;
+}
+
+    .inner-table th{
+        background: none;
+    }
+
+    .inner-table td{
+        text-align: center;
+    }
+
+    .inner-table tr:first-child th{
+        background: gray;
+        color: white;
+    }
+
+.point-url{
+    color: red;
+}
+
+.form-button{
+    margin-top: 10px;
+    align-self: center;
+    justify-self: center;
+}

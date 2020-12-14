@@ -1,0 +1,181 @@
+/* 완료 */
+.container{
+    width: 1000px;
+    height: 100%;   
+    /* min-height: 100%; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+/* ========================================================== */
+.header{
+    height: 100px;
+    background:#aae0f5;
+    width: 100%;
+}
+    .header .container{
+        height: 100%;
+        position: relative;
+    }
+        .header .container>h1{
+            display: inline-block;
+            width: 300px;
+            height: 100%;
+            background: url(../image/logo.png) no-repeat center;
+            background-size: contain;
+            text-indent: -999px;
+        }
+
+        .header .container .gc-form{
+          border: 5px solid green;
+          display: inline-block;
+          position: absolute;
+          left: 400px;
+          bottom: 40px;  
+        }
+            .header .container .gc-form label{
+                font-family: "맑은 고딕","고딕",Arial, Helvetica, sans-serif;
+                font-size: 15px;
+                color:black;
+            }
+            .header .container .gc-form .input{
+                border: none;
+                outline: none;
+            }
+            .header .container .gc-form .find-button{
+                background: url(../image/btn-find.png) no-repeat center;
+                width: 31px;
+                height: 25px;
+            }
+        .header .container .member-menu{
+            display: inline-block;
+            position: absolute;
+            right: 20px;
+            top: 40px;
+            font-family: "맑은 고딕","고딕",Arial, Helvetica, sans-serif;
+            font-size: 15px;
+        }
+            .member-menu ul{
+                display: flex;
+            }
+                .member-menu ul li {
+                    padding-left: 10px;
+                    background: url(../image/bg-main-menu-vsp.png) no-repeat 5px center;
+                } 
+                    .member-menu ul li:first-child{
+                        padding-left: initial;
+                        background: none;
+                    }
+                    .member-menu ul li a:hover{
+                        text-decoration: none;
+                        color: yellow;
+                    }
+         .header .container .shortcut-menu{
+             position: absolute;
+             font-size: 0px;
+             right: 20px;
+             bottom: 10px;
+            }       
+            .shortcut-menu ul{
+                display: flex;
+            }
+            .shortcut-menu ul .mypage-button{
+                background: url(../image/txt-mypage.png) no-repeat center;
+                width: 72px;
+                height: 17px;
+            }
+            .shortcut-menu ul .customer-button{
+                background: url(../image/txt-customer.png) no-repeat center;
+                width: 72px;
+                height: 17px;
+
+            }
+
+/* ---------------------------------------------- */
+.body{
+    min-height: 500px;
+}       
+
+    .body .container{
+        display: flex;
+        flex: 0 0 150px;
+        font-family: "맑은 고딕","고딕",Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        color: #808080;
+        font-size: 12px;
+    }
+        .body .container .aside{
+            background: rgb(199, 187, 187);
+        }
+        .body .container .aside h1,
+        .body .container .main .main-title{   /*body title 같아서!*/
+            height: 50px;
+            text-align: center;   /*title 중앙*/
+            padding-top: 10px;    /*title 중앙*/
+            box-sizing: border-box; /*title 중앙인데 높이유지*/
+            background:gray;
+            font-size: 20px;
+            color: yellow;
+        }
+
+        .body .container .aside ul li {
+            padding: 10px 20px ; 
+            background: url(../image/bg-aside-menu-hsp.png) no-repeat bottom;
+        }
+        .body .container .aside ul li:first-child{
+            padding-top: 25px;
+        }
+            .body .container .aside ul li a{
+                padding-left: 15px; /*img 띄우기*/
+            }
+  
+            .body .container .aside li a:hover{
+                background: url(../image/icon-current.png) no-repeat left center;
+                width: 7px;
+                height: 2px;
+                text-decoration: none;
+                color: black;
+            }
+
+    .body .container .main{
+        flex: 1 0 auto;
+        padding-bottom: 30px;
+        position: relative;
+    }
+        .body .container .main section h1{
+            font-size: 15px;
+            font-weight: bold;
+
+        }
+            .main section table{
+                border-top: black 2px solid;
+                width: 100%;
+                border-spacing: 0px 10px;
+            }
+            .main section table tr th,
+            .main section table tr td{
+                border-bottom: 1px solid #e9e9e9;
+            }
+
+            .main .main-button{
+                position: absolute;
+                right: 0px;
+                bottom: 0px;
+            }
+                .main .main-button .be-button{
+                    background: url(../image/btn-prev.png) no-repeat center;
+                    width: 15px;
+                    height: 23px;
+                }
+                .main .main-button .save-button{
+                    background: url(../image/btn-save.png) no-repeat center;
+                    width:64px ;
+                    height: 23px;
+                }
+.footer{
+        height: 100px;
+        background:gray;   
+}

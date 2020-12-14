@@ -1,0 +1,157 @@
+<!-- 완료 ---------------------------------------------------->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../../CSS/reset.css" type="text/css" rel="stylesheet">
+    <link href="../../CSS/style.css" type="text/css" rel="stylesheet">
+    <link href="../../CSS/user-mypagemod.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <header id="header" class="header">
+        <div class="container">
+            <h1><a href="">근손실처방전</a></h1>
+        
+            <section class="gc-form">
+                <form>
+                    <h1 class="d-none">강좌검색폼</h1>
+                    <label>위치 검색</label>
+                    <input type="text" class="input">
+                    <input class="img-button find-button" type="submit" value="검색">
+                </form>
+            </section>
+            <nav class="member-menu">
+                <h1 class="d-none">회원메뉴</h1>
+                <ul>
+                    <li><a href="../index.html">HOME</a></li>
+                    <li><a href="login.html">로그인</a></li>
+                    <li><a href="signin.html">회원가입</a></li>
+                 </ul>   
+            </nav>
+            <nav class="shortcut-menu">
+                <h1 class="d-none">바로가기 메뉴</h1>
+                <ul>
+                    <li><a href="" class="img-button mypage-button">마이페이지</a></li>
+                    <li><a href="list.html" class="img-button customer-button">고객센터</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="body">
+        <div class="container">
+            <aside class="aside">
+                <h1>My page</h1>
+                <ul>
+                    <li><a href="">마이페이지</a></li>
+                    <li><a href="">이용내역</a></li>
+                    <li><a href=""">포인트내역</a></li>
+                </ul>
+            </aside>
+            <form class="main">
+                <main>
+                    <h1 class="main-title">수정 페이지</h1>
+                    <section>
+                        <h1>필수정보</h1>
+                        <table>
+                            <tr>
+                                <th>아이디</th>
+                                <td><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <th>현재 비밀번호</th>
+                                <td><input type="text" required></td>
+                            </tr>
+                            <tr>
+                                <th>변경 비밀번호</th>
+                                <td><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <th>변경 비밀번호 확인</th>
+                                <td><input tpe="text"></td>
+                            </tr>
+                            <tr>
+                                <th>이름</th>
+                                <td><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <th>닉네임</th>
+                                <td><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <th>전화번호</th>
+                                <td>
+                                    <input type="text" style="width: 50px;" pattern="^\d{2,3}$"> -
+                                    <input type="text" style="width: 70px;" pattern="^\d{3,4}$"> -
+                                    <input type="text" style="width: 70px;" pattern="^\d{4}$">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>주소</th>
+                                <td>
+                                    <input type="text" style="width: 70px;" required> -
+                                    <input type="text" style="width: 70px;" required>
+                                    <input type="submit" value="우편번호검색"> <br>
+                                    <input type="text" style="width: 400px;" required>
+                                    <br>상세주소
+                                    <input type="text" style="width: 330px;" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>이메일</th>
+                                <td>
+                                    <input type="text">@
+                                    <input type="text">
+                                    <select>
+                                        <option>직접입력</option>
+                                        <option>naver.com</option>
+                                        <option>hanmail.net</option>
+                                        <option>gmail.com</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </section>
+                </main>
+    
+                <section>
+                    <h1>추가정보</h1>
+                    <table>
+                        <tr>
+                            <th>운동목적</th>
+                            <td>벌크업 다이어트</td>
+                        </tr>
+                        <tr>
+                            <th>운동시간</th>
+                            <td>2시간</td>
+                        </tr>
+                        <tr>
+                            <th>운동스타일</th>
+                            <td>3분할</td>
+                        </tr>
+                        <tr>
+                            <th>운동량</th>
+                            <td>3대기준 기준은 우리가 정하기</td>
+                        </tr>
+                    </table>
+                </section>
+                <div class="main-button">
+                    <input class="img-button be-button" type="submit" value="이전">
+                    <input class="img-button save-button"type="submit" value="변경">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <h1>footer</h1>
+        </div>
+    </footer>
+</body>
+
+</html>

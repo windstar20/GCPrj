@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>admin page</title>
+  <link rel="stylesheet" href="../../CSS/reset.css">
+  <link rel="stylesheet" href="../../CSS/admin/admin.css" />
+  <link rel="stylesheet" href="../../CSS/admin/product/product-category-reg.css" />
+</head>
+
+<body>
+  <header id="header" class="header">
+    <div class="logo-bar">
+      <h1 class="no-display">근처</h1>
+      <a href="">
+        <div class="logo"></div>
+      </a>
+      <ul>
+        <!-- <li><button class="logout">로그아웃</button></li> -->
+      </ul>
+    </div>
+    <nav id="nav" class="nav">
+      <h1 class="no-display">메뉴</h1>
+      <ul>
+        <li><a href="#">기본설정</a></li>
+        <li><a href="#">상품관리</a></li>
+        <li><a href="#">주문관리</a></li>
+        <li><a href="#">회원관리</a></li>
+        <li><a href="#">게시판관리</a></li>
+        <li><a href="#">고객센터</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="body" class="body">
+    <aside class="aside">
+      <h1 class="aside-title">ASIDE</h1>
+      <ul class="aside-menu">
+        <li>쇼핑몰 상품 관리</li>
+        <ul>
+          <li><a href="list.html">상품 리스트</a></li>
+          <li><a href="">상품 등록</a></li>
+          <li><a href="">상품 재고관리</a></li>
+        </ul>
+        <br />
+        <li>트레이닝 센터 관리</li>
+        <ul>
+          <li><a href="">센터 리스트</a></li>
+          <li><a href="">센터 등록</a></li>
+          <li><a href="">센터 정보 수정</a></li>
+          <!-- <li><a href="">상품 재고관리</a></li> -->
+        </ul>
+        <br />
+        <li>강사 관리</li>
+        <ul>
+          <li><a href="">강사 리스트</a></li>
+          <li><a href="">강사 등록</a></li>
+          <li><a href="">강사 정보 수정</a></li>
+        </ul>
+        <br />
+      </ul>
+    </aside>
+
+    <!--?=============== body 테이블 ===============-->
+    <main id="main-section" class="main-section">
+      <div class="main-title">
+        <h1>카테고리 등록</h1>
+        <span> home > 상품관리 > 상품리스트 </span>
+      </div>
+      <form method="post" action="reg">
+        <section id="main" class="main">
+          <h1>카테고리 목록</h1>
+          <table class="product-basic-info product-table">
+            <tr>
+              <th>1</th>
+              <td>
+                <input type="text" name="product-name" />
+              </td>
+              <td>
+                <input class="button" type="button" value="수정" />
+              </td>
+              <td>
+                <input class="button" type="button" value="삭제" />
+              </td>
+            </tr>
+          </table>
+
+          <div class="application">
+            <input type="text" />
+            <input type="submit" value="등록" />
+            <a href="list">취소</a>
+          </div>
+        </section>
+      </form>
+    </main>
+  </div>
+  <!--body div-->
+
+  <section>
+    <footer id="footer" class="footer">
+      <h1>푸터</h1>
+    </footer>
+  </section>
+
+</body>
+
+</html>

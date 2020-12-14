@@ -123,6 +123,7 @@ select {
 }
 .aside-menu > li {
   font-weight: bold;
+  margin-top: 20px;
   margin-bottom: 5px;
   margin-left: 10px;
 }

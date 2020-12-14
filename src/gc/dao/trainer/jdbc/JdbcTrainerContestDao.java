@@ -25,7 +25,6 @@ public class JdbcTrainerContestDao implements TrainerContestDao{
 		String url = DBContext.URL;
 		String sql = "INSERT INTO TRAINER_CONTEST(NAME, PHONE, DATE) VALUE(?,?,?)";
 		
-		
 		try {
 			Class.forName(DBContext.DRIVER);
 			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);

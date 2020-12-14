@@ -12,7 +12,7 @@ import java.util.List;
 
 import gc.dao.gym.GymDao;
 import gc.dao.gym.jdbc.JdbcGymDao;
-import gc.entity.Gym;
+import gc.entity.gym.Gym;
 
 public class GymService {
 	

@@ -1,15 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="gc.service.user.GymService"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>admin page</title>
-    <link rel="stylesheet" href="../../CSS/reset.css" type="text/css" />
-    <link rel="stylesheet" href="../../CSS/style.css">
-    <link rel="stylesheet" href="../../CSS/admin/admin.css" type="text/css" />
-    <link rel="stylesheet" href="../../CSS/admin/user/userlist.css" type="text/css" />
+    <link rel="stylesheet" href="../../../CSS/reset.css" type="text/css" />
+    <link rel="stylesheet" href="../../../CSS/style.css">
+    <link rel="stylesheet" href="../../../CSS/admin/admin.css" type="text/css" />
+    <link rel="stylesheet" href="../../../CSS/admin/user/gym/list.css" type="text/css" />
   </head>
   <body>
     <header id="header" class="header">
@@ -115,20 +118,31 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td>1</td>
-                <td>엄복동</td>
-                <td>근처</td>
-                <td>시설회원</td>
-                 <td>서울시 종로구 대일빌딩</td>
-                <td>010-1234-5678</td>
-                <td>02-123-4567</td>
-                <td>핸드폰</td>
-                <td>20.11.01</td>
-              </tr>
+              <c:forEach var="gym" items="${gymlist}">
+	              <tr>
+	                <td><input type="checkbox"></td>
+	                <td>${gym.id}</td>
+	                <td>${gym.name }</td>
+	                <td>${gym.gym_name}</td>
+	                <td>시설회원</td>
+	                 <td>서울시 종로구 대일빌딩</td>
+	                <td>010-1234-5678</td>
+	                <td>02-123-4567</td>
+	                <td>핸드폰</td>
+	                <td>20.11.01</td>
+	              </tr>
+              </c:forEach>
             </tbody>
           </table>
+          <div class="page-list">
+                <span><a href="">이전</a></span>
+                <ul>
+                	<c:forEach var="i" begin="0" end="4">
+						<li>${i+1}</li>
+					</c:forEach>
+                </ul>
+                <span><a href="">다음</a></span>
+         </div>
         </main>
       </section>
       </div>

@@ -33,7 +33,7 @@ public class JdbcGymDao implements GymDao {
 			
 			while(rs.next()) {
 				int id = rs.getInt("id");
-				String pwd = rs.getNString("pwd");
+				String pwd = "1";
 				String name = rs.getString("name");
 				String gymName = rs.getString("gym_Name");
 				String email = rs.getString("email");
@@ -88,7 +88,7 @@ public class JdbcGymDao implements GymDao {
 			ResultSet rs = st.executeQuery(sql);
 			
 			while(rs.next()) {
-				String pwd = rs.getNString("pwd");
+				String pwd = "1";
 				String name = rs.getString("name");
 				String gymName = rs.getString("gym_Name");
 				String email = rs.getString("email");
@@ -133,16 +133,23 @@ public class JdbcGymDao implements GymDao {
 		
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "INSERT INTO GYM(NAME, GYM_NAME) VALUES(?,?)";// �غ����? �ʾ�����
+		String sql = "INSERT INTO GYM(ID, PWD, NAME, GYM_NAME, EMAIL, TELEPHONE, PHONE, LECENSE_NUMBER, ADRESS) VALUES(?,?,?,?,?,?,?,?,?)";// 占쌔븝옙占쏙옙占�? 占십억옙占쏙옙占쏙옙
 		
 		try {
 			Class.forName(driver);
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);
-			st.setString(1, gym.getName());
-			st.setString(2, gym.getGym_name());
-			// Result rs = st.executeQuery() // select ���忡��
-			result = st.executeUpdate(); // insert, update, delete ������ ��
+			st.setInt(1, gym.getId());
+			st.setString(2, gym.getPwd());
+			st.setString(3, gym.getName());
+			st.setString(4, gym.getGym_name());					
+			st.setString(5, gym.getEmail());
+			st.setString(6, gym.getTelephone());
+			st.setString(7, gym.getPhone());
+			st.setString(8, gym.getLicenseNumber());
+			st.setString(9, gym.getAdress());
+			// Result rs = st.executeQuery() // select 占쏙옙占썲에占쏙옙
+			result = st.executeUpdate(); // insert, update, delete 占쏙옙占쏙옙占쏙옙 占쏙옙
 			st.close();
 			con.close();
 			
@@ -163,17 +170,17 @@ public class JdbcGymDao implements GymDao {
 		
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "UPDATE GYM SET NAME=?, GYM_NAME=? WHERE ID=?";// �غ����? �ʾ�����
+		String sql = "UPDATE GYM SET NAME=?, GYM_NAME=? WHERE ID=?";
 		
 		try {
 			Class.forName(driver);
-			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);//DBContext.UID PWD
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, gym.getName());
 			st.setString(2, gym.getGym_name());
 			st.setInt(3, gym.getId());
-			// Result rs = st.executeQuery() // select ���忡��
-			result = st.executeUpdate(); // insert, update, delete ������ ��
+			// Result rs = st.executeQuery() // select 占쏙옙占썲에占쏙옙
+			result = st.executeUpdate(); // insert, update, delete 占쏙옙占쏙옙占쏙옙 占쏙옙
 			st.close();
 			con.close();
 			
@@ -194,15 +201,15 @@ public class JdbcGymDao implements GymDao {
 		
 		String driver = "oracle.jdbc.driver.OracleDriver";	
 		String url = DBContext.URL;
-		String sql = "DELETE FROM GYM WHERE ID=?";// �غ����? �ʾ�����
+		String sql = "DELETE FROM GYM WHERE ID=?";// 占쌔븝옙占쏙옙占�? 占십억옙占쏙옙占쏙옙
 		
 		try {
 			Class.forName(driver);
 			Connection con = DriverManager.getConnection(url,DBContext.UID, DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setInt(1, id);
-			// Result rs = st.executeQuery() // select ���忡��
-			result = st.executeUpdate(); // insert, update, delete ������ ��
+			// Result rs = st.executeQuery() // select 占쏙옙占썲에占쏙옙
+			result = st.executeUpdate(); // insert, update, delete 占쏙옙占쏙옙占쏙옙 占쏙옙
 			st.close();
 			con.close();
 			

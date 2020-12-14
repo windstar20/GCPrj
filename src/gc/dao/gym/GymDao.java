@@ -4,7 +4,7 @@ import java.util.List;
 
 import gc.entity.gym.Gym;
 
-
+//SQL�� �ڹ� �Լ�ȭ
 public interface GymDao {
 	
 	int insert(Gym gym);
@@ -14,4 +14,6 @@ public interface GymDao {
 	
 	Gym get(int id);
 	List<Gym> getList();
+
+
 }

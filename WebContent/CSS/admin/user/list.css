@@ -18,7 +18,7 @@
         border: 1px solid black;
         border-left: none;
         flex-shrink: 0;
-        
+
       }
     
       .main table tr th{
@@ -58,7 +58,7 @@
             height: 44px;   
             text-align: center;
         }
-    .main table thead{
+    .main table thead tr td{
       background: rgb(165, 215, 243);
     }
 

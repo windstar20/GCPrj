@@ -1,6 +1,6 @@
 .logo {
     /* background: url(../image/logo.png) no-repeat center; */
-    background: url(../../../image/logo.png) no-repeat center;
+    background: url(../../../../image/logo.png) no-repeat center;
     height: 100px;
     width: 300px;
     background-size: contain;
@@ -10,17 +10,25 @@
     display: flex;
     min-height: 50px;
 }
+.no-display{
+    display: none;
+}
+/* -----------------------body----------- */
 .main{
     text-align: center;
-    padding: 50px
+    padding: 50px;
 }
 .main-table{
     margin-left: auto;
     margin-right: auto;
+    border: 1px solid black;
+    border-left: none;
+    border-right: none;
 }
-.no-display{
-    display: none;
+.main-table tr td{
+    width: 500px;
 }
+
 .second-table{
     margin-left: auto;
     margin-right: auto;

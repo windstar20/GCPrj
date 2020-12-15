@@ -108,7 +108,7 @@ select {
   flex-direction: column;
 }
 .aside-title {
-  background-color: red;
+  --background-color: red;
   display: inline-block;
   flex-basis: 42px;
   margin-bottom: 10px;

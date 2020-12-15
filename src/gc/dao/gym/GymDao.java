@@ -4,7 +4,7 @@ import java.util.List;
 
 import gc.entity.gym.Gym;
 
-//SQL�� �ڹ� �Լ�ȭ
+//SQL의 자바 함수화
 public interface GymDao {
 	
 	int insert(Gym gym);

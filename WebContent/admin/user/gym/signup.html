@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-    <link href = "../../CSS/reset.css" type = "text/css" rel = "stylesheet">
-    <link href = "../../CSS/admin/user/gym-signup.css" type = "text/css" rel = "stylesheet">
+    <link href = "../../../CSS/reset.css" type = "text/css" rel = "stylesheet">
+    <link href = "../../../CSS/admin/user/gym/signup.css" type = "text/css" rel = "stylesheet">
 </head>
 <body>
     <header id = "header" class = "header">
@@ -26,23 +26,25 @@
                     <tr>
                         <th>아이디</th>
                         <td>
-                        <input type = "text" maxlength = "10" style = "width: 100px;">
-                        <input type = "submit" value = "아이디 중복확인">
-                        <font color = "black" size = "2">10글 이하로 작성해주세요</font>
-                    </td>
+                            <input type = "text" maxlength = "10">
+                            <input type = "submit" value = "아이디 중복확인">
+                            <font color = "red" size = "2">10글자 이하로 작성해주세요</font>
+                        </td>
                     </tr>
                 
                     <tr>
                         <th>비밀번호</th>
-                        <td><input type = "password" maxlength = "8" style = "width: 100px;" >
-                            <font color = "black" size = "2">8글자 이하로 적어주세요</font>
+                        <td>
+                            <input type = "password" maxlength = "8">
+                            <font color = "red" size = "2">8글자 이하로 적어주세요</font>
                         </td>
                     </tr>
 
                     <tr>
                         <th>비밀번호 확인</th>
-                        <td><input type = "password" maxlength = "8" style = "width:100px;" >
-                            <font color = "black" size = "2">비밀번호를 다시 입력해주세요</font>
+                        <td>
+                            <input type = "password" maxlength = "8" >
+                            <font color = "red" size = "2">비밀번호를 다시 입력해주세요</font>
                         </td>
                     </tr>
 
@@ -58,8 +60,8 @@
                                 <option>02</option>
                                 <option>031</option>
                             </select>
-                        - <input type = "text" maxlength = "5" style = "width: 50px;">
-                        - <input type = "text" maxlength = "5" style = "width: 50px;"><br>
+                            - <input type = "text" maxlength = "5" style = "width: 50px;">
+                            - <input type = "text" maxlength = "5" style = "width: 50px;"><br>
                         </td>
                     </tr>
                     
@@ -98,7 +100,7 @@
                         <th>업체 주소</th>
                         <td>
                             <input type = "text" style = "width: 30px;">
-                            - <input type = "text" style = "width: 30px;">
+                            -<input type = "text" style = "width: 30px;">
                             <input type = "submit" value = "우편번호검색"><br>
                             <input type = "text" style = "width: 200px;">
                         </td>

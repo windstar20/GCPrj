@@ -22,21 +22,39 @@ public class ListController extends HttpServlet{
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int page=1; // 페이지 수
+		int page=1; // 페이지 번호
 		int size=10; // 페이지당 보여지는 글 갯수
-		
+		int pageNum=1;
+		String field=null;
+		String query=null;
 		ProductOrderService service = new ProductOrderService();
-		request.getParameter(name)
-		
-		List<ProductOrderView> totalList = service.getList();
-		
-		
-		
 
-		List<ProductOrderView> list = service.getViewList(page,size);
+		
+		if(request.getParameter("page")!=null)
+			page = Integer.parseInt(request.getParameter("page"));
+			
+		if(request.getParameter("size")!=null)
+			size = Integer.parseInt(request.getParameter("size"));
+		if(request.getParameter("field")!=null)
+			field = request.getParameter("field");
+		if(request.getParameter("query")!=null)
+			query = request.getParameter("query");
+		
+		List<ProductOrderView> list = service.getViewList(0, 0, field, query);
+		
+		if(list.size()%10==0)
+			pageNum = list.size()/size;
+		else
+			pageNum = list.size()/size+1;
+		
+		
+		list = service.getViewList(page, size, field, query);
+		System.out.println(pageNum);
 		
 		request.setAttribute("list", list);
-		
+		request.setAttribute("page", page);
+		request.setAttribute("size", size);
+		request.setAttribute("pageNum", pageNum);
 		request.getRequestDispatcher("list.jsp").forward(request, response);
 	 
 		

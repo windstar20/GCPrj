@@ -52,28 +52,27 @@
                 <h1>공지사항 등록</h1>
                 <span class="span1"> home > 게시판관리 > 공지사항 > 공지사항 등록 </span>
             </div>
-            <form action="erg" method="post" enctype="multipart/form-data">
+
+            <form action="reg" method="post" enctype="multipart/form-data">
 	            <section id="content" class="content">
 	                <h1 class="no-display">공지사항 등록</h1>
 	                <table class="table-wrap" border="1">
 	                    <tr>
 	                        <th>제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목</th>
-	                        <td class="td-small">&nbsp;&nbsp;&nbsp;<input autofocus required type="text" name="title"
-	                                autocomplete="off" placeholder="제목입력"></td>
+	                        <td class="td-small">&nbsp;&nbsp;&nbsp;<input autofocus required type="text" name="title"></td>
 	                        <th>작&nbsp;성&nbsp;자</th>
 	                        <td class="td-small">&nbsp;&nbsp;&nbsp;관리자</td>
 	                    </tr>
 	                    <tr>
 	                    <tr>
 	                        <th>첨&nbsp;부&nbsp;파&nbsp;일</th>
-	                        <td class="td-small">&nbsp;&nbsp;&nbsp;<input placeholder="첨부파일명" type="text"
-	                                width="100px;"><input type="button" value="파일찾기"></td>
+	                        <td class="td-small">&nbsp;&nbsp;&nbsp;<input type="file" name="file"></td>
 	                        <th>작&nbsp;성&nbsp;일&nbsp;자</th>
 	                        <td class="td-small">&nbsp;&nbsp;&nbsp;2020-11-11</td>
 	                    </tr>
 	                    <tr>
 	                        <td colspan="4">
-	                            <textarea class="texta" name="" id="" cols="100" rows="30"></textarea>
+	                            <textarea class="texta" name="content"></textarea>
 	                        </td>
 	                    </tr>
 	                </table>

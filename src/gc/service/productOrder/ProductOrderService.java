@@ -53,14 +53,26 @@ public class ProductOrderService {
 		return productOrderDao.getList();
 	};
 
+	public List<ProductOrderView> getViewList() {
+
+		return productOrderDao.getViewList();
+	};
+	
 	public List<ProductOrderView> getViewList(int page, int size) {
 
-		int startIndex = 0 + (page-1)*size;
-		int endIndex = size*page-1;
+		int startIndex = 1 + (page-1)*size;
+		int endIndex = size*page;
 		
 		return productOrderDao.getViewList(startIndex, endIndex);
 	};
 
+	public List<ProductOrderView> getViewList(int page, int size, String field, String query) {
+		
+		int startIndex = 1 + (page-1)*size;
+		int endIndex = size*page;
+		
+		return productOrderDao.getViewList(startIndex, endIndex,field, query,null,null,null,null);
+	};
 	
 	
 

@@ -22,7 +22,7 @@ public class JdbcUserDao implements UserDao {
 		
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "INSERT INTO \"USER\"(ID,NICNAME,PWD,NAME,GENDER,AGE,PHONE,EMAIL,ADDRESS,RECOMMEND_NAME)"
+		String sql = "INSERT INTO USER_MEMBER(ID,NICNAME,PWD,NAME,GENDER,AGE,PHONE,EMAIL,ADDRESS,RECOMMEND_NAME)"
 				+ "VALUES(?,?,?,?,?,?,?,?,?,?)"; 
 		
 		try {   
@@ -63,7 +63,7 @@ public class JdbcUserDao implements UserDao {
 		
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "UPDATE \"USER\" SET WHERE ID=?,NICNAME=?,PWD=?,PHONE=?,EMAIL=?,ADDRESS=?"
+		String sql = "UPDATE USER_MEMBER SET WHERE ID=?,NICNAME=?,PWD=?,PHONE=?,EMAIL=?,ADDRESS=?"
 				+ " VALUES(?,?,?,?,?,?)";
 				
 		try {
@@ -99,7 +99,7 @@ public class JdbcUserDao implements UserDao {
 		
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "DELETE \"USER\" WHERE ID=?";
+		String sql = "DELETE USER_MEMBER WHERE ID=?";
 				
 				
 		try {
@@ -133,7 +133,7 @@ public class JdbcUserDao implements UserDao {
 
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM \"USER\" WHERE ID="+id; 
+		String sql = "SELECT * FROM USER_MEMBER WHERE ID="+id; 
 	
 		
 		try {
@@ -196,7 +196,7 @@ public class JdbcUserDao implements UserDao {
 	public List<User> getList() {
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM \"USER\""; 
+		String sql = "SELECT * FROM USER_MEMBER"; 
 	
 		List<User>list = new ArrayList<>();
 		
@@ -254,16 +254,39 @@ public class JdbcUserDao implements UserDao {
 	}
 	
 	@Override
-	public User overlapId(User user) {
-		// TODO Auto-generated method stub
-		return null;
+	public User overlapId(String nicname) {
+		String driver = "oracle.jdbc.driver.OracleDriver";
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM USER_MEMBER WHERE NICNAME=?"; 
+		
+		
+		
+		try {
+			Class.forName(driver);
+			Connection con = DriverManager.getConnection(url,DBContext.UID, DBContext.PWD);
+			PreparedStatement st = con.;
+			ResultSet rs = st.executeQuery(sql);
+		
+			if(rs.next()){
+			     String nicname = rs.getString("nicname");
+			   
+			     
+			   
+			     
+			}
+			
+			
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return result;
 	}
 
-	@Override
-	public User overlapNicName(User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public User overlapEmail(User user) {

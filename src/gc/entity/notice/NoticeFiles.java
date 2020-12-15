@@ -8,7 +8,6 @@ public class NoticeFiles {
 		// TODO Auto-generated constructor stub
 	}
 
-	// insert?ö© ?Éù?Ñ±?ûê ?ò§Î≤ÑÎ°ú?ìú
 	public NoticeFiles(String fileName) {
 		this.fileName = fileName;
 	}

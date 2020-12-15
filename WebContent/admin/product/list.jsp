@@ -1,6 +1,6 @@
 <%@page import="gc.entity.product.Product"%>
 <%@page import="java.util.List"%>
-<%@page import="gc.service.product.ProductListService"%>
+<%@page import="gc.dao.product.jdbc.JdbcProductDao" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
@@ -162,12 +162,12 @@
 	                  <li class="product-number-list">${p.id}</li>                  
 	                  <li class="product-name-list">
 	                    <div class="product-name-img">
-	                      <a href="#">이미지</a>
+	                      <a href="#">${p.fileName}</a>
 	                    </div>
 	                    <div class="product-info">
-	                      <div class="product-code">코드</div>
-	                      <div class="product-category">카테고리</div>
-	                      <div class="product-name">${p.productName}상품명</div>
+	                      <div class="product-code">${p.code}</div>
+	                      <div class="product-category">${p.category}</div>
+	                      <div class="product-name">${p.name}</div>
 	                      <div class="product-brand">${p.brand}</div> <!--브랜드-->
 	                    </div>
 	                  </li>                
@@ -177,10 +177,10 @@
 	                </li>
 	   				
 	   				<li class="product-inventory-list">
-	                  <label>300</label> 개
+	                  <label>${p.inventory}</label> 개
 	                </li>
 	                <li class="product-delivery-list">
-	                  <label>유료</label>
+	                  <label>${p.delivery}</label>
 	                </li>
 	   				<li class="product-display-list">
 	                    <input type="button" value="진열">
@@ -208,7 +208,7 @@
               <nav class="pager-menu">
                 <a class="img-button before-button" href="#">이전</a>
                 <ul>
-                <c:forEach var="i" begin="0" end="4">
+                <c:forEach var="i" begin="0" end="2">
                     <li><a href="#">${i+1}</a></li>
                 </c:forEach>
                 </ul>

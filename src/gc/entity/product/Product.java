@@ -20,6 +20,17 @@ public class Product {
 	    public Product() {
 			// TODO Auto-generated constructor stub
 		}
+	    public Product(int id, String name, Date regdate, String code, int price, int display, int inventory) {
+	    	super();
+	    	this.id = id;
+			this.name = name;
+			this.regdate = regdate;
+			this.code = code;
+			this.price = price;
+			this.display = display;
+			this.inventory = inventory;
+	    	
+	    }
 
 		public Product(int id, String name, String content, Date regdate, String code, int price, int display,
 				int brandId, int categoryId, int adminId, int inventory, int deliveryId) {

@@ -52,7 +52,7 @@
                 <h1>공지사항 등록</h1>
                 <span class="span1"> home > 게시판관리 > 공지사항 > 공지사항 등록 </span>
             </div>
-            <form action="erg" method="post">
+            <form action="erg" method="post" enctype="multipart/form-data">
 	            <section id="content" class="content">
 	                <h1 class="no-display">공지사항 등록</h1>
 	                <table class="table-wrap" border="1">

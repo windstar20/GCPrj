@@ -34,7 +34,6 @@ public class JdbcProductDao implements ProductDao{
 			st.setInt(1, product.getId());
 			st.setString(2, product.getName());
 			st.setString(3, product.getContent());
-			//			st.setDate(4, product.getRegdate());
 			st.setString(4, product.getCode());
 			st.setInt(5, product.getPrice());
 			st.setInt(6, product.getDisplay());
@@ -56,7 +55,7 @@ public class JdbcProductDao implements ProductDao{
 		}
 		return result;
 	}
-
+	
 	@Override
 	public int update(Product product) {
 		int result = 0;				    
@@ -122,11 +121,11 @@ public class JdbcProductDao implements ProductDao{
 	}
 
 	@Override
-	public Product get(int id) {
+	public ProductView get(int id) {
 		Product p = null;
 
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM PRODUCT WHERE ID="+id;
+		String sql = "SELECT * FROM PRODUCT_VIEW WHERE ID="+id;
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -249,7 +248,11 @@ public class JdbcProductDao implements ProductDao{
 	@Override
 	public List<ProductView> getViewList() {
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM PRODUCT_VIEW";
+		String sql = "SELECT * FROM(SELECT ROWNUM NUM, V.* "
+					   +" FROM(SELECT * FROM PRODUCT_VIEW ORDER BY ID) V"
+					   + ") WHERE NUM BETWEEN 1 AND 3";
+		
+		
 
 		List<ProductView> list = new ArrayList<>();
 
@@ -260,7 +263,7 @@ public class JdbcProductDao implements ProductDao{
 			ResultSet rs = st.executeQuery(sql);
 
 			while(rs.next()) {
-				int id = rs.getInt("ID");
+				int id = rs.getInt("ID");              
 				String name = rs.getString("NAME");
 				Date regdate = rs.getDate("REGDATE");
 				String brand = rs.getString("BRAND");
@@ -272,16 +275,11 @@ public class JdbcProductDao implements ProductDao{
 				String delivery = rs.getString("DELIVERY");
 				String fileName = rs.getString("FILE_NAME");			
 
-				ProductView p = new ProductView(brand, category, code, delivery, fileName);
-				p.setId(id);
-				p.setName(name);
-				p.setRegdate(regdate);
-				p.setPrice(price);
-				p.setDisplay(display);
-				p.setInventory(inventory);
-				
-				list.add(p);
-			}
+				ProductView p = new ProductView(id, name, regdate, code, price, display, inventory, brand, category, delivery, fileName);
+//					p.setId(id);
+					
+					list.add(p);
+				}
 			rs.close();
 			st.close();
 			con.close();

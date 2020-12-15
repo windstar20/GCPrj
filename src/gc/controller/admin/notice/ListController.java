@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import gc.dao.notice.jdbc.JdbcNoticeDao;
 import gc.entity.notice.Notice;
+import gc.entity.notice.view.NoticeView;
 import gc.service.notice.NoticeService;
 
 
@@ -20,7 +22,10 @@ public class ListController extends HttpServlet{
 		
 		
 		NoticeService service = new NoticeService();
-		List<Notice> list = service.getList(1, 10, null, null);
+//		JdbcNoticeDao dao = new JdbcNoticeDao();
+		List<Notice> list = service.getList();
+//		List<NoticeView> list = dao.getViewList();
+		
 		
 		request.setAttribute("list", list);
 		

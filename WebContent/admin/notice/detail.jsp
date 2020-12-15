@@ -79,13 +79,13 @@
                     <tr>
                         <th>첨&nbsp;부&nbsp;파&nbsp;일</th>
                         <td colspan="3">
-						<%-- <c:forTokens var="fileName" items="${n.files}" delims="," varStatus="st"> --%>
+						<c:forTokens var="fileName" items="${n.files}" delims="," varStatus="st">
                       	<fmt:formatDate var="year" value="${n.regDate}" pattern="yyyy"/>
                       		<a download href="/static/notice/${year}/${n.id}/${fileName}">${fileName}</a> 
                       		<c:if test="${st.last == false}">
                       			/
                       		</c:if>
-                      	<%-- </c:forTokens> --%>
+                      	</c:forTokens>
 						</td>
                     </tr>
                 </table>

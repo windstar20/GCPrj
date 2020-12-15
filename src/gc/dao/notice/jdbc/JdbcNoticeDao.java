@@ -22,7 +22,7 @@ public class JdbcNoticeDao implements NoticeDao {
 		int result = 0;
 
 		String url = DBContext.URL;
-		String sql = "INSERT INTO NOTICE(TITLE, CONTENT) VALUES(?,?)";
+		String sql = "INSERT INTO NOTICE(TITLE, CONTENT, ADMIN_NICNAME) VALUES(?,?,?)";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -30,11 +30,9 @@ public class JdbcNoticeDao implements NoticeDao {
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, notice.getTitle());
 			st.setString(2, notice.getContent());
+			st.setString(3, notice.getAdminNicname());
 
-//				ResutlSet rs = st.executeQuery(); // sselect 문장에만
-			st.executeUpdate(); // insert, update, delete 문장일 때
-
-//				rs.close();
+			st.executeUpdate();
 			st.close();
 			con.close();
 
@@ -130,10 +128,11 @@ public class JdbcNoticeDao implements NoticeDao {
 			if (rs.next()) {
 				String title = rs.getString("title");
 				String content = rs.getString("content");
-				Date regDate = rs.getDate("regDate");
+				Date regDate = rs.getDate("regdate");
 				String adminNicname = rs.getString("admin_nicname");
+				 String files = rs.getString("files");
 
-				n = new Notice(id, title, content, regDate, adminNicname);
+				n = new Notice(id, title, content, regDate, adminNicname, files);
 
 			}
 
@@ -168,10 +167,11 @@ public class JdbcNoticeDao implements NoticeDao {
 				int id = rs.getInt("id");
 				String title = rs.getString("title");
 				String content = rs.getString("content");
-				Date regDate = rs.getDate("regDate");
+				Date regDate = rs.getDate("regdate");
 				String adminNicname = rs.getString("admin_nicname");
+				String files = rs.getString("files");
 
-				Notice n = new Notice(id, title, content, regDate, adminNicname);
+				Notice n = new Notice(id, title, content, regDate, adminNicname, files);
 
 				list.add(n);
 			}
@@ -191,29 +191,37 @@ public class JdbcNoticeDao implements NoticeDao {
 		return list;
 	}
 
+	
+		@Override
+		public List<Notice> getList(int startIndex) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 
 	   @Override
 	   public List<Notice> getList(int startIndex, int endIndex, String field, String query) {
 	      // TODO Auto-generated method stub
 	      return null;
 	   }
-
-	   @Override
-	   public List<Notice> getList(int startIndex) {
-	      // TODO Auto-generated method stub
-	      return null;
-	   }
-
+	   
 	   @Override
 	   public List<NoticeView> getViewList() {
 	      
-	      return getViewList(1, 10, "TITLE", "");
+	      return null;
 	   }
+
+//	   @Override
+//	   public List<NoticeView> getViewList() {
+//	      
+//	      return getViewList(1, 10, "TITLE", "");
+//	   }
 
 	   @Override
 	   public List<NoticeView> getViewList(int startIndex, int endIndex) {
-	      // TODO Auto-generated method stub
-	      return getViewList(startIndex, endIndex, "TITLE", "");
+		   
+//	      return getViewList(startIndex, endIndex, "TITLE", "");
+		   
+		   return null;
 	   }
 
 	   @Override
@@ -227,7 +235,7 @@ public class JdbcNoticeDao implements NoticeDao {
 	                  "    FROM (" + 
 	                  "        SELECT * FROM NOTICE_VIEW ORDER BY REGDATE DESC" + 
 	                  "    ) N" + 
-	                  ") WHERE NUM BETWEEN 1 AND 10"; 
+	                  ") WHERE NUM BETWEEN ? AND ?"; 
 	      
 	      String url = DBContext.URL;
 	      
@@ -243,11 +251,11 @@ public class JdbcNoticeDao implements NoticeDao {
 	         while (rs.next()) {
 				int id = rs.getInt("id");
 				String title = rs.getString("title");
-				String content = rs.getString("content");
-				Date regDate = rs.getDate("regDate");
+				Date regDate = rs.getDate("regdate");
 				String adminNicname = rs.getString("admin_nicname");
+				String noticeFiles = rs.getNString("noticeFiles");
 
-				NoticeView n = new NoticeView();
+				NoticeView n = new NoticeView(title, regDate, adminNicname, noticeFiles);
 
 				n.setId(id);
 				list.add(n);
@@ -269,6 +277,49 @@ public class JdbcNoticeDao implements NoticeDao {
 	      
 	      return list;
 	   }
+
+	@Override
+	public Notice getLast() {
+Notice n = null;
+		
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM NOTICE WHERE ID = (SELECT MAX(ID) FROM NOTICE)"; 
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "NEWLEC", "11111");
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);			
+			
+			if(rs.next()) {
+				int id = rs.getInt("id");
+				String title = rs.getString("title");
+				String content = rs.getString("content");
+				Date regDate = rs.getDate("regdate");
+				String adminNicname = rs.getString("admin_nicname");
+				 String files = rs.getString("files");
+
+				n = new Notice(id, title, content, regDate, adminNicname, files);
+
+							
+				
+			}
+						
+			rs.close();
+			st.close();
+			con.close();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return n;
+	}
+
 	
 	
 }

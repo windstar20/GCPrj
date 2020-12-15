@@ -56,13 +56,6 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>닉네임</th>
-                            <td>
-                                <input type="text" >
-                                <input type="submit" value="중복확인">
-                            </td>
-                        </tr>
-                        <tr>
                             <th>비밀번호</th>
                             <td><input type="password" >
                                 <font color="red" size="1">*영어/숫자 혼합 6자리이상 입력</font>
@@ -93,6 +86,7 @@
                                     <option>gmaile.com</option>
                                     <input type="submit" value="메일중복확인">
                                 </select><br>
+                                <input type="checkbox">
                                 <font color="red" size="2"> 이벤트 및 소식지 등 유용한 정보를 수신하겠습니다.</font>
                             </td>
                         </tr>
@@ -122,6 +116,7 @@
                                 <input type="text" style="width: 50px;" autocomplete="off"  pattern="^\d{2,3}$"> -
                                 <input type="text" style="width: 50px;" autocomplete="off"  pattern="^\d{3,4}$"> -
                                 <input type="text" style="width: 50px;" autocomplete="off"  pattern="^\d{4}$"><br>
+                                <input type="checkbox">
                                 <font color="red" size="2"> 거래 및 활동정보를 문자메시지(SMS)로 수신합니다.</font>
                             </td>
                         </tr>
@@ -169,4 +164,3 @@
 </body>
 
 </html>
-    

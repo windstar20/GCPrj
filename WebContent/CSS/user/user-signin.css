@@ -11,8 +11,14 @@
         position: relative;
     }
 
+    .main-content table tr td input[type="text"]{
+        border: none;
+        outline: none;
+        background: red;
+    }
+
     .header-container>h1{
-        background: url(../image/logo.png) no-repeat left center;
+        background: url(../../image/user/logo.png) no-repeat left center;
         background-size: contain;
         height: 100%;
         width: 400px;
@@ -41,7 +47,7 @@
             outline: none;
         }
         .header-container .gc-form .find-button{
-            background: url(../image/btn-find.png) no-repeat center;
+            background: url(../../image/user/btn-find.png) no-repeat center;
             width: 31px;
             height: 25px;
         }
@@ -62,7 +68,7 @@
        
         .member-menu ul li{
             padding-left: 12px;
-            background: url(../image/bg-main-menu-vsp.png) no-repeat  6px center;
+            background: url(../../image/user/bg-main-menu-vsp.png) no-repeat  6px center;
             }
 
             .member-menu ul li:first-child{
@@ -88,12 +94,12 @@
 
         }
         .shortcut-menu .shortcut-menu-list .mypage-button{
-            background: url(../image/txt-mypage.png) no-repeat center;
+            background: url(../../image/user/txt-mypage.png) no-repeat center;
             width: 72px;
             height: 17px;
         }
         .shortcut-menu .shortcut-menu-list .customer-button{
-            background: url(../image/txt-customer.png) no-repeat center;
+            background: url(../../image/user/txt-customer.png) no-repeat center;
             width: 72px;
             height: 17px;
         }
@@ -136,14 +142,14 @@
         }
 
         .signin-button-menu .be-button{
-            background: url(../image/btn-prev.png) no-repeat center;
+            background: url(../../image/user/btn-prev.png) no-repeat center;
             width: 15px;
             height: 23px;
             
         }
 
         .signin-button-menu .signin-button { /*가입완료 버튼*/
-            background: url(../image/btn-reg.png) no-repeat center;
+            background: url(../../image/user/btn-reg.png) no-repeat center;
             width: 71px;
             height: 23px;
            

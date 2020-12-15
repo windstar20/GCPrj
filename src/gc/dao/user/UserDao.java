@@ -12,12 +12,11 @@ public interface UserDao {
 	int update(User user);
 	int delete(int id);
 	
-	User overlapId(User user);
-	User overlapNicName(User user);
+	User overlapId(String nicname);
 	User overlapEmail(User user);
 	User recomCheck(User user);
 	
 	User get(int id);
 	List<User> getList();
-	List<UserView> gitList();
+	
 }

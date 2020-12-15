@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@page import="gc.service.user.GymService"%>
+<%@page import="gc.entity.gym.Gym"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,7 +40,7 @@
 
     <div id="body" class="body">
       <aside class="aside">
-        <h1 class="aside-title"><a href="user.html"><img src="../../image/admin/member-aside.png" alt="회원관리"></a></h1>
+        <h1 class="aside-title"><a href="user.html"><img src="../../../image/admin/member-aside.png" alt="회원관리"></a></h1>
         <ul class="aside-menu">
           <li>회원관리</li>
           <ul>
@@ -81,14 +83,15 @@
               <th>검색 키워드</th>
               <td>
                 <select>
-                  <option>이름</option>
+                  <option>사업자 명</option>
                   <option>아이디</option>
                   <option>이메일</option>
-                  <option>휴대폰</option>
+                  <option>연락처</option>
                   <option>전화번호</option>
                   <option>시설 명</option>
                 </select>
                 <input class="sel-text" type="text">
+                <input type = "button" value = "검색">
               </td>
             </tr>
             <tr>
@@ -101,54 +104,59 @@
             <div class="find">
                   <input class="img-button find-button" type="submit" value="검색">
             </div>
-            
-          <table border="1">
+          <div class = "del-button">
+            <input type = "button" value = "삭제">
+          </div>
+          <table border = "1">
             <thead>
               <tr>
-                <th><input type="checkbox"></th>
-                <th>번호</th>
-                <th>이름</th>       
-                <th>시설 명</th>
-                <th>회원등급</th>
-                <th>주소</th>
-                <th>핸드폰 번호</th>
-                <th>시설 번호</th>
-                <th>인증방식</th>
-                <th>가입일</th>    
+                <td><input type="checkbox"></td>
+                <td>번호</td>
+                <td>사업자 명</td>       
+                <td>시설 명</td>
+                <td>회원등급</td>
+                <td>주소</td>
+                <td>연락처</td>
+                <td>시설 번호</td>
+                <td>업체 종류</td>
+                <td>인증방식</td>
+                <td>가입일</td>    
               </tr>
             </thead>
             <tbody>
-              <c:forEach var="gym" items="${gymlist}">
+            	<c:forEach var="list" items="${gymlist}">
 	              <tr>
 	                <td><input type="checkbox"></td>
-	                <td>${gym.id}</td>
-	                <td>${gym.name }</td>
-	                <td>${gym.gym_name}</td>
+	                <td>${list.id }</td>
+	                <td>${list.name }</td>
+	                <td>${list.gym_Name }</td>
 	                <td>시설회원</td>
-	                 <td>서울시 종로구 대일빌딩</td>
-	                <td>010-1234-5678</td>
-	                <td>02-123-4567</td>
+	                <td>${list.adress }</td>
+	                <td>${list.telephone }</td>
+	                <td>${list.phone }</td>
+	                <td>헬스</td>
 	                <td>핸드폰</td>
-	                <td>20.11.01</td>
+	                <td>${list.regdate }</td>
 	              </tr>
-              </c:forEach>
-            </tbody>
+	            </c:forEach>
+            </tbody>       
           </table>
-          <div class="page-list">
+           <div class="page-list">
                 <span><a href="">이전</a></span>
                 <ul>
-                	<c:forEach var="i" begin="0" end="4">
-						<li>${i+1}</li>
-					</c:forEach>
+                	<c:forEach var="i" begin ="0" end="4">
+                  		<li>1</li>
+                  	</c:forEach>
                 </ul>
                 <span><a href="">다음</a></span>
-         </div>
+           </div>        
         </main>
       </section>
       </div>
     <section>
       <footer id="footer" class="footer">
-        <h1>푸터</h1>
+        <h1 class = "no-display">푸터</h1>
+        다짐 고객님의 성공과 함께합니다
       </footer>
     </section>
   </body>

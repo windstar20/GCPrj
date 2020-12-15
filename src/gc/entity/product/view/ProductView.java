@@ -1,5 +1,7 @@
 package gc.entity.product.view;
 
+import java.util.Date;
+
 import gc.entity.product.Product;
 
 public class ProductView extends Product{
@@ -14,12 +16,11 @@ public class ProductView extends Product{
 	
 	
 	public ProductView() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
-
-	public ProductView(String brand, String category, String code, String delivery, String fileName) {
-		super();
+	public ProductView(int id, String name, Date regdate, String code, int price, int display, int inventory, String brand, String category, String delivery, String fileName) {
+		super(id, name, regdate, code, price, display, inventory);
 		this.brand = brand;
 		this.category = category;
 		this.code = code;

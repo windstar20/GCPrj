@@ -8,47 +8,47 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import gc.entity.product.Product;
+import gc.entity.product.view.ProductView;
 import gc.service.product.ProductListService;
+import gc.service.product.ProductService;
 
 @WebServlet("/admin/product/edit")
 public class EditController extends HttpServlet{
 	
-	@Override    //detail.jsp�뿉�꽌  �닔�젙踰꾪듉�쓣 �늻瑜대㈃ �씠怨녹뿉�꽌 泥섎━
+	@Override   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int id = Integer.parseInt(request.getParameter("id"));
-		ProductListService service = new ProductListService();
-		Product p = service.get(id);
+//		ProductListService service = new ProductListService();
+//		Product p = service.get(id);
+		
+		ProductService service = new ProductService();
+		ProductView p = service.get(id);
 
 		request.setAttribute("p", p);				
 		request.getRequestDispatcher("edit.jsp").forward(request, response);
 
 	}
 	
-	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-			String productName = request.getParameter("product-name");
-			String  manufacturer = request.getParameter("manufacture");
+			String name = request.getParameter("name");
 			String brand = request.getParameter("brand");			
-			String productModel = request.getParameter("model");
+			String content = request.getParameter("content");
 			String category = request.getParameter("category");
 			int price = Integer.parseInt(request.getParameter("price"));
-			int savePoint = Integer.parseInt(request.getParameter("save-point"));
 			String delivery = request.getParameter("delivery");
-			String summaryExplain = request.getParameter("summary-explain");
-			String detailExplain = request.getParameter("detail-explain");
-			System.out.println("doPost");		
 			int id = Integer.parseInt(request.getParameter("id"));	
 			
-			Product product = new Product(productName, manufacturer, brand, 
-							productModel, category, price, savePoint, delivery, 
-							summaryExplain, detailExplain);
+			Product product = new Product();
+			product.setName(name);
+//			product.setBrandId(brandId);
+			product.setContent(content);
+			product.setPrice(price);			
 			product.setId(id);
 		
-			ProductListService service= new ProductListService();
-			
+			ProductService service = new ProductService();			
 			service.update(product);
 			
 			response.sendRedirect("list");

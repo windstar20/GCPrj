@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="gc.entity.product.Product" %>
-<%@ page import="gc.service.product.ProductListService" %>
+<%@ page import="gc.service.product.ProductService" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -41,7 +41,7 @@
         <ul class="aside-menu">
           <li>쇼핑몰 상품 관리</li>
           <ul>
-            <li><a href="list.html">상품 리스트</a></li>
+            <li><a href="list">상품 리스트</a></li>
             <li><a href="">상품 등록</a></li>
             <li><a href="">상품 재고관리</a></li>
           </ul>
@@ -75,12 +75,12 @@
 	            <table class="product-basic-info product-table">
 	            	<tr>
 	                    <th>상품코드</th>
-	                    <td><input type="text" name="model" ></td>
+	                    <td><input type="text" name="code" ></td>
 	                </tr>
 	                <tr>
 	                    <th>상품명</th>
 	                    <td>
-	                        <input type="text" name="product-name" value="${p.productName}"/>
+	                        <input type="text" name="name" value="${p.name}"/>
 	                    </td>
 	                </tr>   	                
 	                <tr>
@@ -122,7 +122,7 @@
 	                <tr>
 	                    <th>기본 이미지</th>
 	                    <td>                      
-	                        <input type="file" name="basic-image" />
+	                        <input type="file" name="file-name" />
 	                        <label>권장사이즈(500x500)</label>                                                
 	                    </td>
 	                </tr>
@@ -139,7 +139,7 @@
 	                <tr>
 	                    <th>상세설명</th>
 	                    <td>
-	                       <textarea rows=10 name="detail-explain" value="${p.detailExplain}"></textarea>
+	                       <textarea rows=10 name="content" value="${p.content}"></textarea>
 	                    </td>
 	                </tr>
 	            </table>

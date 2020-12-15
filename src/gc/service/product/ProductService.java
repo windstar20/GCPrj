@@ -5,6 +5,7 @@ import java.util.List;
 import gc.dao.product.ProductDao;
 import gc.dao.product.jdbc.JdbcProductDao;
 import gc.entity.product.Product;
+import gc.entity.product.view.ProductView;
 
 
 //여기에서는 sql을 모른다.
@@ -16,14 +17,14 @@ public class ProductService {
 		productDao = new JdbcProductDao();
 	}
 
-	public List<Product> getList(int page, int size, String field, String query) {
-		//등차수열
-		int startIndex = 1+(page-1)*size; //1, 11, 21, 31...
-		//int end  10, 20 , 30 , 40 ,50
-		int endIndex = page*10;
-
-		return productDao.getList(startIndex, endIndex, field, query);
-	}
+//	public List<Product> getList(int page, int size, String field, String query) {
+//		//등차수열
+//		int startIndex = 1+(page-1)*size; //1, 11, 21, 31...
+//		//int end  10, 20 , 30 , 40 ,50
+//		int endIndex = page*10;
+//
+//		return productDao.getList(startIndex, endIndex, field, query);
+//	}
 	
 	public int deleteAll(int[] ids) {
 		//다오를 사용하는 이유
@@ -77,7 +78,14 @@ public class ProductService {
 //		
 //		Notice notice = noticeDao.get(id);
 //		notice.setPub(true);
+		return 0;
+	}
+	
+	public List<ProductView> getViewList(){
 		
+		
+		return productDao.getViewList();
+
 	}
 	
 
@@ -88,9 +96,11 @@ public class ProductService {
 		return productDao.getViewList(startIndex, endIndex);
 
 	}
-	
-	
-	
-	
+
+	public ProductView get(int id) {
+		
+		
+		return productDao.get(id);
+	}	
 	
 }

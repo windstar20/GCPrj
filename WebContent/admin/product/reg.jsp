@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -65,13 +66,13 @@
             <h1>상품 등록</h1>
             <span> home > 상품관리 > 상품리스트 </span>
         </div>
-        	<form method="post" action="reg">
+        	<form action="reg" method="post" >
 	            <section id="main" class="main">
 	            <h1>상품 기본 정보</h1>
 	            <table class="product-basic-info product-table">
 	            	<tr>
 	                    <th>상품코드</th>
-	                    <td><input type="text" name="model" ></td>
+	                    <td><input type="text" name="code" ></td>
 	                </tr>
 	                <tr>
 	                    <th>상품명</th>
@@ -81,11 +82,21 @@
 	                </tr>   	                
 	                <tr>
 	                    <th>브랜드</th>
-	                    <td><input type="text" name="brand"></td>
+	                    <td><!-- <input type="text" name="brand"> -->
+	                    	<select name="brand" id="" size="1">
+	                    	<c:forEach var="p" items="${list}">
+	                    		<option>${p.id} </option> 
+						    </c:forEach>                	
+	                    	</select>
+	                    </td>
 	                </tr>
 	                <tr>
 	                    <th>상품분류</th>
 	                    <td><input type="text" name="category" ></td>
+	                </tr>
+	                <tr>
+	                    <th>맛</th>
+	                    <td><input type="text" name="taste" ></td>
 	                </tr>
 	            </table> 
 	            
@@ -118,7 +129,7 @@
 	                <tr>
 	                    <th>기본 이미지</th>
 	                    <td>                      
-	                        <input type="file" name="basic-image" />
+	                        <input type="file" name="file-name" />
 	                        <label>권장사이즈(500x500)</label>                                                
 	                    </td>
 	                </tr>
@@ -135,7 +146,7 @@
 	                <tr>
 	                    <th>상세설명</th>
 	                    <td>
-	                       <textarea rows=10 name="detail-explain"></textarea>
+	                       <textarea rows=10 name="content"></textarea>
 	                    </td>
 	                </tr>
 	            </table>

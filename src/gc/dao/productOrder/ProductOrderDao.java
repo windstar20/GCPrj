@@ -14,17 +14,16 @@ public interface ProductOrderDao {
 	int insert(ProductOrder productOrder);
 	int update(ProductOrder productOrder);
 	int delete(int id);
-	
+
 	ProductOrder get(int id);
-	
-	
+
+
 	List<ProductOrder> getList();
-	
+
 	//========================
+	List<ProductOrderView> getViewList();
 	List<ProductOrderView> getViewList(int startIndex, int endIndex);
-	List<ProductOrderView> getViewList(int startIndex);
-	
 	List<ProductOrderView> getViewList(int startIndex, int endIndex, String field, String query, List<String> orderState, List<String> cancelState, Date startDate, Date endDate);
 
-	
+
 }

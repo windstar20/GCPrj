@@ -1,5 +1,7 @@
 package gc.entity.productOrder.view;
 
+import java.util.Date;
+
 import gc.entity.productOrder.ProductOrder;
 
 public class ProductOrderView extends ProductOrder{
@@ -12,6 +14,15 @@ public class ProductOrderView extends ProductOrder{
 	}
 
 	
+	public ProductOrderView(int id, int number, int basketId, String senderName, String senderPhone, String senderEmail,
+			String receiverName, String receiverPhone, String receiverAddress, Date regdate, int totalPrice,String productName, int productCount) {
+		super(id, number, basketId, senderName, senderPhone, senderEmail, receiverName, receiverPhone, receiverAddress, regdate,
+				totalPrice);
+		this.productName = productName;
+		this.productCount = productCount;
+	}
+
+
 	public ProductOrderView(String productName, int productCount) {
 		this.productName = productName;
 		this.productCount = productCount;

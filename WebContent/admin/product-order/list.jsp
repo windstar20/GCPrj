@@ -71,19 +71,20 @@
 						<h1 class="table-title">
 							주문검색
 						</h1>
-						<form action="">
+						<form action="list">
 							<table class="search-table">
 								<!-- 첫번째 줄 시작-->
 								<tr>
 									<th>검색 키워드</th>
-									<td><select name="search-type">
-											<option value="order_number">주문번호</option>
+									<td><select name="field">
+											<option value="" selected>==선택==</option>
+											<option value="number">주문번호</option>
 											<option value="product_name">상품명</option>
 											<option value="sender_name">주문자</option>
 											<option value="sender_phone">주문자 휴대폰번호</option>
 											<option value="receiver_name">수령인</option>
 											<option value="receiver_phone">수령인 휴대폰번호</option>
-									</select> <input type="text" name="search-value" /></td>
+									</select> <input type="text" name="query" /></td>
 								</tr>
 								<!-- 첫번째 줄 끝 -->
 								<!-- 두번째 줄 시작 -->
@@ -136,13 +137,16 @@
 							<ul class="table-sum">
 								<li>검색결과 : <span class="total-count">0</span>건</li>
 								<li>총결제금액 : <span class="total-price">0</span>원</li>
-								<li><select name="" id="">
+								<form action="list" enctype="multipart/form-data">
+								<input type="hidden" name="page" value="1">
+								<li><select onchange="this.form.submit()" name="size" >
 										<option value="">모두 출력</option>
-										<option value="">5개 출력</option>
-										<option value="">10개 출력</option>
-										<option value="">20개 출력</option>
-										<option value="">50개 출력</option>
+										<option value="5">5개 출력</option>
+										<option value="10">10개 출력</option>
+										<option value="20">20개 출력</option>
+										<option value="50">50개 출력</option>
 								</select></li>
+								</form>
 							</ul>
 						</section>
 						<!-- 테이블 시작 -->
@@ -163,7 +167,6 @@
 						<table class="order-list-table">
 							<thead>
 								<tr>
-									<th><input type="checkbox" name="" id="" /></th>
 									<th>주문 번호</th>
 									<th>상품명</th>
 									<th>주문 수량</th>
@@ -182,7 +185,6 @@
 								<c:forEach var="p" items="${list }">
 									<!-- 첫번째 행 시작 -->
 									<tr>
-										<td><input type="checkbox" name="" id="" /></td>
 										<td>${p.number }</td>
 										<td> ${p.productName }</td>
 										<td>${p.productCount}개</td>
@@ -211,6 +213,9 @@
 								</c:forEach>
 							</tbody>
 						</table>
+							<div class="paging">
+								<c:forEach var="i" begin="1" end="${pageNum }"><a href="list?page=${i}&size=${size}">${i }</a></c:forEach>
+							</div>
 					</section>
 				</div>
 			</main>

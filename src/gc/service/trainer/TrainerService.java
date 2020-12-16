@@ -37,4 +37,14 @@ public class TrainerService {
 		
 		return trainerDao.getList();
 	}
+	
+	public List<Trainer> getList(int startIndex, int endIndex,int del) {
+		
+		return trainerDao.getList(startIndex, endIndex,del);
+	}
+	
+	public List<Trainer> getList(int startIndex, int endIndex,String name, String gymName, String phone,int del) {
+		
+		return trainerDao.getList(startIndex, endIndex, name, gymName, phone ,del);
+	}
 }

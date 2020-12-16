@@ -15,4 +15,8 @@ public interface TrainerDao {
 	
 	List<Trainer> getList();
 	
+	List<Trainer> getList(int startIndex,int endIndex,int del);
+	
+	List<Trainer> getList(int startIndex, int endIndex,String name,String gymName,String phone,int del);
+	
 }

@@ -1,0 +1,118 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>admin Page</title>
+
+    <link rel="stylesheet" href="../../../CSS/reset.css">
+    <link rel="stylesheet" href="../../../CSS/style.css">
+    <link rel="stylesheet" href="../../../CSS/admin/admin.css">
+    <link rel="stylesheet" href="../../../CSS/admin/user/index.css">
+</head>
+<body>
+<header id="header" class="header">
+       
+    <div class="logo-bar">
+        <h1 class="no-display">근처</h1>
+        <a href="../index.html"><div class="logo"></div></a>
+        <ul>
+          <li><button class="logout">로그아웃</button></li>
+        </ul>
+    </div>
+
+    <nav id="nav" class="nav">
+        <h1 class="no-display">메뉴</h1>
+        <ul>
+        <li><a href="#">기본설정</a></li>
+        <li><a href="#">상품관리</a></li>
+        <li><a href="#">주문관리</a></li>
+        <li><a href="../index.html">회원관리</a></li>
+        <li><a href="#">게시판관리</a></li>
+        <li><a href="#">고객센터</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+
+<div id="body" class="body">
+    <aside class="aside">
+        <a href="../index.html"><h1 class="img-button user-button">회원관리</h1></a>
+        <ul class="aside-menu">
+            <li>회원 관리</li>
+            <ul>
+                <li><a href="../list.html">회원 리스트</a></li>
+                <li><a href="../mana.html">회원등급 관리</a></li>
+                <li><a href="../leave.html">탈퇴회원 리스트</a></li>
+                <li><a href="../point.html">적립금 설정</a></li>
+            </ul>
+            <li>제휴시설 관리</li>
+            <li>트레이너회원 관리</li>
+            <ul>
+                <li><a href="list">트레이너회원 리스트</a></li>
+                <li><a href="dellist">트레이너회원 삭제</a></li>
+            </ul>
+        </ul>
+    </aside>
+
+    <section class="main-section">
+        <main class="main">
+            <div class="main-head">
+                <h1>트레이너회원 삭제</h1>
+                <span>home > 트레이너회원 관리 > 트레이너회원 삭제</span>
+            </div>
+            <div class="main-body">
+                <section>
+                    <h1>삭제요청 검색</h1>
+                    <form action="dellist" method="post">
+                        <table >
+                            <tr>
+                                <th>이름</th>
+                                <td><input type="text" name="name"></td>
+                            </tr>
+                            <tr>
+                                <th>소속</th>
+                                <td>
+                                    <input type="text" name="gymName">
+                                </td>
+                            </tr>
+                        </table>
+
+                        <input class="form-button" type="submit" value="검색">
+                    </form>
+                </section>
+                <section class="table">
+                    <h1>검색결과</h1>
+                    <table border="1">
+                        <tr>
+                            <th>번호</th>
+                            <th>이름</th>
+                            <th>소속</th>
+                            <th>핸드폰</th>
+                            <th>사유</th>
+                            <th>처리</th>
+                        </tr>
+                        <c:forEach var="t" items="${list }">
+	                      <tr>
+	                          <td>${t.id }</td>
+	                          <td>${t.name }</td>
+	                          <td>${t.gymName }</td>
+	                          <td>${t.phone }</td>
+	                          <td>${t.delReason }</td>
+	                          <td><a href="del?id=${t.id }">승인</a></td>
+	                      </tr>
+                      </c:forEach>
+                    </table>				
+                </section>  
+            </div>
+        </main>
+    </section>
+</div>
+
+</body>
+</html>

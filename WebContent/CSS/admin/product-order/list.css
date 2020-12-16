@@ -1,7 +1,7 @@
 table,
 td,
 th {
-  /* 단어기준으로 word-wrap */
+  /* �떒�뼱湲곗��쑝濡� word-wrap */
   word-break: keep-all;
   word-wrap: normal;
   /* ----- */
@@ -57,6 +57,18 @@ th {
 }
 .search-table tr:nth-child(4) > td > select {
   height: 24px;
+}
+.search-table tr:nth-child(4) > td {
+  display: flex;
+  justify-content: flex-start;
+  
+}
+.search-table .button-list {
+  display: flex;
+  margin-left: 10px
+}
+.search-table .button-list > li {
+	margin-right:5px;
 }
 
 .search-button {

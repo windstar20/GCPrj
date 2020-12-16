@@ -66,12 +66,19 @@ public class ProductOrderService {
 		return productOrderDao.getViewList(startIndex, endIndex);
 	};
 
-	public List<ProductOrderView> getViewList(int page, int size, String field, String query) {
+	public List<ProductOrderView> getViewList(int page, int size, String field, String query,String startDate, String endDate) {
+		int startIndex=0;
+		int endIndex=0;
 		
-		int startIndex = 1 + (page-1)*size;
-		int endIndex = size*page;
-		
-		return productOrderDao.getViewList(startIndex, endIndex,field, query,null,null,null,null);
+		if(page!=0 && size!=0) {
+			startIndex = 1 + (page-1)*size;
+			endIndex = size*page;
+		}
+		if(startDate!=null && !startDate.equals(""))
+			startDate="\'" + startDate +"\'";
+		if(endDate!=null && !endDate.equals(""))
+			endDate="\'" + endDate +"\'";
+		return productOrderDao.getViewList(startIndex, endIndex,field, query,null,null,startDate,endDate);
 	};
 	
 	

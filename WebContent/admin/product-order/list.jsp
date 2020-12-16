@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="../../CSS/admin/admin.css" />
 <link rel="stylesheet"
 	href="../../CSS/admin/product-order/list.css" />
-<script src="../../js/admin/product-order/product-order-list.js"></script>
+<script src="../../js/admin/product-order/list.js"></script>
 </head>
 <body>
 	<header id="header" class="header">
@@ -55,7 +55,6 @@
 				<ul>
 					<li><a href="point-charge-list.html">포인트 충전 내역</a></li>
 					<li><a href="point-use-list.html">포인트 사용 내역</a></li>
-					<li><a href="reg">주문 등록</a></li>
 				</ul>
 				<br />
 			</ul>
@@ -114,16 +113,19 @@
 								<!-- 네번째 줄 시작 -->
 								<tr>
 									<th>처리일자</th>
-									<td><select>
-											<option>주문일</option>
-											<option>결제일</option>
-									</select> <input type="date" name="" id="" /> ~ <input type="date"
-										name="" id="" />
-										<button class="select-button">어제</button>
-										<button class="select-button">오늘</button>
-										<button class="select-button">이번주</button>
-										<button class="select-button">이번달</button>
-										<button class="select-button">전체</button></td>
+									<td><select name="date-field">
+											<option value="order-regdate">주문일</option>
+											<option value="payment-regdate">결제일</option>
+									</select> <input type="date" class="start-date" name="start-date" value="2020-12-01"/> ~ <input type="date"
+										 class="end-date" name="end-date" />
+    								<ul class="button-list">
+      									<li><button class="select-button yesterday">어제</button></li>
+								      	<li><button class="select-button today">오늘</button></li>
+								        <li><button class="select-button this-week">이번주</button></li>
+							        	<li><button class="select-button this-month">이번달</button></li>
+						            	<li><button class="select-button all-date">전체</button></li>    
+				            	 	</ul>
+									</td>
 								</tr>
 								<!-- 네번째 줄 끝 -->
 							</table>
@@ -137,10 +139,14 @@
 							<ul class="table-sum">
 								<li>검색결과 : <span class="total-count">0</span>건</li>
 								<li>총결제금액 : <span class="total-price">0</span>원</li>
-								<form action="list" enctype="multipart/form-data">
+								<form action="list" >
 								<input type="hidden" name="page" value="1">
+								<input type="hidden" name="query" value=${query }>
+								<input type="hidden" name="field" value="${field }">
+								<input type="hidden" name="startDate" value="${startDate }">
+								<input type="hidden" name="endDate" value="${endDate }">
 								<li><select onchange="this.form.submit()" name="size" >
-										<option value="">모두 출력</option>
+										<option value="">==출력갯수==</option>
 										<option value="5">5개 출력</option>
 										<option value="10">10개 출력</option>
 										<option value="20">20개 출력</option>
@@ -201,7 +207,7 @@
 										<span class="price">${price }</span>원</td>
 										<td>무통장<br />입금자명
 										</td>
-										<td class="order-state">입금대기</td>
+										<td class="order-state"></td>
 										<td><input class="select-button" type="button"
 											value="입금확인" /> 
 											<a href="detail?id=${p.id }"><input
@@ -214,7 +220,7 @@
 							</tbody>
 						</table>
 							<div class="paging">
-								<c:forEach var="i" begin="1" end="${pageNum }"><a href="list?page=${i}&size=${size}">${i }</a></c:forEach>
+								<c:forEach var="i" begin="1" end="${pageNum }"><a href="list?page=${i}&size=${size}&filed=${field}&query=${query}&startDate=${startDate}&endDate=${endDate}">${i }</a></c:forEach>
 							</div>
 					</section>
 				</div>

@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -298,26 +300,55 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 
 	@Override
 	public List<ProductOrderView> getViewList(int startIndex, int endIndex, String field, String query,
-			List<String> orderState, List<String> cancelState, Date startDate, Date endDate) {
+			List<String> orderState, List<String> cancelState, String startDate, String endDate) {
+		
+		
+		LocalDateTime current = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE; // 2020-12-16 형태로 포맷
+		String nowDate = "\'"+current.format(formatter)+"\'";
 		// 동적 쿼리
 		String url = DBContext.URL;
-		String sql = "SELECT * " + 
-				"FROM (SELECT ROWNUM NUM, N.* FROM PRODUCT_ORDER_VIEW N) ";
-		String numberQuery = (field.equals("number"))? (" = "+query): ("LIKE '%"+query+"%'"); // QUERY가 숫자일 때 처리
-		String numberField = (field.equals("number"))? "\"NUMBER\"": field;
+		String sql = "SELECT ROWNUM NUM, N.* FROM PRODUCT_ORDER_VIEW N ";
+		String numberQuery = null;
+		String numberField = null;
+		if(field!=null && !field.equals("")) {
+			numberQuery = (field.equals("number"))? (" = "+query): (" LIKE '%"+query+"%'"); // QUERY가 숫자일 때 처리
+			numberField = (field.equals("number"))? "\"NUMBER\"": field; //Field 가 예약어 number일 경우 처리
+		}
+
 		
-		if(startIndex==0 && endIndex==0) { 
-			if(field!=null && query != null)
-				sql +="WHERE "+ numberField + numberQuery;  //F(0,0,f,q)
-		}else if (startIndex!=0&& endIndex!=0)	{	
-			if(field!=null && query != null)
-			sql += "WHERE NUM BETWEEN "+ startIndex +" AND "+endIndex+ " AND "+ numberField + numberQuery; //F(s,e,f,q)
-		else
-			sql += "WHERE NUM BETWEEN "+ startIndex +" AND "+endIndex; //F(s,e,null,null)
+//		if(startIndex==0 && endIndex==0) { 
+//			if(field!=null && query != null && !field.equals("") && !query.equals(""))
+//				sql +="WHERE "+ numberField + numberQuery;  //F(0,0,f,q)
+//		}else if (startIndex!=0 && endIndex!=0)	{	
+//			if(field!=null && query != null && !field.equals("") && !query.equals(""))
+//			sql += "WHERE NUM BETWEEN "+ startIndex +" AND "+endIndex+ " AND "+ numberField + numberQuery; //F(s,e,f,q)
+//		else
+//			sql += "WHERE NUM BETWEEN "+ startIndex +" AND "+endIndex; //F(s,e,null,null)
+//		}
+		if(field!=null && query != null && !field.equals("") && !query.equals(""))
+			sql +="WHERE "+ numberField + numberQuery;  //F(s,e,f,q)
+		
+		if(sql.contains("WHERE")) {
+			if(startDate==null || startDate.equals("") )
+				startDate = "\'2020-12-01\'";
+			if(endDate==null || endDate.equals(""))
+				endDate = nowDate;
+			sql += " AND REGDATE BETWEEN "+startDate + " AND " + endDate; 
+		}
+		else {
+			if(startDate==null || startDate.equals("") )
+				startDate = "\'2020-12-01\'";
+			if(endDate==null || endDate.equals(""))
+				endDate = nowDate;
+			sql += " WHERE REGDATE BETWEEN "+startDate + " AND " + endDate; 
+			
 		}
 			
 
-
+		if(startIndex!=0 && endIndex!=0)
+			sql = "SELECT * FROM ("+sql+") "+ "WHERE NUM BETWEEN "+ startIndex +" AND "+endIndex; //F(s,e,null,null)
+		System.out.println(sql);
 		//	SELECT * FROM PRODUCT_ORDER_VIEW;
 		List<ProductOrderView> list = new ArrayList<>();
 		//1. 드라이버 로드하기

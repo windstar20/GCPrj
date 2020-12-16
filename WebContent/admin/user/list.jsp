@@ -1,6 +1,6 @@
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="java.util.List"%>
-<%@page import="gc.service.UserService"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../../CSS/reset.css" type="text/css" />
     <link rel="stylesheet" href="../../CSS/style.css">
     <link rel="stylesheet" href="../../CSS/admin/admin.css" type="text/css" />
-    <link rel="stylesheet" href="../../CSS/admin/user/list.css" type="text/css" />
+    <link rel="stylesheet" href="../../CSS/admin/user/index.css" type="text/css" />
   </head>
   <body>
     <header id="header" class="header">
@@ -47,7 +47,6 @@
           <li>회원관리</li>
           <ul>
             <li><a href="list">회원 리스트</a></li>
-            <li><a href="manage.jsp">회원등급 관리</a></li>
             <li><a href="leaveuserlist.html">탈퇴회원 리스트</a></li>
             <li><a href="point.html">적립금 설정</a></li>
           </ul>

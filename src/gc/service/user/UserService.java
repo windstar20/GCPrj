@@ -13,6 +13,7 @@ public class UserService {
 	public UserService() {
 		userDao = new JdbcUserDao();
 	}
+	
 	public List<User> getList() {
 	
 		return userDao.getList();
@@ -35,4 +36,15 @@ public class UserService {
 		return userDao.delete(id);
 	}
 	
+	public User overlapId(String nicname) {
+			
+		if( nicname.equals(null)) {
+			System.out.println("사용가능");
+		}
+		else
+			System.out.println("중복");
+		
+		
+		return userDao.overlapId(nicname);
+	}
 }

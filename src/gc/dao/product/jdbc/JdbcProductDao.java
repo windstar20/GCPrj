@@ -121,7 +121,7 @@ public class JdbcProductDao implements ProductDao{
 	}
 
 	@Override
-	public ProductView get(int id) {
+	public Product get(int id) {
 		Product p = null;
 
 		String url = DBContext.URL;
@@ -244,23 +244,65 @@ public class JdbcProductDao implements ProductDao{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+
+	@Override //게시된 ID의 수 구하기: 게시물의 전체 수.
+	public int getCount() {
+		int count = 0;
+		String url = DBContext.URL;
+		String sql = "SELECT COUNT(ID) COUNT FROM PRODUCT_VIEW";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			Statement st = con.createStatement();						
+			ResultSet rs = st.executeQuery(sql);
+
+			if(rs.next())			
+				count = rs.getInt("COUNT");
+			
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+	
 
 	@Override
 	public List<ProductView> getViewList() {
+		
+		return getViewList(0, 0, null, null);
+
+	}
+
+	@Override
+	public List<ProductView> getViewList(int startIndex, int endIndex) {
+		
+		return getViewList(startIndex, endIndex, null, null);
+	}
+
+	@Override
+	public List<ProductView> getViewList(int startIndex, int endIndex, String field, String query) {
 		String url = DBContext.URL;
 		String sql = "SELECT * FROM(SELECT ROWNUM NUM, V.* "
 					   +" FROM(SELECT * FROM PRODUCT_VIEW ORDER BY ID) V"
-					   + ") WHERE NUM BETWEEN 1 AND 3";
-		
-		
-
+					   + ") WHERE NUM BETWEEN ? AND ?  ";				
 		List<ProductView> list = new ArrayList<>();
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(sql);
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, startIndex);
+			st.setInt(2, endIndex);
+			
+			ResultSet rs = st.executeQuery();
 
 			while(rs.next()) {
 				int id = rs.getInt("ID");              
@@ -275,9 +317,19 @@ public class JdbcProductDao implements ProductDao{
 				String delivery = rs.getString("DELIVERY");
 				String fileName = rs.getString("FILE_NAME");			
 
-				ProductView p = new ProductView(id, name, regdate, code, price, display, inventory, brand, category, delivery, fileName);
-//					p.setId(id);
-					
+				ProductView p = new ProductView(
+						id, 
+						name, 
+						regdate, 
+						code, 
+						price, 
+						display, 
+						inventory, 
+						brand, 
+						category, 
+						delivery, 
+						fileName
+					);
 					list.add(p);
 				}
 			rs.close();
@@ -290,18 +342,6 @@ public class JdbcProductDao implements ProductDao{
 			e.printStackTrace();
 		}
 		return list;
-	}
-
-	@Override
-	public List<ProductView> getViewList(int startIndex, int endIndex) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<ProductView> getViewList(int startIndex, int endIndex, String field, String query) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 

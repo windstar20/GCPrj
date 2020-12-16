@@ -7,7 +7,7 @@ public class Gym {
 	private int id;	
 	private String pwd;
 	private String name;	
-	private String gym_name;	
+	private String gymName;	
 	private String email;	
 	private String telephone;	
 	private String phone;	
@@ -19,13 +19,13 @@ public class Gym {
 		
 	}
 
-	public Gym(int id, String pwd, String name, String gym_name, String email, String telephone, String phone,
+	public Gym(int id, String pwd, String name, String gymName, String email, String telephone, String phone,
 			String licenseNumber, String adress, Date regdate) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
 		this.name = name;
-		this.gym_name = gym_name;
+		this.gymName = gymName;
 		this.email = email;
 		this.telephone = telephone;
 		this.phone = phone;
@@ -58,12 +58,12 @@ public class Gym {
 		this.name = name;
 	}
 
-	public String getGym_name() {
-		return gym_name;
+	public String getGymName() {
+		return gymName;
 	}
 
-	public void setGym_name(String gym_name) {
-		this.gym_name = gym_name;
+	public void setGymName(String gymName) {
+		this.gymName = gymName;
 	}
 
 	public String getEmail() {
@@ -116,10 +116,12 @@ public class Gym {
 
 	@Override
 	public String toString() {
-		return "Gym [id=" + id + ", pwd=" + pwd + ", name=" + name + ", gym_name=" + gym_name + ", email=" + email
+		return "Gym [id=" + id + ", pwd=" + pwd + ", name=" + name + ", gymName=" + gymName + ", email=" + email
 				+ ", telephone=" + telephone + ", phone=" + phone + ", licenseNumber=" + licenseNumber + ", adress="
 				+ adress + ", regdate=" + regdate + "]";
 	}
+
+	
 	
 	
 }

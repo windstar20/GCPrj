@@ -35,11 +35,11 @@ public class JdbcGymDao implements GymDao {
 				int id = rs.getInt("id");
 				String pwd = "1";
 				String name = rs.getString("name");
-				String gymName = rs.getString("gym_Name");
+				String gymName = rs.getString("gym_name");
 				String email = rs.getString("email");
 				String telephone = rs.getString("telephone");
 				String phone = rs.getString("phone");
-				String licenseNumber = rs.getString("licens_Number");
+				String licenseNumber = rs.getString("license_number");
 				String adress = rs.getString("adress");
 				Date regdate = rs.getDate("regdate");
 				
@@ -90,11 +90,11 @@ public class JdbcGymDao implements GymDao {
 			while(rs.next()) {
 				String pwd = "1";
 				String name = rs.getString("name");
-				String gymName = rs.getString("gym_Name");
+				String gymName = rs.getString("gym_name");
 				String email = rs.getString("email");
 				String telephone = rs.getString("telephone");
 				String phone = rs.getString("phone");
-				String licenseNumber = rs.getString("licens_Number");
+				String licenseNumber = rs.getString("licens_number");
 				String adress = rs.getString("adress");
 				Date regdate = rs.getDate("regdate");
 				
@@ -119,7 +119,7 @@ public class JdbcGymDao implements GymDao {
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (SQLException e) {
+			} catch (SQLException e) { 
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -133,7 +133,7 @@ public class JdbcGymDao implements GymDao {
 		
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "INSERT INTO GYM(ID, PWD, NAME, GYM_NAME, EMAIL, TELEPHONE, PHONE, LECENSE_NUMBER, ADRESS) VALUES(?,?,?,?,?,?,?,?,?)";// 占쌔븝옙占쏙옙占�? 占십억옙占쏙옙占쏙옙
+		String sql = "INSERT INTO GYM(NAME, GYM_NAME, EMAIL, TELEPHONE, PHONE, LICENSE_NUMBER, ADRESS)" + "VALUES(?,?,?,?,?,?,?)";// 占쌔븝옙占쏙옙占�? 占십억옙占쏙옙占쏙옙
 		
 		try {
 			Class.forName(driver);
@@ -142,8 +142,8 @@ public class JdbcGymDao implements GymDao {
 			st.setInt(1, gym.getId());
 			st.setString(2, gym.getPwd());
 			st.setString(3, gym.getName());
-			st.setString(4, gym.getGym_name());					
-			st.setString(5, gym.getEmail());
+			st.setString(4, gym.getGymName());					
+			st.setString(5, gym.getEmail()); 
 			st.setString(6, gym.getTelephone());
 			st.setString(7, gym.getPhone());
 			st.setString(8, gym.getLicenseNumber());
@@ -170,15 +170,22 @@ public class JdbcGymDao implements GymDao {
 		
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "UPDATE GYM SET NAME=?, GYM_NAME=? WHERE ID=?";
+		String sql = "UPDATE GYM SET NAME=?, GYM_NAME=?, EMAIL=?, TELEPHONE=?,PHONE=?,"
+				+" LICENSE_NUBMER=?,ADRESS?"
+				+ "WHERE ID =?";
 		
 		try {
 			Class.forName(driver);
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, gym.getName());
-			st.setString(2, gym.getGym_name());
-			st.setInt(3, gym.getId());
+			st.setString(2, gym.getGymName());
+			st.setString(3, gym.getEmail());
+			st.setString(4, gym.getTelephone());
+			st.setString(5, gym.getPhone());
+			st.setString(6, gym.getLicenseNumber());
+			st.setString(7, gym.getAdress());
+			st.setInt(8, gym.getId());
 			// Result rs = st.executeQuery() // select 占쏙옙占썲에占쏙옙
 			result = st.executeUpdate(); // insert, update, delete 占쏙옙占쏙옙占쏙옙 占쏙옙
 			st.close();

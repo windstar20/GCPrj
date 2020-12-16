@@ -117,9 +117,12 @@ public class NoticeService {
 	public int getLastId() {
 		Notice n = noticeDao.getLast();
 		
-		// 업데이트 -> 컬럼
-		// 서비스에서는 공개값 업데이트/좋아요 업데이트/조회수 업데이트
-		// get -> set -> update();
+		
 		return n.getId();
 	}
+
+//	public Notice getLast() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 }

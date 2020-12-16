@@ -39,6 +39,9 @@ public class RegController extends HttpServlet {
 			request.getRequestDispatcher("reg.jsp").forward(request, response);
 		else if(request.getMethod().equals("POST")) {
 			
+			
+			
+			
 			//0. 사용자 입력을 변수에 담기
 			String title = request.getParameter("title");
 			//String file = request.getParameter("file");	
@@ -58,7 +61,7 @@ public class RegController extends HttpServlet {
 					fileNames += fileName;
 					fileNames += ",";
 					
-					int newId = service.getLastId() + 1;				
+					int newId = service.getLastId() + 1;
 					
 					String pathTemp = request.getServletContext().getRealPath("/static/notice/2020/"+newId+"/");
 									
@@ -117,8 +120,14 @@ public class RegController extends HttpServlet {
 //			System.out.printf("title:%s, file:%s\n", title, filePart.getSubmittedFileName());
 			
 			//1. 데이터베이스에 입력
+			
+//			Notice n = service.getLast();
+			
+//			int newId = n.getId() + 1;
+			
+			
 			NoticeService service = new NoticeService();
-			Notice notice = new Notice(title, content);
+			Notice notice = new Notice(title, content); //newId
 			// 꼬랑지 떼기~
 			notice.setFiles(fileNames); // "img1.jpg,img2.png,"
 			notice.setAdminNicname("관리자");

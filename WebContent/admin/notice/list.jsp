@@ -87,7 +87,7 @@
                        <div><a href="">다음</a></div>
                    	</div>
                         <a href="reg"><button class="butt">등록</button></a>
-                    <div class="search-bar">
+                    <!-- <div class="search-bar">
                         <h1 class="no-display">검색 키워드</h1>
                         <select>
                             <option value="bbs-title">제목</option>
@@ -101,7 +101,7 @@
                         </select>
                         <input type="text" value="">
                         <input type="button" value="검색">
-                    </div>
+                    </div> -->
                 </section>
             </main>
         </section>

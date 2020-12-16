@@ -13,8 +13,6 @@ public interface UserDao {
 	int delete(int id);
 	
 	User overlapId(String nicname);
-	User overlapEmail(User user);
-	User recomCheck(User user);
 	
 	User get(int id);
 	List<User> getList();

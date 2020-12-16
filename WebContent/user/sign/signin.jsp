@@ -84,7 +84,6 @@
                                     <option>naver.com</option>
                                     <option>hanmail.net</option>
                                     <option>gmaile.com</option>
-                                    <input type="submit" value="메일중복확인">
                                 </select><br>
                                 <input type="checkbox">
                                 <font color="red" size="2"> 이벤트 및 소식지 등 유용한 정보를 수신하겠습니다.</font>

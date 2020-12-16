@@ -252,30 +252,62 @@ public class JdbcUserDao implements UserDao {
 		
 		return list;
 	}
-	
+
 	@Override
 	public User overlapId(String nicname) {
+		
+		User u = null;
+
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM USER_MEMBER WHERE NICNAME=?"; 
-		
-		
+		String sql = "SELECT * FROM USER_MEMBER WHERE ID="+nicname; 
+	
 		
 		try {
 			Class.forName(driver);
-			Connection con = DriverManager.getConnection(url,DBContext.UID, DBContext.PWD);
-			PreparedStatement st = con.;
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
-		
+			
+			
 			if(rs.next()){
-			     String nicname = rs.getString("nicname");
-			   
+				
+				 int id = rs.getInt("id");
+			     nicname = rs.getString("nicname");
+			     String pwd = "1";
+			     String name = rs.getString("name");
+			     String gender = rs.getString("gender");
+			     int age = rs.getInt("age");
+			     String phone = rs.getString("phone");
+			     Date regdate = rs.getDate("regdate") ;
+			     String email = rs.getString("email");
+			     String address = rs.getString("address");
+			     String recommendName = rs.getString("recommend_name");
+			     int ratingId = rs.getInt("rating_id");
+			     int warningCount = rs.getInt("warning_count");
 			     
-			   
+			      u = new User(
+			    		 	id,
+			    		    nicname,
+			    		    pwd,
+			    		    name,
+			    		    gender,
+			    		    age,
+			    		    phone,
+			    		    regdate,
+			    		    email,
+			    		    address,
+			    		    warningCount,
+			    		    recommendName,
+			    		    ratingId
+			    		    );
+			     
 			     
 			}
 			
-			
+			rs.close();
+			st.close();
+			con.close();
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -284,21 +316,11 @@ public class JdbcUserDao implements UserDao {
 		}
 		
 		
-		return result;
+		return u;
 	}
 
 
-	@Override
-	public User overlapEmail(User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public User recomCheck(User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 
 	

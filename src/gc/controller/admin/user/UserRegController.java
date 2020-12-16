@@ -1,4 +1,4 @@
-package gc.controller.admin.product_order;
+package gc.controller.admin.user;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,8 +24,8 @@ public class UserRegController extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		List<User> list = service.getList();
+		User user = new User();
+		user = service.overlapId();
 		
 		request.setAttribute("userlist", list);
 		

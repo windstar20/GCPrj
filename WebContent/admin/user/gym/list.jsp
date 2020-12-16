@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
-<%@page import="gc.service.user.GymService"%>
-<%@page import="gc.entity.gym.Gym"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="gc.entity.gym.Gym" %>
+<%@page import="gc.dao.gym.jdbc.JdbcGymDao"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -119,24 +120,26 @@
                 <td>연락처</td>
                 <td>시설 번호</td>
                 <td>업체 종류</td>
+                <td>사업자 번호</td>
                 <td>인증방식</td>
                 <td>가입일</td>    
               </tr>
             </thead>
             <tbody>
-            	<c:forEach var="list" items="${gymlist}">
+            	<c:forEach var="g" items="${list}">
 	              <tr>
 	                <td><input type="checkbox"></td>
-	                <td>${list.id }</td>
-	                <td>${list.name }</td>
-	                <td>${list.gym_Name }</td>
+	                <td>${g.id }</td>
+	                <td>${g.name }</td>
+	                <td>${g.gymName }</td>
 	                <td>시설회원</td>
-	                <td>${list.adress }</td>
-	                <td>${list.telephone }</td>
-	                <td>${list.phone }</td>
+	                <td>${g.adress }</td>
+	                <td>${g.telephone }</td>
+	                <td>${g.phone }</td>
 	                <td>헬스</td>
+	                <td>${g.licenseNumber }</td> 
 	                <td>핸드폰</td>
-	                <td>${list.regdate }</td>
+	                <td>${g.regdate }</td>
 	              </tr>
 	            </c:forEach>
             </tbody>       
@@ -145,7 +148,7 @@
                 <span><a href="">이전</a></span>
                 <ul>
                 	<c:forEach var="i" begin ="0" end="4">
-                  		<li>1</li>
+                  		<li>${i+1}</li>
                   	</c:forEach>
                 </ul>
                 <span><a href="">다음</a></span>

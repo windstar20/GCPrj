@@ -26,9 +26,8 @@ public class ListController extends HttpServlet{
 		List<Notice> list = service.getList();
 //		List<NoticeView> list = dao.getViewList();
 		
-		
 		request.setAttribute("list", list);
-		
+		 
 		request.getRequestDispatcher("list.jsp").forward(request, response);
 	}
 	

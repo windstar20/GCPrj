@@ -75,7 +75,7 @@
           <section class="finder-container">
             <!-- <div class="finder-box"> -->
               <h1 class="no-display">상품검색도구</h1>
-                <div class="select-row">
+                <!-- <div class="select-row">
                   <div class="select-head">분류선택</div>
                   <div class="select-cell">
                     <select name="" id="" size="1">
@@ -83,33 +83,20 @@
                       <option>스포츠웨어</option>
                       <option>단백질 보충제</option>  
                       <option>악세사리</option> 
-                    </select>
-                    <!-- <select name="" id="" size="1">
-                      <option>2차 분류</option>
-                      <option>상의</option>
-                      <option>하의</option>    
-                      <option>웨이프로틴(빠른흡수)</option>
-                      <option>밀크&카제인(느린흡수)</option>    
-                      <option>복합단백질</option>
-                      <option>가방</option>    
-                      <option>글러브</option>    
-                      <option>물병</option>    
-                      <option>마스크</option>    
-                    </select> -->
+                    </select>                    
                   </div>
-                </div>
-                <div class="search-row">
+                </div> -->
+               <form action="list" method="post" >       
+               <div class="search-row">
                   <div class="search-head">검색어</div>
                   <div class="search-cell">
                     <select name="" id="" size="1">
                       <option>상품명</option>  
-                      <option>상품분류</option> 
-                      <option>제조사</option>
-                      <option>모델명</option>    
+                      <option>카테고리</option>
+                      <option>재고</option>                                
                     </select>
-                      <form>                   
                         <input type="text" placeholder="검색">
-                      </form>
+                 </form>
                   </div>
                 </div>
                 <div class="sale-row">
@@ -199,20 +186,24 @@
             <div class="pager-box">
               <h1 class="no-display">페이지 요청목록</h1>
               <div class="check-box-edit">
-                <input type="button" value="체크상품수정">
+<!--                 <input type="button" value="체크상품수정"> -->
                 <input type="button" value="체크상품삭제">
                 <input type="button" value="체크상품진열">
               </div>
               <!-- <div class="before-page"> -->
                 <!-- </div> -->
               <nav class="pager-menu">
-                <a class="img-button before-button" href="#">이전</a>
+                <c:if test="${page != 1}">
+             		<a class="img-button before-button" href="list?page=${page-1}">이전</a>
+             	</c:if>
                 <ul>
-                <c:forEach var="i" begin="0" end="2">
-                    <li><a href="#">${i+1}</a></li>
-                </c:forEach>
-                </ul>
-                <a class="img-button next-button" href="#">다음</a>
+	                <c:forEach var="i" begin="1" end="${pageEnd}"> 
+	                    <li><a href="list?page=${i}&size=${size}">${i}</a></li>
+	                </c:forEach>
+                </ul>           
+                <c:if test="${page != pageEnd}">     
+               		<a class="img-button next-button" href="list?page=${page+1}">다음</a>
+                </c:if>	
               </nav>    
                 <!-- <div class="next-page"> -->
                 <!-- </div> -->

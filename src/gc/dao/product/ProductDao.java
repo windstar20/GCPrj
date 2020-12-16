@@ -7,6 +7,7 @@ import gc.entity.product.view.ProductView;
 
 
 
+
 public interface ProductDao {
 	
 	int insert(Product product);
@@ -26,5 +27,6 @@ public interface ProductDao {
 	List<ProductView> getViewList(int startIndex, int endIndex, String field, String query);
 	
 	
-	ProductView get(int id);
+	Product get(int id);
+	int getCount();
 }

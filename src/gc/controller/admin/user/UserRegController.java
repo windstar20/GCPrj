@@ -31,7 +31,7 @@ public class UserRegController extends HttpServlet {
 		
 		request.getRequestDispatcher("list.jsp").forward(request, response);
 		
-		
+zzz
 		
 	}
 

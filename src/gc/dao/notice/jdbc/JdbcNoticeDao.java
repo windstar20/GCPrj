@@ -22,7 +22,7 @@ public class JdbcNoticeDao implements NoticeDao {
 		int result = 0;
 
 		String url = DBContext.URL;
-		String sql = "INSERT INTO NOTICE(TITLE, CONTENT, ADMIN_NICNAME) VALUES(?,?,?)";
+		String sql = "INSERT INTO NOTICE(TITLE, CONTENT, ADMIN_NICNAME, FILES) VALUES(?,?,?,?)";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -31,6 +31,7 @@ public class JdbcNoticeDao implements NoticeDao {
 			st.setString(1, notice.getTitle());
 			st.setString(2, notice.getContent());
 			st.setString(3, notice.getAdminNicname());
+			st.setString(4, notice.getFiles());
 
 			st.executeUpdate();
 			st.close();
@@ -229,13 +230,12 @@ public class JdbcNoticeDao implements NoticeDao {
 	      
 	      List<NoticeView> list = new ArrayList<NoticeView>();
 	      
-	      String sql = "SELECT * " + 
-	                  "FROM (" + 
-	                  "    SELECT ROWNUM NUM, N.* " + 
-	                  "    FROM (" + 
-	                  "        SELECT * FROM NOTICE_VIEW ORDER BY REGDATE DESC" + 
-	                  "    ) N" + 
-	                  ") WHERE NUM BETWEEN ? AND ?"; 
+	      String sql = "SELECT * " +
+	    	      		"FROM(" +
+	    	      		"		SELECT ROWNUM NUM, N.* " +
+	    	      		" 	FROM(SELECT * FROM NOTICE_VIEW ORDER BY REGDATE DESC) N"+
+	    	      		") WHERE NUM BETWEEN 1 AND 2  ";  
+	      
 	      
 	      String url = DBContext.URL;
 	      
@@ -253,10 +253,17 @@ public class JdbcNoticeDao implements NoticeDao {
 				String title = rs.getString("title");
 				Date regDate = rs.getDate("regdate");
 				String adminNicname = rs.getString("admin_nicname");
-				String noticeFiles = rs.getNString("noticeFiles");
+				String files = rs.getString("files");
 
-				NoticeView n = new NoticeView(title, regDate, adminNicname, noticeFiles);
+				NoticeView n = new NoticeView(title, regDate, adminNicname, files);
 
+//				n.setId(id);
+//				n.setTitle(title);
+//				n.getContent(content);
+//				n.getRegDate(regDate);
+//				n.getAdminNicname(adminNicname);
+//				n.getFiles(files);
+				
 				n.setId(id);
 				list.add(n);
 				}
@@ -280,14 +287,14 @@ public class JdbcNoticeDao implements NoticeDao {
 
 	@Override
 	public Notice getLast() {
-Notice n = null;
+		Notice n = null;
 		
 		String url = DBContext.URL;
 		String sql = "SELECT * FROM NOTICE WHERE ID = (SELECT MAX(ID) FROM NOTICE)"; 
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url, "NEWLEC", "11111");
+			Connection con = DriverManager.getConnection(url, "hm", "1026");
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);			
 			
@@ -318,6 +325,18 @@ Notice n = null;
 			e.printStackTrace();
 		}
 		return n;
+	}
+
+	@Override
+	public int display(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int displayAll(int[] ids) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	

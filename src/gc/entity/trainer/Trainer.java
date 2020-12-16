@@ -4,27 +4,31 @@ public class Trainer {
 
 	private int id;
     private String name;
-    private int gymId;
+    private String gymName;
     private String gender;
     private String phone;
+    private String delReason;
+    private int del;
     
     public Trainer() {
 
     }
 
-	public Trainer(int id, String name, int gymId, String gender, String phone) {
+	public Trainer(int id, String name, String gymName, String gender, String phone, String delReason, int del) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.gymId = gymId;
+		this.gymName = gymName;
 		this.gender = gender;
 		this.phone = phone;
+		this.delReason = delReason;
+		this.del = del;
 	}
 
 	@Override
 	public String toString() {
-		return "Trainer [id=" + id + ", name=" + name + ", gymId=" + gymId + ", gender=" + gender + ", phone=" + phone
-				+ "]";
+		return "Trainer [id=" + id + ", name=" + name + ", gymName=" + gymName + ", gender=" + gender + ", phone="
+				+ phone + ", delReason=" + delReason + ", del=" + del + "]";
 	}
 
 	public int getId() {
@@ -43,12 +47,12 @@ public class Trainer {
 		this.name = name;
 	}
 
-	public int getGymId() {
-		return gymId;
+	public String getGymName() {
+		return gymName;
 	}
 
-	public void setGymId(int gymId) {
-		this.gymId = gymId;
+	public void setGymName(String gymName) {
+		this.gymName = gymName;
 	}
 
 	public String getGender() {
@@ -66,6 +70,24 @@ public class Trainer {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
+	public String getDelReason() {
+		return delReason;
+	}
+
+	public void setDelReason(String delReason) {
+		this.delReason = delReason;
+	}
+
+	public int getDel() {
+		return del;
+	}
+
+	public void setDel(int del) {
+		this.del = del;
+	}
+
+	
     
     
 }

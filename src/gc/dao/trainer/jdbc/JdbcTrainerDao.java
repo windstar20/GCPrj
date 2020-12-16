@@ -21,7 +21,7 @@ public class JdbcTrainerDao implements TrainerDao{
 		int result = 0;
 		
 		String url = DBContext.URL;
-		String sql = "INSERT INTO TRAINER(NAME, GYM_ID, PHONE) VALUE(?,?,?)";
+		String sql = "INSERT INTO TRAINER(NAME, GYM_NAME, PHONE,GENDER) VALUE(?,?,?,?)";
 		
 		
 		try {
@@ -29,8 +29,9 @@ public class JdbcTrainerDao implements TrainerDao{
 			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, trainer.getName());
-			st.setInt(2, trainer.getGymId());
+			st.setString(2, trainer.getGymName());
 			st.setString(3, trainer.getPhone());
+			st.setString(4, trainer.getGender());
 			
 			result = st.executeUpdate();
 			
@@ -81,7 +82,7 @@ public class JdbcTrainerDao implements TrainerDao{
 		int result = 0;
 		
 		String url = DBContext.URL;
-		String sql = "DELETE FROM TRAINER WHERE ID=";
+		String sql = "DELETE FROM TRAINER WHERE ID=?";
 		
 		try {
 			Class.forName(DBContext.DRIVER);
@@ -119,16 +120,20 @@ public class JdbcTrainerDao implements TrainerDao{
 			
 			while(rs.next()) {
 				String name = rs.getString("name");
-			    int gymId = rs.getInt("gym_id");
+			    String gymName = rs.getString("gym_name");
 			    String gender = rs.getString("gender");
 			    String phone = rs.getString("phone");
+			    String delReason = rs.getString("del_reason");
+			    int del = rs.getInt("del");
 				
 				t = new Trainer(
 					id,
 				    name,
-				    gymId,
+				    gymName,
 				    gender,
-				    phone
+				    phone,
+				    delReason,
+				    del
 				);
 				
 			}
@@ -149,10 +154,22 @@ public class JdbcTrainerDao implements TrainerDao{
 
 	@Override
 	public List<Trainer> getList() {
+		
+		return getList(0,10,"","","",0);
+	}
+
+	@Override
+	public List<Trainer> getList(int startIndex, int endIndex,int del) {
+
+		return getList(startIndex,endIndex,"","","",del);
+	}
+
+	@Override
+	public List<Trainer> getList(int startIndex, int endIndex,String name, String gymName, String phone,int del) {
 		List<Trainer> list = new ArrayList<>();
 		
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM TRAINER";
+		String sql = "SELECT * FROM TRAINER WHERE NAME LIKE '%"+name+"%' AND GYM_NAME LIKE '%"+gymName+"%' AND PHONE LIKE '%"+phone+"%' AND DEL="+del;
 		
 		try {
 			Class.forName(DBContext.DRIVER);
@@ -162,17 +179,20 @@ public class JdbcTrainerDao implements TrainerDao{
 			
 			while(rs.next()) {
 				int id = rs.getInt("id");
-				String name = rs.getString("name");
-			    int gymId = rs.getInt("gym_id");
+				name = rs.getString("name");
+				gymName = rs.getString("gym_name");
 			    String gender = rs.getString("gender");
-			    String phone = rs.getString("phone");
+			    phone = rs.getString("phone");
+			    String delReason = rs.getString("del_reason");
 				
 				Trainer t = new Trainer(
 					id,
 				    name,
-				    gymId,
+				    gymName,
 				    gender,
-				    phone
+				    phone,
+				    delReason,
+				    del
 				);
 				
 				list.add(t);

@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,8 +55,8 @@
             <li>제휴시설 관리</li>
             <li>트레이너회원 관리</li>
             <ul>
-                <li><a href="list.html">트레이너회원 리스트</a></li>
-                <li><a href="del.html">트레이너회원 삭제</a></li>
+                <li><a href="list">트레이너회원 리스트</a></li>
+                <li><a href="dellist">트레이너회원 삭제</a></li>
             </ul>
         </ul>
     </aside>
@@ -66,33 +70,21 @@
             <div class="main-body">
               <section>
                   <h1>트레이너회원 검색</h1>
-                  <form>
+                  <form action="list" method="post">
                       <table>
                           <tr>
                               <th>이름</th>
-                              <td><input type="text"></td>
+                              <td><input type="text" name="name"></td>
                           </tr>
                           <tr>
                               <th>소속</th>
-                              <td><input type="text"></td>
+                              <td><input type="text" name="gymName"></td>
                           </tr>
                           <tr>
                               <th>휴대폰</th>
-                              <td class="phone"><input type="text">(- 포함)</td>
+                              <td class="phone"><input type="text" name="phone" >(- 포함)</td>
                           </tr>
-                          <tr>
-                              <th>등록기간</th>
-                              <td>
-                                  <input type="number" min="2019" max="2020" > 년
-                                  <input type="number" min="1" max="12" > 월
-                                  <input type="number" min="1" max="31" > 일
-                                  ~
-                                  <input type="number" min="2019" max="2020" > 년
-                                  <input type="number" min="1" max="12" > 월
-                                  <input type="number" min="1" max="31" > 일
-                              </td>
-                              
-                          </tr>
+                          
                       </table>
 
                       <input class="form-button" type="submit" value="검색">
@@ -106,19 +98,23 @@
                           <th>이름</th>
                           <th>소속</th>
                           <th>휴대폰</th>
+                          <th>성별</th>
                           <th>이용회원</th>
                           <th>자세히</th>
                           <th>비고</th>
                       </tr>
-                      <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                      </tr>
+                      <c:forEach var="t" items="${list }">
+	                      <tr>
+	                          <td>${t.id }</td>
+	                          <td>${t.name }</td>
+	                          <td>${t.gymName }</td>
+	                          <td>${t.phone }</td>
+	                          <td>${t.gender }</td>
+	                          <td></td>
+	                          <td><a href="">자세히</a></td>
+	                          <td></td>
+	                      </tr>
+                      </c:forEach>
                   </table>				
               </section>  
           </div>

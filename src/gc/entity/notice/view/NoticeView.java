@@ -8,19 +8,22 @@ public class NoticeView extends Notice{
 	
 	private String title;
 	private Date regDate;
-	private String adminNicname;
-	private String noticeFiles;
+	private String nicname;
 	
 	public NoticeView() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public NoticeView(String title, Date regDate, String adminNicname, String noticeFiles) {
+	public NoticeView(String title, Date regDate, String nicname) {
 		super();
 		this.title = title;
 		this.regDate = regDate;
-		this.adminNicname = adminNicname;
-		this.noticeFiles = noticeFiles;
+		this.nicname = nicname;
+	}
+
+	@Override
+	public String toString() {
+		return "NoticeView [title=" + title + ", regDate=" + regDate + ", nicname=" + nicname + "]";
 	}
 
 	public String getTitle() {
@@ -39,25 +42,16 @@ public class NoticeView extends Notice{
 		this.regDate = regDate;
 	}
 
-	public String getAdminNicname() {
-		return adminNicname;
+	public String getNicname() {
+		return nicname;
 	}
 
-	public void setAdminNicname(String adminNicname) {
-		this.adminNicname = adminNicname;
+	public void setNicname(String nicname) {
+		this.nicname = nicname;
 	}
 
-	public String getNoticeFiles() {
-		return noticeFiles;
-	}
-
-	public void setNoticeFiles(String noticeFiles) {
-		this.noticeFiles = noticeFiles;
-	}
-
-	@Override
-	public String toString() {
-		return "NoticeView [title=" + title + ", regDate=" + regDate + ", adminNicname=" + adminNicname
-				+ ", noticeFiles=" + noticeFiles + "]";
-	}
+	
+	
+	
+	
 }

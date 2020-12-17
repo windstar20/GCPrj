@@ -1,6 +1,7 @@
-<%@page import="gc.service.notice.NoticeService"%>
+<%-- <%@page import="gc.service.notice.NoticeService"%> --%>
 <%@page import="gc.entity.notice.Notice"%>
 <%@page import="java.util.List"%>
+<%@page import="gc.dao.notice.jdbc.JdbcNoticeDao" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -9,7 +10,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>admin page</title>
+    <title>공지사항 목록</title>
     <link rel="stylesheet" href="../../CSS/reset.css" />
     <link rel="stylesheet" href="../../CSS/admin/notice/list.css" />
 </head>
@@ -32,7 +33,7 @@
                 <li><a href="#">상품관리</a></li>
                 <li><a href="#">주문관리</a></li>
                 <li><a href="#">회원관리</a></li>
-                <li><a href="../index.html">게시판관리</a></li>
+                <li><a href="list">게시판관리</a></li>
                 <li><a href="#">고객센터</a></li>
             </ul>
         </nav>
@@ -78,13 +79,17 @@
                         </tbody>
                     </table>
                     <div class="pagelist">
-                       <div><a href="">이전</a></div>
-                       <ul>
-                        <c:forEach var="i" begin="0" end="4" varStatus="st">
-                            <li><a href="">${i+1}</a></li>
-                        </c:forEach>
-                       </ul>
-                       <div><a href="">다음</a></div>
+                       <c:if test="${page != 1}">
+             		<a class="img-button before-button" href="list?page=${page-1}">이전</a>
+             	</c:if>
+                <ul>
+	                <c:forEach var="i" begin="1" end="${pageEnd}"> 
+	                    <li><a href="list?page=${i}&size=${size}">${i}</a></li>
+	                </c:forEach>
+                </ul>           
+                <c:if test="${page != pageEnd}">     
+               		<a class="img-button next-button" href="list?page=${page+1}">다음</a>
+                </c:if>	
                    	</div>
                         <a href="reg"><button class="butt">등록</button></a>
                     <!-- <div class="search-bar">

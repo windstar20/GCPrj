@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/reset.css" type="text/css">
     <link rel="stylesheet" href="../../CSS/admin/notice/detail.css" type="text/css">
-    <title>notice detail</title>
+    <title>공지사항</title>
 </head>
 
 <body>
@@ -33,7 +33,7 @@
                 <li><a href="#">상품관리</a></li>
                 <li><a href="#">주문관리</a></li>
                 <li><a href="#">회원관리</a></li>
-                <li><a href="../index.html">게시판관리</a></li>
+                <li><a href="list">게시판관리</a></li>
                 <li><a href="#">고객센터</a></li>
             </ul>
         </nav>
@@ -90,11 +90,11 @@
                     </tr>
                 </table>
                 <div class="list-btn btn">
-                    <a class="btn-text btn-cancel" href="list"><input type="button" value="목록"></a>
+                    <a class="btn-text btn-cancel" href="list"><input class="butt" type="button" value="목록"></a>
                 </div>
                 <div class="other-btn btn">
-                    <a href="edit?id=${n.id}"><input class="flex-item1" type="button" value="수정"></a>
-                    <a href="del?id=${n.id}"><input class="flex-item" type="button" value="삭제"></a>
+                    <a href="edit?id=${n.id}"><input class="butt" type="button" value="수정"></a>
+                    <a href="del?id=${n.id}"><input class="butt" type="button" value="삭제"></a>
                 </div>
             </section>
         </section>

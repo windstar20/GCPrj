@@ -121,4 +121,13 @@ public class ProductService {
 	 * return ; } page++; }
 	 */
 	
+	public int insert(Product product) {
+		
+		return productDao.insert(product);
+	}
+	
+	public Product getLast() {
+		
+		return productDao.getLast();
+	}
 }

@@ -125,6 +125,7 @@ public class JdbcTrainerDao implements TrainerDao{
 			    String phone = rs.getString("phone");
 			    String delReason = rs.getString("del_reason");
 			    int del = rs.getInt("del");
+			    Date regdate = rs.getDate("regdate");
 				
 				t = new Trainer(
 					id,
@@ -133,7 +134,8 @@ public class JdbcTrainerDao implements TrainerDao{
 				    gender,
 				    phone,
 				    delReason,
-				    del
+				    del,
+				    regdate
 				);
 				
 			}
@@ -184,6 +186,7 @@ public class JdbcTrainerDao implements TrainerDao{
 			    String gender = rs.getString("gender");
 			    phone = rs.getString("phone");
 			    String delReason = rs.getString("del_reason");
+			    Date regdate = rs.getDate("regdate");
 				
 				Trainer t = new Trainer(
 					id,
@@ -192,7 +195,8 @@ public class JdbcTrainerDao implements TrainerDao{
 				    gender,
 				    phone,
 				    delReason,
-				    del
+				    del,
+				    regdate
 				);
 				
 				list.add(t);

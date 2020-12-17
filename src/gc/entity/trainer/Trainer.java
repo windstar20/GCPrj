@@ -1,5 +1,7 @@
 package gc.entity.trainer;
 
+import java.util.Date;
+
 public class Trainer {
 
 	private int id;
@@ -9,12 +11,14 @@ public class Trainer {
     private String phone;
     private String delReason;
     private int del;
+    private Date regdate;
     
     public Trainer() {
 
     }
 
-	public Trainer(int id, String name, String gymName, String gender, String phone, String delReason, int del) {
+	public Trainer(int id, String name, String gymName, String gender, String phone, String delReason, int del,
+			Date regdate) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -23,13 +27,24 @@ public class Trainer {
 		this.phone = phone;
 		this.delReason = delReason;
 		this.del = del;
+		this.regdate = regdate;
 	}
 
 	@Override
 	public String toString() {
 		return "Trainer [id=" + id + ", name=" + name + ", gymName=" + gymName + ", gender=" + gender + ", phone="
-				+ phone + ", delReason=" + delReason + ", del=" + del + "]";
+				+ phone + ", delReason=" + delReason + ", del=" + del + ", regdate=" + regdate + "]";
 	}
+
+	public Date getRegdate() {
+		return regdate;
+	}
+
+
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
+
 
 	public int getId() {
 		return id;

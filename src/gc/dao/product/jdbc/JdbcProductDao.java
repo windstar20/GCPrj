@@ -23,7 +23,7 @@ public class JdbcProductDao implements ProductDao{
 	public int insert(Product product) {
 		int result = 0;				     
 		String url = DBContext.URL;		
-		String sql = "INSERT INTO PRODUCT(NAME, CONTENT, CODE, PRICE, DISPLAY, BRAND_ID, CATEGORY_ID, ADMIN_ID, INVENTORY, DELIVERY_ID "
+		String sql = "INSERT INTO PRODUCT(ID,NAME, CONTENT, CODE, PRICE, DISPLAY, BRAND_ID, CATEGORY_ID, INVENTORY, DELIVERY_ID )"
 				+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
 
 		try {
@@ -39,9 +39,8 @@ public class JdbcProductDao implements ProductDao{
 			st.setInt(6, product.getDisplay());
 			st.setInt(7, product.getBrandId());
 			st.setInt(8, product.getCategoryId());
-			st.setInt(9, product.getAdminId());
-			st.setInt(10, product.getInventory());
-			st.setInt(11, product.getDeliveryId());
+			st.setInt(9, product.getInventory());
+			st.setInt(10, product.getDeliveryId());
 
 			result = st.executeUpdate();			//ResultSet rs = st.executeQuery(sql);   //???��?��문에?���? ?��?��
 
@@ -344,7 +343,57 @@ public class JdbcProductDao implements ProductDao{
 		return list;
 	}
 
+	@Override
+	public Product getLast() {
+		Product p = null;
+		
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM PRODUCT WHERE ID = (SELECT MAX(ID) FROM PRODUCT)";
 
+		try {
+			Class.forName(DBContext.DRIVER);
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			if(rs.next()) {
+				int id = rs.getInt("ID");
+				String name = rs.getString("NAME");
+				String content = rs.getString("CONTENT");
+				Date regdate = rs.getDate("REGDATE"); 
+				String code = rs.getString("CODE");
+				int price = rs.getInt("PRICE");
+				int display = rs.getInt("DISPLAY");
+				int brandId = rs.getInt("BRAND_ID");
+				int categoryId = rs.getInt("CATEGORY_ID");
+				int adminId = rs.getInt("ADMIN_ID");
+				int inventory = rs.getInt("INVENTORY");
+				int delivery = rs.getInt("DELIVERY_ID");
 
+				p = new Product(
+						id,
+						name,
+						content,
+						regdate,	    
+						code,
+						price,
+						display,
+						brandId,
+						categoryId,
+						adminId,
+						inventory,
+						delivery
+				);
+			}
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return p;
+	}
 
 }

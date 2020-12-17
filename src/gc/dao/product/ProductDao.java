@@ -29,4 +29,6 @@ public interface ProductDao {
 	
 	Product get(int id);
 	int getCount();
+	
+	Product getLast();
 }

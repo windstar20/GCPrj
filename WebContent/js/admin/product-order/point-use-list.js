@@ -1,17 +1,4 @@
 window.addEventListener("load", function () {
-  var orderState = document.querySelector(".order-state");
-  var table = document.querySelector(".order-list-table");
-
-  table.addEventListener("click", function (e) {
-    var confirmMoneyBtn = document.querySelector(".jsbutton");
-    if (e.target.classList.contains("jsbutton")) {
-      console.log(e.target);
-      e.target.parentElement.previousElementSibling.innerText = "입금완료";
-    }
-  });
-});
-
-window.addEventListener("load", function () {
   var prices = document.querySelectorAll(".price");
   var totalPrice = document.querySelector(".total-price");
   var totalCount = document.querySelector(".total-count");

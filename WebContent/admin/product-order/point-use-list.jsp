@@ -1,17 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>주문관리-포인트 충전 내역</title>
+    <title>주문관리-포인트 사용 내역</title>
     <link rel="stylesheet" href="../../CSS/reset.css" />
     <link rel="stylesheet" href="../../CSS/style.css" />
     <link rel="stylesheet" href="../../CSS/admin/admin.css" />
     <link
       rel="stylesheet"
-      href="../../CSS/admin/product-order/point-charge-list.css"
+      href="../../CSS/admin/product-order/point-use-list.css"
     />
-    <script src="../../js/admin/product-order/list.js"></script>
+    <script src="../../js/admin/product-order/point-use-list.js"></script>
   </head>
   <body>
     <header id="header" class="header">
@@ -47,11 +51,13 @@
           <li>포인트 결제 관리</li>
           <ul>
             <li>
-              <a href="point-charge-list" class="aside-current"
-                >포인트 충전 내역</a
+              <a href="point-charge-list">포인트 충전 내역</a>
+            </li>
+            <li>
+              <a href="point-use-list" class="aside-current"
+                >포인트 사용 내역</a
               >
             </li>
-            <li><a href="point-use-list.html">포인트 사용 내역</a></li>
           </ul>
           <br />
         </ul>
@@ -60,12 +66,12 @@
         <main id="main" class="main">
           <div class="main-head">
             <h1>주문 목록</h1>
-            <span> home > 상품관리 > 포인트 충전 내역 </span>
+            <span> home > 상품관리 > 포인트 사용 내역 </span>
           </div>
           <div class="main-body">
             <section>
-              <h1 class="table-title">충전 내역 검색</h1>
-              <form action="list">
+              <h1 class="table-title">사용 내역 검색</h1>
+              <form action="point-use-list">
                 <table class="search-table">
                   <!-- 첫번째 줄 시작-->
                   <tr>
@@ -82,7 +88,7 @@
                   <!-- 첫번째 줄 끝 -->
                   <!-- 두번째 줄 시작 -->
                   <tr>
-                    <th>충전일자</th>
+                    <th>사용일자</th>
                     <td>
                       <input
                         type="date"
@@ -122,12 +128,13 @@
             <!-- 테이블 끝 -->
             <section>
               <section>
-                <h1 class="table-title">포인트 충전 목록</h1>
+                <h1 class="table-title">포인트 사용 목록</h1>
                 <ul class="table-sum">
                   <li>검색결과 : <span class="total-count">0</span>건</li>
-                  <li>충전 금액 : <span class="total-price">0</span>원</li>
-                  <li>현재 회원 포인트 : <span class="">0</span>p</li>
-                  <form action="list">
+                  <li>사용 금액 : <span class="total-price">0</span>원</li>
+                  <li>현재 회원 포인트 : <span class="current-point">0</span>p</li>
+
+                  <form action="point-use-list">
                     <input type="hidden" name="page" value="1" />
                     <input type="hidden" name="query" value="${query}" />
                     <input type="hidden" name="field" value="${field }" />
@@ -154,11 +161,11 @@
                 <h1 class="no-display">정렬</h1>
                 <ul>
                   <li>
-                    충전일 <span class="img-button up-button">up</span>
+                    사용 날짜 <span class="img-button up-button">up</span>
                     <span class="img-button down-button">down</span>
                   </li>
                   <li>
-                    충전 금액 <span class="img-button up-button">up</span>
+                    사용 금액 <span class="img-button up-button">up</span>
                     <span class="img-button down-button">down</span>
                   </li>
                 </ul>
@@ -169,31 +176,35 @@
                     <th>번호</th>
                     <th>회원 아이디</th>
                     <th>회원 이름</th>
-                    <th>충전 금액</th>
+                    <th>사용 금액</th>
                     <th>내용</th>
-                    <th>충전일</th>
+                    <th>사용 날짜</th>
                     <th>기타</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <c:forEach var="p" items="${list }">
+                  <c:forEach var="u" items="${list }">
                     <!-- 첫번째 행 시작 -->
                     <tr>
-                      <td>${p.number }</td>
-                      <td>${p.productName }</td>
-                      <td>${p.productCount}개</td>
+                      <td>${u.id }</td>
+                      <td>${u.memberId }</td>
+                      <td>${u.name}</td>
+                      <td>
+                      <fmt:formatNumber var="price" value="${u.amount}" type="number"/>
+                      	<span class="price">${price }</span>원
+                      </td>
+                      <td>${u.content }</td>
                       <td>
                         <fmt:formatDate
                           var="date"
-                          value="${p.regdate }"
+                          value="${u.regdate }"
                           pattern="yyyy-MM-dd a hh:mm"
                         />
                         ${date}
                       </td>
-                      <td></td>
-                      <td></td>
+
                       <td>
-                        <a href="del?id=${p.id }"
+                        <a href="point-use-del?id=${u.id }"
                           ><input
                             class="select-button"
                             type="button"
@@ -208,7 +219,7 @@
               <div class="paging">
                 <c:forEach var="i" begin="1" end="${pageNum }"
                   ><a
-                    href="list?page=${i}&size=${size}&filed=${field}&query=${query}&startDate=${startDate}&endDate=${endDate}"
+                    href="point-use-list?page=${i}&size=${size}&filed=${field}&query=${query}&startDate=${startDate}&endDate=${endDate}"
                     >${i }</a
                   ></c:forEach
                 >

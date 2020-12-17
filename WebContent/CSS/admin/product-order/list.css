@@ -30,7 +30,10 @@ th {
   background-color: #34495e;
   transition: all 1s ease;
 }
-
+.select-button:focus{
+    outline:none;
+  
+}
 /* ---------------------------- */
 .aside-title {
   background: url(../../../image/admin/product-order-aside.png) no-repeat;

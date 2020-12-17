@@ -24,17 +24,13 @@ th {
   padding: 2px;
   position: relative;
   top: 2px;
-  
-  
 }
 .select-button:hover {
   color: #fff;
   background-color: #34495e;
   transition: all 1s ease;
 }
-.select-button:focus{
-    outline:none;  
-}
+
 /* ---------------------------- */
 .aside-title {
   background: url(../../../image/admin/product-order-aside.png) no-repeat;
@@ -90,7 +86,9 @@ th {
   transition: 1s ease;
   background: rgb(54, 98, 240);
 }
-
+.select-button:focus{
+    outline:none;  
+}
 .sort-bar {
   display: flex;
   justify-content: flex-end;

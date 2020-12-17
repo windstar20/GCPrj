@@ -53,8 +53,8 @@
 				<br />
 				<li>포인트 결제 관리</li>
 				<ul>
-					<li><a href="point-charge-list.html">포인트 충전 내역</a></li>
-					<li><a href="point-use-list.html">포인트 사용 내역</a></li>
+					<li><a href="point-charge-list">포인트 충전 내역</a></li>
+					<li><a href="point-use-list">포인트 사용 내역</a></li>
 				</ul>
 				<br />
 			</ul>
@@ -141,7 +141,7 @@
 								<li>총결제금액 : <span class="total-price">0</span>원</li>
 								<form action="list" >
 								<input type="hidden" name="page" value="1">
-								<input type="hidden" name="query" value=${query }>
+								<input type="hidden" name="query" value="${query }">
 								<input type="hidden" name="field" value="${field }">
 								<input type="hidden" name="startDate" value="${startDate }">
 								<input type="hidden" name="endDate" value="${endDate }">
@@ -208,7 +208,7 @@
 										<td>무통장<br />입금자명
 										</td>
 										<td class="order-state"></td>
-										<td><input class="select-button" type="button"
+										<td><input class="select-button jsbutton" type="button"
 											value="입금확인" /> 
 											<a href="detail?id=${p.id }"><input
 											class="select-button" type="button" value="상세보기"  /></a>

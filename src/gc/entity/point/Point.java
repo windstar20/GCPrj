@@ -2,8 +2,8 @@ package gc.entity.point;
 
 public class Point {
 
-	 private int current_amount;
-	 private int member_id;
+	 private int currentAmount;
+	 private String memberId;
 	
 	 
 	 public Point() {
@@ -11,37 +11,37 @@ public class Point {
 	}
 
 
-	public Point(int current_amount, int member_id) {
+	public Point(int currentAmount, String memberId) {
 		super();
-		this.current_amount = current_amount;
-		this.member_id = member_id;
+		this.currentAmount = currentAmount;
+		this.memberId = memberId;
+	}
+
+
+	public int getcurrentAmount() {
+		return currentAmount;
+	}
+
+
+	public void setcurrentAmount(int currentAmount) {
+		this.currentAmount = currentAmount;
+	}
+
+
+	public String getmemberId() {
+		return memberId;
+	}
+
+
+	public void setmemberId(String memberId) {
+		this.memberId = memberId;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Point [current_amount=" + current_amount + ", member_id=" + member_id + "]";
+		return "Point [currentAmount=" + currentAmount + ", memberId=" + memberId + "]";
 	}
 
 
-	public int getCurrent_amount() {
-		return current_amount;
-	}
-
-
-	public void setCurrent_amount(int current_amount) {
-		this.current_amount = current_amount;
-	}
-
-
-	public int getMember_id() {
-		return member_id;
-	}
-
-
-	public void setMember_id(int member_id) {
-		this.member_id = member_id;
-	}
-	 
-	 
 }

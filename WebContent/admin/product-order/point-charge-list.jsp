@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,7 +15,7 @@
       rel="stylesheet"
       href="../../CSS/admin/product-order/point-charge-list.css"
     />
-    <script src="../../js/admin/product-order/list.js"></script>
+    <script src="../../js/admin/product-order/point-charge-list.js"></script>
   </head>
   <body>
     <header id="header" class="header">
@@ -51,7 +55,7 @@
                 >포인트 충전 내역</a
               >
             </li>
-            <li><a href="point-use-list.html">포인트 사용 내역</a></li>
+            <li><a href="point-use-list">포인트 사용 내역</a></li>
           </ul>
           <br />
         </ul>
@@ -65,7 +69,7 @@
           <div class="main-body">
             <section>
               <h1 class="table-title">충전 내역 검색</h1>
-              <form action="list">
+              <form action="point-charge-list">
                 <table class="search-table">
                   <!-- 첫번째 줄 시작-->
                   <tr>
@@ -126,8 +130,8 @@
                 <ul class="table-sum">
                   <li>검색결과 : <span class="total-count">0</span>건</li>
                   <li>충전 금액 : <span class="total-price">0</span>원</li>
-                  <li>현재 회원 포인트 : <span class="">0</span>p</li>
-                  <form action="list">
+                  <li>현재 회원 포인트 : <span class="current-point">0</span>p</li>
+                  <form action="point-charge-list">
                     <input type="hidden" name="page" value="1" />
                     <input type="hidden" name="query" value="${query}" />
                     <input type="hidden" name="field" value="${field }" />
@@ -176,24 +180,28 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <c:forEach var="p" items="${list }">
+                  <c:forEach var="c" items="${list }">
                     <!-- 첫번째 행 시작 -->
                     <tr>
-                      <td>${p.number }</td>
-                      <td>${p.productName }</td>
-                      <td>${p.productCount}개</td>
+                      <td>${c.id }</td>
+                      <td>${c.memberId }</td>
+                      <td>${c.name}</td>
+                      <td>
+                      <fmt:formatNumber var="price" value="${c.amount}" type="number"/>
+                      	<span class="price">${price }</span>원
+                      </td>
+                      <td>${c.content }</td>
                       <td>
                         <fmt:formatDate
                           var="date"
-                          value="${p.regdate }"
+                          value="${c.regdate }"
                           pattern="yyyy-MM-dd a hh:mm"
                         />
                         ${date}
                       </td>
-                      <td></td>
-                      <td></td>
+
                       <td>
-                        <a href="del?id=${p.id }"
+                        <a href="point-charge-del?id=${c.id }"
                           ><input
                             class="select-button"
                             type="button"
@@ -208,10 +216,10 @@
               <div class="paging">
                 <c:forEach var="i" begin="1" end="${pageNum }"
                   ><a
-                    href="list?page=${i}&size=${size}&filed=${field}&query=${query}&startDate=${startDate}&endDate=${endDate}"
+                    href="point-charge-list?page=${i}&size=${size}&filed=${field}&query=${query}&startDate=${startDate}&endDate=${endDate}"
                     >${i }</a
-                  ></c:forEach
-                >
+                  >
+                  </c:forEach>
               </div>
             </section>
           </div>

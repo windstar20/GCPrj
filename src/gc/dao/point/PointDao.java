@@ -7,9 +7,10 @@ import gc.entity.point.Point;
 public interface PointDao {
 	int insert(Point point);
 	int update(Point point);
-	int delete(int id);
+	int delete(String memberId);
 	
-	Point get(int id);
+	Point get(String id);
 	List<Point> getList();
 	
+
 }

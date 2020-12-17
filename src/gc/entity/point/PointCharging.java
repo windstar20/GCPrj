@@ -3,35 +3,47 @@ package gc.entity.point;
 import java.util.Date;
 
 public class PointCharging {
-	private Date DATE;
+	private int id;
+	private String memberId;
+	private Date regdate;
 	private int amount;
 	private String content;
-	private int member_id;
 	
 	public PointCharging() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PointCharging(Date dATE, int amount, String content, int member_id) {
+	public PointCharging(int id, String memberId, Date regdate, int amount, String content) {
 		super();
-		DATE = dATE;
+		this.id = id;
+		this.memberId = memberId;
+		this.regdate = regdate;
 		this.amount = amount;
 		this.content = content;
-		this.member_id = member_id;
 	}
 
-	@Override
-	public String toString() {
-		return "PointCharging [DATE=" + DATE + ", amount=" + amount + ", content=" + content + ", member_id="
-				+ member_id + "]";
+	public int getId() {
+		return id;
 	}
 
-	public Date getDATE() {
-		return DATE;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public void setDATE(Date dATE) {
-		DATE = dATE;
+	public String getmemberId() {
+		return memberId;
+	}
+
+	public void setmemberId(String memberId) {
+		this.memberId = memberId;
+	}
+
+	public Date getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 
 	public int getAmount() {
@@ -50,13 +62,13 @@ public class PointCharging {
 		this.content = content;
 	}
 
-	public int getMember_id() {
-		return member_id;
+	@Override
+	public String toString() {
+		return "PointCharging [id=" + id + ", memberId=" + memberId + ", regdate=" + regdate + ", amount=" + amount
+				+ ", content=" + content + "]";
 	}
 
-	public void setMember_id(int member_id) {
-		this.member_id = member_id;
-	}
 	
 	
 }
+	

@@ -1,4 +1,4 @@
-package gc.controller.admin.product_order;
+package gc.controller.admin.point.use;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,13 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import gc.entity.productOrder.view.ProductOrderView;
-import gc.service.productOrder.ProductOrderService;
+import gc.entity.point.view.PointUseView;
+import gc.service.point.PointUseService;
 
 
-
-@WebServlet("/admin/product-order/list")
-public class ListController extends HttpServlet{
+@WebServlet("/admin/product-order/point-use-list")
+public class ListController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,7 +25,7 @@ public class ListController extends HttpServlet{
 		String query=null;
 		String startDate = null;
 		String endDate=null;
-		ProductOrderService service = new ProductOrderService();
+		PointUseService service = new PointUseService();
 
 
 		if(request.getParameter("page")!=null)
@@ -42,7 +41,7 @@ public class ListController extends HttpServlet{
 			startDate = request.getParameter("start-date");
 		if(request.getParameter("end-date")!=null)
 			endDate = request.getParameter("end-date");
-		List<ProductOrderView> list = service.getViewList(0, 0, field, query,startDate, endDate);
+		List<PointUseView> list = service.getViewList(0, 0, field, query,startDate, endDate);
 
 		if(list.size()%10==0)
 			pageNum = list.size()/size;
@@ -61,8 +60,6 @@ public class ListController extends HttpServlet{
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("startDate", startDate);
 		request.setAttribute("endDate", endDate);
-		request.getRequestDispatcher("list.jsp").forward(request, response);
-
-
+		request.getRequestDispatcher("point-use-list.jsp").forward(request, response);
 	}
 }

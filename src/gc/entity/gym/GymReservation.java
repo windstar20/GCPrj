@@ -7,7 +7,7 @@ public class GymReservation {
 	private int id;
 	private int price;
 	private int userId;
-	private int gymID;	
+	private int gymId;	
 	private int memberId;
 	private int number;	
 	private Date regdate;
@@ -17,12 +17,12 @@ public class GymReservation {
 		
 	}
 
-	public GymReservation(int id, int price, int userId, int gymID, int memberId, int number, Date regdate, Date date) {
+	public GymReservation(int id, int price, int userId, int gymId, int memberId, int number, Date regdate, Date date) {
 		super();
 		this.id = id;
 		this.price = price;
 		this.userId = userId;
-		this.gymID = gymID;
+		this.gymId = gymId;
 		this.memberId = memberId;
 		this.number = number;
 		this.regdate = regdate;
@@ -53,12 +53,12 @@ public class GymReservation {
 		this.userId = userId;
 	}
 
-	public int getGymID() {
-		return gymID;
+	public int getGymId() {
+		return gymId;
 	}
 
-	public void setGymID(int gymID) {
-		this.gymID = gymID;
+	public void setGymId(int gymId) {
+		this.gymId = gymId;
 	}
 
 	public int getMemberId() {
@@ -95,7 +95,7 @@ public class GymReservation {
 
 	@Override
 	public String toString() {
-		return "GymReservation [id=" + id + ", price=" + price + ", userId=" + userId + ", gymID=" + gymID
+		return "GymReservation [id=" + id + ", price=" + price + ", userId=" + userId + ", gymId=" + gymId
 				+ ", memberId=" + memberId + ", number=" + number + ", regdate=" + regdate + ", date=" + date + "]";
 	}
 	

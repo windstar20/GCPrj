@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +52,7 @@
 
                     <tr>
                         <th>이름</th>
-                        <td><input type = "text" maxlength="7"></td>
+                        <td><input type = "text"></td>
                     </tr>
 
                     <tr>
@@ -128,7 +130,7 @@
                     </tr>
                 </table>
                 
-                    <!-- <h2>약관동의</h2>
+                    <h2>약관동의</h2>
             
                     전체동의<input type = "checkbox"><br>
                     *기업회원 약관에 동의 <u><a href = "http://www.saramin.co.kr/zf_user/help/terms-of-service/company">상세보기</a></u><input type = "checkbox"><br>
@@ -141,15 +143,12 @@
                     <input type = "checkbox">5년
                     <input type = "checkbox">탈퇴시<br>
 
-                    <a href = userpage.html><input type = "submit" value = "회원가입"></a> -->
+                    <a href = userpage.html><input type = "submit" value = "회원가입"></a>
             </main>
         </section>
     </div>
-    <section>
-        <footer class = "footer">
-            <h1 class ="no-display">푸터</h1>
-            근처 고객님의 성공과 함께합니다
-        </footer>
-    </section>
+    <footer class = "footer">
+
+    </footer>
 </body>
 </html>

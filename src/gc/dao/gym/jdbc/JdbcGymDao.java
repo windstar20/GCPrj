@@ -17,126 +17,16 @@ import gc.entity.gym.Gym;
 public class JdbcGymDao implements GymDao {
 
 	@Override
-	public List<Gym> getList() {
-		
-		List<Gym> list = new ArrayList<>();
-		
-		String driver = "oracle.jdbc.driver.OracleDriver";
-		String url = DBContext.URL;
-		String sql = "SELECT * FROM GYM";
-		
-		try {
-			Class.forName(driver);
-			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(sql);
-			
-			while(rs.next()) {
-				int id = rs.getInt("id");
-				String pwd = "1";
-				String name = rs.getString("name");
-				String gymName = rs.getString("gym_name");
-				String email = rs.getString("email");
-				String telephone = rs.getString("telephone");
-				String phone = rs.getString("phone");
-				String licenseNumber = rs.getString("license_number");
-				String adress = rs.getString("adress");
-				Date regdate = rs.getDate("regdate");
-				
-				Gym g = new Gym(
-						id,
-						pwd,
-						name,
-						gymName,
-						email,
-						telephone,
-						phone,
-						licenseNumber,
-						adress,
-						regdate
-						);
-						
-				list.add(g);
-			}
-			rs.close();
-			st.close();
-			con.close();
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return list;
-	}
-	@Override
-	public Gym get(int id) {
-		
-		Gym g = null;
-		
-		String driver = "oracle.jdbc.driver.OracleDriver";
-		String url = DBContext.URL;
-		String sql = "SELECT * FROM GYM WHERE ID="+id;
-		
-		Connection con;
-		try {
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(sql);
-			
-			while(rs.next()) {
-				String pwd = "1";
-				String name = rs.getString("name");
-				String gymName = rs.getString("gym_name");
-				String email = rs.getString("email");
-				String telephone = rs.getString("telephone");
-				String phone = rs.getString("phone");
-				String licenseNumber = rs.getString("licens_number");
-				String adress = rs.getString("adress");
-				Date regdate = rs.getDate("regdate");
-				
-				g = new Gym(
-						id,
-						pwd,
-						name,
-						gymName,
-						email,
-						telephone,
-						phone,
-						licenseNumber,
-						adress,
-						regdate
-						);
-			
-				}
-				rs.close();
-				st.close();
-				con.close();
-				
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) { 
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-		return g;
-	}
-	@Override
 	public int insert(Gym gym) {
 		
 		int result = 0;
 		
-		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "INSERT INTO GYM(NAME, GYM_NAME, EMAIL, TELEPHONE, PHONE, LICENSE_NUMBER, ADRESS)" + "VALUES(?,?,?,?,?,?,?)";// 占쌔븝옙占쏙옙占�? 占십억옙占쏙옙占쏙옙
+		String sql = "INSERT INTO GYM(NAME, GYM_NAME, EMAIL, TELEPHONE, PHONE, LICENSE_NUMBER, ADRESS)"  
+		+ "VALUES(?,?,?,?,?,?,?)";// 
 		
 		try {
-			Class.forName(driver);
+			Class.forName(DBContext.DRIVER);
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setInt(1, gym.getId());
@@ -168,14 +58,13 @@ public class JdbcGymDao implements GymDao {
 		
 		int result = 0;
 		
-		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
 		String sql = "UPDATE GYM SET NAME=?, GYM_NAME=?, EMAIL=?, TELEPHONE=?,PHONE=?,"
 				+" LICENSE_NUBMER=?,ADRESS?"
 				+ "WHERE ID =?";
 		
 		try {
-			Class.forName(driver);
+			Class.forName(DBContext.DRIVER);
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, gym.getName());
@@ -233,6 +122,114 @@ public class JdbcGymDao implements GymDao {
 	public int deleteAll(int[] ids) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	@Override
+	public Gym get(int id) {
+		
+		Gym g = null;
+		
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM GYM WHERE ID="+id;
+		
+		Connection con;
+		try {
+			Class.forName(DBContext.DRIVER);
+			con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
+			while(rs.next()) {
+				String pwd = "1";
+				String name = rs.getString("name");
+				String gymName = rs.getString("gym_name");
+				String email = rs.getString("email");
+				String telephone = rs.getString("telephone");
+				String phone = rs.getString("phone");
+				String licenseNumber = rs.getString("licens_number");
+				String adress = rs.getString("adress");
+				Date regdate = rs.getDate("regdate");
+				
+				g = new Gym(
+						id,
+						pwd,
+						name,
+						gymName,
+						email,
+						telephone,
+						phone,
+						licenseNumber,
+						adress,
+						regdate
+						);
+				}
+				rs.close();
+				st.close();
+				con.close();
+				
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) { 
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		return g;
+	}
+	@Override
+	public List<Gym> getList() {
+		
+		List<Gym> list = new ArrayList<>();
+		
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM GYM";
+		
+		try {
+			Class.forName(DBContext.DRIVER);
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				String pwd = "1";
+				String name = rs.getString("name");
+				String gymName = rs.getString("gym_name");
+				String email = rs.getString("email");
+				String telephone = rs.getString("telephone");
+				String phone = rs.getString("phone");
+				String licenseNumber = rs.getString("license_number");
+				String adress = rs.getString("adress");
+				Date regdate = rs.getDate("regdate");
+				
+				Gym g = new Gym(
+						id,
+						pwd,
+						name,
+						gymName,
+						email,
+						telephone,
+						phone,
+						licenseNumber,
+						adress,
+						regdate
+						);
+						
+				list.add(g);
+			}
+			rs.close();
+			st.close();
+			con.close();
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 

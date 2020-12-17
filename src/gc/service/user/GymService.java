@@ -17,13 +17,23 @@ import gc.entity.gym.Gym;
 public class GymService {
 	
 	private GymDao gymDao;
+	
 	public GymService() {
 		gymDao = new JdbcGymDao();
 	}
 	
-	public List<Gym> getList() {
+	public int insert(Gym gym) {
 		
-		return gymDao.getList();
+		return gymDao.insert(gym);
+	}
+	public int update(Gym gym) {
+		
+		return gymDao.update(gym);
+	}
+	
+	public int delete(int id) {
+		
+		return gymDao.delete(id);
 	}
 	
 	public Gym get(int id) {
@@ -31,13 +41,11 @@ public class GymService {
 		return gymDao.get(id);
 	}
 	
-	public int insert(Gym gym) {
+	public List<Gym> getList() {
 		
-		return gymDao.insert(gym);
+		return gymDao.getList();
 	}
 	
-	public int update(Gym gym) {
-		
-		return gymDao.update(gym);
-	}
+	
+	
 }

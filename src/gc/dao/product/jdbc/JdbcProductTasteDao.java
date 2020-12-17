@@ -14,13 +14,13 @@ import gc.dao.product.ProductTasteDao;
 import gc.entity.product.ProductTaste;
 
 
-public class JdbcProductTaste implements ProductTasteDao{
+public class JdbcProductTasteDao implements ProductTasteDao{
 
 	@Override
 	public int insert(ProductTaste productTaste) {
 		int result = 0;				     
 		String url = DBContext.URL;		
-		String sql = "INSERT INTO PRODUCT_TASTE(PRODUCT_CODE, NAME "
+		String sql = "INSERT INTO PRODUCT_TASTE(PRODUCT_CODE, NAME )"
 				+ "VALUES(?,?)";
 
 		try {

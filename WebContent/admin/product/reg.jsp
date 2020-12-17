@@ -102,7 +102,11 @@
 	                </tr>
 	                <tr>
 	                    <th>맛</th>
-	                    <td><input type="text" name="taste" ></td>
+	                    <td><input type="text" name="taste" >(/로 구분)</td>
+	                </tr>
+	                <tr>
+	                	<th>수량</th>
+	                	<td><input type="text" name="inventory" >개</td>
 	                </tr>
 	            </table> 
 	            
@@ -121,9 +125,9 @@
 	                <tr>
 	                    <th>배송정책</th>
 	                    <td>
-	                        <input type="radio" name="delivery-price" value="charge" />
+	                        <input type="radio" name="delivery-price" value="1" />
 	                        <label>일반배송</label>
-	                        <input type="radio" name="delivery-price" value="free" /> 
+	                        <input type="radio" name="delivery-price" value="2" /> 
 	                        <label>무료배송</label>
 	                    </td>
 	                </tr>

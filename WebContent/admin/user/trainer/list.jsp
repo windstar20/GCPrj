@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../../../CSS/admin/admin.css">
     <link rel="stylesheet" href="../../../CSS/admin/user/index.css">
     <link rel="stylesheet" href="../../../CSS/admin/user/index.css">
+    <script src="../../../js/admin/user/trainer/detail.js"></script>
 </head>
 <body>
 <header id="header" class="header">
@@ -92,28 +93,26 @@
               </section>
               <section class="table">
                   <h1>검색결과</h1>
-                  <table border="1">
+                  <table class="list-table" border="1">
                       <tr>
                           <th>번호</th>
                           <th>이름</th>
                           <th>소속</th>
                           <th>휴대폰</th>
                           <th>성별</th>
-                          <th>이용회원</th>
                           <th>자세히</th>
                           <th>비고</th>
                       </tr>
                       <c:forEach var="t" items="${list }">
 	                      <tr>
-	                          <td>${t.id }</td>
+	                          <td class="trainer-id">${t.id }</td>
 	                          <td>${t.name }</td>
 	                          <td>${t.gymName }</td>
 	                          <td>${t.phone }</td>
 	                          <td>${t.gender }</td>
+	                          <td><input class="detail" type="button" value="자세히" > </td>
 	                          <td></td>
-	                          <td><a href="">자세히</a></td>
-	                          <td></td>
-	                      </tr>
+	                      </tr>	                      
                       </c:forEach>
                   </table>				
               </section>  

@@ -26,14 +26,8 @@ public class ProductService {
 	//		return productDao.getList(startIndex, endIndex, field, query);
 	//	}
 
+	//전체 삭제 메소드
 	public int deleteAll(int[] ids) {
-		//다오를 사용하는 이유
-		//1. 협업
-		//2. 재사용
-		//3. 데이터베이스(소스)를 숨김.
-		//*. 수정의 용이성(x) 더 복잡해짐, 성능 둘 다 비슷함.
-
-
 
 		//DELETE NOTICE WHERE ID IN(...);
 		//noticeDao.deleteAll(ids);
@@ -92,7 +86,7 @@ public class ProductService {
 	public List<ProductView> getViewList(int page, int size){
 
 		int startIndex = 1+(page-1)*size; //1, 11, 21, 31...//수열: 초항+(n-1)*d
-		int endIndex = page*5;
+		int endIndex = page*10;
 		//int end  10, 20 , 30 , 40 ,50
 		return productDao.getViewList(startIndex, endIndex);
 
@@ -105,11 +99,11 @@ public class ProductService {
 	}
 	
 	//페이지 처리를 위한 함수(int page, int size)
-	public List<ProductView> getViewList(int page, int size, String field, String query) {
-		int startIndex = 1+(page-1)*size; //1, 6, 11
-		int endIndex = page*5;            //5, 10, 15		
+	public List<ProductView> getViewList(int page, int size, String keyword, String query, String prevPrice, String nextPrice) {
+		int startIndex = 1+(page-1)*size; //1, 11, 21
+		int endIndex = page*10;            //10, 20, 30		
 
-		return productDao.getViewList(startIndex, endIndex, field, query);
+		return productDao.getViewList(startIndex, endIndex, keyword, query, prevPrice, nextPrice);
 	}	
 	
 	/*

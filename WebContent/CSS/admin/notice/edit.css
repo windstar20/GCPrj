@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"); /* -----------------怨듯��------------ */
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"); /* -----------------�⑤��占쏙옙------------ */
 html {
   font-family: "Nanum Gothic", sans-serif;
 }
@@ -75,7 +75,7 @@ h1.no-display {
 .main-title {
   background-color: #f2f2f2;
   flex-basis: 42px;
-  /*text �몃� 媛��대�� ����*/
+  /*text 占쎈�占� 揶�占쏙옙��占쏙옙 占쏙옙占쏙옙*/
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -145,7 +145,7 @@ h1.no-display {
   }
 
   .table-wrap th{
-    font-family: "留��� 怨���", sans-serif;
+    font-family: "筌�占쏙옙占� �⑨옙占쏙옙", sans-serif;
     text-align: center;
     background: rgba(0, 0, 0, 0.1);
     width: 120px;
@@ -161,8 +161,21 @@ h1.no-display {
 }
 
 .btn{
-    position: relative;
-    width: 20%;
-    top: 20px;
-    left: 43%;  
-  }
+  position: relative;
+  width: 20%;
+  top: 20px;
+  left: 43%;  
+}
+
+.butt{
+  position: relative;
+  background: rgba(0,0,0,0.1);
+  width: 60px;
+  height: 30px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.butt:hover{
+  background: #fff;
+}

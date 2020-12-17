@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/reset.css" type="text/css">
     <link rel="stylesheet" href="../../CSS/admin/notice/reg.css" type="text/css">
-    <title>notice detail</title>
+    <title>공지사항 등록</title>
 </head>
 
 <body>
@@ -29,7 +29,7 @@
                 <li><a href="#">상품관리</a></li>
                 <li><a href="#">주문관리</a></li>
                 <li><a href="#">회원관리</a></li>
-                <li><a href="list.html">게시판관리</a></li>
+                <li><a href="list">게시판관리</a></li>
                 <li><a href="#">고객센터</a></li>
             </ul>
         </nav>
@@ -41,8 +41,8 @@
             <ul class="aside-menu">
                 <li>공지사항 관리</li>
                 <ul>
-                    <li><a href="list.html">공지사항 리스트</a></li>
-                    <li><a href="">공지사항 등록</a></li>
+                    <li><a href="list">공지사항 리스트</a></li>
+                    <li><a href="reg">공지사항 등록</a></li>
                 </ul>
                 <br />
             </ul>
@@ -77,8 +77,8 @@
 	                    </tr>
 	                </table>
 	                <div class="btn">
-	                    <input type="submit" value="등록" />
-	                    <a href="list">취소</a>
+	                    <input class="butt" type="submit" value="등록" />
+	                    <button class="butt" href="list">취소</a>
 	                </div>
 	            </section>
             </form>

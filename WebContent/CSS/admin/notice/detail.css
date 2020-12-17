@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"); /* -----------------공통------------ */
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"); /* -----------------怨듯��------------ */
 html {
   font-family: "Nanum Gothic", sans-serif;
 }
@@ -75,7 +75,7 @@ h1.no-display {
 .main-title {
   background-color: #f2f2f2;
   flex-basis: 42px;
-  /*text 세로 가운데 정렬*/
+  /*text �몃� 媛��대�� ����*/
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -144,7 +144,7 @@ h1.no-display {
   }
 
   .table-wrap th{
-    font-family: "맑은 고딕", sans-serif;
+    font-family: "留��� 怨���", sans-serif;
     text-align: center;
     background: rgba(0, 0, 0, 0.1);
     width: 120px;
@@ -170,3 +170,17 @@ h1.no-display {
   top: -5px;
   left: 80%;
 }
+
+  .butt{
+    position: relative;
+    background: rgba(0,0,0,0.1);
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+  }
+  
+  .butt:hover{
+    background: #fff;
+  }

@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/reset.css" type="text/css">
     <link rel="stylesheet" href="../../CSS/admin/notice/edit.css" type="text/css">
-    <title>notice detail</title>
+    <title>공지사항 수정</title>
 </head>
 
 <body>
@@ -33,7 +33,7 @@
                 <li><a href="#">상품관리</a></li>
                 <li><a href="#">주문관리</a></li>
                 <li><a href="#">회원관리</a></li>
-                <li><a href="../index.html">게시판관리</a></li>
+                <li><a href="list">게시판관리</a></li>
                 <li><a href="#">고객센터</a></li>
             </ul>
         </nav>
@@ -45,8 +45,8 @@
             <ul class="aside-menu">
                 <li>공지사항 관리</li>
                 <ul>
-                    <li><a href="list.html">공지사항 리스트</a></li>
-                    <li><a href="reg.html">공지사항 등록</a></li>
+                    <li><a href="list">공지사항 리스트</a></li>
+                    <li><a href="reg">공지사항 등록</a></li>
                 </ul>
                 <br />
             </ul>
@@ -81,23 +81,20 @@
 	                    </tr>
 	                    <tr>
 	                        <th>첨&nbsp;부&nbsp;파&nbsp;일</th>
-	                        <td colspan="3">
-							<%-- <c:forTokens var="fileName" items="${n.files}" delims="," varStatus="st"> --%>
+	                        <td colspan="3" class="td-small">&nbsp;&nbsp;&nbsp;<input type="file" name="file"></td>
+							<c:forTokens var="fileName" items="${n.files}" delims="," varStatus="st">
 	                      	<fmt:formatDate var="year" value="${n.regDate}" pattern="yyyy"/>
 	                      		<a download href="/static/notice/${year}/${n.id}/${fileName}">${fileName}</a> 
 	                      		<c:if test="${st.last == false}">
 	                      			/
 	                      		</c:if>
-	                      	<%-- </c:forTokens> --%>
+	                      	</c:forTokens>
 							</td>
 	                    </tr>
 	                </table>
-	                <div class="list-btn btn">
-	                    <input type="button" value="목록">
-	                </div>
 	                <div class="other-btn btn">
-	                    <input class="flex-item" type="button" value="저장">
-	                    <a class="flex-item1" href="detail?id=${n.id}">취소</a>
+	                    <input class="butt" type="button" value="저장">
+	                    <a href="detail?id=${n.id}"><input class="butt" type="button"  value="취소"></a>
 	                </div>
 	            </section>
             </form>

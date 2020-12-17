@@ -131,7 +131,7 @@ html {
 /* -------------admin-index----------- */
 
 th, tr, td{
-  border-bottom: 1px solid #444444;
+  border-bottom: 2px solid #444444;
   padding: 10px;
 }
 
@@ -186,4 +186,14 @@ th, tr, td{
 .butt{
   position: relative;
   left: 70%;
+  background: rgba(0,0,0,0.1);
+  width: 60px;
+  height: 30px;
+  text-align: center;
+  border-radius: 10px;
 }
+
+.butt:hover{
+  background: #fff;
+}
+

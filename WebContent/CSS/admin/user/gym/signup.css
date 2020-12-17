@@ -33,3 +33,8 @@
     margin-left: auto;
     margin-right: auto;
 }
+.footer{
+    min-height: 200px;
+    background-color: gray;
+    text-align: center;
+}

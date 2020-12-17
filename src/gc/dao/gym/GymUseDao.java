@@ -9,7 +9,7 @@ public interface GymUseDao {
 	
 	int insert(GymUse gymUse);
 	int update(GymUse gymUse);
-	int delete(GymUse id);
+	int delete(int id);
 	
 	GymUse get(int id);
 	List<GymUse> getList();

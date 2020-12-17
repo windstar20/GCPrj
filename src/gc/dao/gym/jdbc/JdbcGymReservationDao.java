@@ -1,41 +1,42 @@
 package gc.dao.gym.jdbc;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import gc.dao.gym.GymCommentDao;
+import gc.dao.gym.GymReservationDao;
 import gc.dao.jdbc.DBContext;
-import gc.entity.gym.Gym;
-import gc.entity.gym.GymComment;
-import gc.entity.trainer.TrainerComment;
+import gc.entity.gym.GymReservation;
+import gc.entity.trainer.TrainerReservation;
 
-
-public class JdbcGymCommentDao implements GymCommentDao{
-
+public class JdbcGymReservationDao implements GymReservationDao{
+	
 	@Override
-	public int insert(GymComment gymComment) {
+	public int insert(GymReservation gymReservation) {
 		
 		int result = 0;
 		
 		String url = DBContext.URL;
-		String sql = "INSERT INTO GYM_COMMENT(RESERVATION_NUMBER, GYM_ID, CONTENT) VALUE(?,?,?)";
+		String sql = "INSERT INTO GYM_RESERVATION(PRICE, USER_ID, GYM_ID, MEMEBER_ID, NUMBER, DATE) VALUE(?,?,?,?,?,?)";
 		
 		
 		try {
 			Class.forName(DBContext.DRIVER);
 			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);
-			st.setInt(1, gymComment.getReservationNumber());
-			st.setInt(2,gymComment.getGymId());
-			st.setString(3, gymComment.getContent());
-			
+			st.setInt(1, gymReservation.getPrice());
+			st.setInt(2, gymReservation.getUserId());
+			st.setInt(3, gymReservation.getGymId());
+			st.setInt(4, gymReservation.getMemberId());
+			st.setInt(5, gymReservation.getNumber());
+			st.setDate(6, (Date) gymReservation.getDate());
+		
 			result = st.executeUpdate();
 			
 			st.close();
@@ -49,24 +50,28 @@ public class JdbcGymCommentDao implements GymCommentDao{
 			e.printStackTrace();
 		}
 		return result;
+		
 	}
 
 	@Override
-	public int update(GymComment gymComment) {
+	public int update(GymReservation gymReservation) {
 		
 		int result = 0;
 		
 		String url = DBContext.URL;
-		String sql = "UPDATE INTO GYM_COMMENT SET CONTENT=? WHERE RESERVATION_NUMBER=?, GYM_ID=?";
+		String sql = "UPDATE GYM_RESERVATION SET PRICE=?,USER_ID=?,GYM_ID=?, MEMBER_ID=?, NUMBER=?,DATE=? WHERE ID=?";
 		
 		try {
 			Class.forName(DBContext.DRIVER);
 			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);
-			st.setString(1, gymComment.getContent());
-			st.setInt(2, gymComment.getReservationNumber());
-			st.setInt(3,gymComment.getGymId());
-			
+			st.setInt(1, gymReservation.getPrice());
+			st.setInt(2, gymReservation.getUserId());
+			st.setInt(3, gymReservation.getGymId());
+			st.setInt(4, gymReservation.getMemberId());
+			st.setInt(5, gymReservation.getNumber());
+			st.setDate(6, (Date) gymReservation.getDate());
+
 			result = st.executeUpdate();
 			
 			st.close();
@@ -80,23 +85,23 @@ public class JdbcGymCommentDao implements GymCommentDao{
 			e.printStackTrace();
 		}
 		return result;
+		
 	}
 
 	@Override
-	public int delete(int reservationNumber, int gymId) {
+	public int delete(int id) {
 		
 		int result = 0;
 		
 		String url = DBContext.URL;
-		String sql = "DELETE FROM GYM_COMMENT WHERE RESERVATION_NUMBER=?, GYM_ID=?";
+		String sql = "DELETE FROM GYM_RESERVATION WHERE ID=?";
 		
 		try {
 			Class.forName(DBContext.DRIVER);
 			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);
-			st.setInt(1,reservationNumber);
-			st.setInt(2,gymId);
-			
+			st.setInt(1, id);
+
 			result = st.executeUpdate();
 			
 			st.close();
@@ -110,15 +115,16 @@ public class JdbcGymCommentDao implements GymCommentDao{
 			e.printStackTrace();
 		}
 		return result;
-	}
-
-	@Override
-	public GymComment get(int reservationNumber, int gymId) {
 		
-		GymComment g = null;
+	}
+	
+	@Override
+	public GymReservation get(int id) {
+		
+		GymReservation g = null;
 		
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM GYM_COMMENT WHERE RESERVATION_NUMBER="+reservationNumber+"GYM_ID="+gymId;
+		String sql = "SELECT * FROM GYM_RESERVATION WHERE ID="+id;
 		
 		try {
 			Class.forName(DBContext.DRIVER);
@@ -127,8 +133,23 @@ public class JdbcGymCommentDao implements GymCommentDao{
 			ResultSet rs = st.executeQuery(sql);
 			
 			while(rs.next()) {
-				
-				g = new GymComment(
+				int price = rs.getInt("price");
+			    int userId = rs.getInt("user_id");
+			    int gymId = rs.getInt("gym_id");
+			    int memberId = rs.getInt("member_id");
+			    int number = rs.getInt("number");
+			    Date regdate = rs.getDate("regdate");
+			    Date date = rs.getDate("date");
+			  			
+				g = new GymReservation(
+						id,
+						price,
+						userId,
+						gymId,
+						memberId,
+						number,
+						regdate,
+						date
 				);
 				
 			}
@@ -145,49 +166,62 @@ public class JdbcGymCommentDao implements GymCommentDao{
 			e.printStackTrace();
 		}
 		return g;
-	}
-
-	@Override
-	public List<GymComment> getList() {
 		
-		List<GymComment> list = new ArrayList<>();
+	}
+	
+	@Override
+	public List<GymReservation> getList() {
+		
+		List<GymReservation> list = new ArrayList<>();
 		
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM GYM_COMMENT";
+		String sql = "SELECT * FROM GYM_RESERVATION";
 		
 		try {
 			Class.forName(DBContext.DRIVER);
-			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 			
 			while(rs.next()) {
-				
-				int reservationNumber = rs.getInt("reservation_number");
-				Date regdate = rs.getDate("date");	
-				int gymId = rs.getInt("gym_id");	
-				String content = rs.getString("content");	
-				
-				GymComment g = new GymComment(
-					reservationNumber,
-					regdate,
-					gymId,
-					content
-						);
-						
+				int id = rs.getInt("id");
+				int price = rs.getInt("price");
+			    int userId = rs.getInt("user_id");
+			    int gymId = rs.getInt("gym_id");
+			    int memberId = rs.getInt("member_id");
+			    int number = rs.getInt("number");
+			    Date regdate = rs.getDate("regdate");
+			    Date date = rs.getDate("date");
+			  			
+				GymReservation g = new GymReservation(
+						id,
+						price,
+						userId,
+						gymId,
+						memberId,
+						number,
+						regdate,
+						date
+				);
 				list.add(g);
 			}
+			
 			rs.close();
 			st.close();
 			con.close();
-			
-		} catch (ClassNotFoundException e) {
+				
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (SQLException e) {
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
+		
+		
 	}
+
+
+
 }

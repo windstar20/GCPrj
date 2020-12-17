@@ -229,8 +229,29 @@ public class JdbcProductDao implements ProductDao{
 
 	@Override
 	public int deleteAll(int[] ids) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;				     //?���? ?��?���??��?�� DB�? insert
+
+		String url = DBContext.URL;
+		String sql = "DELETE FROM PRODUCT WHERE ID=";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, id);
+			
+			result = st.executeUpdate(); 
+
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return result;
 	}
 
 	@Override
@@ -276,32 +297,73 @@ public class JdbcProductDao implements ProductDao{
 	@Override
 	public List<ProductView> getViewList() {
 		
-		return getViewList(0, 0, null, null);
+		return getViewList(0, 0, null, null, null, null);
 
 	}
 
 	@Override
 	public List<ProductView> getViewList(int startIndex, int endIndex) {
 		
-		return getViewList(startIndex, endIndex, null, null);
+		return getViewList(startIndex, endIndex, null, null,null,null);
 	}
+	
+	/*
+	 * SELECT * FROM (SELECT ROWNUM NUM, V.* FROM(SELECT * FROM PRODUCT_VIEW ORDER
+	 * BY ID) V) WHERE NUM BETWEEN 1 AND 5 AND NAME LIKE '%컴%';
+	 */
+	
 
 	@Override
-	public List<ProductView> getViewList(int startIndex, int endIndex, String field, String query) {
+	public List<ProductView> getViewList(int startIndex, int endIndex, String keyword, String query, String prevPrice, String nextPrice) {
 		String url = DBContext.URL;
 		String sql = "SELECT * FROM(SELECT ROWNUM NUM, V.* "
 					   +" FROM(SELECT * FROM PRODUCT_VIEW ORDER BY ID) V"
-					   + ") WHERE NUM BETWEEN ? AND ?  ";				
+					   + ") WHERE NUM BETWEEN "+ startIndex + " AND "+ endIndex;				
+		
+		String keywordSql = null;
+		String priceSql = null;
+		
+		if(keyword != null && !keyword.equals("")) {
+			if(keyword.equals("name")) {
+				keywordSql = " AND "+keyword +" LIKE '%"+query+"%'"; 
+			} else if(keyword.equals("inventory")) {
+				keywordSql = " AND "+keyword +" < "+query;
+			} else {
+				keywordSql = " AND "+keyword +" LIKE '%"+query+"%'";
+			}			 
+		}
+//		AND price > 30000 AND price < 70000;
+//		 && (nextPrice == null && nextPrice.equals("")))
+		  if(prevPrice != null && !prevPrice.equals("")) { 
+			  priceSql = " AND PRICE >= " +prevPrice; }
+		  else if((prevPrice != null && !prevPrice.equals("")) && (nextPrice != null && !nextPrice.equals(""))){ 
+			  priceSql = " AND PRICE >= " +prevPrice+" AND PRICE =< " +nextPrice;
+		  } else if(nextPrice != null && !nextPrice.equals("")){ 
+			  priceSql = " AND PRICE =< " +nextPrice; 
+		  }
+		 
+		
+//		 if((keyword==null && query.equals("")) && (fromPrice != null && !prevQuery.equals(""))) 
+		if(keyword!=null && !query.equals("")) {
+			sql += keywordSql;
+		}else if((prevPrice != null && !prevPrice.equals("")) || (nextPrice != null && !nextPrice.equals(""))){
+			sql += priceSql;
+		}
+		System.out.println(sql);
+//		else {
+//			sql += priceSql;
+//		}
+		
+		
+		
 		List<ProductView> list = new ArrayList<>();
-
+		System.out.println("query "+ query);
+		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
-			PreparedStatement st = con.prepareStatement(sql);
-			st.setInt(1, startIndex);
-			st.setInt(2, endIndex);
-			
-			ResultSet rs = st.executeQuery();
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
 
 			while(rs.next()) {
 				int id = rs.getInt("ID");              
@@ -319,7 +381,7 @@ public class JdbcProductDao implements ProductDao{
 				ProductView p = new ProductView(
 						id, 
 						name, 
-						regdate, 
+						regdate,              
 						code, 
 						price, 
 						display, 

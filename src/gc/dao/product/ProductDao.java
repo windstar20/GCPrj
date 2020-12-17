@@ -24,7 +24,7 @@ public interface ProductDao {
 //	int insert(ProductView productView);	
 	List<ProductView> getViewList();
 	List<ProductView> getViewList(int startIndex, int endIndex);
-	List<ProductView> getViewList(int startIndex, int endIndex, String field, String query);
+	List<ProductView> getViewList(int startIndex, int endIndex, String field, String query, String prevPrice, String nextPrice);
 	
 	
 	Product get(int id);

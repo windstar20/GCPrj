@@ -14,6 +14,7 @@
     <title>admin page</title>
     <link rel="stylesheet" href="../../CSS/reset.css">
     <link rel="stylesheet" href="../../CSS/admin/product/product-list.css" />
+    <script src="../../js/admin/product/list.js"></script>        
   </head>
   <body>
     <header id="header" class="header">
@@ -86,31 +87,31 @@
                     </select>                    
                   </div>
                 </div> -->
-               <form action="list" method="post" >       
-               <div class="search-row">
-                  <div class="search-head">검색어</div>
-                  <div class="search-cell">
-                    <select name="" id="" size="1">
-                      <option>상품명</option>  
-                      <option>카테고리</option>
-                      <option>재고</option>                                
-                    </select>
-                        <input type="text" placeholder="검색">
-                 </form>
-                  </div>
-                </div>
-                <div class="sale-row">
-                  <div class="sale-head">판매가</div>
-                  <div class="sale-cell">
-                    <form>
-                      <input type="text">원 ~ <input type="text">원
-                    </form>
-                </div>               
-            </div>
+               <form action="list" >       
+	               <div class="search-row">
+	                  <div class="search-head">검색어</div>
+	                  <div class="search-cell">
+	                    <select name="keyword" id="" size="1">
+	                      <option value="">[선택]</option>
+	                      <option value="name">상품명</option>  
+	                      <option value="category">카테고리</option>
+	                      <option value="inventory">재고</option>                                
+	                    </select>
+	                        <input type="text" name="query" placeholder="검색">&nbsp 재고는 비교할 수량보다 작은 값이 검색
+	                  </div>
+	                </div>
+	                <div class="sale-row">
+	                  <div class="sale-head">판매가</div>
+	                  <div class="sale-cell">
+	                       <input type="text" name ="prevPrice" >원 ~ <input type="text" name="nextprice" >원
+	                  </div>               
+	                </div>
+			        <div class="btn-search">
+			           <input type="submit" value="검색">
+			        </div>
+	           </form>
           </section>
-          <div class="btn-search">
-            <input type="button" value="검색">
-          </div>
+          
           
           
           <section class="sort-container">
@@ -127,7 +128,7 @@
               <h1 class="no-display">상품목록 박스</h1>
               <ul class="title-row">
                 <li class="title-check">
-                  <input type="checkbox">         
+                  <input class="check-all" type="checkbox"  name="check-all">         
                 </li>
                 <li class="title-number">번호</li>
                 <li class="title-name">상품기본정보(코드/카테고리/상품명/브랜드)</li>                
@@ -144,7 +145,7 @@
            	  <c:forEach var="p" items="${list}">
 	              <ul class="product-row">
 	                  <li class="product-check-list">
-	                    <input type="checkbox">
+	                    <input class="check" type="checkbox" name="check" value="${p.id}">
 	                  </li>
 	                  <li class="product-number-list">${p.id}</li>                  
 	                  <li class="product-name-list">

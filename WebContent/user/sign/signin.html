@@ -1,5 +1,3 @@
-<!-- --------------- 완 료 ----------------------------- -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +7,7 @@
     <link href="../../CSS/reset.css" type="text/css" rel="stylesheet">
     <link href="../../CSS/style.css" type="text/css" rel="stylesheet">
     <link href="../../CSS/user/user-signin.css" type="text/css" rel="stylesheet"> 
-    <script src="../jsp/address.js"></script>
+    <script src="../../js/admin/user/overlap.js"></script>
 </head>
 <body>
     <header id="header" class="header">
@@ -50,8 +48,10 @@
                         <tr>
                             <th>아이디</th>
                             <td>
-                                <input type="text" name="name" autocomplete="off" autofocus pattern="^\D{1,5}\d{1,5}">
-                                <input type="submit" value="아이디중복확인"><br>
+                                <form action="overlap">
+                                    <input name="nicname" autocomplete="off" autofocus >
+                                    <input class="overlap" type="submit" name="nicname" value="중복확인"><br>
+                                 </form>
                                 <font color="red" size="1">*영어/숫자 혼합 6자리이상 입력</font>
                             </td>
                         </tr>
@@ -84,7 +84,6 @@
                                     <option>naver.com</option>
                                     <option>hanmail.net</option>
                                     <option>gmaile.com</option>
-                                    <input type="submit" value="메일중복확인">
                                 </select><br>
                                 <input type="checkbox">
                                 <font color="red" size="2"> 이벤트 및 소식지 등 유용한 정보를 수신하겠습니다.</font>

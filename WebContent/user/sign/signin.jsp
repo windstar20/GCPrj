@@ -9,7 +9,7 @@
     <link href="../../CSS/reset.css" type="text/css" rel="stylesheet">
     <link href="../../CSS/style.css" type="text/css" rel="stylesheet">
     <link href="../../CSS/user/user-signin.css" type="text/css" rel="stylesheet"> 
-    <script src="../jsp/address.js"></script>
+    <script src="../../js/admin/user/overlap.js"></script>
 </head>
 <body>
     <header id="header" class="header">
@@ -50,8 +50,10 @@
                         <tr>
                             <th>아이디</th>
                             <td>
-                                <input name="name" autocomplete="off" autofocus pattern="^\D{1,5}\d{1,5}">
-                                <input type="submit" value="아이디중복확인"><br>
+                                <form action="overlap">
+                                    <input name="nicname" autocomplete="off" autofocus">
+                                    <input class="overlap" type="submit" name="nicname" value="중복확인"><br>
+                                 </form>
                                 <font color="red" size="1">*영어/숫자 혼합 6자리이상 입력</font>
                             </td>
                         </tr>

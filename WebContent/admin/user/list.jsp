@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../../CSS/style.css">
     <link rel="stylesheet" href="../../CSS/admin/admin.css" type="text/css" />
     <link rel="stylesheet" href="../../CSS/admin/user/index.css" type="text/css" />
+    <script src="../../js/admin/admin/list.js"></script>
   </head>
   <body>
     <header id="header" class="header">
@@ -153,7 +154,7 @@
 								<td><u><a href="">0원</a></u></td>
 								<td><u><a href="">0 건</a></u></td>
 								<td><u>1 건</u></td>
-								<td><a href="detail?id=${list.id}">보기</a></td>
+								<td><span class="detail">보기</span></td>
 							</tr>
 						</c:forEach>
 					</tbody>

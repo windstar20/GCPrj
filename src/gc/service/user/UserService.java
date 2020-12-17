@@ -36,15 +36,13 @@ public class UserService {
 		return userDao.delete(id);
 	}
 	
-	public User overlapId(String nicname) {
+	public boolean overlapId(String nicname) {
+		User user = userDao.overlapId(nicname);
 			
-		if( nicname.equals(null)) {
-			System.out.println("사용가능");
-		}
+		if( user.equals(null)) 
+			return true;
 		else
-			System.out.println("중복");
+			return false;		
 		
-		
-		return userDao.overlapId(nicname);
 	}
 }

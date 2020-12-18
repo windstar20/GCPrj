@@ -3,6 +3,7 @@ package gc.controller.admin.notice;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import gc.service.notice.NoticeService;
 
 
 @WebServlet("/admin/notice/edit")
+
 public class EidtController extends HttpServlet{
 	
 	@Override
@@ -32,8 +34,9 @@ public class EidtController extends HttpServlet{
 		String id = request.getParameter("id");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
+		String files = request.getParameter("files");
 		
-		Notice notice = new Notice(title, content);
+		Notice notice = new Notice(title, content, files);
 		notice.setId(Integer.parseInt(id));
 		
 		NoticeService service = new NoticeService();

@@ -5,6 +5,7 @@ import java.util.List;
 import gc.dao.product.ProductDao;
 import gc.dao.product.jdbc.JdbcProductDao;
 import gc.entity.product.Product;
+import gc.entity.product.ProductTaste;
 import gc.entity.product.view.ProductView;
 
 
@@ -25,21 +26,33 @@ public class ProductService {
 	//
 	//		return productDao.getList(startIndex, endIndex, field, query);
 	//	}
+	
+	public int update(Product product) {
+		
+		return productDao.update(product);
+	}
 
 	//전체 삭제 메소드
 	public int deleteAll(int[] ids) {
 
 		//DELETE NOTICE WHERE ID IN(...);
 		//noticeDao.deleteAll(ids);
-		//만약에 쿼리를 안다면 아래와 같이 하지 않을 것.
-		//
 
 		int result = 0;
 		for(int i=0; i<ids.length; i++) {
 			int id = ids[i];
 			result += productDao.delete(id);
 		}
+		
+		
+		return result;
+	}
+	
+	public int delete(int id) {
 
+		int result = 0;	
+		result = productDao.delete(id);
+		
 		return result;
 	}
 
@@ -124,4 +137,5 @@ public class ProductService {
 		
 		return productDao.getLast();
 	}
+
 }

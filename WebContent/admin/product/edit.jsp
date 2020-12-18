@@ -75,7 +75,8 @@
 	            <table class="product-basic-info product-table">
 	            	<tr>
 	                    <th>상품코드</th>
-	                    <td><input type="text" name="code" ></td>
+	                    <td><input type="text" name="code" value="${p.code}" style="border-color:#d2d2d2; background-color:#e5e5e5;"
+							onfocus="javascript:blur();"></td>
 	                </tr>
 	                <tr>
 	                    <th>상품명</th>
@@ -85,11 +86,38 @@
 	                </tr>   	                
 	                <tr>
 	                    <th>브랜드</th>
-	                     <td><input type="text" name="brand" value="${p.brand}"></td>
+	                     <td>
+	                     	<select name="brand" >
+		                     	<c:forEach var="b" items="${bList}">
+		                     		<option value="${b.id}">${b.name}</option>
+		                     	</c:forEach>
+	                     	</select>	                     
+	                     </td>
 	                </tr>
 	                <tr>
 	                    <th>상품분류</th>
-	                    <td><input type="text" name="category" value="${p.category}" ></td>
+	                    <td>
+	                    	<select name="category">
+	                    		<c:forEach var="c" items="${cList}">
+	                    			<option value="${c.id}">${c.name}</option>
+	                    		</c:forEach>
+	                    	</select>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <th>맛</th>
+	                    <td>
+	                    	<input type="text" value="${t.name}"></option>
+                    	<select name="taste">
+	                    		<c:forEach var="t" items="${tList}">
+	                    			<input type="text" value="${t.id}">${t.name}</option>
+	                    		</c:forEach>	                    	
+	                    </select> 
+	                    </td>
+	                </tr>
+	                <tr>
+	                	<th>재고</th>
+	                	<td><input type="text" name="inventory"  value="${p.inventory}"></td>
 	                </tr>
 	            </table>   
 	            
@@ -108,9 +136,9 @@
 	                <tr>
 	                    <th>배송정책</th>
 	                    <td>
-	                        <input type="radio" name="delivery" value="charge" />
+	                        <input type="radio" name="delivery-price" value="1" />
 	                        <label>일반배송</label>
-	                        <input type="radio" name="delivery" value="free" /> 
+	                        <input type="radio" name="delivery-price" value="2" /> 
 	                        <label>무료배송</label>
 	                    </td>
 	                </tr>

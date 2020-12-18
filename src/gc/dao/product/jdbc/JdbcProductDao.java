@@ -59,10 +59,11 @@ public class JdbcProductDao implements ProductDao{
 	public int update(Product product) {
 		int result = 0;				    
 
-		String url = DBContext.URL;
-		String sql = "UPDATE PRODUCT SET NAME=?, CONTENT=?, CODE=?, PRICE=?, DISPLAY, "
-				+ "BRAND_ID=?, CATEGORY_ID=?, ADMIN_ID=?, INVENTORY=?, DELIVERY_ID"  
+		String url = DBContext.URL;              //DISPLAY빠졌다!!!!
+		String sql = "UPDATE PRODUCT SET NAME=?, CONTENT=?, CODE=?, PRICE=?, "
+				+ "BRAND_ID=?, CATEGORY_ID=?, INVENTORY=?, DELIVERY_ID=? "  
 				+ "WHERE ID=?";
+		System.out.println("업데이트"+sql);
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
@@ -72,19 +73,17 @@ public class JdbcProductDao implements ProductDao{
 			st.setString(2,  product.getContent());
 			st.setString(3, product.getCode());
 			st.setInt(4, product.getPrice());
-			st.setInt(5, product.getDisplay());
-			st.setInt(6, product.getBrandId());
-			st.setInt(7, product.getCategoryId());
-			st.setInt(8, product.getAdminId());
-			st.setInt(9, product.getInventory());
-			st.setInt(10, product.getDeliveryId());			
-			st.setInt(11, product.getId());
+//			st.setInt(5, product.getDisplay());
+			st.setInt(5, product.getBrandId());
+			st.setInt(6, product.getCategoryId());
+			st.setInt(7, product.getInventory());
+			st.setInt(8, product.getDeliveryId());			
+			st.setInt(9, product.getId());
 
-			result = st.executeUpdate();			//ResultSet rs = st.executeQuery(sql);   //???��?��문에?���? ?��?��
-
+			result = st.executeUpdate();		
 			st.close();
 			con.close();
-
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -94,18 +93,17 @@ public class JdbcProductDao implements ProductDao{
 	}
 	@Override
 	public int delete(int id) {
-		int result = 0;				     //?���? ?��?���??��?�� DB�? insert
+		int result = 0;				    
 
 		String url = DBContext.URL;
-		String sql = "DELETE FROM PRODUCT WHERE ID=?";
+		String sql = "DELETE FROM PRODUCT WHERE ID IN("+id+")";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
-			PreparedStatement st = con.prepareStatement(sql);
-			st.setInt(1, id);
-
-			result = st.executeUpdate(); 
+			Statement st = con.createStatement();
+			
+			result = st.executeUpdate(sql); 
 
 			st.close();
 			con.close();
@@ -124,7 +122,7 @@ public class JdbcProductDao implements ProductDao{
 		Product p = null;
 
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM PRODUCT_VIEW WHERE ID="+id;
+		String sql = "SELECT * FROM PRODUCT WHERE ID="+id;
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -232,15 +230,15 @@ public class JdbcProductDao implements ProductDao{
 		int result = 0;				     //?���? ?��?���??��?�� DB�? insert
 
 		String url = DBContext.URL;
-		String sql = "DELETE FROM PRODUCT WHERE ID=";
+		String sql = "DELETE FROM PRODUCT WHERE ID IN("+ ids+")";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
-			PreparedStatement st = con.prepareStatement(sql);
-			st.setInt(1, id);
+			Statement st = con.createStatement();
 			
-			result = st.executeUpdate(); 
+			
+			result = st.executeUpdate(sql); 
 
 			st.close();
 			con.close();
@@ -316,43 +314,50 @@ public class JdbcProductDao implements ProductDao{
 	@Override
 	public List<ProductView> getViewList(int startIndex, int endIndex, String keyword, String query, String prevPrice, String nextPrice) {
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM(SELECT ROWNUM NUM, V.* "
-					   +" FROM(SELECT * FROM PRODUCT_VIEW ORDER BY ID) V"
-					   + ") WHERE NUM BETWEEN "+ startIndex + " AND "+ endIndex;				
+		String hSql = "SELECT * FROM(";
+		String sql = "SELECT ROWNUM NUM, V.* FROM(SELECT * FROM PRODUCT_VIEW ";		
 		
+		String mSql = " ORDER BY ID) V) WHERE NUM BETWEEN "+ startIndex + " AND "+ endIndex;
+		
+		//hSql "SELECT * FROM(
+		//sql  "SELECT ROWNUM NUM, V.* FROM(SELECT * FROM PRODUCT_VIEW "
+		//mSql "ORDER BY ID) V) WHERE NUM BETWEEN "+ startIndex + " AND "+ endIndex;				
+
+//		"SELECT * FROM(SELECT ROWNUM NUM, V.* "
+//		   +" FROM(SELECT * FROM PRODUCT_VIEW "
+//		   +" ORDER BY ID) V) WHERE NUM BETWEEN "+ startIndex + " AND "+ endIndex;
+
+		
+//		SELECT * FROM(SELECT ROWNUM NUM, V.* 
+//				FROM(SELECT * FROM PRODUCT_VIEW WHERE PRICE < 50000 ORDER BY ID) V) 
+//		WHERE NUM BETWEEN 1 AND 10;	
 		String keywordSql = null;
 		String priceSql = null;
 		
 		if(keyword != null && !keyword.equals("")) {
 			if(keyword.equals("name")) {
-				keywordSql = " AND "+keyword +" LIKE '%"+query+"%'"; 
+				sql = hSql + sql + mSql + " AND "+keyword+" LIKE '%"+query+"%'"; 
 			} else if(keyword.equals("inventory")) {
-				keywordSql = " AND "+keyword +" < "+query;
+				sql = hSql + sql + mSql + " AND "+keyword +" < "+query;
 			} else {
-				keywordSql = " AND "+keyword +" LIKE '%"+query+"%'";
-			}			 
+				sql = hSql + sql + mSql + " AND "+keyword +" LIKE '%"+query+"%'";
+			} 
+		} else if(prevPrice != null && !prevPrice.equals("")){			
+			if(nextPrice != null && !nextPrice.equals("")) { 
+				sql = hSql + sql + " WHERE PRICE >= " +prevPrice+" AND PRICE <= " +nextPrice +mSql;		    
+			} else  
+				sql = hSql + sql + " WHERE PRICE >= " +prevPrice+mSql; 
+		} else {
+		  	    sql = hSql + sql + mSql;
 		}
-//		AND price > 30000 AND price < 70000;
-//		 && (nextPrice == null && nextPrice.equals("")))
-		  if(prevPrice != null && !prevPrice.equals("")) { 
-			  priceSql = " AND PRICE >= " +prevPrice; }
-		  else if((prevPrice != null && !prevPrice.equals("")) && (nextPrice != null && !nextPrice.equals(""))){ 
-			  priceSql = " AND PRICE >= " +prevPrice+" AND PRICE =< " +nextPrice;
-		  } else if(nextPrice != null && !nextPrice.equals("")){ 
-			  priceSql = " AND PRICE =< " +nextPrice; 
-		  }
-		 
 		
-//		 if((keyword==null && query.equals("")) && (fromPrice != null && !prevQuery.equals(""))) 
-		if(keyword!=null && !query.equals("")) {
-			sql += keywordSql;
-		}else if((prevPrice != null && !prevPrice.equals("")) || (nextPrice != null && !nextPrice.equals(""))){
-			sql += priceSql;
-		}
-		System.out.println(sql);
-//		else {
+		
+//		if(keyword!=null && !query.equals("")) {
+//			sql += keywordSql;
+//		}else if((prevPrice != null && !prevPrice.equals("")) || (nextPrice != null && !nextPrice.equals(""))){
 //			sql += priceSql;
 //		}
+		System.out.println(sql);
 		
 		
 		

@@ -7,8 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import gc.service.product.ProductListService;
+import gc.service.product.ProductService;
 
 
 
@@ -20,7 +19,7 @@ public class DeleteController extends HttpServlet{
 			
 		int id = Integer.parseInt(request.getParameter("id"));
 		
-		ProductListService service = new ProductListService();
+		ProductService service = new ProductService();
 		int result = service.delete(id);
 		
 		response.sendRedirect("list");

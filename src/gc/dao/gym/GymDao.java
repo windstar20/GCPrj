@@ -3,6 +3,7 @@ package gc.dao.gym;
 import java.util.List;
 
 import gc.entity.gym.Gym;
+import gc.entity.gym.view.GymView;
 
 //SQL의 자바 함수화
 public interface GymDao {
@@ -13,7 +14,12 @@ public interface GymDao {
 	int deleteAll(int ids[]);
 	
 	Gym get(int id);
+	int getCount();
+	
 	List<Gym> getList();
-
-
+	
+	List<GymView> getViewList();
+	List<GymView> getViewist(int startIndex, int endIndex);
+	
+	Gym getLast();
 }

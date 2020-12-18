@@ -84,11 +84,7 @@
               <th>검색 키워드</th>
               <td>
                 <select>
-                  <option>사업자 명</option>
-                  <option>아이디</option>
-                  <option>이메일</option>
-                  <option>연락처</option>
-                  <option>전화번호</option>
+                  <option>사업자 명</option>                             
                   <option>시설 명</option>
                 </select>
                 <input class="sel-text" type="text">
@@ -108,10 +104,10 @@
           <div class = "del-button">
             <input type = "button" value = "삭제">
           </div>
-          <table border = "1">
+          <table border = "1" class="list-box">
             <thead>
               <tr>
-                <td><input type="checkbox"></td>
+                <td><input type="checkbox" class ="check-all"></td>
                 <td>번호</td>
                 <td>사업자 명</td>       
                 <td>시설 명</td>
@@ -128,7 +124,7 @@
             <tbody>
             	<c:forEach var="g" items="${list}">
 	              <tr>
-	                <td><input type="checkbox"></td>
+	                <td><input type="checkbox" class="check"></td>
 	                <td>${g.id }</td>
 	                <td>${g.name }</td>
 	                <td>${g.gymName }</td>
@@ -145,13 +141,17 @@
             </tbody>       
           </table>
            <div class="page-list">
-                <span><a href="">이전</a></span>
-                <ul>
-                	<c:forEach var="i" begin ="0" end="4">
-                  		<li>${i+1}</li>
+           		<c:if test="${page != 1 }">
+                	<span><a href="list?${page-1}">이전</a></span>
+            	</c:if>    
+            	<ul>
+                	<c:forEach var="i" begin ="1" end="${pageEnd }">
+                  		<li><a href="list?page=${i}">${i}</a></li>
                   	</c:forEach>
                 </ul>
-                <span><a href="">다음</a></span>
+                <c:if test="${page != pageEnd }">
+                	<span><a href="list?page=${page+1}">다음</a></span>
+                </c:if>
            </div>        
         </main>
       </section>

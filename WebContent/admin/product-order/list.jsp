@@ -220,7 +220,7 @@
 							</tbody>
 						</table>
 							<div class="paging">
-								<c:forEach var="i" begin="1" end="${pageNum }"><a href="list?page=${i}&size=${size}&filed=${field}&query=${query}&startDate=${startDate}&endDate=${endDate}">${i }</a></c:forEach>
+								<c:forEach var="i" begin="1" end="${pageNum }"><a href="list?page=${i}&size=${size}&filed=${field}&query=${query}&startDate=${startDate}&endDate=${endDate}" class="paging-button">${i }</a></c:forEach>
 							</div>
 					</section>
 				</div>

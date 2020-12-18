@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import gc.entity.point.Point;
 import gc.entity.point.view.PointUseView;
+import gc.entity.point.view.PointView;
+import gc.service.point.PointService;
 import gc.service.point.PointUseService;
 
 
@@ -25,9 +28,10 @@ public class ListController extends HttpServlet {
 		String query=null;
 		String startDate = null;
 		String endDate=null;
-		PointUseService service = new PointUseService();
-
-
+		PointUseService service1 = new PointUseService();
+		PointService service2 = new PointService();
+		PointView memberPoint = null;
+		int currentPoint= 0;
 		if(request.getParameter("page")!=null)
 			page = Integer.parseInt(request.getParameter("page"));
 
@@ -41,15 +45,22 @@ public class ListController extends HttpServlet {
 			startDate = request.getParameter("start-date");
 		if(request.getParameter("end-date")!=null)
 			endDate = request.getParameter("end-date");
-		List<PointUseView> list = service.getViewList(0, 0, field, query,startDate, endDate);
-
+		
+		List<PointUseView> list = service1.getViewList(0, 0, field, query,startDate, endDate);
+		
+		//System.out.println(memberPoint);
+		if(field!=null && query!=null && !field.equals("") && !query.equals("")) {
+			System.out.println(field +"  " + query);
+				memberPoint = service2.getView(field,query);
+				currentPoint = memberPoint.getcurrentAmount();
+		}
 		if(list.size()%10==0)
 			pageNum = list.size()/size;
 		else
 			pageNum = list.size()/size+1;
 
 		
-		list = service.getViewList(page, size, field, query, startDate, endDate);
+		list = service1.getViewList(page, size, field, query, startDate, endDate);
 		System.out.println(pageNum);
 
 		request.setAttribute("list", list);
@@ -60,6 +71,7 @@ public class ListController extends HttpServlet {
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("startDate", startDate);
 		request.setAttribute("endDate", endDate);
+		request.setAttribute("currentPoint", currentPoint);
 		request.getRequestDispatcher("point-use-list.jsp").forward(request, response);
 	}
 }

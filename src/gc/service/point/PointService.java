@@ -5,6 +5,7 @@ import java.util.List;
 import gc.dao.point.PointDao;
 import gc.dao.point.jdbc.JdbcPointDao;
 import gc.entity.point.Point;
+import gc.entity.point.view.PointView;
 
 
 public class PointService {
@@ -43,6 +44,12 @@ public class PointService {
 		
 		return PointDao.getList();
 	};
+	
+	public PointView getView(String field,String memberId) {
+
+			memberId = "\'"+memberId + "\'";
+		return PointDao.getView(field,memberId);
+	}
 	
 	
 	public void ChangeAmount(String memberId, int amount) {

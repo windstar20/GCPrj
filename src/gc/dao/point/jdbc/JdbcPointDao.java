@@ -12,6 +12,7 @@ import java.util.List;
 import gc.dao.jdbc.DBContext;
 import gc.dao.point.PointDao;
 import gc.entity.point.Point;
+import gc.entity.point.view.PointView;
 
 public class JdbcPointDao implements PointDao{
 
@@ -202,6 +203,58 @@ public class JdbcPointDao implements PointDao{
 
 
 		return list;
+	}
+
+	@Override
+	public PointView getView(String field,String memberId) {
+		PointView p = null;
+
+		String driver = "oracle.jdbc.driver.OracleDriver";
+		String url = DBContext.URL;
+		String sql="";
+		if (field.equals("name"))
+			sql = "SELECT * FROM POINT_VIEW WHERE NAME="+memberId;
+		else
+			sql="SELECT * FROM POINT_VIEW WHERE MEMBER_ID="+memberId;
+		//1. 드라이버 로드하기
+		try {
+			Class.forName(driver);
+			//2. 연결하기
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			//3. 명령어를 옮겨주기 위한 객체 생성
+			Statement st = con.createStatement();
+			//4. 결과집합 사용하기
+			ResultSet rs = st.executeQuery(sql);
+
+			if(rs.next()) {
+				int currentAmount;
+				String name;
+
+				memberId = rs.getString("member_id");
+				currentAmount = rs.getInt("current_amount");
+				name = rs.getString("name");
+
+
+				p = new PointView(
+						currentAmount,
+						memberId,
+						name
+						);
+			}
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+		return p;
 	}
 
 

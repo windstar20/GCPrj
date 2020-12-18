@@ -42,15 +42,16 @@ public class ListController extends HttpServlet{
 			startDate = request.getParameter("start-date");
 		if(request.getParameter("end-date")!=null)
 			endDate = request.getParameter("end-date");
-		List<ProductOrderView> list = service.getViewList(0, 0, field, query,startDate, endDate);
+		List<ProductOrderView> list = service.getViewList(0, 0, field, query,startDate, endDate); // between 없이.
+		// 26개
 
 		if(list.size()%10==0)
 			pageNum = list.size()/size;
 		else
-			pageNum = list.size()/size+1;
+			pageNum = list.size()/size+1; //3개
 
 		
-		list = service.getViewList(page, size, field, query, startDate, endDate);
+		list = service.getViewList(page, size, field, query, startDate, endDate); 
 		System.out.println(pageNum);
 
 		request.setAttribute("list", list);

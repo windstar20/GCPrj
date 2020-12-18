@@ -118,7 +118,6 @@
               <table border="1">
                 <thead>
                   <tr>
-                    <td><input type="checkbox"></td>
                     <td>번호</td>
                     <td>이름</td>
                     <td>아이디</td>
@@ -133,13 +132,12 @@
                     <td>주문총액</td>
                     <td>1:1</td>
                     <td>메모</td>
-                    <td>CRM</td>
+                    <td>자세히</td>
                   </tr>
                 </thead>
                 <tbody>
 						<c:forEach var="list" items="${userlist}">
 							<tr>
-								<td><input type="checkbox"></td>
 								<td>${list.id}</td>
 								<td>${list.name}</td>
 								<td>${list.nicname}</td>
@@ -154,7 +152,7 @@
 								<td><u><a href="">0원</a></u></td>
 								<td><u><a href="">0 건</a></u></td>
 								<td><u>1 건</u></td>
-								<td><span class="detail">보기</span></td>
+								<td><input class="detail" type="button" value="자세히" ></td>
 							</tr>
 						</c:forEach>
 					</tbody>

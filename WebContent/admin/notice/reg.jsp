@@ -77,8 +77,8 @@
 	                    </tr>
 	                </table>
 	                <div class="btn">
-	                    <input class="butt" type="submit" value="등록" />
-	                    <button class="butt" href="list">취소</a>
+	                    <input class="butt" type="submit" value="등&nbsp;&nbsp;록" />
+	                    <button class="butt" href="list">취&nbsp;&nbsp;소</a>
 	                </div>
 	            </section>
             </form>

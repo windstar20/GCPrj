@@ -62,7 +62,7 @@
                 <table class="table-wrap" border="1">
                     <tr>
                         <th>작&nbsp;성&nbsp;자</th>
-                        <td>&nbsp;&nbsp;관리자</td>
+                        <td>&nbsp;&nbsp;관&nbsp;리&nbsp;자</td>
                         <th>등&nbsp;록&nbsp;일</th>
                         <td>
                        		<fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd a hh:mm:ss"/>
@@ -90,11 +90,11 @@
                     </tr>
                 </table>
                 <div class="list-btn btn">
-                    <a class="btn-text btn-cancel" href="list"><input class="butt" type="button" value="목록"></a>
+                    <a class="btn-text btn-cancel" href="list"><input class="butt" type="button" value="목&nbsp;&nbsp;록"></a>
                 </div>
                 <div class="other-btn btn">
-                    <a href="edit?id=${n.id}"><input class="butt" type="button" value="수정"></a>
-                    <a href="del?id=${n.id}"><input class="butt" type="button" value="삭제"></a>
+                    <a href="edit?id=${n.id}"><input class="butt" type="button" value="수&nbsp;&nbsp;정"></a>
+                    <a href="del?id=${n.id}"><input class="butt" type="button" value="삭&nbsp;&nbsp;제"></a>
                 </div>
             </section>
         </section>

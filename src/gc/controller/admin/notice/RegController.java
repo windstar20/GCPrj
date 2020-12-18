@@ -44,8 +44,8 @@ public class RegController extends HttpServlet {
 			
 			//0. 사용자 입력을 변수에 담기
 			String title = request.getParameter("title");
-			//String file = request.getParameter("file");	
-			//Part filePart = request.getPart("file");
+//			String file = request.getParameter("file");	
+//			Part filePart = request.getPart("file");
 			String content = request.getParameter("content");
 			
 			Collection <Part> fileParts = request.getParts();
@@ -127,11 +127,12 @@ public class RegController extends HttpServlet {
 			
 			
 			NoticeService service = new NoticeService();
-			Notice notice = new Notice(title, content); //newId
+			Notice notice = new Notice(title, content, fileNames); //newId
 			// 꼬랑지 떼기~
 			notice.setFiles(fileNames); // "img1.jpg,img2.png,"
 			notice.setAdminNicname("관리자");
 			service.insert(notice);
+			response.sendRedirect("list");
 			
 			//2.목록페이지로 이동
 			// Servlet -> Servlet : forward(ing) / redirect(ion)

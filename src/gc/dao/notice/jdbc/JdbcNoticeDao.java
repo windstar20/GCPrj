@@ -58,7 +58,7 @@ public class JdbcNoticeDao implements NoticeDao {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);
-			st.setString(1, notice.getTitle());   // 새로 입력받은걸 때려 넣어야 되는데 그게 뭐였을까?....
+			st.setString(1, notice.getTitle()); 
 			st.setString(2, notice.getContent());
 			st.setString(3, notice.getFiles());
 			st.setInt(4, notice.getId());

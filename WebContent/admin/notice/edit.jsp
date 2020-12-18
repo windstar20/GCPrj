@@ -72,7 +72,7 @@
 	                    <tr>
 	                        <th>제&nbsp;&nbsp;&nbsp;&nbsp;목</th>
 	                        <td colspan="3">
-	                        	<input type="text" value='${n.title}'>
+	                        	<input type="text" name="title" value='${n.title}'>
 	                        </td>
 	                    </tr>
 	                    <tr>
@@ -84,7 +84,7 @@
 	                        <td colspan="3" class="td-small">&nbsp;&nbsp;&nbsp;<input type="file" name="file"></td>
 							<c:forTokens var="fileName" items="${n.files}" delims="," varStatus="st">
 	                      	<fmt:formatDate var="year" value="${n.regDate}" pattern="yyyy"/>
-	                      		<a download href="/static/notice/${year}/${n.id}/${fileName}">${fileName}</a> 
+	                      		<a download href="/static/notice/${year}/${n.id}/${files}">${files}</a> 
 	                      		<c:if test="${st.last == false}">
 	                      			/
 	                      		</c:if>
@@ -93,8 +93,9 @@
 	                    </tr>
 	                </table>
 	                <div class="other-btn btn">
-	                    <input class="butt" type="button" value="저장">
-	                    <a href="detail?id=${n.id}"><input class="butt" type="button"  value="취소"></a>
+	                	<input type="hidden" name="id" value="${n.id }" >
+	                    <input class="butt" type="submit" value="저&nbsp;&nbsp;장">
+	                    <a href="detail?id=${n.id}"><input class="butt" type="button"  value="취&nbsp;&nbsp;소"></a>
 	                </div>
 	            </section>
             </form>

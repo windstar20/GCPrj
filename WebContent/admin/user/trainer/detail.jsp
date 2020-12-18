@@ -52,7 +52,7 @@
                 <tr>
                     <th>소속 주소</th>
                     <td>
-                        
+                        ${t.gymAdress }
                     </td>
                 </tr>
                 <tr>
@@ -62,54 +62,59 @@
                     </td>
                 </tr>                
                 <tr>
-                    <th rowspan="${lListLength }">자격증</th>
-                	<c:forEach var="lList" items="${lList}">
-                		<table>
-                			<tr>
-                				<td>이름</td>
-			                    <td>
-			                        ${lList.name } 
-			                    </td>
-		                    </tr>
-		                    <tr>
-		                    	<td>내용</td>
-			                    <td>
-			                        ${lList.content }
-			                    </td>
-		                    </tr>
-		                    <tr>
-		                    	<td>기관</td>
-			                    <td>
-			                        ${lList.organ }
-			                    </td>
-		                    </tr>
-	                    </table>
-                    </c:forEach>
+                    <th>자격증</th>
+                    <td>
+	                	<c:forEach var="lList" items="${lList}">
+	                		<table class="inner-table">
+	                			<tr>
+	                				<th>이름</th>
+				                    <td>
+				                        ${lList.name } 
+				                    </td>
+			                    </tr>
+			                    <tr>
+			                    	<th>내용</th>
+				                    <td>
+				                        ${lList.content }
+				                    </td>
+			                    </tr>
+			                    <tr>
+			                    	<th>기관</th>
+				                    <td>
+				                        ${lList.organ }
+				                    </td>
+			                    </tr>
+		                    </table>
+	                    </c:forEach>
+                    </td>
                 </tr>
                 <tr>
-                    <th rowspan="${cListLength }">입상경력</th>
-	                <c:forEach var="cList" items="${cList }">
-	                    <table>
-                			<tr>
-                				<td>이름</td>
-			                    <td>
-			                        ${cList.name } 
-			                    </td>
-		                    </tr>
-		                    <tr>
-		                    	<td>내용</td>
-			                    <td>
-			                        ${cList.content }
-			                    </td>
-		                    </tr>
-		                    <tr>
-		                    	<td>날짜</td>
-			                    <td>
-			                        ${cList.date }
-			                    </td>
-		                    </tr>
-	                    </table>
-                    </c:forEach>
+                    <th>입상경력</th>
+                    <td>
+		                <c:forEach var="cList" items="${cList }">
+		                
+		                    <table class="inner-table">
+	                			<tr>
+	                				<th>이름</th>
+				                    <td>
+				                        ${cList.name } 
+				                    </td>
+			                    </tr>
+			                    <tr>
+			                    	<th>내용</th>
+				                    <td>
+				                        ${cList.content }
+				                    </td>
+			                    </tr>
+			                    <tr>
+			                    	<th>날짜</th>
+				                    <td>
+				                        ${cList.date }
+				                    </td>
+			                    </tr>
+		                    </table>
+	                    </c:forEach>
+                    </td>
                 </tr>
                 <tr>
                     <th>회원등급</th>
@@ -129,13 +134,13 @@
                 <tr>
                     <th>이용 고객수</th>
                     <td>
-
+						${t.resCnt }
                     </td>
                 </tr>
                 <tr>
                     <th>댓글 등록 횟수</th>
                     <td>
-
+						${t.cmtCnt }
                     </td>
                 </tr>
             </table>
@@ -159,31 +164,31 @@
             <tr>
                 <th>사업자번호</th>
                 <td>
-                    <input type="text">
+                    ${t.license }
                 </td>
             </tr>
             <tr>
                 <th>상호 법인명</th>
                 <td>
-                    <input type="text">
+                    ${t.gymName }
                 </td>
             </tr>
             <tr>
-                <th>성명</th>
+                <th>대표자 성함</th>
                 <td>
-                    <input type="text">
+                    ${t.gName }
                 </td>
             </tr>
             <tr>
                 <th>사업장 소재지</th>
                 <td>
-                    <input type="text">
+                    ${t.gymAdress }
                 </td>
             </tr>
             <tr>
                 <th>업종</th>
                 <td>
-                    <input type="text">
+                    헬스클럽
                 </td>
             </tr>
             <!-- ============================== -->

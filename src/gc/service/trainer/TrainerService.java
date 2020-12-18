@@ -5,6 +5,7 @@ import java.util.List;
 import gc.dao.trainer.TrainerDao;
 import gc.dao.trainer.jdbc.JdbcTrainerDao;
 import gc.entity.trainer.Trainer;
+import gc.entity.trainer.view.TrainerView;
 
 public class TrainerService {
 	private TrainerDao trainerDao;
@@ -31,6 +32,11 @@ public class TrainerService {
 	public Trainer get(int id) {
 		
 		return trainerDao.get(id);
+	}
+	
+	public TrainerView getView(int id) {
+		
+		return trainerDao.getView(id);
 	}
 	
 	public List<Trainer> getList(){

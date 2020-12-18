@@ -3,6 +3,7 @@ package gc.dao.trainer;
 import java.util.List;
 
 import gc.entity.trainer.Trainer;
+import gc.entity.trainer.view.TrainerView;
 
 public interface TrainerDao {
 	int insert(Trainer trainer);
@@ -12,6 +13,8 @@ public interface TrainerDao {
 	int delete(int id);
 	
 	Trainer get(int id);
+	
+	TrainerView getView(int id);
 	
 	List<Trainer> getList();
 	

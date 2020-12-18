@@ -13,6 +13,7 @@ import java.util.List;
 import gc.dao.gym.GymDao;
 import gc.dao.gym.jdbc.JdbcGymDao;
 import gc.entity.gym.Gym;
+import gc.entity.gym.view.GymView;
 
 public class GymService {
 	
@@ -36,6 +37,19 @@ public class GymService {
 		return gymDao.delete(id);
 	}
 	
+	public List<GymView> getViewList(){
+		
+		return gymDao.getViewList();
+	}
+	
+	public List<GymView> getViewList(int page,int size){
+		
+		int startIndex = 1 + (page - 1) * size; 
+		int endIndex = page * 5;
+		
+		return gymDao.getViewist(startIndex, endIndex);
+	}
+	
 	public Gym get(int id) {
 		
 		return gymDao.get(id);
@@ -45,7 +59,7 @@ public class GymService {
 		
 		return gymDao.getList();
 	}
-	
+
 	
 	
 }

@@ -145,10 +145,11 @@
 
                     <a href = userpage.html><input type = "submit" value = "회원가입"></a>
             </main>
+        </div>
         </section>
-    </div>
-    <footer class = "footer">
-
-    </footer>
+            <footer class = "footer">
+                <h1 class ="no-display">푸터</h1>
+                근처 고객님의 성공과 함께합니다
+            </footer>
 </body>
 </html>

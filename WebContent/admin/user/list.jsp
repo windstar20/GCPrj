@@ -117,43 +117,31 @@
                 </div>
               <table border="1">
                 <thead>
-                  <tr>
-                    <td><input type="checkbox"></td>
-                    <td>번호</td>
+                  <tr>                    
+                  	<td>번호</td>
                     <td>이름</td>
                     <td>아이디</td>
                     <td>회원등급</td>
-                    <td>인증방식</td>
                     <td>가입일</td>
-                    <td>방문수</td>
-                    <td>비번변경/주소/문자/메일</td>
-                    <td>적립금</td>
-                    <td>쿠폰</td>
-                    <td>주문횟수</td>
+                    <td>주소</td>
+                    <td>메일</td>
+                    <td>핸드폰</td>
                     <td>주문총액</td>
-                    <td>1:1</td>
-                    <td>메모</td>
                     <td>CRM</td>
                   </tr>
                 </thead>
                 <tbody>
 						<c:forEach var="list" items="${userlist}">
 							<tr>
-								<td><input type="checkbox"></td>
 								<td>${list.id}</td>
 								<td>${list.name}</td>
 								<td>${list.nicname}</td>
 								<td>일반회원</td>
-								<td>인증안함</td>
-								<td>18.02.01</td>
-								<td>0회미접속</td>
-								<td>비번,${list.address}/${list.phone},문자,</td>
-								<td><u><a href="">0</a></u></td>
-								<td><u><a href="">0장</a></u></td>
-								<td>0회</td>
+								<td>${list.regdate}</td>
+								<td>${list.address}</td>
+								<td>${list.email}</td>
+								<td>${list.phone}</td>
 								<td><u><a href="">0원</a></u></td>
-								<td><u><a href="">0 건</a></u></td>
-								<td><u>1 건</u></td>
 								<td><span class="detail">보기</span></td>
 							</tr>
 						</c:forEach>

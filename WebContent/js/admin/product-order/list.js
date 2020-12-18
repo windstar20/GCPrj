@@ -1,3 +1,20 @@
+//=======AJAX 목록 불러오기========
+// window.addEventListener("load", function () {
+//   var pagingBtn = document.querySelector(".paging-button");
+//   var request = new XMLHttpRequest();
+//   pagingBtn.onclick = function () {
+//     request.onreadystatechange = function() {
+//       if(request.readyState == 4) {
+//         var list = JSON.parse(request.responseText);
+
+//       }
+//     }
+
+//     request.open("GET", "list", true);
+//     request.send();
+//   };
+// });
+
 window.addEventListener("load", function () {
   var orderState = document.querySelector(".order-state");
   var table = document.querySelector(".order-list-table");

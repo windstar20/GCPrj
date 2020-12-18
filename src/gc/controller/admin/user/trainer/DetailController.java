@@ -9,12 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import gc.dao.trainer.jdbc.JdbcTrainerReservationDao;
 import gc.entity.trainer.Trainer;
 import gc.entity.trainer.TrainerContest;
 import gc.entity.trainer.TrainerLicense;
+import gc.entity.trainer.view.TrainerView;
+import gc.service.trainer.TrainerCommentService;
 import gc.service.trainer.TrainerContestService;
 import gc.service.trainer.TrainerImgService;
 import gc.service.trainer.TrainerLicenseService;
+import gc.service.trainer.TrainerReservationService;
 import gc.service.trainer.TrainerService;
 
 @WebServlet("/admin/user/trainer/detail")
@@ -23,14 +27,13 @@ public class DetailController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int id = Integer.parseInt(req.getParameter("id"));
-
 		
 		TrainerService service = new TrainerService();
 		TrainerLicenseService lService = new TrainerLicenseService();
 		TrainerContestService cService = new TrainerContestService();
-		TrainerImgService iservice = new TrainerImgService();
+		TrainerImgService iService = new TrainerImgService();
 		
-		Trainer t = service.get(id);
+		TrainerView t = service.getView(id);
 		
 		List<TrainerLicense> lList = lService.getList(id);
 		List<TrainerContest> cList = cService.getList(id);

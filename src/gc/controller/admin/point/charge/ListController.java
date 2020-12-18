@@ -9,8 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import gc.entity.point.Point;
 import gc.entity.point.view.PointChargingView;
+import gc.entity.point.view.PointView;
 import gc.service.point.PointChargingService;
+import gc.service.point.PointService;
 
 
 @WebServlet("/admin/product-order/point-charge-list")
@@ -26,8 +29,10 @@ public class ListController extends HttpServlet {
 		String startDate = null;
 		String endDate=null;
 		PointChargingService service = new PointChargingService();
-
-
+		PointService service2 = new PointService();
+		PointView memberPoint = null;
+		int currentPoint= 0;
+		
 		if(request.getParameter("page")!=null)
 			page = Integer.parseInt(request.getParameter("page"));
 
@@ -48,7 +53,10 @@ public class ListController extends HttpServlet {
 		else
 			pageNum = list.size()/size+1;
 
-		
+		if(field!=null && query!=null && !field.equals("") && !query.equals("")) {
+			memberPoint = service2.getView(field,query);
+		currentPoint = memberPoint.getcurrentAmount();
+		}
 		list = service.getViewList(page, size, field, query, startDate, endDate);
 		System.out.println(pageNum);
 
@@ -60,6 +68,7 @@ public class ListController extends HttpServlet {
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("startDate", startDate);
 		request.setAttribute("endDate", endDate);
+		request.setAttribute("currentPoint", currentPoint);
 		request.getRequestDispatcher("point-charge-list.jsp").forward(request, response);
 	}
 }

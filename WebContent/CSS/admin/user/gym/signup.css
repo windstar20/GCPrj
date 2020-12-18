@@ -17,6 +17,7 @@
 .main{
     text-align: center;
     padding: 50px;
+    border-bottom: none;
 }
 .main-table{
     margin-left: auto;

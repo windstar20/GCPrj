@@ -132,7 +132,8 @@
                 <ul class="table-sum">
                   <li>검색결과 : <span class="total-count">0</span>건</li>
                   <li>사용 금액 : <span class="total-price">0</span>원</li>
-                  <li>현재 회원 포인트 : <span class="current-point">0</span>p</li>
+                  <fmt:formatNumber var="point" value="${currentPoint}" type="number"/>
+                  <li>현재 회원 포인트 : <span class="current-point">${point}</span>p</li>
 
                   <form action="point-use-list">
                     <input type="hidden" name="page" value="1" />

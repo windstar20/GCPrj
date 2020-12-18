@@ -13,6 +13,7 @@ import java.util.List;
 import gc.dao.jdbc.DBContext;
 import gc.dao.trainer.TrainerDao;
 import gc.entity.trainer.Trainer;
+import gc.entity.trainer.view.TrainerView;
 
 public class JdbcTrainerDao implements TrainerDao{
 
@@ -214,6 +215,63 @@ public class JdbcTrainerDao implements TrainerDao{
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Override
+	public TrainerView getView(int id) {
+		TrainerView t = null;
+		
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM TRAINER_VIEW WHERE ID="+id;
+		
+		try {
+			Class.forName(DBContext.DRIVER);
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
+			while(rs.next()) {
+				String name = rs.getString("name");
+			    String gymName = rs.getString("gym_name");
+			    String gender = rs.getString("gender");
+			    String phone = rs.getString("phone");
+			    Date regdate = rs.getDate("regdate");
+			    String gymAdress = rs.getString("gym_adress");
+				int resCnt = rs.getInt("res_cnt");
+				int cmtCnt = rs.getInt("cmt_cnt");
+				String license = rs.getString("license");
+				String gName = rs.getString("g_name");
+				
+				t = new TrainerView(
+					id,
+				    name,
+				    gymName,
+				    gender,
+				    phone,
+				    "",
+				    0,
+				    regdate,
+				    gymAdress,
+				    resCnt,
+				    cmtCnt,
+				    license,
+				    gName
+				);
+				
+			}
+			
+			rs.close();
+			st.close();
+			con.close();
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return t;
 	}
 
 }

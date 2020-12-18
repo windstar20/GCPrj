@@ -1,5 +1,8 @@
 //===========회원 현재 금액 ============
-window.addEventListener("load", function () {});
+window.addEventListener("load", function () {
+  var currentPoint = document.querySelector(".current-point");
+  var fieldValue = searchQueryString("field");
+});
 function searchQueryString(key) {
   return new URLSearchParams(location.search).get(key);
 }

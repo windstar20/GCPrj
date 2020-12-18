@@ -1,7 +1,7 @@
 .body{
     background: rgb(102, 96, 177);
     width: auto;
-    font-family: "돋움",Arial, Helvetica, sans-serif;
+    font-family: "�룍��",Arial, Helvetica, sans-serif;
     font-size: 13px;
 }
     .body .header{
@@ -26,14 +26,15 @@
         border: 1px solid black;
         border-left: none;
         border-collapse: collapse;
-        
+        width: 100%;
     }
     .main table th {
         background: #ece3e3;
-        text-align: left;
+        text-align: center;
         padding: 5px 10px;
         border: 1px solid rgb(209, 202, 202);
         border-left: none;
+        width: 30%
     }
     /* .main table tr th+td{
         column-span: 1;
@@ -51,4 +52,13 @@
 
 
         
-    img src="../../image/admin/right-button.png"
+    /* img src="../../image/admin/right-button.png" */
+
+.inner-table{
+    width: 100%;
+}
+
+.inner-table tr th{
+    background: rgb(177, 173, 235);
+    width: 30%
+}

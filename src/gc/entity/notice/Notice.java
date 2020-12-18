@@ -15,7 +15,7 @@ public class Notice {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Notice(String title, String content) {
+	public Notice(String title, String content, String files) {
 		this.title = title;
 		this.content = content;
 	}

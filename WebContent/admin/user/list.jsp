@@ -117,8 +117,9 @@
                 </div>
               <table border="1">
                 <thead>
-                  <tr>                    
-                  	<td>번호</td>
+
+                  <tr>
+                    <td>번호</td>
                     <td>이름</td>
                     <td>아이디</td>
                     <td>회원등급</td>

@@ -71,7 +71,7 @@
                         <tbody>
                         <c:forEach var="n" items="${list}" >
                             <tr>
-                            	<td class="title indent text-align-left"><a href="detail?id=${n.id}">${n.title}</a></td>
+                            	<td class="title-name"><a href="detail?id=${n.id}">${n.title}</a></td>
                                 <td class="no">${n.adminNicname}</td>
                                 <td class="date">${n.regDate}</td>
                             </tr>
@@ -91,22 +91,7 @@
                		<a class="img-button next-button" href="list?page=${page+1}">다음</a>
                 </c:if>	
                    	</div>
-                        <a href="reg"><button class="butt">등록</button></a>
-                    <!-- <div class="search-bar">
-                        <h1 class="no-display">검색 키워드</h1>
-                        <select>
-                            <option value="bbs-title">제목</option>
-                            <option value="bbs-content">내용</option>
-                            <option value="user-id">아이디</option>
-                            <option value="bbs-name">이름</option>
-                            <option value="user-nick">닉네임</option>
-                            <option value="bbs-ip">IP주소</option>
-                            <option value="good-name">상품명</option>
-                            <option value="good-code">상품코드</option>
-                        </select>
-                        <input type="text" value="">
-                        <input type="button" value="검색">
-                    </div> -->
+                        <a href="reg"><button class="butt">등&nbsp;&nbsp;록</button></a>
                 </section>
             </main>
         </section>

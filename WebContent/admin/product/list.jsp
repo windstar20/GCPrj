@@ -103,7 +103,7 @@
 	                <div class="sale-row">
 	                  <div class="sale-head">판매가</div>
 	                  <div class="sale-cell">
-	                       <input type="text" name ="prevPrice" >원 ~ <input type="text" name="nextprice" >원
+	                       <input type="text" name ="prevPrice" >원 ~ <input type="text" name="nextPrice" >원
 	                  </div>               
 	                </div>
 			        <div class="btn-search">
@@ -141,56 +141,59 @@
                 <li class="title-edit">수정</li>
                 <li class="title-remove">삭제</li>
               </ul>
-
-           	  <c:forEach var="p" items="${list}">
-	              <ul class="product-row">
-	                  <li class="product-check-list">
-	                    <input class="check" type="checkbox" name="check" value="${p.id}">
-	                  </li>
-	                  <li class="product-number-list">${p.id}</li>                  
-	                  <li class="product-name-list">
-	                    <div class="product-name-img">
-	                      <a href="#">${p.fileName}</a>
-	                    </div>
-	                    <div class="product-info">
-	                      <div class="product-code">${p.code}</div>
-	                      <div class="product-category">${p.category}</div>
-	                      <div class="product-name">${p.name}</div>
-	                      <div class="product-brand">${p.brand}</div> <!--브랜드-->
-	                    </div>
-	                  </li>                
-	                <li class="product-regdate-list">${p.regdate}</li>
-	                <li class="product-price-list">
-	                    <label>${p.price}</label>
-	                </li>
-	   				
-	   				<li class="product-inventory-list">
-	                  <label>${p.inventory}</label> 개
-	                </li>
-	                <li class="product-delivery-list">
-	                  <label>${p.delivery}</label>
-	                </li>
-	   				<li class="product-display-list">
-	                    <input type="button" value="진열">
-	                </li>
-	                <li class="product-edit-list">
-	                    <a href="edit?id=${p.id}"><input type="button" value="수정"></a>
-	                </li>
-	                <li class="product-remove-list">
-	                    <a href="del?id=${p.id}"><input type="button" value="삭제" /></a>
-	                </li>
-	              </ul>
-              </c:forEach>
-            </div> <!--productList-box end-->
-          </section>   <!-- product container end-->
-          <section class="pager-container">
-            <div class="pager-box">
-              <h1 class="no-display">페이지 요청목록</h1>
-              <div class="check-box-edit">
-<!--                 <input type="button" value="체크상품수정"> -->
-                <input type="button" value="체크상품삭제">
-                <input type="button" value="체크상품진열">
-              </div>
+              
+			  <form method="post" action="list"> 
+	           	  <c:forEach var="p" items="${list}">
+		              <ul class="product-row">
+		                  <li class="product-check-list">
+		                    <input class="check" type="checkbox" name="selected" value="${p.id}">
+		                  </li>
+		                  <li class="product-number-list">${p.id}</li>                  
+		                  <li class="product-name-list">
+		                    <div class="product-name-img">
+		                      <a href="#">${p.fileName}</a>
+		                    </div>
+		                    <div class="product-info">
+		                      <div class="product-code">${p.code}</div>
+		                      <div class="product-category">${p.category}</div>
+		                      <div class="product-name">${p.name}</div>
+		                      <div class="product-brand">${p.brand}</div> <!--브랜드-->
+		                    </div>
+		                  </li>                
+		                <li class="product-regdate-list">${p.regdate}</li>
+		                <li class="product-price-list">
+		                    <label>${p.price}</label>
+		                </li>
+		   				
+		   				<li class="product-inventory-list">
+		                  <label>${p.inventory}</label> 개
+		                </li>
+		                <li class="product-delivery-list">
+		                  <label>${p.delivery}</label>
+		                </li>
+		   				<li class="product-display-list">
+		                    <input type="button" value="진열">
+		                </li>
+		                <li class="product-edit-list">
+		                    <a href="edit?id=${p.id}"><input type="button" value="수정"></a>
+		                </li>
+		                <li class="product-remove-list">
+		                    <a href="del?id=${p.id}"><input type="button" value="삭제" /></a>
+		                </li>
+		              </ul>
+	              </c:forEach>
+	          </div> <!--productList-box end-->
+	          </section>   <!-- product container end-->
+	          <section class="pager-container">
+	            <div class="pager-box">
+	              <h1 class="no-display">페이지 요청목록</h1>
+	              <div class="check-box-edit">
+	<!--                 <input type="button" value="체크상품수정"> -->
+					<a href="list"><input type="submit" value="체크상품삭제" /></a>                
+	                <input type="submit" value="체크상품진열">
+	              </div>
+              </form>
+              
               <!-- <div class="before-page"> -->
                 <!-- </div> -->
               <nav class="pager-menu">

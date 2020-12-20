@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../../../CSS/admin/admin.css">
     <link rel="stylesheet" href="../../../CSS/admin/user/index.css">
     <link rel="stylesheet" href="../../../CSS/admin/user/index.css">
-    <script src="../../../js/admin/user/trainer/detail.js"></script>
+    <script src="../../../js/admin/user/trainer/list.js"></script>
 </head>
 <body>
 <header id="header" class="header">

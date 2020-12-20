@@ -15,4 +15,5 @@ public interface PointChargingDao{
 	List<PointChargingView> getViewList();
 	List<PointChargingView> getViewList(int startIndex, int endIndex);
 	List<PointChargingView> getViewList(int startIndex, int endIndex, String field, String query, String startDate, String endDate);
+	List<PointChargingView> getViewList(int startIndex, int endIndex, String field, String query, String startDate, String endDate, String sortField, String sortOption);
 }

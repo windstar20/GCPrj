@@ -62,6 +62,12 @@ public class ProductOrderService {
 		int startIndex=0;
 		int endIndex=0;
 		
+
+		if(field!=null && !field.equals("")) {
+			query = (field.equals("number"))? (" = "+query): (" LIKE '%"+query+"%'"); // QUERY가 숫자일 때 처리
+			field = (field.equals("number"))? "\"NUMBER\"": field; //Field 가 예약어 number일 경우 처리
+		}
+		
 		if(page!=0 && size!=0) {
 			startIndex = 1 + (page-1)*size;
 			endIndex = size*page;
@@ -70,11 +76,30 @@ public class ProductOrderService {
 			startDate="\'" + startDate +"\'";
 		if(endDate!=null && !endDate.equals(""))
 			endDate="\'" + endDate +"\'";
-		return productOrderDao.getViewList(startIndex, endIndex,field, query,null,null,startDate,endDate);
+		return productOrderDao.getViewList(startIndex, endIndex,field, query,null, null,startDate,endDate);
 	};
 	
 	
-
+	public List<ProductOrderView> getViewList(int page, int size, String field, String query,String startDate, String endDate, String sortField, String sortOption) {
+		
+		int startIndex=0;
+		int endIndex=0;
+		
+		if(field!=null && !field.equals("")) {
+			query = (field.equals("number"))? (" = "+query): (" LIKE '%"+query+"%'"); // QUERY가 숫자일 때 처리
+			field = (field.equals("number"))? "\"NUMBER\"": field; //Field 가 예약어 number일 경우 처리
+		}
+		
+		if(page!=0 && size!=0) {
+			startIndex = 1 + (page-1)*size;
+			endIndex = size*page;
+		}
+		if(startDate!=null && !startDate.equals(""))
+			startDate="\'" + startDate +"\'";
+		if(endDate!=null && !endDate.equals(""))
+			endDate="\'" + endDate +"\'";
+		return productOrderDao.getViewList(startIndex, endIndex,field, query,null,null,startDate,endDate,sortField,sortOption);
+	}
 
 
 

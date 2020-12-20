@@ -8,11 +8,11 @@ import gc.entity.point.view.PointView;
 public interface PointDao {
 	int insert(Point point);
 	int update(Point point);
-	int delete(String memberId);
+	int delete(String memberNicname);
 	
-	Point get(String memberId);
+	Point get(String memberNicname);
 	List<Point> getList();
 	
-	PointView getView(String field,String memberId);
+	PointView getView(String field,String memberNicname);
 
 }

@@ -1,20 +1,136 @@
-//=======AJAX 목록 불러오기========
-// window.addEventListener("load", function () {
-//   var pagingBtn = document.querySelector(".paging-button");
-//   var request = new XMLHttpRequest();
-//   pagingBtn.onclick = function () {
-//     request.onreadystatechange = function() {
-//       if(request.readyState == 4) {
-//         var list = JSON.parse(request.responseText);
+//=============pager, 정렬 AJAX==========
+window.addEventListener("load", function () {
+  var sortBar = document.querySelector(".sort-bar");
+  var upButtons = sortBar.querySelectorAll(".up-button");
+  var downButtons = sortBar.querySelectorAll(".down-button");
+  var listTable = document.querySelector(".order-list-table");
+  var tbody = listTable.querySelector("tbody");
+  var paging = document.querySelector(".paging");
 
-//       }
-//     }
+  paging.onclick = function (e) {
+    if (e.target.tagName != "A") return;
+    e.preventDefault();
+    var page = parseInt(e.target.innerText);
+    var urlSearch = new URLSearchParams(location.search); // 쿼리스트링 받아오기
+    var size = urlSearch.get("size");
+    var field = urlSearch.get("field");
+    var query = urlSearch.get("query");
+    var startDate = urlSearch.get("startDate");
+    var endDate = urlSearch.get("endDate");
+    var sortField = urlSearch.get("sort-field");
+    var sortOption = urlSearch.get("sort-option");
+    console.log(page, size, field, query, startDate, endDate, sortField, sortOption);
 
-//     request.open("GET", "list", true);
-//     request.send();
-//   };
-// });
+    load(page, size, field, query, startDate, endDate, sortField, sortOption);
+  };
 
+  // sortBar.addEventListener("click", function (e) {
+  //   if (e.target.tagName != "FORM") return;
+  //   e.stopPropagation();
+  //   var urlSearch = new URLSearchParams(location.search); // 쿼리스트링 받아오기
+  //   var page = urlSearch.get("page");
+  //   var size = urlSearch.get("size");
+  //   var field = urlSearch.get("field");
+  //   var query = urlSearch.get("query");
+  //   var startDate = urlSearch.get("startDate");
+  //   var endDate = urlSearch.get("endDate");
+  //   var sortField = "number";
+  //   var sortOption = "desc";
+  //   console.log(page, size, field, query, startDate, endDate, sortField, sortOption);
+  //   load(page, size, field, query, startDate, endDate, sortField, sortOption);
+  // });
+
+  function load(page, size, field, query, startDate, endDate, sortField, sortOption) {
+    if (page == undefined || page == NaN) page = 1;
+    if (size == null || size == NaN) size = 10;
+    if (field == null) field = "";
+    if (query == null) query = "";
+    if (startDate == null) startDate = "";
+    if (endDate == null) endDate = "";
+    if (sortField == null) sortField = "number";
+    if (sortOption == null) sortOption = "asc";
+    var request = new XMLHttpRequest();
+    request.onload = function () {
+      tbody.innerHTML = "";
+      var lists = JSON.parse(request.responseText);
+      for (var i = 0; i < lists.length; i++) {
+        var p = lists[i];
+        p.totalPrice = p.totalPrice.toLocaleString();
+
+        var tr =
+          "									<tr>\
+        <td>" +
+          p.number +
+          "</td>\
+        <td>" +
+          p.productName +
+          "</td>\
+        <td>" +
+          p.productCount +
+          "개</td>\
+        <td>\
+        " +
+          p.regdate +
+          "</td>\
+        <td></td>\
+        <td> " +
+          p.senderName +
+          " <br /> <span>(" +
+          p.senderPhone +
+          ")</span>\
+        </td>\
+        <td>" +
+          p.receiverName +
+          " <br /> <span>(" +
+          p.receiverPhone +
+          ')</span>\
+        </td>\
+        <td>\
+        <span class="price">' +
+          p.totalPrice +
+          '</span>원</td>\
+        <td>무통장<br />입금자명\
+        </td>\
+        <td class="order-state"></td>\
+        <td><input class="select-button jsbutton" type="button"\
+          value="입금확인" /> \
+          <a href="detail?id=' +
+          p.id +
+          '"><input\
+          class="select-button" type="button" value="상세보기"  /></a>\
+          <a href="del?id=' +
+          p.id +
+          '"><input class="select-button" type="button" value="주문취소" /></a>\
+        </td>\
+      </tr>';
+
+        tbody.insertAdjacentHTML("beforeend", tr);
+      }
+    };
+    request.open(
+      "GET",
+      "/api/product-order/list?page=" +
+        page +
+        "&size=" +
+        size +
+        "&field=" +
+        field +
+        "&query=" +
+        query +
+        "&start-date=" +
+        startDate +
+        "&end-date=" +
+        endDate +
+        "&sort-field=" +
+        sortField +
+        "&sort-option=" +
+        sortOption,
+      true
+    );
+    request.send();
+  }
+});
+//================================================================
 window.addEventListener("load", function () {
   var orderState = document.querySelector(".order-state");
   var table = document.querySelector(".order-list-table");

@@ -12,8 +12,8 @@ public class PointUseView extends PointUse{
 		// TODO Auto-generated constructor stub
 	}
 
-	public PointUseView(int id, Date regdate, int amount, String content, String member_id, String name) {
-		super(id, regdate, amount, content, member_id);
+	public PointUseView(int id, Date regdate, int amount, String content, String memberNicname, String name) {
+		super(id, regdate, amount, content, memberNicname);
 		this.name = name;
 	}
 

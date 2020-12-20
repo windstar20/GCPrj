@@ -26,15 +26,15 @@ public class PointService {
 	}
 
 
-	public int delete(String memberId) {
+	public int delete(String memberNicname) {
 
-		return PointDao.delete(memberId);
+		return PointDao.delete(memberNicname);
 	}
 
 
-	public Point get(String memberId) {
+	public Point get(String memberNicname) {
 
-		return PointDao.get(memberId);
+		return PointDao.get(memberNicname);
 	}
 
 	
@@ -45,15 +45,15 @@ public class PointService {
 		return PointDao.getList();
 	};
 	
-	public PointView getView(String field,String memberId) {
+	public PointView getView(String field,String memberNicname) {
 
-			memberId = "\'"+memberId + "\'";
-		return PointDao.getView(field,memberId);
+			memberNicname = "\'"+memberNicname + "\'";
+		return PointDao.getView(field,memberNicname);
 	}
 	
 	
-	public void ChangeAmount(String memberId, int amount) {
-		Point p = PointDao.get(memberId);
+	public void ChangeAmount(String memberNicname, int amount) {
+		Point p = PointDao.get(memberNicname);
 		amount += p.getcurrentAmount();
 		p.setcurrentAmount(amount);
 		PointDao.update(p);

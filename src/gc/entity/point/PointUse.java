@@ -7,7 +7,7 @@ public class PointUse {
 	private Date regdate;
 	private int amount;
 	private String content;
-	private String memberId;
+	private String memberNicname;
 	
 	
 	public PointUse() {
@@ -15,13 +15,13 @@ public class PointUse {
 	}
 
 
-	public PointUse(int id, Date regdate, int amount, String content, String memberId) {
+	public PointUse(int id, Date regdate, int amount, String content, String memberNicname) {
 		super();
 		this.id = id;
 		this.regdate = regdate;
 		this.amount = amount;
 		this.content = content;
-		this.memberId = memberId;
+		this.memberNicname = memberNicname;
 	}
 
 
@@ -65,20 +65,20 @@ public class PointUse {
 	}
 
 
-	public String getmemberId() {
-		return memberId;
+	public String getMemberNicname() {
+		return memberNicname;
 	}
 
 
-	public void setmemberId(String memberId) {
-		this.memberId = memberId;
+	public void setMemberNicname(String memberNicname) {
+		this.memberNicname = memberNicname;
 	}
 
 
 	@Override
 	public String toString() {
 		return "PointUse [id=" + id + ", regdate=" + regdate + ", amount=" + amount + ", content=" + content
-				+ ", memberId=" + memberId + "]";
+				+ ", memberNicname=" + memberNicname + "]";
 	}
 
 	

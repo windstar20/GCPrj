@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="en" />
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -77,7 +78,7 @@
                     <td>
                       <select name="field">
                         <option value="" selected>==선택==</option>
-                        <option value="member_id">아이디</option>
+                        <option value="member_nicname">아이디</option>
                         <option value="name">이름</option>
                       </select>
                       <input type="text" name="query" />
@@ -136,12 +137,14 @@
                     <input type="hidden" name="page" value="1" />
                     <input type="hidden" name="query" value="${query}" />
                     <input type="hidden" name="field" value="${field }" />
+                  	<input type="hidden" name="sort-field" value="${sortField }" />
+                    <input type="hidden" name="sort-option" value="${sortOption }" />
                     <input
                       type="hidden"
-                      name="startDate"
+                      name="start-date"
                       value="${startDate }"
                     />
-                    <input type="hidden" name="endDate" value="${endDate }" />
+                    <input type="hidden" name="end-date" value="${endDate }" />
                     <li>
                       <select onchange="this.form.submit()" name="size">
                         <option value="">==출력갯수==</option>
@@ -158,14 +161,64 @@
               <div class="sort-bar">
                 <h1 class="no-display">정렬</h1>
                 <ul>
-                  <li>
-                    충전일 <span class="img-button up-button">up</span>
-                    <span class="img-button down-button">down</span>
-                  </li>
-                  <li>
-                    충전 금액 <span class="img-button up-button">up</span>
-                    <span class="img-button down-button">down</span>
-                  </li>
+                  					          <li>
+					           충전 날짜
+					            <span>
+					              <form action="point-charge-list">
+					              	<input type="hidden" name="page" value="${page }">
+					             	<input type="hidden" name="size" value="${size }">
+									<input type="hidden" name="query" value="${query }">
+									<input type="hidden" name="field" value="${field }">
+									<input type="hidden" name="start-date" value="${startDate }">
+									<input type="hidden" name="end-date" value="${endDate }">
+					                <input type="hidden" name="sort-field" value="regdate" />
+					                <input type="hidden" name="sort-option" value="asc" />
+					                <input class="img-button up-button" type="submit" value="up" />
+					              </form>
+					            </span>
+					            <span >
+					              <form action="point-charge-list">
+					            	<input type="hidden" name="page" value="${page }">
+					             	<input type="hidden" name="size" value="${size }">
+									<input type="hidden" name="query" value="${query }">
+									<input type="hidden" name="field" value="${field }">
+									<input type="hidden" name="start-date" value="${startDate }">
+									<input type="hidden" name="end-date" value="${endDate }">
+					                <input type="hidden" name="sort-field" value="regdate" />
+					                <input type="hidden" name="sort-option" value="desc" />
+					                <input class="img-button down-button" type="submit" value="down" />
+					              </form>
+					            </span>
+					          </li>
+            					          <li>
+					            충전 금액
+					            <span>
+					              <form action="point-charge-list">
+					              	<input type="hidden" name="page" value="${page }">
+					             	<input type="hidden" name="size" value="${size }">
+									<input type="hidden" name="query" value="${query }">
+									<input type="hidden" name="field" value="${field }">
+									<input type="hidden" name="start-date" value="${startDate }">
+									<input type="hidden" name="end-date" value="${endDate }">
+					                <input type="hidden" name="sort-field" value="amount" />
+					                <input type="hidden" name="sort-option" value="asc" />
+					                <input class="img-button up-button" type="submit" value="up" />
+					              </form>
+					            </span>
+					            <span >
+					              <form action="point-charge-list">
+					            	<input type="hidden" name="page" value="${page }">
+					             	<input type="hidden" name="size" value="${size }">
+									<input type="hidden" name="query" value="${query }">
+									<input type="hidden" name="field" value="${field }">
+									<input type="hidden" name="start-date" value="${startDate }">
+									<input type="hidden" name="end-date" value="${endDate }">
+					                <input type="hidden" name="sort-field" value="amount" />
+					                <input type="hidden" name="sort-option" value="desc" />
+					                <input class="img-button down-button" type="submit" value="down" />
+					              </form>
+					            </span>
+					          </li>
                 </ul>
               </div>
               <table class="order-list-table">
@@ -185,7 +238,7 @@
                     <!-- 첫번째 행 시작 -->
                     <tr>
                       <td>${c.id }</td>
-                      <td>${c.memberId }</td>
+                      <td>${c.memberNicname }</td>
                       <td>${c.name}</td>
                       <td>
                       <fmt:formatNumber var="price" value="${c.amount}" type="number"/>
@@ -217,7 +270,7 @@
               <div class="paging">
                 <c:forEach var="i" begin="1" end="${pageNum }"
                   ><a
-                    href="point-charge-list?page=${i}&size=${size}&filed=${field}&query=${query}&startDate=${startDate}&endDate=${endDate}"
+                    href="point-charge-list?page=${i}&size=${size}&feild=${field}&query=${query}&start-date=${startDate}&end-date=${endDate}&sort-field=${sortField}&sort-option=${sortOption}"
                     >${i }</a
                   >
                   </c:forEach>

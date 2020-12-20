@@ -28,6 +28,8 @@ public class ListController extends HttpServlet {
 		String query=null;
 		String startDate = null;
 		String endDate=null;
+		String sortField=null;
+		String sortOption=null;
 		PointUseService service1 = new PointUseService();
 		PointService service2 = new PointService();
 		PointView memberPoint = null;
@@ -45,7 +47,10 @@ public class ListController extends HttpServlet {
 			startDate = request.getParameter("start-date");
 		if(request.getParameter("end-date")!=null)
 			endDate = request.getParameter("end-date");
-		
+		if(request.getParameter("sort-field")!=null)
+			sortField = request.getParameter("sort-field");
+		if(request.getParameter("sort-option")!=null)
+			sortOption = request.getParameter("sort-option");
 		List<PointUseView> list = service1.getViewList(0, 0, field, query,startDate, endDate);
 		
 		//System.out.println(memberPoint);
@@ -54,13 +59,13 @@ public class ListController extends HttpServlet {
 				memberPoint = service2.getView(field,query);
 				currentPoint = memberPoint.getcurrentAmount();
 		}
-		if(list.size()%10==0)
+		if(list.size()%size==0)
 			pageNum = list.size()/size;
 		else
 			pageNum = list.size()/size+1;
 
 		
-		list = service1.getViewList(page, size, field, query, startDate, endDate);
+		list = service1.getViewList(page, size, field, query, startDate, endDate, sortField, sortOption);
 		System.out.println(pageNum);
 
 		request.setAttribute("list", list);
@@ -72,6 +77,8 @@ public class ListController extends HttpServlet {
 		request.setAttribute("startDate", startDate);
 		request.setAttribute("endDate", endDate);
 		request.setAttribute("currentPoint", currentPoint);
+		request.setAttribute("sortField", sortField);
+		request.setAttribute("sortOption", sortOption);
 		request.getRequestDispatcher("point-use-list.jsp").forward(request, response);
 	}
 }

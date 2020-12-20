@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class PointCharging {
 	private int id;
-	private String memberId;
+	private String memberNicname;
 	private Date regdate;
 	private int amount;
 	private String content;
@@ -13,10 +13,10 @@ public class PointCharging {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PointCharging(int id, String memberId, Date regdate, int amount, String content) {
+	public PointCharging(int id, String memberNicname, Date regdate, int amount, String content) {
 		super();
 		this.id = id;
-		this.memberId = memberId;
+		this.memberNicname = memberNicname;
 		this.regdate = regdate;
 		this.amount = amount;
 		this.content = content;
@@ -30,12 +30,12 @@ public class PointCharging {
 		this.id = id;
 	}
 
-	public String getmemberId() {
-		return memberId;
+	public String getmemberNicname() {
+		return memberNicname;
 	}
 
-	public void setmemberId(String memberId) {
-		this.memberId = memberId;
+	public void setmemberNicname(String memberNicname) {
+		this.memberNicname = memberNicname;
 	}
 
 	public Date getRegdate() {
@@ -64,7 +64,7 @@ public class PointCharging {
 
 	@Override
 	public String toString() {
-		return "PointCharging [id=" + id + ", memberId=" + memberId + ", regdate=" + regdate + ", amount=" + amount
+		return "PointCharging [id=" + id + ", memberNicname=" + memberNicname + ", regdate=" + regdate + ", amount=" + amount
 				+ ", content=" + content + "]";
 	}
 

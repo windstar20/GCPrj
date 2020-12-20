@@ -58,6 +58,7 @@ public class PointChargingService {
 	public List<PointChargingView> getViewList(int page, int size, String field, String query,String startDate, String endDate) {
 		int startIndex=0;
 		int endIndex=0;
+
 		
 		if(page!=0 && size!=0) {
 			startIndex = 1 + (page-1)*size;
@@ -68,6 +69,23 @@ public class PointChargingService {
 		if(endDate!=null && !endDate.equals(""))
 			endDate="\'" + endDate +"\'";
 		return pointChargingDao.getViewList(startIndex, endIndex,field, query,startDate,endDate);
+	};
+	
+	public List<PointChargingView> getViewList(int page, int size, String field, String query,String startDate, String endDate,String sortField,String sortOption) {
+		int startIndex=0;
+		int endIndex=0;
+		
+
+		
+		if(page!=0 && size!=0) {
+			startIndex = 1 + (page-1)*size;
+			endIndex = size*page;
+		}
+		if(startDate!=null && !startDate.equals(""))
+			startDate="\'" + startDate +"\'";
+		if(endDate!=null && !endDate.equals(""))
+			endDate="\'" + endDate +"\'";
+		return pointChargingDao.getViewList(startIndex, endIndex,field, query,startDate,endDate,sortField,sortOption);
 	};
 
 

@@ -279,14 +279,14 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 	@Override
 	public List<ProductOrderView> getViewList() {
 
-		return getViewList(0, 0, null, null, null, null, null, null);
+		return getViewList(0, 0, null, null, null, null, null, null,"number","ASC");
 
 	}
 
 	@Override
 	public List<ProductOrderView> getViewList(int startIndex, int endIndex) {
 
-		return getViewList(startIndex, endIndex, null, null, null, null, null, null);
+		return getViewList(startIndex, endIndex, null, null, null, null, null, null,"number","ASC");
 	}
 
 
@@ -301,23 +301,26 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 	public List<ProductOrderView> getViewList(int startIndex, int endIndex, String field, String query,
 			List<String> orderState, List<String> cancelState, String startDate, String endDate) {
 		
-		
+		return getViewList(startIndex, endIndex, field, query, null, null, startDate, endDate,"number","ASC");	
+	}
+
+
+	@Override
+	public List<ProductOrderView> getViewList(int startIndex, int endIndex, String field, String query,
+			List<String> orderState, List<String> cancelState, String startDate, String endDate, String sortField,
+			String sortOption) {
+	
 		LocalDateTime current = LocalDateTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE; // 2020-12-16 형태로 포맷
 		String nowDate = "\'"+current.format(formatter)+"\'";
 		// 동적 쿼리
 		String url = DBContext.URL;
-		String sql = "SELECT ROWNUM NUM, N.* FROM PRODUCT_ORDER_VIEW N ";
-		String numberQuery = null;
-		String numberField = null;
-		if(field!=null && !field.equals("")) {
-			numberQuery = (field.equals("number"))? (" = "+query): (" LIKE '%"+query+"%'"); // QUERY가 숫자일 때 처리
-			numberField = (field.equals("number"))? "\"NUMBER\"": field; //Field 가 예약어 number일 경우 처리
-		}
+		String sql = "SELECT N.* FROM PRODUCT_ORDER_VIEW N ";
+
 
 		
 		if(field!=null && query != null && !field.equals("") && !query.equals(""))
-			sql +="WHERE "+ numberField + numberQuery;  //F(s,e,f,q)
+			sql +="WHERE "+ field + query;  //F(s,e,f,q)
 		
 		if(sql.contains("WHERE")) {
 			if(startDate==null || startDate.equals("") )
@@ -334,10 +337,16 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 			sql += " WHERE REGDATE BETWEEN "+startDate + " AND " + endDate; 
 			
 		}
-			
-
+		if(sortField!=null && !sortField.equals("") && sortOption!=null && !sortOption.equals("") ) {
+			String numberSortField = (sortField.equals("number"))? "\"NUMBER\"": sortField;
+			sql += " ORDER BY "+numberSortField+" "+sortOption;
+		}	
+		
+		sql = "SELECT ROWNUM NUM ,M.* FROM ("+sql+") M";
 		if(startIndex!=0 && endIndex!=0)
-			sql = "SELECT * FROM ("+sql+") "+ "WHERE NUM BETWEEN "+ startIndex +" AND "+endIndex; //F(s,e,null,null)
+			sql = "SELECT * FROM ("+sql+") "+ " WHERE NUM BETWEEN "+ startIndex +" AND "+endIndex; //F(s,e,null,null)
+
+		
 		System.out.println(sql);
 		//	SELECT * FROM PRODUCT_ORDER_VIEW;
 		List<ProductOrderView> list = new ArrayList<>();

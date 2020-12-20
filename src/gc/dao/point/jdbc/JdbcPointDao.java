@@ -22,7 +22,7 @@ public class JdbcPointDao implements PointDao{
 
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "INSERT INTO POINT(MEMBER_ID,CURRENT_AMOUNT) VALUES (?,?)";
+		String sql = "INSERT INTO POINT(MEMBER_NICNAME,CURRENT_AMOUNT) VALUES (?,?)";
 
 		try {
 			Class.forName(driver);
@@ -30,7 +30,7 @@ public class JdbcPointDao implements PointDao{
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
 			//3. 명령어를 옮겨주기 위한 객체 생성
 			PreparedStatement st = con.prepareStatement(sql);
-			st.setString(1, Point.getmemberId());
+			st.setString(1, Point.getmemberNicname());
 			st.setInt(2, Point.getcurrentAmount());
 	
 			count = st.executeUpdate();
@@ -53,7 +53,7 @@ public class JdbcPointDao implements PointDao{
 
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "UPDATE POINT SET MEMBER_ID=?, CURRENT_AMOUNT=?";
+		String sql = "UPDATE POINT SET MEMBER_NICNAME=?, CURRENT_AMOUNT=?";
 
 		try {
 			Class.forName(driver);
@@ -61,7 +61,7 @@ public class JdbcPointDao implements PointDao{
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
 			//3. 명령어를 옮겨주기 위한 객체 생성
 			PreparedStatement st = con.prepareStatement(sql);
-			st.setString(1, Point.getmemberId());
+			st.setString(1, Point.getmemberNicname());
 			st.setInt(2, Point.getcurrentAmount());
 
 
@@ -80,12 +80,12 @@ public class JdbcPointDao implements PointDao{
 	}
 
 	@Override
-	public int delete(String memberId) {
+	public int delete(String memberNicname) {
 		int count = 0;
 
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "DELETE FROM POINT WHERE MEMBER_ID="+memberId;
+		String sql = "DELETE FROM POINT WHERE MEMBER_NICNAME="+memberNicname;
 
 		try {
 			Class.forName(driver);
@@ -108,12 +108,12 @@ public class JdbcPointDao implements PointDao{
 	}
 
 	@Override
-	public Point get(String memberId) {
+	public Point get(String memberNicname) {
 		Point p = null;
 
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM POINT WHERE MEMBER_ID="+memberId;
+		String sql = "SELECT * FROM POINT WHERE MEMBER_NICNAME="+memberNicname;
 
 
 		//1. 드라이버 로드하기
@@ -130,13 +130,13 @@ public class JdbcPointDao implements PointDao{
 				int currentAmount;
 
 
-				memberId = rs.getString("member_id");
+				memberNicname = rs.getString("member_nicname");
 				currentAmount = rs.getInt("current_amount");
 
 
 				p = new Point(
 						currentAmount,
-						memberId
+						memberNicname
 						);
 			}
 			rs.close();
@@ -173,17 +173,17 @@ public class JdbcPointDao implements PointDao{
 			ResultSet rs = st.executeQuery(sql);
 
 			while(rs.next()) {
-				String memberId;
+				String memberNicname;
 				int currentAmount;
 
 
-				memberId = rs.getString("member_id");
+				memberNicname = rs.getString("member_nicname");
 				currentAmount = rs.getInt("current_amount");
 
 
 				Point p = new Point(
 						currentAmount,
-						memberId
+						memberNicname
 						);
 
 
@@ -206,16 +206,16 @@ public class JdbcPointDao implements PointDao{
 	}
 
 	@Override
-	public PointView getView(String field,String memberId) {
+	public PointView getView(String field,String memberNicname) {
 		PointView p = null;
 
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
 		String sql="";
 		if (field.equals("name"))
-			sql = "SELECT * FROM POINT_VIEW WHERE NAME="+memberId;
+			sql = "SELECT * FROM POINT_VIEW WHERE NAME="+memberNicname;
 		else
-			sql="SELECT * FROM POINT_VIEW WHERE MEMBER_ID="+memberId;
+			sql="SELECT * FROM POINT_VIEW WHERE MEMBER_NICNAME="+memberNicname;
 		//1. 드라이버 로드하기
 		try {
 			Class.forName(driver);
@@ -230,14 +230,14 @@ public class JdbcPointDao implements PointDao{
 				int currentAmount;
 				String name;
 
-				memberId = rs.getString("member_id");
+				memberNicname = rs.getString("member_nicname");
 				currentAmount = rs.getInt("current_amount");
 				name = rs.getString("name");
 
 
 				p = new PointView(
 						currentAmount,
-						memberId,
+						memberNicname,
 						name
 						);
 			}

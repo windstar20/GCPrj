@@ -25,7 +25,7 @@ public class JdbcPointUseDao implements PointUseDao{
 
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "INSERT INTO POINT_USE(MEMBER_ID,CONTENT,AMOUNT) VALUES (?,?,?)";
+		String sql = "INSERT INTO POINT_USE(MEMBER_NICNAME,CONTENT,AMOUNT) VALUES (?,?,?)";
 
 		try {
 			Class.forName(driver);
@@ -33,7 +33,7 @@ public class JdbcPointUseDao implements PointUseDao{
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
 			//3. 명령어를 옮겨주기 위한 객체 생성
 			PreparedStatement st = con.prepareStatement(sql);
-			st.setString(1, PointUse.getmemberId());
+			st.setString(1, PointUse.getMemberNicname());
 			st.setString(2, PointUse.getContent());
 			st.setInt(3, PointUse.getAmount());
 	
@@ -57,7 +57,7 @@ public class JdbcPointUseDao implements PointUseDao{
 
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "UPDATE POINT_USE SET MEMBER_ID=?, CONTENT=?, AMOUNT=?";
+		String sql = "UPDATE POINT_USE SET MEMBER_NICNAME=?, CONTENT=?, AMOUNT=?";
 
 		try {
 			Class.forName(driver);
@@ -65,7 +65,7 @@ public class JdbcPointUseDao implements PointUseDao{
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
 			//3. 명령어를 옮겨주기 위한 객체 생성
 			PreparedStatement st = con.prepareStatement(sql);
-			st.setString(1, PointUse.getmemberId());
+			st.setString(1, PointUse.getMemberNicname());
 			st.setString(2, PointUse.getContent());
 			st.setInt(3, PointUse.getAmount());
 
@@ -133,14 +133,14 @@ public class JdbcPointUseDao implements PointUseDao{
 			ResultSet rs = st.executeQuery(sql);
 
 			if(rs.next()) {
-				String memberId;
+				String memberNicname;
 				int amount;
 				String content;
 				Date regdate;
 
 
 				id = rs.getInt("id");
-				memberId = rs.getString("member_id");
+				memberNicname = rs.getString("member_nicname");
 				amount = rs.getInt("amount");
 				content = rs.getString("content");
 				regdate = rs.getDate("regdate");
@@ -151,7 +151,7 @@ public class JdbcPointUseDao implements PointUseDao{
 						regdate,
 						amount,
 						content,
-						memberId
+						memberNicname
 						);
 			}
 			rs.close();
@@ -189,14 +189,14 @@ public class JdbcPointUseDao implements PointUseDao{
 
 			while(rs.next()) {
 				int id;
-				String memberId;
+				String memberNicname;
 				int amount;
 				String content;
 				Date regdate;
 
 
 				id = rs.getInt("id");
-				memberId = rs.getString("member_id");
+				memberNicname = rs.getString("member_nicname");
 				amount = rs.getInt("amount");
 				content = rs.getString("content");
 				regdate = rs.getDate("regdate");
@@ -207,7 +207,7 @@ public class JdbcPointUseDao implements PointUseDao{
 						regdate,
 						amount,
 						content,
-						memberId
+						memberNicname
 						);
 			
 
@@ -234,35 +234,38 @@ public class JdbcPointUseDao implements PointUseDao{
 	@Override
 	public List<PointUseView> getViewList() {
 
-		return getViewList(0, 0, null, null, null, null);
+		return getViewList(0, 0, null, null, null, null,"ID","ASC");
 	}
 
 	@Override
 	public List<PointUseView> getViewList(int startIndex, int endIndex) {
 		// TODO Auto-generated method stub
-		return getViewList(startIndex, endIndex, null, null, null, null);
+		return getViewList(startIndex, endIndex, null, null, null, null,"ID","ASC");
 	}
 
 	@Override
 	public List<PointUseView> getViewList(int startIndex, int endIndex, String field, String query, String startDate,
 			String endDate) {
 		
+
+		return getViewList(startIndex, endIndex, field, query, startDate, endDate,"ID","ASC");
+	}
+
+	@Override
+	public List<PointUseView> getViewList(int startIndex, int endIndex, String field, String query, String startDate,
+			String endDate, String sortField, String sortOption) {
+
 		LocalDateTime current = LocalDateTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE; // 2020-12-16 형태로 포맷
 		String nowDate = "\'"+current.format(formatter)+"\'";
 		// 동적 쿼리
 		String url = DBContext.URL;
-		String sql = "SELECT ROWNUM NUM, N.* FROM POINT_USE_VIEW N ";
-		String numberQuery = null;
-		String numberField = null;
-		if(field!=null && !field.equals("")) {
-			numberQuery = (field.equals("number"))? (" = "+query): (" LIKE '%"+query+"%'"); // QUERY가 숫자일 때 처리
-			numberField = (field.equals("number"))? "\"NUMBER\"": field; //Field 가 예약어 number일 경우 처리
-		}
+		String sql = "SELECT N.* FROM POINT_USE_VIEW N ";
+
 
 		
 		if(field!=null && query != null && !field.equals("") && !query.equals(""))
-			sql +="WHERE "+ numberField + numberQuery;  //F(s,e,f,q)
+			sql +="WHERE "+ field + query;  //F(s,e,f,q)
 		
 		if(sql.contains("WHERE")) {
 			if(startDate==null || startDate.equals("") )
@@ -279,8 +282,10 @@ public class JdbcPointUseDao implements PointUseDao{
 			sql += " WHERE REGDATE BETWEEN "+startDate + " AND " + endDate; 
 			
 		}
-			
-
+		if(sortField!=null && !sortField.equals("") && sortOption!=null && !sortOption.equals("") ) {
+			sql += " ORDER BY "+sortField+" "+sortOption;
+		}		
+		sql = "SELECT ROWNUM NUM ,M.* FROM ("+sql+") M";
 		if(startIndex!=0 && endIndex!=0)
 			sql = "SELECT * FROM ("+sql+") "+ "WHERE NUM BETWEEN "+ startIndex +" AND "+endIndex; //F(s,e,null,null)
 		System.out.println(sql);
@@ -298,7 +303,7 @@ public class JdbcPointUseDao implements PointUseDao{
 
 			while(rs.next()) {
 				int id;
-				String memberId;
+				String memberNicname;
 				int amount;
 				String content;
 				Date regdate;
@@ -306,7 +311,7 @@ public class JdbcPointUseDao implements PointUseDao{
 
 
 				id = rs.getInt("id");
-				memberId = rs.getString("member_id");
+				memberNicname = rs.getString("member_nicname");
 				amount = rs.getInt("amount");
 				content = rs.getString("content");
 				regdate = rs.getDate("regdate");
@@ -318,7 +323,7 @@ public class JdbcPointUseDao implements PointUseDao{
 						regdate,
 						amount,
 						content,
-						memberId,
+						memberNicname,
 						name
 						);
 			
@@ -341,7 +346,6 @@ public class JdbcPointUseDao implements PointUseDao{
 
 
 		return list;
-		
 	}
 
 }

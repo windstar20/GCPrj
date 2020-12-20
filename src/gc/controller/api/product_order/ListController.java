@@ -1,4 +1,4 @@
-package gc.controller.admin.product_order;
+package gc.controller.api.product_order;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,16 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import gc.entity.productOrder.view.ProductOrderView;
 import gc.service.productOrder.ProductOrderService;
 
 
 
-@WebServlet("/admin/product-order/list")
+@WebServlet("/api/product-order/list")
 public class ListController extends HttpServlet{
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	      response.setCharacterEncoding("UTF-8");      
+	      response.setContentType("text/json; charset=UTF-8");
 		int page=1; // 페이지 번호
 		int size=10; // 페이지당 보여지는 글 갯수
 		int pageNum=1;
@@ -48,30 +53,13 @@ public class ListController extends HttpServlet{
 			sortField = request.getParameter("sort-field");
 		if(request.getParameter("sort-option")!=null)
 			sortOption = request.getParameter("sort-option");
-		List<ProductOrderView> list = service.getViewList(0, 0, field, query,startDate, endDate); // between 없이.
-		// 26개
-
-		if(list.size()%size==0 )
-			pageNum = list.size()/size;
-		else
-			pageNum = list.size()/size+1; //3개
 
 		
-		list = service.getViewList(page, size, field, query, startDate, endDate, sortField, sortOption); 
-		System.out.println(pageNum);
-
-		request.setAttribute("list", list);
-		request.setAttribute("page", page);
-		request.setAttribute("size", size);
-		request.setAttribute("field", field);
-		request.setAttribute("query", query);
-		request.setAttribute("pageNum", pageNum);
-		request.setAttribute("startDate", startDate);
-		request.setAttribute("endDate", endDate);
-		request.setAttribute("sortField", sortField);
-		request.setAttribute("sortOption", sortOption);
-		request.getRequestDispatcher("list.jsp").forward(request, response);
-
+		List<ProductOrderView> list = service.getViewList(page, size, field, query, startDate, endDate, sortField,sortOption); 
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd aa hh:mm").create();
+		String json = gson.toJson(list);
+		
+		response.getWriter().println(json);
 
 	}
 }

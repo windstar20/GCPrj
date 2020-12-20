@@ -5,7 +5,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<fmt:setLocale value="en" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -143,8 +143,10 @@
 								<input type="hidden" name="page" value="1">
 								<input type="hidden" name="query" value="${query }">
 								<input type="hidden" name="field" value="${field }">
-								<input type="hidden" name="startDate" value="${startDate }">
-								<input type="hidden" name="endDate" value="${endDate }">
+								<input type="hidden" name="start-date" value="${startDate }">
+								<input type="hidden" name="end-date" value="${endDate }">
+								<input type="hidden" name="sort-field" value="${sortField }">
+								<input type="hidden" name="sort-option" value="${sortOption }">
 								<li><select onchange="this.form.submit()" name="size" >
 										<option value="">==출력갯수==</option>
 										<option value="5">5개 출력</option>
@@ -159,15 +161,93 @@
 						<div class="sort-bar">
 							<h1 class="no-display">정렬</h1>
 							<ul>
-								<li>주문일 <span class="img-button up-button">up</span> <span
-									class="img-button down-button">down</span>
-								</li>
-								<li>주문자 <span class="img-button up-button">up</span> <span
-									class="img-button down-button">down</span>
-								</li>
-								<li>결제금액 <span class="img-button up-button">up</span> <span
-									class="img-button down-button">down</span>
-								</li>
+					          <li>
+					            주문일
+					            <span>
+					              <form action="list">
+					              	<input type="hidden" name="page" value="${page }">
+					              	<input type="hidden" name="size" value="${size }">
+									<input type="hidden" name="query" value="${query }">
+									<input type="hidden" name="field" value="${field }">
+									<input type="hidden" name="start-date" value="${startDate }">
+									<input type="hidden" name="end-date" value="${endDate }">
+					                <input type="hidden" name="sort-field" value="regdate" />
+					                <input type="hidden" name="sort-option" value="asc" />
+					                <input class="img-button up-button" type="submit" value="up" />
+					              </form>
+					            </span>
+					            <span >
+					              <form action="list">
+					            	<input type="hidden" name="page" value="${page }">
+					            	<input type="hidden" name="size" value="${size }">
+									<input type="hidden" name="query" value="${query }">
+									<input type="hidden" name="field" value="${field }">
+									<input type="hidden" name="start-date" value="${startDate }">
+									<input type="hidden" name="end-date" value="${endDate }">
+					                <input type="hidden" name="sort-field" value="regdate" />
+					                <input type="hidden" name="sort-option" value="desc" />
+					                <input class="img-button down-button" type="submit" value="down" />
+					              </form>
+					            </span>
+					          </li>
+													          <li>
+					            주문자
+					            <span >
+					              <form action="list">
+					            	<input type="hidden" name="page" value="${page }">
+					            	<input type="hidden" name="size" value="${size }">
+									<input type="hidden" name="query" value="${query }">
+									<input type="hidden" name="field" value="${field }">
+									<input type="hidden" name="start-date" value="${startDate }">
+									<input type="hidden" name="end-date" value="${endDate }">
+					                <input type="hidden" name="sort-field" value="sender_name" />
+					                <input type="hidden" name="sort-option" value="asc" />
+					                <input class="img-button up-button" type="submit" value="up" />
+					              </form>
+					            </span>
+					            <span >
+					              <form action="list">
+					            	<input type="hidden" name="page" value="${page }">
+					            	<input type="hidden" name="size" value="${size }">
+									<input type="hidden" name="query" value="${query }">
+									<input type="hidden" name="field" value="${field }">
+									<input type="hidden" name="start-date" value="${startDate }">
+									<input type="hidden" name="end-date" value="${endDate }">
+					                <input type="hidden" name="sort-field" value="sender_name" />
+					                <input type="hidden" name="sort-option" value="desc" />
+					                <input class="img-button down-button" type="submit" value="down" />
+					              </form>
+					            </span>
+					          </li>
+													          <li>
+					            결제금액
+					            <span >
+					              <form action="list">
+					             	<input type="hidden" name="page" value="${page }">
+					             	<input type="hidden" name="size" value="${size }">
+									<input type="hidden" name="query" value="${query }">
+									<input type="hidden" name="field" value="${field }">
+									<input type="hidden" name="start-date" value="${startDate }">
+									<input type="hidden" name="end-date" value="${endDate }">
+					                <input type="hidden" name="sort-field" value="total_price" />
+					                <input type="hidden" name="sort-option" value="asc" />
+					                <input class="img-button up-button" type="submit" value="up" />
+					              </form>
+					            </span>
+					            <span >
+					              <form action="list">
+					             	<input type="hidden" name="page" value="${page }">
+					             	<input type="hidden" name="size" value="${size }">
+									<input type="hidden" name="query" value="${query }">
+									<input type="hidden" name="field" value="${field }">
+									<input type="hidden" name="start-date" value="${startDate }">
+									<input type="hidden" name="end-date" value="${endDate }">
+					                <input type="hidden" name="sort-field" value="total_price" />
+					                <input type="hidden" name="sort-option" value="desc" />
+					                <input class="img-button down-button" type="submit" value="down" />
+					              </form>
+					            </span>
+					          </li>
 							</ul>
 						</div>
 						<table class="order-list-table">
@@ -220,7 +300,7 @@
 							</tbody>
 						</table>
 							<div class="paging">
-								<c:forEach var="i" begin="1" end="${pageNum }"><a href="list?page=${i}&size=${size}&filed=${field}&query=${query}&startDate=${startDate}&endDate=${endDate}" class="paging-button">${i }</a></c:forEach>
+								<c:forEach var="i" begin="1" end="${pageNum }"><a href="list?page=${i}&size=${size}&field=${field}&query=${query}&start-date=${startDate}&end-date=${endDate}&sort-field=${sortField}&sort-option=${sortOption}" class="paging-button">${i }</a></c:forEach>
 							</div>
 					</section>
 				</div>

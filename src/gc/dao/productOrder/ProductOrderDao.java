@@ -23,6 +23,7 @@ public interface ProductOrderDao {
 	List<ProductOrderView> getViewList();
 	List<ProductOrderView> getViewList(int startIndex, int endIndex);
 	List<ProductOrderView> getViewList(int startIndex, int endIndex, String field, String query, List<String> orderState, List<String> cancelState, String startDate, String endDate);
+	List<ProductOrderView> getViewList(int startIndex, int endIndex, String field, String query, List<String> orderState, List<String> cancelState, String startDate, String endDate, String sortField, String sortOption);
 
 
 }

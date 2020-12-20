@@ -9,8 +9,8 @@ public class PointView extends Point{
 		// TODO Auto-generated constructor stub
 	}
 
-	public PointView(int currentAmount, String memberId, String name) {
-		super(currentAmount, memberId);
+	public PointView(int currentAmount, String memberNicname, String name) {
+		super(currentAmount, memberNicname);
 		this.name = name;
 	}
 

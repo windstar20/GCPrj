@@ -3,7 +3,7 @@ package gc.entity.point;
 public class Point {
 
 	 private int currentAmount;
-	 private String memberId;
+	 private String memberNicname;
 	
 	 
 	 public Point() {
@@ -11,10 +11,10 @@ public class Point {
 	}
 
 
-	public Point(int currentAmount, String memberId) {
+	public Point(int currentAmount, String memberNicname) {
 		super();
 		this.currentAmount = currentAmount;
-		this.memberId = memberId;
+		this.memberNicname = memberNicname;
 	}
 
 
@@ -28,19 +28,19 @@ public class Point {
 	}
 
 
-	public String getmemberId() {
-		return memberId;
+	public String getmemberNicname() {
+		return memberNicname;
 	}
 
 
-	public void setmemberId(String memberId) {
-		this.memberId = memberId;
+	public void setmemberNicname(String memberNicname) {
+		this.memberNicname = memberNicname;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Point [currentAmount=" + currentAmount + ", memberId=" + memberId + "]";
+		return "Point [currentAmount=" + currentAmount + ", memberNicname=" + memberNicname + "]";
 	}
 
 

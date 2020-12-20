@@ -12,8 +12,8 @@ public class PointChargingView extends PointCharging {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PointChargingView(int id, String member_id, Date regdate, int amount, String content, String name) {
-		super(id, member_id, regdate, amount, content);
+	public PointChargingView(int id, String memberNicname, Date regdate, int amount, String content, String name) {
+		super(id, memberNicname, regdate, amount, content);
 		this.name = name;
 	}
 

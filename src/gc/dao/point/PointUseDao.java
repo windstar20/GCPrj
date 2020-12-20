@@ -16,4 +16,5 @@ public interface PointUseDao {
 	List<PointUseView> getViewList();
 	List<PointUseView> getViewList(int startIndex, int endIndex);
 	List<PointUseView> getViewList(int startIndex, int endIndex, String field, String query, String startDate, String endDate);
+	List<PointUseView> getViewList(int startIndex, int endIndex, String field, String query, String startDate, String endDate,String sortField, String sortOption);
 }

@@ -1,11 +1,108 @@
-//===========회원 현재 금액 ============
+//=============pager AJAX==========
 window.addEventListener("load", function () {
-  var currentPoint = document.querySelector(".current-point");
-  var fieldValue = searchQueryString("field");
+  var sortBar = document.querySelector(".sort-bar");
+  var upButtons = sortBar.querySelectorAll(".up-button");
+  var downButtons = sortBar.querySelectorAll(".down-button");
+  var listTable = document.querySelector(".order-list-table");
+  var tbody = listTable.querySelector("tbody");
+  var paging = document.querySelector(".paging");
+
+  paging.onclick = function (e) {
+    if (e.target.tagName != "A") return;
+    e.preventDefault();
+    var page = parseInt(e.target.innerText);
+    var urlSearch = new URLSearchParams(location.search); // 쿼리스트링 받아오기
+    var size = urlSearch.get("size");
+    var field = urlSearch.get("field");
+    var query = urlSearch.get("query");
+    var startDate = urlSearch.get("startDate");
+    var endDate = urlSearch.get("endDate");
+    var sortField = urlSearch.get("sort-field");
+    var sortOption = urlSearch.get("sort-option");
+    console.log(page, size, field, query, startDate, endDate);
+    load(page, size, field, query, startDate, endDate, sortField, sortOption);
+  };
+  function load(page, size, field, query, startDate, endDate, sortField, sortOption) {
+    if (page == undefined || page == NaN) page = 1;
+    if (size == null || size == NaN) size = 10;
+    if (field == null) field = "";
+    if (query == null) query = "";
+    if (startDate == null) startDate = "";
+    if (endDate == null) endDate = "";
+    if (sortField == null) sortField = "id";
+    if (sortOption == null) sortOption = "asc";
+    var request = new XMLHttpRequest();
+    request.onload = function () {
+      tbody.innerHTML = "";
+      var lists = JSON.parse(request.responseText);
+      for (var i = 0; i < lists.length; i++) {
+        var c = lists[i];
+        c.amount = c.amount.toLocaleString();
+        if (c.content == null) c.content = "";
+
+        var tr =
+          "<tr>\
+          <td>" +
+          c.id +
+          "</td>\
+          <td>" +
+          c.memberNicname +
+          "</td>\
+          <td>" +
+          c.name +
+          '</td>\
+          <td>\
+            <span class="price">' +
+          c.amount +
+          "</span>원\
+          </td>\
+          <td>" +
+          c.content +
+          "</td>\
+          <td>\
+          " +
+          c.regdate +
+          '\
+          </td>\
+          <td>\
+            <a href="point-charge-del?id=' +
+          c.id +
+          '"\
+              ><input\
+                class="select-button"\
+                type="button"\
+                value="삭제"\
+            /></a>\
+          </td>\
+        </tr>';
+
+        tbody.insertAdjacentHTML("beforeend", tr);
+      }
+    };
+    request.open(
+      "GET",
+      "/api/product-order/point-charge-list?page=" +
+        page +
+        "&size=" +
+        size +
+        "&field=" +
+        field +
+        "&query=" +
+        query +
+        "&start-date=" +
+        startDate +
+        "&end-date=" +
+        endDate +
+        "&sort-field=" +
+        sortField +
+        "&sort-option=" +
+        sortOption,
+      true
+    );
+    request.send();
+  }
 });
-function searchQueryString(key) {
-  return new URLSearchParams(location.search).get(key);
-}
+
 //============금액/ 건수 정리 =================
 window.addEventListener("load", function () {
   var prices = document.querySelectorAll(".price");
@@ -21,6 +118,7 @@ window.addEventListener("load", function () {
   totalCount.innerText = prices.length;
 });
 
+//=========날짜 일주일전, 한달 전 입력======
 window.addEventListener("load", function () {
   var buttonList = document.querySelector(".button-list");
   var btnYesterday = document.querySelector(".yesterday");

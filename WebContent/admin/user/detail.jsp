@@ -20,15 +20,12 @@
         <form action="">
             <table>
                 <tr>
-                    <td>홍길동님의 회원정보입니다.</td>
+                    <td>${u.name }님의 회원정보입니다.</td>
                     <td>
                         <a href=""><span>회원정보</span></a>
                         <a href=""><span>주문정보</span></a>
-                        <a href=""><span>적립금</span></a>
-                        <a href=""><span>쿠폰</span></a>
-                        <a href=""><span>1:1상담</span></a>
-                        <a href=""><span>게시물</span></a>
-                        <a href=""><span>방문로그</span></a>
+                        <a href=""><span>포인트</span></a>
+                        <a href=""><span>작성한 평가</span></a>
                     </td>
                 </tr>
                 <tr>
@@ -39,33 +36,33 @@
                 <tr>
                     <th>이름(아이디)</th>
                     <td>
-                        홍길동 (test)
+                        ${u.name } (${u.nicname })
                         <input type="button" value="비밀번호 변경">
                     </td>
                 </tr>
                 <tr>
-                    <th>나이/성별/생일</th>
+                    <th>나이/성별</th>
                     <td>
-                        정보없음 / 정보없음 / 정보없음
+                        ${u.age } / ${u.gender }
                     </td>
                 </tr>
                 <tr>
                     <th>이메일</th>
                     <td>
-                        jilong78@whois.co.kr 
+                        ${u.email }
                         <input type="checkbox"> 수신동의
                     </td>
                 </tr>
                 <tr>
                     <th>주소</th>
                     <td>
-                        (08378) 서울특별시 구로구 디지털로34길 43 (구로동 코오롱싸이언스밸리1차) 111
+                        ${u.address }
                     </td>
                 </tr>
                 <tr>
                     <th>휴대전화 / 일반전화</th>
                     <td>
-                        휴대전화 : 
+                        휴대전화 : ${u.phone }
                         <input type="checkbox"> 수신동의 /일반전화
                     </td>
                 </tr>
@@ -94,15 +91,15 @@
                 </tr>
                 <tr>
                     <th>가입일</th>
-                    <td>2018.02.01 10:25 (마지막 로그인: 정보없음 / 로그인 횟수:0 회)</td>
+                    <td>${u.regdate }
                 </tr>
                 <tr>
                     <th>주문총액</th>
                     <td>0원 (주문횟수 : 0 건 / 취소.반품.환불.교환 : 0 회 )</td>
                 </tr>
                 <tr>
-                    <th>적립금/쿠폰</th>
-                    <td>0 / 0 장</td>
+                    <th>포인트</th>
+                    <td>0 </td>
                 </tr>
                 <tr>
                     <th>게시물</th>

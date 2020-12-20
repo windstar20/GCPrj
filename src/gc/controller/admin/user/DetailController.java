@@ -20,9 +20,9 @@ public class DetailController extends HttpServlet{
 	public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
 		 int id = Integer.parseInt(request.getParameter("id"));
 		    UserService service = new UserService();
-		    User m  = service.get(id);
+		    User u  = service.get(id);
 		
-		    request.setAttribute("m", m);
+		    request.setAttribute("u", u);
 		    request.getRequestDispatcher("/admin/user/detail.jsp").forward(request, response);
 	}
 }

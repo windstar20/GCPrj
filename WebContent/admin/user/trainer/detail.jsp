@@ -23,7 +23,7 @@
                 <tr>
                     <td>${t.name }님의 회원정보입니다.</td>
                     <td>
-                        <a href=""><span>회원정보</span></a>
+                        <a href="detail"><span>회원정보</span></a>
                         <a href=""><span>댓글</span></a>
                     </td>
                 </tr>
@@ -64,56 +64,55 @@
                 <tr>
                     <th>자격증</th>
                     <td>
+                		<table class="inner-table">
 	                	<c:forEach var="lList" items="${lList}">
-	                		<table class="inner-table">
-	                			<tr>
-	                				<th>이름</th>
-				                    <td>
-				                        ${lList.name } 
-				                    </td>
-			                    </tr>
-			                    <tr>
-			                    	<th>내용</th>
-				                    <td>
-				                        ${lList.content }
-				                    </td>
-			                    </tr>
-			                    <tr>
-			                    	<th>기관</th>
-				                    <td>
-				                        ${lList.organ }
-				                    </td>
-			                    </tr>
-		                    </table>
+                			<tr>
+                				<th>이름</th>
+			                    <td>
+			                        ${lList.name } 
+			                    </td>
+		                    </tr>
+		                    <tr>
+		                    	<th>내용</th>
+			                    <td>
+			                        ${lList.content }
+			                    </td>
+		                    </tr>
+		                    <tr>
+		                    	<th>기관</th>
+			                    <td>
+			                        ${lList.organ }
+			                    </td>
+		                    </tr>
 	                    </c:forEach>
+	                    </table>
                     </td>
                 </tr>
                 <tr>
                     <th>입상경력</th>
                     <td>
+	                    <table class="inner-table">
 		                <c:forEach var="cList" items="${cList }">
-		                
-		                    <table class="inner-table">
-	                			<tr>
-	                				<th>이름</th>
-				                    <td>
-				                        ${cList.name } 
-				                    </td>
-			                    </tr>
-			                    <tr>
-			                    	<th>내용</th>
-				                    <td>
-				                        ${cList.content }
-				                    </td>
-			                    </tr>
-			                    <tr>
-			                    	<th>날짜</th>
-				                    <td>
-				                        ${cList.date }
-				                    </td>
-			                    </tr>
-		                    </table>
+                			<tr>
+                				<th>이름</th>
+			                    <td>
+			                        ${cList.name } 
+			                    </td>
+		                    </tr>
+		                    <tr>
+		                    	<th>내용</th>
+			                    <td>
+			                        ${cList.content }
+			                    </td>
+		                    </tr>
+		                    <tr>
+		                    	<th>날짜</th>
+			                    <td>
+			                        ${cList.date }
+			                    </td>
+		                    </tr>
 	                    </c:forEach>
+	                    </table>
                     </td>
                 </tr>
                 <tr>

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../../CSS/style.css">
     <link rel="stylesheet" href="../../CSS/admin/admin.css" type="text/css" />
     <link rel="stylesheet" href="../../CSS/admin/user/index.css" type="text/css" />
-    <script src="../../js/admin/admin/list.js"></script>
+    <script src="../../js/admin/user/list.js"></script>
   </head>
   <body>
     <header id="header" class="header">
@@ -70,7 +70,7 @@
               <table>
                 <tr>
                   <th>회원등급</th>
-                  <td colspan="3">
+                  <td>
                     <input type="checkbox"> 모든 회원
                     <input type="checkbox"> 탈퇴 대기자
                     <input type="checkbox"> 가입신청자
@@ -85,14 +85,10 @@
                     <input type="checkbox"> SNS 수신동의
                     <input type="checkbox"> E-mail 수신동의
                   </td>
-                  <th>접속 중 회원</th>
-                  <td>
-                      <input type="checkbox"> 접속중 회원 검색
-                  </td>
                 </tr>
                 <tr>
                   <th>검색 키워드</th>
-                  <td colspan="3">
+                  <td>
                     <select>
                       <option>이름</option>
                       <option>아이디</option>
@@ -105,17 +101,11 @@
                     <input class="sel-text" type="text">
                   </td>
                 </tr>
-                <tr>
-                  <th>휴면 회원</th>
-                  <td colspan="3">
-                    <input type="text"> 일이상 미 접속자
-                  </td>
-                </tr>
               </table>
                 <div class="find">
                       <input class="img-button find-button" type="submit" value="검색">
                 </div>
-              <table border="1">
+              <table class="list-table" border="1">
                 <thead>
 
                   <tr>
@@ -128,13 +118,13 @@
                     <td>메일</td>
                     <td>핸드폰</td>
                     <td>주문총액</td>
-                    <td>CRM</td>
+                    <td>자세히</td>
                   </tr>
                 </thead>
                 <tbody>
 						<c:forEach var="list" items="${userlist}">
 							<tr>
-								<td>${list.id}</td>
+								<td class="user-id">${list.id}</td>
 								<td>${list.name}</td>
 								<td>${list.nicname}</td>
 								<td>일반회원</td>
@@ -143,7 +133,7 @@
 								<td>${list.email}</td>
 								<td>${list.phone}</td>
 								<td><u><a href="">0원</a></u></td>
-								<td><span class="detail">보기</span></td>
+								<td><input class="detail" type="button" value="자세히" ></td>
 							</tr>
 						</c:forEach>
 					</tbody>

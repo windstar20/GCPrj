@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="../../CSS/admin/user/detail.css" type="text/CSS" rel="stylesheet">
+    <link href="../../CSS/reset.css" type="text/CSS" rel="stylesheet">
+    <link href="../../CSS/style.css" type="text/CSS" rel="stylesheet">
     <script src="../../js/admin/admin/detail.js"></script>
 </head>
 
@@ -16,24 +18,17 @@
     </header>
     <main class="main">
         <form action="">
+            
+                    <!-- <div class="right-button">
+                        <span>회원기본 정보</span>
+                    </div> -->
+               
+                    <div class="right-button">
+                        <!-- <img src="../../image/admin/up-button.png"> -->
+                        회원정보
+                    </div>
+                    
             <table>
-                <tr>
-                    <td>홍길동님의 회원정보입니다.</td>
-                    <td>
-                        <a href=""><span>회원정보</span></a>
-                        <a href=""><span>주문정보</span></a>
-                        <a href=""><span>적립금</span></a>
-                        <a href=""><span>쿠폰</span></a>
-                        <a href=""><span>1:1상담</span></a>
-                        <a href=""><span>게시물</span></a>
-                        <a href=""><span>방문로그</span></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="right-button">right-button</td>
-                    <td>회원기본 정보</td>
-                    <td>회원정보 수정</td>
-                </tr>
                 <tr>
                     <th>이름(아이디)</th>
                     <td>
@@ -85,11 +80,13 @@
                         일반회원
                     </td>
                 </tr>
-
-                <tr>
-                    <td class="right-button">right-button</td>
-                    <td>회원 이용정보</td>
-                </tr>
+            </table>
+            <div class="right-button">
+                &nbsp;
+                <img src="../../image/admin/up-button.png">
+                회원 이용정보
+            </div>    
+            <table>
                 <tr>
                     <th>가입일</th>
                     <td>2018.02.01 10:25 (마지막 로그인: 정보없음 / 로그인 횟수:0 회)</td>
@@ -116,22 +113,15 @@
                 </tr>
             </table>
         </form>
-           
+        <div class="right-button">
+            <!-- <img src="../../image/admin/up-button.png"> -->
+            회원 추가정보
+        </div><br>   
+        <div class="right-button">
+            <!-- <img src="../../image/admin/up-button.png"> -->
+            사업자 정보
+        </div> 
         <table>
-            <tr>
-                <td class="right-button">right-button</td>
-                <td>회원 추가정보</td></tr>
-            <tr>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            
-        </table>
-        <table>
-            <tr>
-                <td>사업자 정보</td>
-            </tr>
             <tr>
                 <th>사업자번호</th>
                 <td>
@@ -166,13 +156,11 @@
            
         </table>
             <div>
-                <span class="right-button">right-button</span>
-                관리자 운영메모<br>
-                <textarea></textarea>
+                <div class="right-button">관리자 운영메모</div><br>
+                <textarea></textarea><br>
                 <input type="submit" value="등록">
             </div>
 
-            
         <table>
             <thead>
                 <th>내용</th>

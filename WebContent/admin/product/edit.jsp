@@ -107,17 +107,28 @@
 	                <tr>
 	                    <th>맛</th>
 	                    <td>
-	                    	<input type="text" value="${t.name}"></option>
                     	<select name="taste">
-	                    		<c:forEach var="t" items="${tList}">
-	                    			<input type="text" value="${t.id}">${t.name}</option>
-	                    		</c:forEach>	                    	
+	                    		<option value="1">오렌지</option>
+	                    		<option value="2">바닐라</option>
+	                    		<option value="3">다크초코</option>
+	                    		
+	                    		
+<%-- 	                    	<c:forEach var="t" items="${tList}">
+	                    	</c:forEach> 	                     --%>	
+<%--<input type="text" value="${t.id}">${t.name}</option> --%>
 	                    </select> 
 	                    </td>
 	                </tr>
 	                <tr>
 	                	<th>재고</th>
 	                	<td><input type="text" name="inventory"  value="${p.inventory}"></td>
+	                </tr>
+	                <tr>
+	                	<th>진열</th>
+	                	<td>
+	                		<input type="radio" name="display" value="0" >대기 &nbsp
+	                		<input type="radio" name="display" value="1" >진열
+	                	</td>
 	                </tr>
 	            </table>   
 	            

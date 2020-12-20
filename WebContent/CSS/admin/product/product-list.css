@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
- /* -----------------����------------ */
+ /* -----------------占쏙옙占쏙옙------------ */
 html {
   font-family: "Nanum Gothic", sans-serif;
 }
@@ -24,9 +24,9 @@ input[type=checkbox]{
 }
 
 .img-button{
-  text-indent: -999px;  /*text-indent ������ ù°���� �鿩���⸦ �Ѵ�. �� ���� �����ϴ� ��Ÿ��*/
+  text-indent: -999px;  /*text-indent 占쏙옙占쏙옙占쏙옙 첫째占쏙옙占쏙옙 占썽여占쏙옙占썩를 占싼댐옙. 占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占싹댐옙 占쏙옙타占쏙옙*/
   overflow: hidden;    
-  display: inline-block;  /*a�±׸� inline-block�� ����*/
+  display: inline-block;  /*a占승그몌옙 inline-block占쏙옙 占쏙옙占쏙옙*/
   border: none;
 }
 
@@ -198,17 +198,17 @@ input[type=checkbox]{
         align-items: center;
       }
 
-      .search-cell input{
+      .search-cell input {
         box-sizing: border-box;
         margin: 0px 0px 0px 5px;
         height: 30px;
         flex-basis: 170px;
         border: solid gray 1px;
-        background: #D1BBBA;
+        background: #95a4f4;
         outline: none;
         /* line-height: /10px; */
       }
-      .sale-cell>form>input{
+      .sale-cell input {
         margin: 4px 4px 4px 4px;
         min-height: 30px;
         min-width: 100px;
@@ -222,14 +222,14 @@ input[type=checkbox]{
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    width: ;
+    width: 1300px;
   }
       .btn-search>input{
         min-width: 60px;
         height: 40px;
         background: #785452;
         border: none;
-        font-family: "맑은 고딕";
+        font-family: "留묒� 怨좊뵓";
         font-size: 17px;
         box-shadow: 0px 2px 5px 0px gray;
         border-radius: 8px;
@@ -265,10 +265,10 @@ input[type=checkbox]{
     text-decoration: none;
   }
   .sort-container>.sort-box>a:nth-child(2)::before{
-    content: "∴";
+    content: "※" ;
   }
   .sort-container>.sort-box>a:nth-child(n+3):nth-child(-n+5)::before{
-    content: "∵";
+    content: "※" ;
   }
 
   .productList-box{
@@ -395,7 +395,7 @@ input[type=checkbox]{
       }
       .product-display-list{
         min-width: 100px;
-        display: flex;
+        text-align: center;
       }
           .product-display-list>input{
             margin: auto;
@@ -431,17 +431,17 @@ input[type=checkbox]{
       width: 1300px;
     }
 
-          .check-box-edit>input {
+          .check-box-edit input {
             width: 100px;
             height: 40px;
             outline: none;
             border: none;
             background: #525f78;
             color: white;
-            font-family: "나눔 고딕";
+            font-family: "나눔고딕";
           }
 
-          .check-box-edit>input:hover, .product-reg>input:hover{
+          .check-box-edit input:hover, .product-reg>input:hover{
             transition: 2s ease;
             background:  #b82525;
           }
@@ -478,7 +478,7 @@ input[type=checkbox]{
 
     }
 
-    .product-reg>a{ /* 상품등록 */
+    .product-reg>a{ /* �긽�뭹�벑濡� */
       text-decoration: none;
       display: inline-block;
       width: 100px;
@@ -487,7 +487,7 @@ input[type=checkbox]{
       border: none;
       background: #525f78;
       color: white;
-      font-family: "나눔 고딕";
+      font-family: "�굹�닎 怨좊뵓";
       text-align: center;
       line-height: 40px;
       font-size: 14px;

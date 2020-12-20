@@ -97,7 +97,7 @@
 	                      <option value="category">카테고리</option>
 	                      <option value="inventory">재고</option>                                
 	                    </select>
-	                        <input type="text" name="query" placeholder="검색">&nbsp 재고는 비교할 수량보다 작은 값이 검색
+	                        <input type="text" name="query" placeholder="검색">&nbsp ※재고는 비교 수량보다 작은 값 검색
 	                  </div>
 	                </div>
 	                <div class="sale-row">
@@ -172,7 +172,7 @@
 		                  <label>${p.delivery}</label>
 		                </li>
 		   				<li class="product-display-list">
-		                    <input type="button" value="진열">
+		                    <label>${p.display}</label>
 		                </li>
 		                <li class="product-edit-list">
 		                    <a href="edit?id=${p.id}"><input type="button" value="수정"></a>
@@ -189,8 +189,8 @@
 	              <h1 class="no-display">페이지 요청목록</h1>
 	              <div class="check-box-edit">
 	<!--                 <input type="button" value="체크상품수정"> -->
-					<a href="list"><input type="submit" value="체크상품삭제" /></a>                
-	                <input type="submit" value="체크상품진열">
+					<a href="list"><input type="submit" value="체크상품삭제" name="delete-submit"/></a>                
+	                <a href="list"><input type="submit" value="체크상품진열" name="display-submit"/></a>
 	              </div>
               </form>
               

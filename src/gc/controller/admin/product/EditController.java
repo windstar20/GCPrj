@@ -37,6 +37,7 @@ public class EditController extends HttpServlet{
 		
 		ProductService service = new ProductService();
 		Product p = service.get(id);
+		
 
 		request.setAttribute("bList", bList);
 		request.setAttribute("cList", cList);
@@ -59,6 +60,7 @@ public class EditController extends HttpServlet{
 			int inventory = Integer.parseInt(request.getParameter("inventory"));
 			int deliveryId = Integer.parseInt(request.getParameter("delivery-price"));
 			String content = request.getParameter("content");
+			int display = Integer.parseInt(request.getParameter("display"));
 			String tastes = request.getParameter("taste");
 			String[] taste = tastes.split("/");
 			
@@ -74,6 +76,7 @@ public class EditController extends HttpServlet{
 				p.setDeliveryId(deliveryId);
 				p.setContent(content);
 				p.setId(id);
+				p.setDisplay(display);
 			
 		
 			service.update(p);

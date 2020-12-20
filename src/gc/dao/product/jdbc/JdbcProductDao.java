@@ -54,16 +54,16 @@ public class JdbcProductDao implements ProductDao{
 		}
 		return result;
 	}
-	
+//	"UPDATE NOTICE SET TITLE=?, CONTENT=? WHERE ID=?"; 
 	@Override
 	public int update(Product product) {
 		int result = 0;				    
 
-		String url = DBContext.URL;              //DISPLAY빠졌다!!!!
-		String sql = "UPDATE PRODUCT SET NAME=?, CONTENT=?, CODE=?, PRICE=?, "
-				+ "BRAND_ID=?, CATEGORY_ID=?, INVENTORY=?, DELIVERY_ID=? "  
-				+ "WHERE ID=?";
-		System.out.println("업데이트"+sql);
+		String url = DBContext.URL;             
+		String sql = "UPDATE PRODUCT SET NAME=?, CONTENT=?, CODE=?, PRICE=?, DISPLAY=?, "
+				+ "BRAND_ID=?, CATEGORY_ID=?, INVENTORY=?, DELIVERY_ID=? WHERE ID=?";
+
+		System.out.println("업데이트 "+sql);
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
@@ -73,12 +73,12 @@ public class JdbcProductDao implements ProductDao{
 			st.setString(2,  product.getContent());
 			st.setString(3, product.getCode());
 			st.setInt(4, product.getPrice());
-//			st.setInt(5, product.getDisplay());
-			st.setInt(5, product.getBrandId());
-			st.setInt(6, product.getCategoryId());
-			st.setInt(7, product.getInventory());
-			st.setInt(8, product.getDeliveryId());			
-			st.setInt(9, product.getId());
+			st.setInt(5, product.getDisplay());
+			st.setInt(6, product.getBrandId());
+			st.setInt(7, product.getCategoryId());
+			st.setInt(8, product.getInventory());
+			st.setInt(9, product.getDeliveryId());			
+			st.setInt(10, product.getId());
 
 			result = st.executeUpdate();		
 			st.close();
@@ -91,6 +91,7 @@ public class JdbcProductDao implements ProductDao{
 		}
 		return result;
 	}
+	
 	@Override
 	public int delete(int id) {
 		int result = 0;				    
@@ -117,6 +118,35 @@ public class JdbcProductDao implements ProductDao{
 		return result;
 	}
 
+	@Override
+	public int display(int id) {
+		int result = 0;				    
+
+		String url = DBContext.URL;
+		String sql = "UPDATE PRODUCT SET DISPLAY=? WHERE ID="+id; 
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement st = con.prepareStatement(sql);
+			
+			st.setInt(1, 1);
+			
+			result = st.executeUpdate(); 
+
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+	
+	
 	@Override
 	public Product get(int id) {
 		Product p = null;
@@ -225,45 +255,6 @@ public class JdbcProductDao implements ProductDao{
 		return list;
 	}
 
-	@Override
-	public int deleteAll(int[] ids) {
-		int result = 0;				     //?���? ?��?���??��?�� DB�? insert
-
-		String url = DBContext.URL;
-		String sql = "DELETE FROM PRODUCT WHERE ID IN("+ ids+")";
-
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
-			Statement st = con.createStatement();
-			
-			
-			result = st.executeUpdate(sql); 
-
-			st.close();
-			con.close();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		return result;
-	}
-
-	@Override
-	public int display(int id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public int displayAll(int[] ids) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-
 	@Override //게시된 ID의 수 구하기: 게시물의 전체 수.
 	public int getCount() {
 		int count = 0;
@@ -305,12 +296,6 @@ public class JdbcProductDao implements ProductDao{
 		return getViewList(startIndex, endIndex, null, null,null,null);
 	}
 	
-	/*
-	 * SELECT * FROM (SELECT ROWNUM NUM, V.* FROM(SELECT * FROM PRODUCT_VIEW ORDER
-	 * BY ID) V) WHERE NUM BETWEEN 1 AND 5 AND NAME LIKE '%컴%';
-	 */
-	
-
 	@Override
 	public List<ProductView> getViewList(int startIndex, int endIndex, String keyword, String query, String prevPrice, String nextPrice) {
 		String url = DBContext.URL;
@@ -331,12 +316,11 @@ public class JdbcProductDao implements ProductDao{
 //		SELECT * FROM(SELECT ROWNUM NUM, V.* 
 //				FROM(SELECT * FROM PRODUCT_VIEW WHERE PRICE < 50000 ORDER BY ID) V) 
 //		WHERE NUM BETWEEN 1 AND 10;	
-		String keywordSql = null;
-		String priceSql = null;
-		
+				
 		if(keyword != null && !keyword.equals("")) {
 			if(keyword.equals("name")) {
-				sql = hSql + sql + mSql + " AND "+keyword+" LIKE '%"+query+"%'"; 
+				sql = hSql + sql + mSql + " AND "+keyword+" LIKE '%"+query+"%'";
+
 			} else if(keyword.equals("inventory")) {
 				sql = hSql + sql + mSql + " AND "+keyword +" < "+query;
 			} else {
@@ -362,7 +346,7 @@ public class JdbcProductDao implements ProductDao{
 		
 		
 		List<ProductView> list = new ArrayList<>();
-		System.out.println("query "+ query);
+		System.out.println("query값 "+ query);
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");

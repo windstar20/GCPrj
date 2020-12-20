@@ -66,7 +66,7 @@
             <h1>상품 등록</h1>
             <span> home > 상품관리 > 상품리스트 </span>
         </div>
-        	<form action="reg" method="post" >
+        	<form action="reg" method="post" enctype="multipart/form-data" >
 	            <section id="main" class="main">
 	            <h1>상품 기본 정보</h1>
 	            <table class="product-basic-info product-table">
@@ -107,6 +107,14 @@
 	                <tr>
 	                	<th>수량</th>
 	                	<td><input type="text" name="inventory" >개</td>
+	                </tr>
+	                <tr>
+	                	<th>진열</th>
+	                	<td>
+	                		<input type="radio" name="display" value="0" >대기 &nbsp
+	                		<input type="radio" name="display" value="1" >진열
+	                	</td>
+	                	
 	                </tr>
 	            </table> 
 	            

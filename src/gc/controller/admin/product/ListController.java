@@ -46,14 +46,26 @@ public class ListController extends HttpServlet{
 		if(request.getParameter("nextPrice")!=null)
 			nextPrice = request.getParameter("nextPrice");
 
-		List<ProductView> list = service.getViewList(page, size, keyword, query, prevPrice, nextPrice);
-		int count = dao.getCount();//게시물의 수를 구하기(함수처리)		
-		int lastPage = count/10;    //마지막 페이지구하기(1)
-		lastPage = count%10 > 0 ? lastPage+1 : lastPage; //마지막 페이지구하기(2)
-		//		lastPage = count%10=0?lastPage:lastPage+1;		
-		pageEnd = lastPage; 
-		/*service.movePrevList(page); service.moveNextList(page, pageEnd);*/
-
+		List<ProductView> list = service.getViewList(0, 0, keyword, query, prevPrice, nextPrice);
+		
+		 int count = service.getCount();//게시물의 수를 구하기(함수처리) 
+		 int lastPage = count/10; //마지막 페이지구하기(1) 
+		 lastPage = count%10 > 0 ? lastPage+1 : lastPage; //마지막
+		 //페이지구하기(2) // lastPage = count%10=0?lastPage:lastPage+1; pageEnd = lastPage;
+		 System.out.println("라스트: "+lastPage);
+		 pageEnd = lastPage;
+		 
+		 int aa = list.size();
+		 System.out.println("list.size() "+ aa);
+		 
+//		 if(list.size()%10==0)
+//			pageEnd = list.size();
+//		else
+//			pageEnd = list.size()+1;
+			
+		list = service.getViewList(page, size, keyword, query, prevPrice, nextPrice);
+		System.out.println("pageEnd: "+pageEnd);
+		
 		request.setAttribute("list", list);
 		request.setAttribute("page", page);
 		request.setAttribute("size", size);
@@ -67,10 +79,18 @@ public class ListController extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProductService service = new ProductService();			
 		String[] selected = null;
-
-		if(request.getParameterValues("selected")!=null) {
-			selected = request.getParameterValues("selected");		
+		String deleteSubmit = null;
+		String displaySubmit = null;
 		
+		if(request.getParameter("delete-submit")!=null) 
+			deleteSubmit = request.getParameter("delete-submit");
+		if(request.getParameter("display-submit")!=null) 
+			displaySubmit = request.getParameter("display-submit");
+		
+		
+		if(request.getParameterValues("selected")!=null) {
+			selected = request.getParameterValues("selected");
+					
 			for(int j=0;j<selected.length;j++)
 				System.out.println(selected[j]);
 			
@@ -81,15 +101,17 @@ public class ListController extends HttpServlet{
 				ids[i] = Integer.parseInt(selected[i]);
 				System.out.println("ids는: "+ids[i]);
 			}
-		service.deleteAll(ids);
+			
+			if(deleteSubmit != null) {
+				service.deleteAll(ids);
+				System.out.println(deleteSubmit);
+			}
+			if(displaySubmit != null) {
+				service.displayAll(ids);
+				System.out.println(displaySubmit);
+			}
 		}
-		
-		
-
 		response.sendRedirect("list");
-				
-		
-		
 	}//end doPost
 
 }

@@ -39,7 +39,6 @@ public class GymListController extends HttpServlet{
 		
 		request.setAttribute("list", list);
 		request.setAttribute("page", page);
-		
 		request.setAttribute("pageEnd", pageEnd);
 		
 		request.getRequestDispatcher("/admin/user/gym/list.jsp").forward(request, response);

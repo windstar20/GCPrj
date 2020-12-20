@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../../../CSS/style.css">
     <link rel="stylesheet" href="../../../CSS/admin/admin.css" type="text/css" />
     <link rel="stylesheet" href="../../../CSS/admin/user/gym/list.css" type="text/css" />
+    <script src ="../../../js/admin/user/gym/list.js"></script>
   </head>
   <body>
     <header id="header" class="header">
@@ -104,42 +105,44 @@
           <div class = "del-button">
             <input type = "button" value = "삭제">
           </div>
-          <table border = "1" class="list-box">
-            <thead>
-              <tr>
-                <td><input type="checkbox" class ="check-all"></td>
-                <td>번호</td>
-                <td>사업자 명</td>       
-                <td>시설 명</td>
-                <td>회원등급</td>
-                <td>주소</td>
-                <td>연락처</td>
-                <td>시설 번호</td>
-                <td>업체 종류</td>
-                <td>사업자 번호</td>
-                <td>인증방식</td>
-                <td>가입일</td>    
-              </tr>
-            </thead>
-            <tbody>
-            	<c:forEach var="g" items="${list}">
+         
+	          <table border = "1" class="gymList-box">
+	            <thead>
 	              <tr>
-	                <td><input type="checkbox" class="check"></td>
-	                <td>${g.id }</td>
-	                <td>${g.name }</td>
-	                <td>${g.gymName }</td>
-	                <td>시설회원</td>
-	                <td>${g.adress }</td>
-	                <td>${g.telephone }</td>
-	                <td>${g.phone }</td>
-	                <td>헬스</td>
-	                <td>${g.licenseNumber }</td> 
-	                <td>핸드폰</td>
-	                <td>${g.regdate }</td>
+	                <td><input type="checkbox" class ="check-all"></td>
+	                <td>번호</td>
+	                <td>사업자 명</td>       
+	                <td>시설 명</td>
+	                <td>회원등급</td>
+	                <td>주소</td>
+	                <td>연락처</td>
+	                <td>시설 번호</td>
+	                <td>업체 종류</td>
+	                <td>사업자 번호</td>
+	                <td>인증방식</td>
+	                <td>가입일</td>    
 	              </tr>
-	            </c:forEach>
-            </tbody>       
-          </table>
+	            </thead>
+	            <tbody>
+	            	<c:forEach var="g" items="${list}">
+		              <tr>
+		                <td><input type="checkbox" class="check"></td>
+		                <td>${g.id }</td>
+		                <td>${g.name }</td>
+		                <td>${g.gymName }</td>
+		                <td>시설회원</td>
+		                <td>${g.adress }</td>
+		                <td>${g.telephone }</td>
+		                <td>${g.phone }</td>
+		                <td>헬스</td>
+		                <td>${g.licenseNumber }</td> 
+		                <td>핸드폰</td>
+		                <td>${g.regdate }</td>
+		              </tr>
+		            </c:forEach>
+	            </tbody>       
+	          </table>
+          
            <div class="page-list">
            		<c:if test="${page != 1 }">
                 	<span><a href="list?${page-1}">이전</a></span>

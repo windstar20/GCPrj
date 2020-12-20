@@ -17,3 +17,21 @@ window.addEventListener("load", function(){
 });
 
 
+//PAGER 클릭시 선택 번호 효과
+window.addEventListener("load", function(){
+	var pagerMenu = document.querySelector(".pager-menu");
+	var ul = pagerMenu.querySelector("ul"); 
+	var beforeBtn = pagerMenu.querySelector(".before-button");
+	var nextBtn = pagerMenu.querySelector(".next-button");
+	
+	var current = ul.firstElementChild;
+	current.style.color = "#29d022";
+	current.style.fontSize = "25px";
+		
+	
+	ul.onclick = function() {
+		
+		
+	}; 
+	
+});

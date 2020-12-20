@@ -5,7 +5,6 @@ import java.util.List;
 import gc.dao.product.ProductDao;
 import gc.dao.product.jdbc.JdbcProductDao;
 import gc.entity.product.Product;
-import gc.entity.product.ProductTaste;
 import gc.entity.product.view.ProductView;
 
 
@@ -47,6 +46,18 @@ public class ProductService {
 		
 		return result;
 	}
+	
+	public int displayAll(int[] ids) {
+		int result = 0;
+		for(int i=0; i<ids.length; i++) {
+			int id = ids[i];
+			result += productDao.display(id);
+		}
+		
+		
+		return result;
+	}
+	
 	
 	public int delete(int id) {
 
@@ -138,4 +149,10 @@ public class ProductService {
 		return productDao.getLast();
 	}
 
+	public int getCount() {
+		
+		return productDao.getCount();
+	}
+
+	
 }

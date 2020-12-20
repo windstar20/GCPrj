@@ -13,22 +13,20 @@ public interface ProductDao {
 	int insert(Product product);
 	int update(Product product);
 	int delete(int id);
-	int deleteAll(int[] ids);
+	int getCount();
+	int display(int id);
+	
 	
 //	Product get(int id);
 	List<Product> getList();
 	
-	int display(int id);
-	int displayAll(int[] ids);
-	
 //	int insert(ProductView productView);	
 	List<ProductView> getViewList();
 	List<ProductView> getViewList(int startIndex, int endIndex);
-	List<ProductView> getViewList(int startIndex, int endIndex, String field, String query, String prevPrice, String nextPrice);
+	List<ProductView> getViewList(int startIndex, int endIndex, String keyword, String query, String prevPrice, String nextPrice);
 	
 	
 	Product get(int id);
-	int getCount();
 	
 	Product getLast();
 }

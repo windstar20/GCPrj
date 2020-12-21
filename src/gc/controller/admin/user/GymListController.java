@@ -21,18 +21,26 @@ public class GymListController extends HttpServlet{
 	
 		int page = 1;
 		int size = 5;
+		String field = null;
+		String query = null;
 		int pageEnd = 1;
 		
 		GymService service = new GymService();
-		JdbcGymDao dao = new JdbcGymDao();
+		//JdbcGymDao dao = new JdbcGymDao();
 		
 		//List<Gym> list = service.getList();
 		
 		if(request.getParameter("page")!=null)
 			page = Integer.parseInt(request.getParameter("page"));
 		
-		List<GymView> list = service.getViewList(page,size);
-		int count = dao.getCount();
+		if(request.getParameter("field")!=null)
+			field = request.getParameter("field");
+		
+		if(request.getParameter("query")!=null)
+			query = request.getParameter("query");
+		
+		List<GymView> list = service.getViewList(page ,size ,field ,query);
+		int count = service.getCount();
 		int lastPage = count / 5;
 		lastPage = count % 5 > 0 ? lastPage + 1 : lastPage;
 		pageEnd = lastPage;

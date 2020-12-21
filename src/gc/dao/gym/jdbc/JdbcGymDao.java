@@ -14,6 +14,7 @@ import gc.dao.gym.GymDao;
 import gc.dao.jdbc.DBContext;
 import gc.entity.gym.Gym;
 import gc.entity.gym.view.GymView;
+import gc.entity.product.view.ProductView;
 
 public class JdbcGymDao implements GymDao {
 
@@ -264,14 +265,28 @@ public class JdbcGymDao implements GymDao {
 	@Override
 	public List<GymView> getViewList() {
 		// TODO Auto-generated method stub
-		return getViewList();
+		return getViewList(0,0,null,null);
+	}
+	
+	@Override
+	public List<GymView> getViewList(int startIndex, int endIndex) {
+		
+		return getViewList(startIndex, endIndex, null, null);
 	}
 
 	@Override
-	public List<GymView> getViewist(int startIndex, int endIndex) {
+	public List<GymView> getViewList(int startIndex, int endIndex,String field ,String query) {
 		
 		String url = DBContext.URL;
-		String sql = "SELECT  * FROM GYM_LIST_VIEW WHERE ID BETWEEN "+ startIndex + " AND "+ endIndex;
+		String sql = "SELECT * FROM GYM_LIST_VIEW ";
+		
+		if(field != null && query != null && !field.equals("") && !query.equals(""))
+			sql = "SELECT * FROM GYM_LIST_VIEW WHERE NAME LIKE '%"+field+"%' AND GYM_NAME LIKE '%"+query+"%'";
+		
+		if(startIndex!=0 && endIndex!=0)
+			sql = "SELECT * FROM GYM_LIST_VIEW WHERE ID BETWEEN "+ startIndex +" AND "+endIndex; //F(s,e,null,null)
+		
+		System.out.println(sql);
 		
 		List<GymView> list = new ArrayList<>();
 		 

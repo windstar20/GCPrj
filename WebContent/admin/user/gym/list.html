@@ -14,7 +14,9 @@
     <header id="header" class="header">
       <div class="logo-bar">
         <h1 class="no-display">근처</h1>
-        <a href=""><div class="logo"></div></a>
+        <a href="">
+          <div class="logo"></div>
+        </a>
         <ul>
           <li><button class="logout">로그아웃</button></li>
         </ul>
@@ -51,97 +53,99 @@
           </ul>
       </aside>
       <section class="main-section">
-        <div class="main-title">
-          <h1>제휴업체 리스트</h1>
-          <span> home > 제휴업체 관리 > 제휴업체 리스트 </span>
-        </div>
         <main id="main" class="main">
-          <h1>제휴업체 리스트</h1>
-          <table border="1">
-            <tr>
-              <th>회원등급</th>
-              <td>
-                <input type="checkbox"> 가입신청자
-                <input type="checkbox"> 시설 회원
-                <input type="checkbox"> 휴면 회원
-              </td>
-            </tr>
-            <tr>
-              <th>수신동의</th>
-              <td>
-                <input type="checkbox"> SMS 수신동의
-                <input type="checkbox"> E-mail 수신동의
-              </td>
-            </tr>
-            <tr>
-              <th>검색 키워드</th>
-              <td>
-                <select>
-                  <option>사업자 명</option>
-                  <option>아이디</option>
-                  <option>이메일</option>
-                  <option>연락처</option>
-                  <option>전화번호</option>
-                  <option>시설 명</option>
-                </select>
-                <input class="sel-text" type="text">
-                <input type = "button" value = "검색">
-              </td>
-            </tr>
-            <tr>
-              <th>휴면 회원</th>
-              <td>
-                100일이상 미 접속자
-              </td>
-            </tr>
-          </table>
-          <div class = "del-button">
-            <input type = "button" value = "삭제">
+          <div class="main-head">
+            <h1>제휴업체 리스트</h1>
+            <span> home > 제휴업체 관리 > 제휴업체 리스트 </span>
           </div>
-          <table border = "1">
-            <thead>
+          <div class="main-body">
+            <h1>제휴업체 리스트</h1>
+            <table border="1">
               <tr>
-                <td><input type="checkbox" name ="gym-list"></td>
-                <td>번호</td>
-                <td>사업자 명</td>       
-                <td>시설 명</td>
-                <td>회원등급</td>
-                <td>주소</td>
-                <td>연락처</td>
-                <td>시설 번호</td>
-                <td>업체 종류</td>
-                <td>사업자 번호</td>
-                <td>인증방식</td>
-                <td>가입일</td>    
+                <th>회원등급</th>
+                <td>
+                  <input type="checkbox"> 가입신청자
+                  <input type="checkbox"> 시설 회원
+                  <input type="checkbox"> 휴면 회원
+                </td>
               </tr>
-            </thead>
-            <tbody>
               <tr>
-                <td><input type="checkbox" name ="check-all"></td>
-                <td>1</td>
-                <td>엄복동</td>
-                <td>근처</td>
-                <td>시설회원</td>
-                <td>서울시 종로구 대일빌딩</td>
-                <td>010-1234-5678</td>
-                <td>02-123-4567</td>
-                <td>헬스</td>
-                <td>111-22-33334</td>
-                <td>핸드폰</td>
-                <td>20.11.01</td>
+                <th>수신동의</th>
+                <td>
+                  <input type="checkbox"> SMS 수신동의
+                  <input type="checkbox"> E-mail 수신동의
+                </td>
               </tr>
-            </tbody>
-          </table>
-           <div class="page-list">
-                <span><a href="">이전</a></span>
-                <ul>
-                  <li>1</li>
-                </ul>
-                <span><a href="">다음</a></span>
-           </div>        
+              <tr>
+                <th>검색 키워드</th>
+                <td>
+                  <select>
+                    <option>사업자 명</option>
+                    <option>아이디</option>
+                    <option>이메일</option>
+                    <option>연락처</option>
+                    <option>전화번호</option>
+                    <option>시설 명</option>
+                  </select>
+                  <input class="sel-text" type="text">
+                  <input type = "button" value = "검색">
+                </td>
+              </tr>
+              <tr>
+                <th>휴면 회원</th>
+                <td>
+                  100일이상 미 접속자
+                </td>
+              </tr>
+            </table>
+            <div class = "del-button">
+              <input type = "button" value = "삭제">
+            </div>
+            <table border = "1">
+              <thead>
+                <tr>
+                  <td><input type="checkbox" name ="gym-list"></td>
+                  <td>번호</td>
+                  <td>사업자 명</td>       
+                  <td>시설 명</td>
+                  <td>회원등급</td>
+                  <td>주소</td>
+                  <td>연락처</td>
+                  <td>시설 번호</td>
+                  <td>업체 종류</td>
+                  <td>사업자 번호</td>
+                  <td>인증방식</td>
+                  <td>가입일</td>    
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="checkbox" name ="check-all"></td>
+                  <td>1</td>
+                  <td>엄복동</td>
+                  <td>근처</td>
+                  <td>시설회원</td>
+                  <td>서울시 종로구 대일빌딩</td>
+                  <td>010-1234-5678</td>
+                  <td>02-123-4567</td>
+                  <td>헬스</td>
+                  <td>111-22-33334</td>
+                  <td>핸드폰</td>
+                  <td>20.11.01</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="page-list">
+                  <span><a href="">이전</a></span>
+                  <ul>
+                    <li>1</li>
+                  </ul>
+                  <span><a href="">다음</a></span>
+            </div>
+          </div>        
         </main>
       </section>
-      </div>
+    </div>
     <section>
       <footer id="footer" class="footer">
         <h1 class = "no-display">푸터</h1>

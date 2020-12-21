@@ -7,27 +7,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
     <link href="../../CSS/admin/user/detail.css" type="text/CSS" rel="stylesheet">
     <script src="../../js/admin/admin/detail.js"></script>
 </head>
 
-<body class="body">
+<body>
     <header class="header">
         <h1>회원 상세정보</h1>
         <div>닫기</div>
     </header>
     <main class="main">
+        <div class="main-head">
+            <h1>${u.name }님의 회원정보입니다.</h1>
+            <nav>
+                <ul>
+                    <li><a href="detail?id=${u.id }">회원정보</a></li>
+                    <li><a href="order?id=${u.id }">주문정보</a></li>
+                    <li><a href="detail-point?id=${u.id }">포인트</a></li>
+                    <li><a href="evaluaion?id=${u.id }">작성한 평가</a></li>
+                </ul>
+            </nav>
+        </div>
         <form action="">
-            <table>
-                <tr>
-                    <td>${u.name }님의 회원정보입니다.</td>
-                    <td>
-                        <a href=""><span>회원정보</span></a>
-                        <a href=""><span>주문정보</span></a>
-                        <a href=""><span>포인트</span></a>
-                        <a href=""><span>작성한 평가</span></a>
-                    </td>
-                </tr>
+        <table>
                 <tr>
                     <td class="right-button">right-button</td>
                     <td>회원기본 정보</td>
@@ -174,10 +177,10 @@
             
         <table>
             <thead>
-                <th>내용</th>
-                <th>작성시각</th>
-                <th>작성자</th>
-                <th>관련정보</th>
+                <td>내용</td>
+                <td>작성시각</td>
+                <td>작성자</td>
+                <td>관련정보</td>
               <td>
                   <input type="button" value="삭제">
               </td>

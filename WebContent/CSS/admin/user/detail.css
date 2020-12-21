@@ -44,13 +44,12 @@
         border: 1px solid rgb(209, 202, 202);
     }
     
-    /* .main .right-button{
+    .main .right-button{
+        height: 50px;
+        border: 1px solid black;
         display: inline-block;
-        background: url(../../../image/admin/up-button.png) no-repeat center;
-      
-        
-    } */
-
+    }
+    
     
 
 

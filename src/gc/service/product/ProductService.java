@@ -110,7 +110,7 @@ public class ProductService {
 	public List<ProductView> getViewList(int page, int size){
 
 		int startIndex = 1+(page-1)*size; //1, 11, 21, 31...//수열: 초항+(n-1)*d
-		int endIndex = page*10;
+		int endIndex = page*15;
 		//int end  10, 20 , 30 , 40 ,50
 		return productDao.getViewList(startIndex, endIndex);
 

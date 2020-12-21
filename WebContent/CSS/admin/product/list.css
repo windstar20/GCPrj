@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
- /* -----------------占쏙옙占쏙옙------------ */
+/* @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+ -----------------占쏙옙占쏙옙------------
 html {
   font-family: "Nanum Gothic", sans-serif;
 }
@@ -20,13 +20,13 @@ input[type=checkbox]{
   width: 15px;
   height: 15px;
   outline: none;
-  /* border: 2px solid red; */
+  border: 2px solid red;
 }
 
 .img-button{
-  text-indent: -999px;  /*text-indent 占쏙옙占쏙옙占쏙옙 첫째占쏙옙占쏙옙 占썽여占쏙옙占썩를 占싼댐옙. 占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占싹댐옙 占쏙옙타占쏙옙*/
+  text-indent: -999px;  text-indent 占쏙옙占쏙옙占쏙옙 첫째占쏙옙占쏙옙 占썽여占쏙옙占썩를 占싼댐옙. 占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占싹댐옙 占쏙옙타占쏙옙
   overflow: hidden;    
-  display: inline-block;  /*a占승그몌옙 inline-block占쏙옙 占쏙옙占쏙옙*/
+  display: inline-block;  a占승그몌옙 inline-block占쏙옙 占쏙옙占쏙옙
   border: none;
 }
 
@@ -120,7 +120,7 @@ input[type=checkbox]{
   display: flex;
   flex-direction: column;
 }
-.main-title{
+.main-head{
   display: flex;
   height: 42px;
   background: rgb(195, 200, 183);
@@ -129,20 +129,25 @@ input[type=checkbox]{
   
 }
 
-.main-title>h1{
+.main-head>h1{
   margin-left: 15px;
   font-weight: bold;
   font-size: 20px;
 }
-.main-title > span {
+.main-head > span {
   font-weight: lighter;
   font-size: 10px;
 }
 .main {
   padding: 35px 40px 40px 40px;
   flex-grow: 1;
+} */
+.aside-title {
+  background: url(../../../image/admin/product-order-aside.png) no-repeat;
 }
-
+h1.no-display {
+  display: none;
+}
 /* body ========================================= */
 .select-row, .search-row, .sale-row{
   display: flex;
@@ -343,10 +348,10 @@ input[type=checkbox]{
         /* justify-content: flex-start; */
         /* flex-direction: column; */
       }
-            .product-name-img>a{
+            .product-name-img>img{
               display: inline-block;
-              background:url("../../../image/admin/impactwhey.png") no-repeat center; 
-              min-width: 150px;
+              --background:url("../../../image/admin/impactwhey.png") no-repeat center; 
+              width: 150px;
               height: 150px;
               text-indent: -999px;
               overflow: hidden;
@@ -464,6 +469,12 @@ input[type=checkbox]{
           background: url("../../../image/admin/arrow-r.png") no-repeat center;
           margin-left: 10px;
         }
+        .img-button{
+		  text-indent: -999px;  
+		  overflow: hidden;    
+		  display: inline-block; 
+		  border: none;
+		}
     .pager-menu li{
       min-width: 30px;
     }
@@ -478,7 +489,7 @@ input[type=checkbox]{
 
     }
 
-    .product-reg>a{ /* �긽�뭹�벑濡� */
+    .product-reg>a{ 
       text-decoration: none;
       display: inline-block;
       width: 100px;
@@ -487,7 +498,7 @@ input[type=checkbox]{
       border: none;
       background: #525f78;
       color: white;
-      font-family: "�굹�닎 怨좊뵓";
+      font-family: "나눔고딕";
       text-align: center;
       line-height: 40px;
       font-size: 14px;
@@ -503,7 +514,7 @@ input[type=checkbox]{
 
 /* aside ============================================= */
 
-.aside {
+/* .aside {
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -541,5 +552,5 @@ input[type=checkbox]{
 .footer {
   min-height: 100px;
   background-color: black;
-}
+} */
 /* -------------product-detail----------- */

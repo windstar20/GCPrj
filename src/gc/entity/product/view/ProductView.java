@@ -19,8 +19,8 @@ public class ProductView extends Product{
 		
 	}
 	
-	public ProductView(int id, String name, Date regdate, String code, int price, int display, int inventory, String brand, String category, String delivery, String fileName) {
-		super(id, name, regdate, code, price, display, inventory);
+	public ProductView(int id, String name, Date regdate, String code, int price, int display, int inventory, String image, String brand, String category, String delivery, String fileName) {
+		super(id, name, regdate, code, price, display, inventory, image);
 		this.brand = brand;
 		this.category = category;
 		this.code = code;

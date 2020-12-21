@@ -59,6 +59,7 @@
 				<br />
 			</ul>
 		</aside>
+		 <!-- ======================== main ======================== -->     
 		<section class="main-section">
 			<main id="main" class="main">
 				<div class="main-head">
@@ -162,7 +163,7 @@
 							<h1 class="no-display">정렬</h1>
 							<ul>
 					          <li>
-					            주문일
+					            <span> 주문일</span>
 					            <span>
 					              <form action="list">
 					              	<input type="hidden" name="page" value="${page }">
@@ -191,7 +192,7 @@
 					            </span>
 					          </li>
 													          <li>
-					            주문자
+					           	<span>주문자</span>
 					            <span >
 					              <form action="list">
 					            	<input type="hidden" name="page" value="${page }">
@@ -220,7 +221,7 @@
 					            </span>
 					          </li>
 													          <li>
-					            결제금액
+					           	<span>결제금액</span>
 					            <span >
 					              <form action="list">
 					             	<input type="hidden" name="page" value="${page }">
@@ -287,7 +288,7 @@
 										<span class="price">${price }</span>원</td>
 										<td>무통장<br />입금자명
 										</td>
-										<td class="order-state"></td>
+										<td class="order-state">${p.state }</td>
 										<td><input class="select-button jsbutton" type="button"
 											value="입금확인" /> 
 											<a href="detail?id=${p.id }"><input

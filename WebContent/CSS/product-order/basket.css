@@ -1,0 +1,118 @@
+.main-section {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 1000px;
+}
+.main-section table,
+.main-section td,
+.main-section th,
+.main-section tr {
+  border: 2px solid #979797;
+  border-collapse: collapse;
+}
+.main-section table tr:first-child th:first-child {
+  width: 100px;
+}
+.main-section .main-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-section .main-head .current-page {
+  font-weight: bold;
+}
+.main-section .title {
+  font-family: "JUA", sans-serif;
+  font-size: 40px;
+}
+.main-section table {
+  width: 100%;
+}
+.main-section table tr th {
+  text-align: center;
+}
+.main-section table th,
+.main-section table td {
+  padding: 10px;
+}
+
+.main-section .img-box {
+  display: flex;
+  align-items: center;
+}
+.main-section .img-box input {
+  margin-right: 5px;
+}
+.main-section table .option-wrap {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.main-section table .option-wrap div:first-child {
+  font-size: 13px;
+  position: relative;
+  top: -5px;
+}
+.main-section table .option-wrap div:nth-child(2) {
+  position: relative;
+  top: -5px;
+}
+.main-section table .option-wrap div:nth-child(2) {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+.main-section table .option-wrap div:nth-child(2) span:first-child input:first-child {
+  width: 50px;
+}
+.main-section table .cancel-button {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border: 1px solid #989898;
+}
+
+.main-section .select-del-button {
+  margin: 10px 0;
+  width: 80px;
+  height: 30px;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid #989898;
+}
+.main-section .result {
+  display: flex;
+  border: 3px solid #979797;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+}
+.main-section .result .result-price {
+  font-weight: bold;
+  font-size: 20px;
+}
+.main-section .result .result-price:last-child {
+  color: red;
+}
+.main-section .button-list {
+  height: 100px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.main-section .button-list input,
+.main-section .button-list a {
+  border: none;
+  width: 300px;
+  height: 70px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: #00b2d2;
+}
+.main-section .button-list input:hover,
+.main-section .button-list a:hover {
+  cursor: pointer;
+}

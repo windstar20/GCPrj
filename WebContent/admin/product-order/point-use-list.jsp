@@ -165,7 +165,7 @@
                 <h1 class="no-display">정렬</h1>
                 <ul>
                   					          <li>
-					           사용 날짜
+					          <span>사용 날짜</span>
 					            <span>
 					              <form action="point-use-list">
 					             	<input type="hidden" name="page" value="${page }">
@@ -194,7 +194,7 @@
 					            </span>
 					          </li>
             					          <li>
-					            사용 금액
+					            <span>사용 금액</span>
 					            <span>
 					              <form action="point-use-list">
 					              	<input type="hidden" name="page" value="${page }">

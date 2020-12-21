@@ -1,55 +1,13 @@
-/* ============헤더============= */
-header {
-  width: 100%;
-  position: sticky;
-  top: 0;
-  background-color: #e8c6c5;
-  height: 150px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1;
-}
-header > h1 {
-  flex-grow: 1;
-}
-header > h1 > img {
-  width: 140px;
-  height: 140px;
-}
-header > nav:nth-child(2) {
-  flex-grow: 1;
-  text-align: center;
-}
-header > nav:last-child {
-  flex-grow: 1;
-  text-align: right;
-}
-
-nav > ul {
-  display: flex;
-}
-nav:nth-child(2) > ul {
-  display: flex;
-  justify-content: space-around;
-}
-nav:last-child > ul {
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 50px;
-}
-nav:last-child > ul > li {
-  margin-right: 20px;
-}
-
 /* ============main============= */
 .main-head {
   margin-top: 2px;
   height: 500px;
-  background: url(../image/star.jpg) no-repeat;
+  background: url(../image/main_banner.png) no-repeat;
   background-size: 100% 100%;
   background-position: center;
   position: relative;
+  width: 70%;
+  margin: auto;
 }
 .main-head > .shortcut {
   display: inline-block;
@@ -79,22 +37,4 @@ nav:last-child > ul > li {
 }
 .main-body > .container > div:nth-child(3) {
   /* grid-column: 2/4; */
-}
-.footer {
-  background: #e8c6c5;
-  height: 100px;
-}
-.footer-copyright {
-  height: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-.footer-copyright table th,
-.footer-copyright table td {
-  text-align: center;
-}
-
-.footer-copyright tr td {
-  width: 300px;
 }

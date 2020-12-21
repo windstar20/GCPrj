@@ -98,7 +98,10 @@ th {
   display: flex;
 }
 .sort-bar li {
+  display: flex;
   padding-right: 10px;
+  width : 110px;
+  justify-content: space-evenly;
 }
 .up-button {
   background: url(../../../image/admin/up-button.png) no-repeat center;
@@ -156,4 +159,16 @@ th {
   border-radius: 5px;
   position: relative;
   bottom: 1px;
+}
+.paging {
+	font-size : 25px;
+	text-align: center;
+	margin : 8px 0;
+}
+.paging a {
+	margin-right: 5px;
+	text-decoration : none;
+}
+.paging a:hover {
+	color : #e8c6c5;
 }

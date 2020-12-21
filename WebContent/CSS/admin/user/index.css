@@ -90,6 +90,10 @@ table{
         font-size: 25px;
     }
 
+.list-table td{
+	text-align: center;
+}
+
 .form-button{
     margin-top: 10px;
     align-self: center;

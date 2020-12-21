@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,17 +21,17 @@
     <main class="main">
         <form class="serch-form" action="">
             <div class="main-head">
-                <h1>홍길동님의 회원정보입니다.</h1>
+                <h1>${t.name }님의 회원정보입니다.</h1>
                 <div class="nav">
-                    <a href="detail?id=">회원정보</a>
-                    <a href="commet?id=">댓글</a>
+                    <a href="detail?id=${t.id }">회원정보</a>
+                    <a href="commet?id=${t.id }">댓글</a>
                 </div>               
             </div>
             <table>
                 <tr>
                     <th>검색키워드</th>
                     <td>
-                        <select name="field" id="">
+                        <select name="field" >
                             <option value="title">제목</option>
                             <option value="content">내용</option>
                         </select>
@@ -38,7 +41,10 @@
                 
                 <tr>
                     <th>등록일</th>
-                    <td><input type="text"></td>
+                    <td>
+                    	<input type="date" class="start-date" name="start-date" value="2020-12-01"/> ~ 
+                    	<input type="date" class="end-date" name="end-date" />
+                    </td>
                 </tr>
             </table>
             <input class="form-button button" type="submit" value="검색">
@@ -46,12 +52,10 @@
        
         <table>
             <thead>
-                <th>제목</th>
-                <th>내용</th>
-                <th>작성시간</th>
-                <th>관련정보</th>
-              <td>
-              </td>
+                <td>제목</td>
+                <td>내용</td>
+                <td>작성시간</td>
+                <td>관련정보</td>
             </thead>
             <tbody>
                 <td></td>

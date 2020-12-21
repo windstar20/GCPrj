@@ -23,8 +23,8 @@
                 <tr>
                     <td>${t.name }님의 회원정보입니다.</td>
                     <td>
-                        <a href="detail"><span>회원정보</span></a>
-                        <a href=""><span>댓글</span></a>
+                        <a href="detail?id=${t.id }"><span>회원정보</span></a>
+                        <a href="comment?id=${t.id }"><span>댓글</span></a>
                     </td>
                 </tr>
                 <tr>

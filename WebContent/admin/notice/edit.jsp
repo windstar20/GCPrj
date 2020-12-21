@@ -11,6 +11,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/reset.css" type="text/css">
+    <link rel="stylesheet" href="../../CSS/style.css" type="text/css">
+    <link rel="stylesheet" href="../../CSS/admin/admin.css" type="text/css">
     <link rel="stylesheet" href="../../CSS/admin/notice/edit.css" type="text/css">
     <title>공지사항 수정</title>
 </head>
@@ -41,7 +43,7 @@
 
     <div id="body" class="body">
         <aside class="aside">
-            <h1 class="aside-title">ASIDE</h1>
+            <h1 class="aside-title img-button"></h1>
             <ul class="aside-menu">
                 <li>공지사항 관리</li>
                 <ul>
@@ -53,52 +55,56 @@
         </aside>
 
         <section class="main-section">
-            <div class="main-title">
-                <h1>공지사항 상세보기</h1>
-                <span class="span1"> home > 게시판관리 > 공지사항 상세보기 </span>
-            </div>
-            <form action="edit" method="post">
-	            <section id="content" class="content">
-	                <h1 class="no-display">공지사항 등록 폼</h1>
-	                <table class="table-wrap" border="1">
-	                    <tr>
-	                        <th>작&nbsp;성&nbsp;자</th>
-	                        <td>&nbsp;&nbsp;관리자</td>
-	                        <th>등&nbsp;록&nbsp;일</th>
-	                        <td>
-	                       		<fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd a hh:mm:ss"/>
-	                        </td>
-	                    </tr>
-	                    <tr>
-	                        <th>제&nbsp;&nbsp;&nbsp;&nbsp;목</th>
-	                        <td colspan="3">
-	                        	<input type="text" name="title" value='${n.title}'>
-	                        </td>
-	                    </tr>
-	                    <tr>
-	                        <th>내&nbsp;&nbsp;&nbsp;&nbsp;용</th>
-	                        <td colspan="4"><textarea class="texta" name="content" cols="100" rows="30">${n.content}</textarea></td>
-	                    </tr>
-	                    <tr>
-	                        <th>첨&nbsp;부&nbsp;파&nbsp;일</th>
-	                        <td colspan="3" class="td-small">&nbsp;&nbsp;&nbsp;<input type="file" name="file"></td>
-							<c:forTokens var="fileName" items="${n.files}" delims="," varStatus="st">
-	                      	<fmt:formatDate var="year" value="${n.regDate}" pattern="yyyy"/>
-	                      		<a download href="/static/notice/${year}/${n.id}/${files}">${files}</a> 
-	                      		<c:if test="${st.last == false}">
-	                      			/
-	                      		</c:if>
-	                      	</c:forTokens>
-							</td>
-	                    </tr>
-	                </table>
-	                <div class="other-btn btn">
-	                	<input type="hidden" name="id" value="${n.id }" >
-	                    <input class="butt" type="submit" value="저&nbsp;&nbsp;장">
-	                    <a href="detail?id=${n.id}"><input class="butt" type="button"  value="취&nbsp;&nbsp;소"></a>
-	                </div>
-	            </section>
-            </form>
+            <main id="main" class="main">
+                <div class="main-head">
+                    <h1>공지사항 상세보기</h1>
+                    <span class="span1"> home > 게시판관리 > 공지사항 상세보기 </span>
+                </div>
+                <div class="main-body">
+                    <form action="edit" method="post">
+                        <section id="content" class="content">
+                            <h1 class="no-display">공지사항 등록 폼</h1>
+                            <table class="table-wrap" border="1">
+                                <tr>
+                                    <th>작&nbsp;성&nbsp;자</th>
+                                    <td>&nbsp;&nbsp;관리자</td>
+                                    <th>등&nbsp;록&nbsp;일</th>
+                                    <td>
+                                        <fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd a hh:mm:ss"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>제&nbsp;&nbsp;&nbsp;&nbsp;목</th>
+                                    <td colspan="3">
+                                        <input type="text" name="title" value='${n.title}'>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>내&nbsp;&nbsp;&nbsp;&nbsp;용</th>
+                                    <td colspan="4"><textarea class="texta" name="content" cols="100" rows="30">${n.content}</textarea></td>
+                                </tr>
+                                <tr>
+                                    <th>첨&nbsp;부&nbsp;파&nbsp;일</th>
+                                    <td colspan="3" class="td-small">&nbsp;&nbsp;&nbsp;<input type="file" name="file"></td>
+                                    <c:forTokens var="fileName" items="${n.files}" delims="," varStatus="st">
+                                    <fmt:formatDate var="year" value="${n.regDate}" pattern="yyyy"/>
+                                        <a download href="/static/notice/${year}/${n.id}/${files}">${files}</a> 
+                                        <c:if test="${st.last == false}">
+                                            /
+                                        </c:if>
+                                    </c:forTokens>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="other-btn btn">
+                                <input type="hidden" name="id" value="${n.id }" >
+                                <input class="butt" type="submit" value="저&nbsp;&nbsp;장">
+                                <a href="detail?id=${n.id}"><input class="butt" type="button"  value="취&nbsp;&nbsp;소"></a>
+                            </div>
+                        </section>
+                    </form>
+                </div>
+            </main>
         </section>
     </div>
     <section>

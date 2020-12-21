@@ -162,7 +162,7 @@
                 <h1 class="no-display">정렬</h1>
                 <ul>
                   					          <li>
-					           충전 날짜
+					           <span>충전 날짜</span>
 					            <span>
 					              <form action="point-charge-list">
 					              	<input type="hidden" name="page" value="${page }">
@@ -191,7 +191,7 @@
 					            </span>
 					          </li>
             					          <li>
-					            충전 금액
+					            <span>충전 금액</span>
 					            <span>
 					              <form action="point-charge-list">
 					              	<input type="hidden" name="page" value="${page }">

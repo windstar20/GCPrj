@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="../../CSS/reset.css" type="text/css" />
     <link rel="stylesheet" href="../../CSS/style.css">
     <link rel="stylesheet" href="../../CSS/admin/admin.css" type="text/css" />
-    <link rel="stylesheet" href="../../CSS/admin/user/index.css" type="text/css" />
+    <!-- <link rel="stylesheet" href="../../CSS/admin/user/index.css" type="text/css" /> -->
+    <link rel="stylesheet" href="../../../CSS/admin/user/index.css">
     <script src="../../js/admin/user/list.js"></script>
   </head>
   <body>
@@ -67,44 +68,43 @@
           <div class="main-body">
             <section>
               <h1>기본검색</h1>
-              <table>
-                <tr>
-                  <th>회원등급</th>
-                  <td>
-                    <input type="checkbox"> 모든 회원
-                    <input type="checkbox"> 탈퇴 대기자
-                    <input type="checkbox"> 가입신청자
-                    <span><input type="checkbox"> 일반 회원</span>
-                    <span><input type="checkbox"> 우수 회원</span>
-                    <span><input type="checkbox"> 프리미엄 회원</span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>수신동의</th>
-                  <td>
-                    <input type="checkbox"> SNS 수신동의
-                    <input type="checkbox"> E-mail 수신동의
-                  </td>
-                </tr>
-                <tr>
-                  <th>검색 키워드</th>
-                  <td>
-                    <select>
-                      <option>이름</option>
-                      <option>아이디</option>
-                      <option>이메일</option>
-                      <option>휴대폰</option>
-                      <option>전화번호</option>
-                      <option>주소</option>
-                      <option>추천인ID</option>
-                    </select>
-                    <input class="sel-text" type="text">
-                  </td>
-                </tr>
-              </table>
-                <div class="find">
-                      <input class="img-button find-button" type="submit" value="검색">
-                </div>
+              <form>
+				<table>
+				  <tr>
+				    <th>회원등급</th>
+				    <td>
+				      <input type="checkbox"> 모든 회원
+				      <input type="checkbox"> 탈퇴 대기자
+				      <input type="checkbox"> 가입신청자
+				    </td>
+				  </tr>
+				  <tr>
+				    <th>수신동의</th>
+				    <td>
+				      <input type="checkbox"> SNS 수신동의
+				      <input type="checkbox"> E-mail 수신동의
+				    </td>
+				  </tr>
+				  <tr>
+				    <th>검색 키워드</th>
+				    <td>
+				      <select>
+				        <option>이름</option>
+				        <option>아이디</option>
+				        <option>이메일</option>
+				        <option>휴대폰</option>
+				        <option>전화번호</option>
+				        <option>주소</option>
+				        <option>추천인ID</option>
+				      </select>
+				      <input class="sel-text" type="text">
+				    </td>
+				  </tr>
+				</table>
+				
+				<input class="form-button" type="submit" value="검색">
+				
+              </form>
               <table class="list-table" border="1">
                 <thead>
 

@@ -15,9 +15,9 @@ public class ProductOrderView extends ProductOrder{
 
 	
 	public ProductOrderView(int id, int number, int basketId, String senderName, String senderPhone, String senderEmail,
-			String receiverName, String receiverPhone, String receiverAddress, Date regdate, int totalPrice,String productName, int productCount) {
+			String receiverName, String receiverPhone, String receiverAddress, Date regdate, int totalPrice,String productName, int productCount, int state) {
 		super(id, number, basketId, senderName, senderPhone, senderEmail, receiverName, receiverPhone, receiverAddress, regdate,
-				totalPrice);
+				totalPrice,state);
 		this.productName = productName;
 		this.productCount = productCount;
 	}

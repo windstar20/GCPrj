@@ -5,21 +5,17 @@ import java.util.Date;
 public class ProductOrder {
 
 	private int id;
-    private int number;
-    private int basketId;
-    private String senderName;
-    private String senderPhone;
-    private String senderEmail;
-    private String receiverName;
-    private String receiverPhone;
-    private String receiverAddress;
-    private Date regdate;
-    private int totalPrice;
-    
-
-
-
-    
+	private int number;
+	private int basketId;
+	private String senderName;
+	private String senderPhone;
+	private String senderEmail;
+	private String receiverName;
+	private String receiverPhone;
+	private String receiverAddress;
+	private Date regdate;
+	private int totalPrice;
+	private int state;
 
 
 	public ProductOrder() {
@@ -28,7 +24,9 @@ public class ProductOrder {
 
 
 	public ProductOrder(int id, int number, int basketId, String senderName, String senderPhone, String senderEmail,
-			String receiverName, String receiverPhone, String receiverAddress, Date regdate, int totalPrice) {
+			String receiverName, String receiverPhone, String receiverAddress, Date regdate, int totalPrice,
+			int state) {
+		super();
 		this.id = id;
 		this.number = number;
 		this.basketId = basketId;
@@ -40,19 +38,12 @@ public class ProductOrder {
 		this.receiverAddress = receiverAddress;
 		this.regdate = regdate;
 		this.totalPrice = totalPrice;
+		this.state = state;
 	}
 
 
 
-
-
-
-	
-
-
-
-
-//===================================================
+	//===================================================
 
 	public int getId() {
 		return id;
@@ -164,16 +155,33 @@ public class ProductOrder {
 	}
 
 
+
+	public int getState() {
+		return state;
+	}
+
+
+	public void setState(int state) {
+		this.state = state;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "ProductOrder [id=" + id + ", number=" + number + ", basketId=" + basketId + ", senderName=" + senderName
 				+ ", senderPhone=" + senderPhone + ", senderEmail=" + senderEmail + ", receiverName=" + receiverName
 				+ ", receiverPhone=" + receiverPhone + ", receiverAddress=" + receiverAddress + ", regdate=" + regdate
-				+ ", totalPrice=" + totalPrice + "]";
+				+ ", totalPrice=" + totalPrice + ", state=" + state + "]";
 	}
 
 
-	
+
+
+
+
+
+
 
 
 

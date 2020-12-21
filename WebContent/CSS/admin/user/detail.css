@@ -1,23 +1,26 @@
-.body{
+body{
     background: rgb(102, 96, 177);
     width: auto;
-    font-family: "�룍��",Arial, Helvetica, sans-serif;
+    font-family: "나눔-고딕",Arial, Helvetica, sans-serif;
     font-size: 13px;
 }
-    .body .header{
+    body .header{
         height: 50px;
         position: relative;
     }
-        .body .header>h1{
+        body .header>h1{
             display: inline-block;
+            font-weight: bold;
+            font-size: 20px;
         }
-        .body .header div{
+        body .header div{
             position: absolute;
             right: 20px;
             bottom: 0px;
         }
 .main{
     background: white;
+   
 }
     .main form{
         padding: 10px;
@@ -50,10 +53,15 @@
         display: inline-block;
     }
     
+
+
+    .main-head nav ul{
+        display: flex;
+    }
     
-
-
-        
+    .main-head nav ul li{
+    	border:1px solid black;
+    }
 
 .inner-table{
     width: 100%;
@@ -62,4 +70,19 @@
 .inner-table tr th{
     background: rgb(177, 173, 235);
     width: 30%
+}
+
+.serch-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.button{
+    margin-top: 20px;
+    align-self: center;
+}
+
+thead td{
+    background: #ece3e3;
+    text-align: center;
 }

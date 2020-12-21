@@ -150,6 +150,7 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 				String receiverAddress;
 				Date regdate;
 				int totalPrice;
+				int state;
 
 
 				id = rs.getInt("id");
@@ -163,6 +164,7 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 				receiverAddress = rs.getString("receiver_address");
 				regdate = rs.getDate("regdate");
 				totalPrice = rs.getInt("total_price");
+				state = rs.getInt("state");
 
 
 				p = new ProductOrder(
@@ -176,7 +178,8 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 						receiverPhone,
 						receiverAddress,
 						regdate,
-						totalPrice
+						totalPrice,
+						state
 						);
 			}
 			rs.close();
@@ -226,6 +229,7 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 				String receiverAddress;
 				Date regdate;
 				int totalPrice;
+				int state;
 
 
 				id = rs.getInt("id");
@@ -239,6 +243,7 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 				receiverAddress = rs.getString("receiver_address");
 				regdate = rs.getDate("regdate");
 				totalPrice = rs.getInt("total_price");
+				state = rs.getInt("state");
 
 
 				ProductOrder p = new ProductOrder(
@@ -252,7 +257,8 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 						receiverPhone,
 						receiverAddress,
 						regdate,
-						totalPrice
+						totalPrice,
+						state
 						);
 
 
@@ -376,6 +382,7 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 				int totalPrice;
 				String productName;
 				int productCount;
+				int state;
 
 
 				id = rs.getInt("id");
@@ -391,6 +398,7 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 				totalPrice = rs.getInt("total_price");
 				productName = rs.getString("product_name");
 				productCount= rs.getInt("product_count");
+				state= rs.getInt("state");
 
 
 				ProductOrderView p = new ProductOrderView(
@@ -406,7 +414,8 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 						regdate,
 						totalPrice,
 						productName,
-						productCount
+						productCount,
+						state
 						);
 
 

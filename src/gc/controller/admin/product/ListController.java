@@ -8,12 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import gc.dao.product.ProductDao;
-import gc.dao.product.jdbc.JdbcProductDao;
-import gc.entity.product.Product;
 import gc.entity.product.view.ProductView;
-import gc.service.product.ProductListService;
 import gc.service.product.ProductService;
 
 
@@ -31,8 +26,7 @@ public class ListController extends HttpServlet{
 		String prevPrice = null;
 		String nextPrice = null;
 		ProductService service = new ProductService();
-		JdbcProductDao dao = new JdbcProductDao();
-
+		
 		if(request.getParameter("page")!=null)
 			page = Integer.parseInt(request.getParameter("page"));
 		if(request.getParameter("size")!=null)
@@ -45,8 +39,8 @@ public class ListController extends HttpServlet{
 			prevPrice = request.getParameter("prevPrice");
 		if(request.getParameter("nextPrice")!=null)
 			nextPrice = request.getParameter("nextPrice");
-
-		List<ProductView> list = service.getViewList(0, 0, keyword, query, prevPrice, nextPrice);
+		
+		List<ProductView> list = service.getViewList(page, size, keyword, query, prevPrice, nextPrice);
 		
 		 int count = service.getCount();//게시물의 수를 구하기(함수처리) 
 		 int lastPage = count/10; //마지막 페이지구하기(1) 
@@ -55,16 +49,13 @@ public class ListController extends HttpServlet{
 		 System.out.println("라스트: "+lastPage);
 		 pageEnd = lastPage;
 		 
-		 int aa = list.size();
-		 System.out.println("list.size() "+ aa);
-		 
 //		 if(list.size()%10==0)
 //			pageEnd = list.size();
 //		else
 //			pageEnd = list.size()+1;
 			
-		list = service.getViewList(page, size, keyword, query, prevPrice, nextPrice);
-		System.out.println("pageEnd: "+pageEnd);
+//		list = service.getViewList(page, size, keyword, query, prevPrice, nextPrice);
+//		System.out.println("pageEnd: "+pageEnd);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("page", page);

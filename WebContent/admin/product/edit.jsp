@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>admin page</title>
     <link rel="stylesheet" href="../../CSS/reset.css">
-    <link rel="stylesheet" href="../../CSS/admin/product/product-reg.css" />
+    <link rel="stylesheet" href="../../CSS/admin/product/reg.css" />
   </head>
   <body>
     <header id="header" class="header">

@@ -47,7 +47,15 @@ public class GymService {
 		int startIndex = 1 + (page - 1) * size; 
 		int endIndex = page * 5;
 		
-		return gymDao.getViewist(startIndex, endIndex);
+		return gymDao.getViewList(startIndex, endIndex);
+	}
+	
+	public List<GymView> getViewList(int page,int size,String field,String query){
+		
+		int startIndex = 1 + (page - 1) * size; 
+		int endIndex = page * 5;
+		
+		return gymDao.getViewList(startIndex, endIndex, field, query);
 	}
 	
 	public Gym get(int id) {
@@ -59,7 +67,10 @@ public class GymService {
 		
 		return gymDao.getList();
 	}
-
 	
+	public int getCount() {
+		
+		return gymDao.getCount();
+	}
 	
 }

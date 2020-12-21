@@ -19,7 +19,8 @@ public interface GymDao {
 	List<Gym> getList();
 	
 	List<GymView> getViewList();
-	List<GymView> getViewist(int startIndex, int endIndex);
+	List<GymView> getViewList(int startIndex, int endIndex);
+	List<GymView> getViewList(int startIndex, int endIndex, String field, String query);
 	
 	Gym getLast();
 }

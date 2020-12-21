@@ -59,103 +59,85 @@
           </ul>
       </aside>
       <section class="main-section">
-        <div class="main-title">
-          <h1>제휴업체 리스트</h1>
-          <span> home > 제휴업체 관리 > 제휴업체 리스트 </span>
-        </div>
         <main id="main" class="main">
-          <h1>제휴업체 리스트</h1>
-          <table border="1">
-            <tr>
-              <th>회원등급</th>
-              <td>
-                <input type="checkbox"> 가입신청자
-                <input type="checkbox"> 시설 회원
-                <input type="checkbox"> 휴면 회원
-              </td>
-            </tr>
-            <tr>
-              <th>수신동의</th>
-              <td>
-                <input type="checkbox"> SMS 수신동의
-                <input type="checkbox"> E-mail 수신동의
-              </td>
-            </tr>
-            <tr>
-              <th>검색 키워드</th>
-              <td>
-                <select>
-                  <option>사업자 명</option>                             
-                  <option>시설 명</option>
-                </select>
-                <input class="sel-text" type="text">
-                <input type = "button" value = "검색">
-              </td>
-            </tr>
-            <tr>
-              <th>휴면 회원</th>
-              <td>
-                100일이상 미 접속자
-              </td>
-            </tr>
-          </table>
-            <div class="find">
-                  <input class="img-button find-button" type="submit" value="검색">
-            </div>
-          <div class = "del-button">
-            <input type = "button" value = "삭제">
+          <div class="main-head">
+            <h1>제휴업체 리스트</h1>
+            <span> home > 제휴업체 관리 > 제휴업체 리스트 </span>
           </div>
-         
-	          <table border = "1" class="gymList-box">
-	            <thead>
+          <div class ="main-body">
+          <section>
+            <h1>제휴업체 검색</h1>
+           	<form action="list" method="post">
+	            <table border="1">         
 	              <tr>
-	                <td><input type="checkbox" class ="check-all"></td>
-	                <td>번호</td>
-	                <td>사업자 명</td>       
-	                <td>시설 명</td>
-	                <td>회원등급</td>
-	                <td>주소</td>
-	                <td>연락처</td>
-	                <td>시설 번호</td>
-	                <td>업체 종류</td>
-	                <td>사업자 번호</td>
-	                <td>인증방식</td>
-	                <td>가입일</td>    
-	              </tr>
-	            </thead>
-	            <tbody>
-	            	<c:forEach var="g" items="${list}">
-		              <tr>
-		                <td><input type="checkbox" class="check"></td>
-		                <td>${g.id }</td>
-		                <td>${g.name }</td>
-		                <td>${g.gymName }</td>
-		                <td>시설회원</td>
-		                <td>${g.adress }</td>
-		                <td>${g.telephone }</td>
-		                <td>${g.phone }</td>
-		                <td>헬스</td>
-		                <td>${g.licenseNumber }</td> 
-		                <td>핸드폰</td>
-		                <td>${g.regdate }</td>
-		              </tr>
-		            </c:forEach>
-	            </tbody>       
-	          </table>
+	                <th>검색 키워드</th>
+	                <td>
+	                  <select>
+	                    <option>사업자 명</option>                             
+	                    <option>시설 명</option>
+	                  </select>
+	                  <input class="sel-text" type="text">
+	                  <input type = "submit" value = "검색">
+	                </td>
+	              </tr>         
+	            </table>
+	        </form> 
+          </section>          
+            <div class = "del-button">
+              <input type = "button" value = "삭제">
+            </div>
           
-           <div class="page-list">
-           		<c:if test="${page != 1 }">
-                	<span><a href="list?${page-1}">이전</a></span>
-            	</c:if>    
-            	<ul>
-                	<c:forEach var="i" begin ="1" end="${pageEnd }">
-                  		<li><a href="list?page=${i}">${i}</a></li>
-                  	</c:forEach>
-                </ul>
-                <c:if test="${page != pageEnd }">
-                	<span><a href="list?page=${page+1}">다음</a></span>
-                </c:if>
-           </div>        
+              <table border = "1" class="gymList-box">
+                <thead>
+                  <tr>
+                    <td><input type="checkbox" class ="check-all"></td>
+                    <td>번호</td>
+                    <td>사업자 명</td>       
+                    <td>시설 명</td>
+                    <td>회원등급</td>
+                    <td>주소</td>
+                    <td>연락처</td>
+                    <td>시설 번호</td>
+                    <td>업체 종류</td>
+                    <td>사업자 번호</td>
+                    <td>인증방식</td>
+                    <td>가입일</td>    
+                  </tr>
+                </thead>
+                <tbody>
+                  <c:forEach var="g" items="${list}">
+                    <tr>
+                      <td><input type="checkbox" class="check"></td>
+                      <td>${g.id }</td>
+                      <td>${g.name }</td>
+                      <td>${g.gymName }</td>
+                      <td>시설회원</td>
+                      <td>${g.adress }</td>
+                      <td>${g.telephone }</td>
+                      <td>${g.phone }</td>
+                      <td>헬스</td>
+                      <td>${g.licenseNumber }</td> 
+                      <td>핸드폰</td>
+                      <td>${g.regdate }</td>
+                    </tr>
+                  </c:forEach>
+                </tbody>       
+              </table>
+            
+            <div class="page-list">
+                <c:if test="${page != 1 }">
+                    <span><a href="list?${page-1}">이전</a></span>
+                </c:if>    
+                <ul>
+                    <c:forEach var="i" begin ="1" end="${pageEnd }">
+                        <li><a href="list?page=${i}">${i}</a></li>
+                      </c:forEach>
+                  </ul>
+                  <c:if test="${page != pageEnd }">
+                    <span><a href="list?page=${page+1}">다음</a></span>
+                  </c:if>
+            </div>
+          </div>        
         </main>
       </section>
       </div>

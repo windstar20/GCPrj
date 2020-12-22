@@ -17,21 +17,23 @@ import gc.service.user.GymService;
 @WebServlet("/admin/user/gym/list")
 public class GymListController extends HttpServlet{
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	 
 		int page = 1;
 		int size = 5;
 		String field = null;
 		String query = null;
 		int pageEnd = 1;
-		
+		 
 		GymService service = new GymService();
-		//JdbcGymDao dao = new JdbcGymDao();
 		
 		//List<Gym> list = service.getList();
 		
 		if(request.getParameter("page")!=null)
 			page = Integer.parseInt(request.getParameter("page"));
+		
+		if(request.getParameter("size")!=null)
+			size = Integer.parseInt(request.getParameter("size"));
 		
 		if(request.getParameter("field")!=null)
 			field = request.getParameter("field");
@@ -46,6 +48,7 @@ public class GymListController extends HttpServlet{
 		pageEnd = lastPage;
 		
 		request.setAttribute("list", list);
+		request.setAttribute("size", size);
 		request.setAttribute("page", page);
 		request.setAttribute("pageEnd", pageEnd);
 		

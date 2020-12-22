@@ -1,0 +1,49 @@
+main{
+    width: 80%;
+    margin: auto;
+}
+
+.location{
+    display: flex;
+    justify-content: space-between;
+    height: 150px;
+    align-items: center;
+}
+.aside{
+    margin-left: -160px;
+}
+
+.list{
+
+}
+.list img{
+    /* object-fit: cover; */
+}
+
+.list span{
+    display: block;
+}
+
+.item-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 400px;
+    grid-gap: 20px;
+}
+
+.item{
+    border: 1px solid purple;
+    text-align: center;
+
+}
+	.item>img{
+		width: 300px;
+		height: 300px;
+		overflow: hidden;
+	}
+	
+	
+.search-list{
+	text-align: right;
+	color: #ff8000;
+}

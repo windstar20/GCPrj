@@ -150,7 +150,7 @@
 		                <tr>
 		                    <th>기본 이미지</th>
 		                    <td>                      
-		                        <input type="file" name="file-name" />
+		                        <input type="file" name="file" />
 		                        <label>권장사이즈(500x500)</label>                                                
 		                    </td>
 		                </tr>

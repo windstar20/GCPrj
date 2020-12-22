@@ -30,7 +30,7 @@ public class EditController extends HttpServlet{
 		List<Brand> bList = bService.getList();
 		List<Category> cList = cService.getList();
 		List<ProductTaste> tList = tService.getList();
-		
+				
 		int id = Integer.parseInt(request.getParameter("id"));
 //		ProductListService service = new ProductListService();
 //		Product p = service.get(id);
@@ -51,7 +51,7 @@ public class EditController extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			ProductService service = new ProductService();
 			TasteService tService = new TasteService();
-			
+
 			String code = request.getParameter("code");
 			String name = request.getParameter("name");//web에서 받아온 text
 			int brandId = Integer.parseInt(request.getParameter("brand"));
@@ -63,6 +63,7 @@ public class EditController extends HttpServlet{
 			int display = Integer.parseInt(request.getParameter("display"));
 			String tastes = request.getParameter("taste");
 			String[] taste = tastes.split("/");
+			String image = request.getParameter("image");
 			
 			int id = Integer.parseInt(request.getParameter("id"));	
 			
@@ -77,6 +78,7 @@ public class EditController extends HttpServlet{
 				p.setContent(content);
 				p.setId(id);
 				p.setDisplay(display);
+				p.setImage(image);
 			
 		
 			service.update(p);

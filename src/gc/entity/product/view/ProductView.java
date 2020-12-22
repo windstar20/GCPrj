@@ -9,30 +9,23 @@ public class ProductView extends Product{
 	
 	private String brand;
 	private String category;
-	private String code;
 	private String delivery;
-	private String fileName;
-    
-	
 	
 	public ProductView() {
 		
 	}
 	
-	public ProductView(int id, String name, Date regdate, String code, int price, int display, int inventory, String image, String brand, String category, String delivery, String fileName) {
+	public ProductView(int id, String name, Date regdate, String code, int price, int display, int inventory, String image, String brand, String category, String delivery) {
 		super(id, name, regdate, code, price, display, inventory, image);
 		this.brand = brand;
 		this.category = category;
-		this.code = code;
 		this.delivery = delivery;
-		this.fileName = fileName;
 	}
-
+	
 
 	@Override
 	public String toString() {
-		return "ProductView [brand=" + brand + ", category=" + category + ", code=" + code + ", delivery=" + delivery
-				+ ", fileName=" + fileName + "]";
+		return "ProductView [brand=" + brand + ", category=" + category + ", delivery=" + delivery + "]";
 	}
 
 	public String getBrand() {
@@ -51,13 +44,6 @@ public class ProductView extends Product{
 		this.category = category;
 	}
 
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
 
 	public String getDelivery() {
 		return delivery;
@@ -67,12 +53,5 @@ public class ProductView extends Product{
 		this.delivery = delivery;
 	}
 
-	public String getFileName() {
-		return fileName;
-	}
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
 	
 }

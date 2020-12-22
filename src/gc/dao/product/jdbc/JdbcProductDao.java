@@ -23,8 +23,8 @@ public class JdbcProductDao implements ProductDao{
 	public int insert(Product product) {
 		int result = 0;				     
 		String url = DBContext.URL;		
-		String sql = "INSERT INTO PRODUCT(ID,NAME, CONTENT, CODE, PRICE, DISPLAY, BRAND_ID, CATEGORY_ID, INVENTORY, DELIVERY_ID )"
-				+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO PRODUCT(ID,NAME, CONTENT, CODE, PRICE, DISPLAY, BRAND_ID, CATEGORY_ID, INVENTORY, DELIVERY_ID, IMAGE )"
+				+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -41,6 +41,7 @@ public class JdbcProductDao implements ProductDao{
 			st.setInt(8, product.getCategoryId());
 			st.setInt(9, product.getInventory());
 			st.setInt(10, product.getDeliveryId());
+			st.setString(11, product.getImage());
 
 			result = st.executeUpdate();			//ResultSet rs = st.executeQuery(sql);   //???��?��문에?���? ?��?��
 
@@ -61,7 +62,7 @@ public class JdbcProductDao implements ProductDao{
 
 		String url = DBContext.URL;             
 		String sql = "UPDATE PRODUCT SET NAME=?, CONTENT=?, CODE=?, PRICE=?, DISPLAY=?, "
-				+ "BRAND_ID=?, CATEGORY_ID=?, INVENTORY=?, DELIVERY_ID=? WHERE ID=?";
+				+ "BRAND_ID=?, CATEGORY_ID=?, INVENTORY=?, DELIVERY_ID=?, IMAGE=? WHERE ID=?";
 
 		System.out.println("업데이트 "+sql);
 		try {
@@ -78,7 +79,8 @@ public class JdbcProductDao implements ProductDao{
 			st.setInt(7, product.getCategoryId());
 			st.setInt(8, product.getInventory());
 			st.setInt(9, product.getDeliveryId());			
-			st.setInt(10, product.getId());
+			st.setString(10, product.getImage());
+			st.setInt(11, product.getId());
 
 			result = st.executeUpdate();		
 			st.close();
@@ -118,8 +120,8 @@ public class JdbcProductDao implements ProductDao{
 		return result;
 	}
 
-	@Override
-	public int display(int id) {
+	@Override//체크박스를 이용한 디스플레이 진열
+	public int display(int id) {  
 		int result = 0;				    
 
 		String url = DBContext.URL;
@@ -172,6 +174,7 @@ public class JdbcProductDao implements ProductDao{
 				int adminId = rs.getInt("ADMIN_ID");
 				int inventory = rs.getInt("INVENTORY");
 				int delivery = rs.getInt("DELIVERY_ID");
+				String image = rs.getString("IMAGE");
 
 				p = new Product(
 						id,
@@ -185,7 +188,8 @@ public class JdbcProductDao implements ProductDao{
 						categoryId,
 						adminId,
 						inventory,
-						delivery
+						delivery,
+						image
 				);
 			}
 			rs.close();
@@ -202,7 +206,7 @@ public class JdbcProductDao implements ProductDao{
 
 	@Override
 	public List<Product> getList() {
-		String url = DBContext.URL; //\"user\"
+		String url = DBContext.URL; 
 		String sql = "SELECT * FROM PRODUCT";
 
 		List<Product> list = new ArrayList<>();
@@ -226,20 +230,22 @@ public class JdbcProductDao implements ProductDao{
 				int adminId = rs.getInt("ADMIN_ID");
 				int inventory = rs.getInt("INVENTORY");
 				int delivery = rs.getInt("DELIVERY_ID");
+				String image = rs.getString("IMAGE");
 
 				Product p = new Product(
-						id,
-						name,
-						content,
-						regdate,	    
-						code,
-						price,
-						display,
-						brandId,
-						categoryId,
-						adminId,
-						inventory,
-						delivery
+										id,
+										name,
+										content,
+										regdate,	    
+										code,
+										price,
+										display,
+										brandId,
+										categoryId,
+										adminId,
+										inventory,
+										delivery,
+										image
 				);
 				list.add(p);
 			}
@@ -365,7 +371,8 @@ public class JdbcProductDao implements ProductDao{
 				int display = rs.getInt("DISPLAY");
 				int inventory = rs.getInt("INVENTORY");
 				String delivery = rs.getString("DELIVERY");
-				String fileName = rs.getString("FILE_NAME");			
+				String image = rs.getString("IMAGE");
+				
 
 				ProductView p = new ProductView(
 						id, 
@@ -375,10 +382,10 @@ public class JdbcProductDao implements ProductDao{
 						price, 
 						display, 
 						inventory, 
+						image,
 						brand, 
 						category, 
-						delivery, 
-						fileName
+						delivery 
 					);
 					list.add(p);
 				}
@@ -419,6 +426,7 @@ public class JdbcProductDao implements ProductDao{
 				int adminId = rs.getInt("ADMIN_ID");
 				int inventory = rs.getInt("INVENTORY");
 				int delivery = rs.getInt("DELIVERY_ID");
+				String image = rs.getString("IMAGE");
 
 				p = new Product(
 						id,
@@ -432,7 +440,8 @@ public class JdbcProductDao implements ProductDao{
 						categoryId,
 						adminId,
 						inventory,
-						delivery
+						delivery,
+						image
 				);
 			}
 			rs.close();

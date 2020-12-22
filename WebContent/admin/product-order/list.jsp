@@ -90,24 +90,26 @@
 								<!-- 두번째 줄 시작 -->
 								<tr>
 									<th>주문상태</th>
-									<td><input type="checkbox" name="" id="" /><span>전체</span>
-										<input type="checkbox" name="" id="" /><span>주문완료</span>
-										<input type="checkbox" name="" id="" /><span>결제완료</span>
-										<input type="checkbox" name="" id="" /><span>배송완료</span>
+									<td><input type="checkbox" name="order-state" value="all" /><span>전체</span>
+										<input type="checkbox" name="order-state" value="1" /><span>결제완료</span>
+										<input type="checkbox" name="order-state" value="2" /><span>배송준비</span>
+										<input type="checkbox" name="order-state" value="3" /><span>배송중</span>
+										<input type="checkbox" name="order-state" value="4" /><span>배송완료</span>
 									</td>
 								</tr>
 								<!-- 두번째 줄 끝 -->
 								<!-- 세번째 줄 시작 -->
 								<tr>
 									<th>취소상태</th>
-									<td><input type="checkbox" name="" id="" /><span>취소요청</span>
-										<input type="checkbox" name="" id="" /><span>환불요청</span>
-										<input type="checkbox" name="" id="" /><span>반품요청</span>
-										<input type="checkbox" name="" id="" /><span>교환요청</span>
-										<br /> <input type="checkbox" name="" id="" /><span>취소완료</span>
-										<input type="checkbox" name="" id="" /><span>환불완료</span>
-										<input type="checkbox" name="" id="" /><span>반품완료</span>
-										<input type="checkbox" name="" id="" /><span>교환완료</span>
+									<td><input type="checkbox" name="order-state" value="5" /><span>취소요청</span>
+										<input type="checkbox" name="order-state" value="7" /><span>환불요청</span>
+										<input type="checkbox" name="order-state" value="9" /><span>반품요청</span>
+										<input type="checkbox" name="order-state" value="11" /><span>교환요청</span>
+										<br /> 
+										<input type="checkbox" name="order-state" value="6" /><span>취소완료</span>
+										<input type="checkbox" name="order-state" value="8" /><span>환불완료</span>
+										<input type="checkbox" name="order-state" value="10" /><span>반품완료</span>
+										<input type="checkbox" name="order-state" value="12" /><span>교환완료</span>
 									</td>
 								</tr>
 								<!-- 세번째 줄 끝 -->
@@ -116,7 +118,6 @@
 									<th>처리일자</th>
 									<td><select name="date-field">
 											<option value="order-regdate">주문일</option>
-											<option value="payment-regdate">결제일</option>
 									</select> <input type="date" class="start-date" name="start-date" value="2020-12-01"/> ~ <input type="date"
 										 class="end-date" name="end-date" />
     								<ul class="button-list">
@@ -258,7 +259,6 @@
 									<th>상품명</th>
 									<th>주문 수량</th>
 									<th>주문일</th>
-									<th>결제일</th>
 									<th>주문자</th>
 									<th>수령인</th>
 									<th>주문 금액</th>
@@ -278,7 +278,6 @@
 										<td>
 										<fmt:formatDate var="date" value="${p.regdate }" pattern="yyyy-MM-dd a hh:mm"/>
 										${date}</td>
-										<td></td>
 										<td>${p.senderName } <br /> <span>(${p.senderPhone })</span>
 										</td>
 										<td>${p.receiverName } <br /> <span>(${p.receiverPhone })</span>
@@ -286,7 +285,7 @@
 										<td>
 										<fmt:formatNumber var="price" value="${p.totalPrice}" type="number"/>
 										<span class="price">${price }</span>원</td>
-										<td>무통장<br />입금자명
+										<td>${p.paymentWay }<br />
 										</td>
 										<td class="order-state">${p.state }</td>
 										<td><input class="select-button jsbutton" type="button"

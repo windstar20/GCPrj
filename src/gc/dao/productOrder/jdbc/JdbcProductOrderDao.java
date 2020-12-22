@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "INSERT INTO PRODUCT_ORDER(SENDER_NAME,SENDER_PHONE,RECEIVER_NAME,RECEIVER_PHONE,RECEIVER_ADDRESS,TOTAL_PRICE, SENDER_EMAIL, BASKET_ID) VALUES (?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO PRODUCT_ORDER(SENDER_NAME,SENDER_PHONE,RECEIVER_NAME,RECEIVER_PHONE,RECEIVER_ADDRESS,TOTAL_PRICE, SENDER_EMAIL, BASKET_ID,PAYMENT_METHOD_ID,DELIVERY_MSG) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			Class.forName(driver);
@@ -41,6 +42,8 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 			st.setInt(6, productOrder.getTotalPrice());
 			st.setString(7, productOrder.getSenderEmail());
 			st.setInt(8, productOrder.getBasketId());
+			st.setInt(9, productOrder.getPaymentMethodId());
+			st.setString(10, productOrder.getDeliveryMsg());
 			count = st.executeUpdate();
 
 
@@ -62,7 +65,7 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "UPDATE PRODUCT_ORDER SET SENDER_NAME=?, SENDER_PHONE=?, SENDER_EMAIL=?, RECEIVER_NAME=?, RECEIVER_PHONE=?, RECEIVER_ADDRESS=?";
+		String sql = "UPDATE PRODUCT_ORDER SET SENDER_NAME=?, SENDER_PHONE=?, SENDER_EMAIL=?, RECEIVER_NAME=?, RECEIVER_PHONE=?, RECEIVER_ADDRESS=?, TOTAL_PRICE=? STATE_CODE=?";
 
 		try {
 			Class.forName(driver);
@@ -76,6 +79,8 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 			st.setString(4, productOrder.getReceiverName());
 			st.setString(5, productOrder.getReceiverPhone());
 			st.setString(6, productOrder.getReceiverAddress());
+			st.setInt(7, productOrder.getTotalPrice());
+			st.setInt(8, productOrder.getStateCode());
 
 
 			count = st.executeUpdate();
@@ -150,7 +155,9 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 				String receiverAddress;
 				Date regdate;
 				int totalPrice;
-				int state;
+				int stateCode;
+				int paymentMethodId;
+				String deliveryMsg;
 
 
 				id = rs.getInt("id");
@@ -164,8 +171,9 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 				receiverAddress = rs.getString("receiver_address");
 				regdate = rs.getDate("regdate");
 				totalPrice = rs.getInt("total_price");
-				state = rs.getInt("state");
-
+				stateCode = rs.getInt("stateCode");
+				paymentMethodId = rs.getInt("payment_method_id");
+				deliveryMsg = rs.getString("delivery_msg");
 
 				p = new ProductOrder(
 						id,
@@ -179,7 +187,9 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 						receiverAddress,
 						regdate,
 						totalPrice,
-						state
+						stateCode,
+						paymentMethodId,
+						deliveryMsg
 						);
 			}
 			rs.close();
@@ -229,8 +239,9 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 				String receiverAddress;
 				Date regdate;
 				int totalPrice;
-				int state;
-
+				int stateCode;
+				int paymentMethodId;
+				String deliveryMsg;
 
 				id = rs.getInt("id");
 				number = rs.getInt("\"NUMBER\"");
@@ -243,8 +254,9 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 				receiverAddress = rs.getString("receiver_address");
 				regdate = rs.getDate("regdate");
 				totalPrice = rs.getInt("total_price");
-				state = rs.getInt("state");
-
+				stateCode = rs.getInt("stateCode");
+				paymentMethodId = rs.getInt("payment_method_id");
+				deliveryMsg = rs.getString("delivery_msg");
 
 				ProductOrder p = new ProductOrder(
 						id,
@@ -258,7 +270,9 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 						receiverAddress,
 						regdate,
 						totalPrice,
-						state
+						stateCode,
+						paymentMethodId,
+						deliveryMsg
 						);
 
 
@@ -284,15 +298,17 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 
 	@Override
 	public List<ProductOrderView> getViewList() {
-
-		return getViewList(0, 0, null, null, null, null, null, null,"number","ASC");
+		//List<Integer> orderState= new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12));
+		
+		return getViewList(0, 0, null, null, null, null, null,"number","ASC");
 
 	}
 
 	@Override
 	public List<ProductOrderView> getViewList(int startIndex, int endIndex) {
+		//List<Integer> orderState= new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12));
 
-		return getViewList(startIndex, endIndex, null, null, null, null, null, null,"number","ASC");
+		return getViewList(startIndex, endIndex, null, null, null, null, null,"number","ASC");
 	}
 
 
@@ -305,20 +321,21 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 
 	@Override
 	public List<ProductOrderView> getViewList(int startIndex, int endIndex, String field, String query,
-			List<String> orderState, List<String> cancelState, String startDate, String endDate) {
+			List<String> orderState, String startDate, String endDate) {
 		
-		return getViewList(startIndex, endIndex, field, query, null, null, startDate, endDate,"number","ASC");	
+		return getViewList(startIndex, endIndex, field, query, orderState, startDate, endDate,"number","ASC");	
 	}
 
 
 	@Override
 	public List<ProductOrderView> getViewList(int startIndex, int endIndex, String field, String query,
-			List<String> orderState, List<String> cancelState, String startDate, String endDate, String sortField,
+			List<String> orderState, String startDate, String endDate, String sortField,
 			String sortOption) {
 	
-		LocalDateTime current = LocalDateTime.now();
+		LocalDateTime current = LocalDateTime.now().plusDays(1);
 		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE; // 2020-12-16 형태로 포맷
 		String nowDate = "\'"+current.format(formatter)+"\'";
+		
 		// 동적 쿼리
 		String url = DBContext.URL;
 		String sql = "SELECT N.* FROM PRODUCT_ORDER_VIEW N ";
@@ -327,6 +344,33 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 		
 		if(field!=null && query != null && !field.equals("") && !query.equals(""))
 			sql +="WHERE "+ field + query;  //F(s,e,f,q)
+		
+		if(sql.contains("WHERE")) {
+			if(orderState==null || orderState.equals("") )
+				orderState = new ArrayList<>(Arrays.asList("1","2","3","4","5","6","7","8","9","10","11","12"));
+			sql += " AND STATE_CODE IN (";
+			
+			for (int i=0; i<orderState.size(); i++) {
+				if( i!= orderState.size()-1)
+				sql += orderState.get(i)+",";
+				else
+					sql+=orderState.get(i)+")";
+			}
+		}
+		else {
+			if(orderState==null || orderState.equals("") )
+				orderState = new ArrayList<>(Arrays.asList("1","2","3","4","5","6","7","8","9","10","11","12"));
+			sql += " WHERE STATE_CODE IN (";
+			
+			for (int i=0; i<orderState.size(); i++) {
+				if( i!= orderState.size()-1)
+				sql += orderState.get(i)+",";
+				else
+					sql+=orderState.get(i)+")";
+			}
+			
+		}
+		
 		
 		if(sql.contains("WHERE")) {
 			if(startDate==null || startDate.equals("") )
@@ -382,8 +426,11 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 				int totalPrice;
 				String productName;
 				int productCount;
-				int state;
-
+				int stateCode;
+				String state;
+				int paymentMethodId;
+				String paymentWay;
+				String deliveryMsg;
 
 				id = rs.getInt("id");
 				number = rs.getInt("\"NUMBER\"");
@@ -398,9 +445,12 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 				totalPrice = rs.getInt("total_price");
 				productName = rs.getString("product_name");
 				productCount= rs.getInt("product_count");
-				state= rs.getInt("state");
-
-
+				stateCode= rs.getInt("state_code");
+				state = rs.getString("state");
+				paymentMethodId= rs.getInt("payment_method_id");
+				paymentWay = rs.getString("payment_way");
+				deliveryMsg = rs.getString("delivery_msg");
+				
 				ProductOrderView p = new ProductOrderView(
 						id,
 						number,
@@ -415,7 +465,11 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 						totalPrice,
 						productName,
 						productCount,
-						state
+						stateCode,
+						state,
+						paymentMethodId,
+						paymentWay,
+						deliveryMsg
 						);
 
 

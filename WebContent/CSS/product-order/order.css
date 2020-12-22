@@ -3,13 +3,12 @@
   margin-left: auto;
   margin-right: auto;
   min-height: 1000px;
-  border: 1px solid red;
 }
 .main-section table,
 .main-section td,
 .main-section th,
 .main-section tr {
-  border: 2px solid #979797;
+  border: 1px solid #979797;
   border-collapse: collapse;
 }
 .main-section table tr:first-child th:first-child {
@@ -26,4 +25,70 @@
 .main-section .title {
   font-family: "JUA", sans-serif;
   font-size: 40px;
+}
+.main-section .sub-title {
+  font-family: "JUA", sans-serif;
+  font-size: 25px;
+}
+.main-section .table-wrap {
+  margin: 15px 0;
+}
+.main-section table {
+  width: 100%;
+  margin: 10px 0;
+}
+.main-section table tr th {
+  text-align: end;
+  background-color: #eee;
+}
+
+.main-section table th,
+.main-section table td {
+  padding: 10px;
+}
+.main-section .receiver-title {
+  display: flex;
+  width: 210px;
+  justify-content: space-between;
+}
+.main-section .receiver-title input {
+  font-size: 8px;
+  width: 70px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid #979797;
+  outline: none;
+}
+.main-section .receiver-title input:hover {
+  cursor: pointer;
+}
+.main-section .order-info tr:nth-child(1) > td {
+  background-color: #eee;
+}
+.main-section .order-info tr:nth-child(2) .order-info-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-section .order-info tr:nth-child(2) .order-info-wrap span:nth-child(2) {
+  font-size: 13px;
+}
+.main-section .payment-info .payment-info-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+.main-section .button-list {
+  height: 100px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.main-section .button-list input,
+.main-section .button-list a {
+  width: 300px;
+  height: 70px;
+}
+.main-section .button-list input:hover,
+.main-section .button-list a:hover {
+  cursor: pointer;
 }

@@ -19,9 +19,10 @@ window.addEventListener("load", function () {
     var endDate = urlSearch.get("endDate");
     var sortField = urlSearch.get("sort-field");
     var sortOption = urlSearch.get("sort-option");
-    console.log(page, size, field, query, startDate, endDate, sortField, sortOption);
+    var orderState = urlSearch.get("order-state");
+    console.log(page, size, field, query, startDate, endDate, sortField, sortOption, orderState);
 
-    load(page, size, field, query, startDate, endDate, sortField, sortOption);
+    load(page, size, field, query, startDate, endDate, sortField, sortOption, orderState);
   };
 
   // sortBar.addEventListener("click", function (e) {
@@ -40,7 +41,7 @@ window.addEventListener("load", function () {
   //   load(page, size, field, query, startDate, endDate, sortField, sortOption);
   // });
 
-  function load(page, size, field, query, startDate, endDate, sortField, sortOption) {
+  function load(page, size, field, query, startDate, endDate, sortField, sortOption, orderState) {
     if (page == undefined || page == NaN) page = 1;
     if (size == null || size == NaN) size = 10;
     if (field == null) field = "";
@@ -49,6 +50,7 @@ window.addEventListener("load", function () {
     if (endDate == null) endDate = "";
     if (sortField == null) sortField = "number";
     if (sortOption == null) sortOption = "asc";
+    if (orderState == null) orderState = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
     var request = new XMLHttpRequest();
     request.onload = function () {
       tbody.innerHTML = "";
@@ -72,7 +74,6 @@ window.addEventListener("load", function () {
         " +
           p.regdate +
           "</td>\
-        <td></td>\
         <td> " +
           p.senderName +
           " <br /> <span>(" +
@@ -88,10 +89,14 @@ window.addEventListener("load", function () {
         <td>\
         <span class="price">' +
           p.totalPrice +
-          '</span>원</td>\
-        <td>무통장<br />입금자명\
+          "</span>원</td>\
+        <td>" +
+          p.paymentWay +
+          '\
         </td>\
-        <td class="order-state"></td>\
+        <td class="order-state">' +
+          p.state +
+          '</td>\
         <td><input class="select-button jsbutton" type="button"\
           value="입금확인" /> \
           <a href="detail?id=' +

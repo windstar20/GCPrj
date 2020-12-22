@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>근처 | 주문/결제</title>
+    <link rel="stylesheet" href="../CSS/reset.css" />
+    <link rel="stylesheet" href="../CSS/user.css" />
+    <link rel="stylesheet" href="../../../CSS/style.css" />
+    <link rel="stylesheet" href="../../../CSS/product-order/order.css" />
+    <script src="../js/product-order/order.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1><img class="logo-img" src="../../../image/gc_logo.png" alt="근처" /></h1>
+      <nav>
+        <ul class="menu-bar">
+          <li><a href="">소개</a></li>
+          <li><a href="">시설</a></li>
+          <li><a href="">트레이너</a></li>
+          <li><a href="basket.html">쇼핑몰</a></li>
+        </ul>
+      </nav>
+      <nav>
+        <ul class="menu-bar2">
+          <li><a href="">LOGIN</a></li>
+          <li><a href="">JOIN</a></li>
+          <li><a href="">SEARCH</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main id="main" class="main">
+      <section class="main-section">
+        <div class="main-head">
+          <h1 class="title">주문/결제</h1>
+          <span>장바구니 > <span class="current-page">주문결제</span> > 결제완료</span>
+        </div>
+        <form action="" method="POST">
+          <div class="main-body">
+            <h1 class="no-display">주문 정보</h1>
+            <div class="table-wrap">
+              <h1 class="sub-title">구매자정보</h1>
+              <table class="sender-info">
+                <tr>
+                  <th>이름</th>
+                  <td><input type="text" name="sender-name" /></td>
+                </tr>
+                <tr>
+                  <th>이메일</th>
+                  <td><input type="text" name="sender-email" /></td>
+                </tr>
+                <tr>
+                  <th>휴대폰 번호</th>
+                  <td><input type="text" name="sender-phone" /></td>
+                </tr>
+              </table>
+            </div>
+            <div class="table-wrap">
+              <div class="receiver-title">
+                <h1 class="sub-title">받는사람정보</h1>
+                <input class="delivery-location-button" type="button" value="배송지 변경" />
+              </div>
+              <table class="receiver-info">
+                <tr>
+                  <th>이름</th>
+                  <td><input class="receiver-name" type="text" name="receiver-name" /></td>
+                </tr>
+                <tr>
+                  <th>배송주소</th>
+                  <td><input class="address" type="text" name="receiver-address" /></td>
+                </tr>
+                <tr>
+                  <th>연락처</th>
+                  <td><input class="receiver-phone" type="text" name="receiver-phone" /></td>
+                </tr>
+                <tr>
+                  <th>배송 요청사항</th>
+                  <td>
+                    <textarea style="resize: none" name="delivery-msg" cols="40" rows="4">문 앞 배송</textarea>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="table-wrap">
+              <h1 class="sub-title">상품 정보</h1>
+              <table class="order-info">
+                <tr>
+                  <td><span>모레(금) 12/11 도착 예정</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="order-info-wrap">
+                      <span>칼로바이 퍼펙트 파워쉐이크 초코맛 단백질보충제,2kg</span>
+                      <span>수량 1개/무료배송</span>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="table-wrap">
+              <h1 class="sub-title">결제정보</h1>
+              <table class="payment-info">
+                <tr>
+                  <th>총상품가격</th>
+                  <td>56,810원</td>
+                </tr>
+                <tr>
+                  <th>배송비</th>
+                  <td>0원</td>
+                </tr>
+                <tr>
+                  <th>총결제금액</th>
+                  <td>56,810원</td>
+                </tr>
+                <tr>
+                  <th>결제방법</th>
+                  <td>
+                    <div class="payment-info-wrap">
+                      <span><input type="radio" name="method" id="계좌이체" /> 계좌이체</span>
+                      <span><input type="radio" name="method" id="신용/체크카드" /> 신용/체크카드</span>
+                      <span><input type="radio" name="method" id="법인카드" /> 법인카드</span>
+                      <span><input type="radio" name="method" id="휴대폰" /> 휴대폰</span>
+                      <span><input type="radio" name="method" id="무통장입금(가상계좌)" /> 무통장입금(가상계좌)</span>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="button-list">
+              <input class="submit-button" type="submit" value="결제하기" />
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer-copyright">
+        <table>
+          <tr>
+            <th>회사명</th>
+            <th>대표자</th>
+            <th>사업자등록번호</th>
+            <th>소재지</th>
+          </tr>
+          <tr>
+            <td>(주)근손실처방전</td>
+            <td>박현민</td>
+            <td>112-33-55555</td>
+            <td>서울 종로구 종로 탑골공원 옆 15층</td>
+          </tr>
+        </table>
+
+        <span>고객센터 070-5555-2222 </span>
+      </div>
+    </footer>
+  </body>
+</html>

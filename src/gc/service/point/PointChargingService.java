@@ -85,6 +85,11 @@ public class PointChargingService {
 			startDate="\'" + startDate +"\'";
 		if(endDate!=null && !endDate.equals(""))
 			endDate="\'" + endDate +"\'";
+		
+		if(sortField==null||sortField.equals(""))
+			sortField="id";
+		if(sortOption==null||sortOption.equals(""))
+			sortOption="asc";
 		return pointChargingDao.getViewList(startIndex, endIndex,field, query,startDate,endDate,sortField,sortOption);
 	};
 

@@ -1,12 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>근처 | 장바구니</title>
-    <link rel="stylesheet" href="../../../CSS/reset.css" />
-    <link rel="stylesheet" href="../../../CSS/user.css" />
-    <link rel="stylesheet" href="../../../CSS/product-order/basket.css" />
+    <link rel="stylesheet" href="../CSS/reset.css" />
+    <link rel="stylesheet" href="../CSS/user.css" />
+    <link rel="stylesheet" href="../CSS/product-order/basket.css" />
   </head>
   <body>
     <header>
@@ -16,7 +18,7 @@
           <li><a href="">소개</a></li>
           <li><a href="">시설</a></li>
           <li><a href="">트레이너</a></li>
-          <li><a href="">쇼핑몰</a></li>
+          <li><a href="order.html">쇼핑몰</a></li>
         </ul>
       </nav>
       <nav>
@@ -68,8 +70,8 @@
             <span>총 상품가격 <span class="result-price">27,900</span> 원 + 총 배송비 <span class="result-price">0</span> 원 = 총 주문금액 <span class="result-price">27,900</span> 원</span>
           </div>
           <div class="button-list">
-            <a href=""><input type="button" value="계속 쇼핑하기" /></a>
-            <input type="submit" value="구매하기" />
+            <a href=""><input class="submit-button" type="button" value="계속 쇼핑하기" /></a>
+            <input class="submit-button" type="submit" value="구매하기" />
           </div>
         </form>
       </section>

@@ -68,4 +68,22 @@ public class JdbcPaymentMethod implements PaymentMethodDao {
 		return list;
 	}
 
+	@Override
+	public int insert(PaymentMethod paymentMethod) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update(PaymentMethod paymentMethod) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int delete(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

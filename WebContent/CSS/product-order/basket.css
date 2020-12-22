@@ -103,14 +103,8 @@
 }
 .main-section .button-list input,
 .main-section .button-list a {
-  border: none;
   width: 300px;
   height: 70px;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  background-color: #00b2d2;
 }
 .main-section .button-list input:hover,
 .main-section .button-list a:hover {

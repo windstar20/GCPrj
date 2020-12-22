@@ -8,8 +8,15 @@ footer {
   min-width: 1400px;
 }
 .submit-button {
-  color: #255499;
-  background-color: #e8c6c5;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border: none;
+  background-color: #00b2d2;
+}
+.submit-button:hover {
+  cursor: pointer;
 }
 main {
   font-family: "Nanum Gothic", sans-serif;

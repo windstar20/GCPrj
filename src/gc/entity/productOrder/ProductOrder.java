@@ -15,17 +15,19 @@ public class ProductOrder {
 	private String receiverAddress;
 	private Date regdate;
 	private int totalPrice;
-	private int state;
-
+	private int stateCode;
+	private int paymentMethodId;
+	private String deliveryMsg;
 
 	public ProductOrder() {
 		// TODO Auto-generated constructor stub
 	}
 
+	//===================================================
 
 	public ProductOrder(int id, int number, int basketId, String senderName, String senderPhone, String senderEmail,
 			String receiverName, String receiverPhone, String receiverAddress, Date regdate, int totalPrice,
-			int state) {
+			int stateCode, int paymentMethodId,String deliveryMsg) {
 		super();
 		this.id = id;
 		this.number = number;
@@ -38,12 +40,11 @@ public class ProductOrder {
 		this.receiverAddress = receiverAddress;
 		this.regdate = regdate;
 		this.totalPrice = totalPrice;
-		this.state = state;
+		this.stateCode = stateCode;
+		this.paymentMethodId = paymentMethodId;
+		this.deliveryMsg = deliveryMsg;
 	}
 
-
-
-	//===================================================
 
 	public int getId() {
 		return id;
@@ -156,24 +157,47 @@ public class ProductOrder {
 
 
 
-	public int getState() {
-		return state;
+	public int getStateCode() {
+		return stateCode;
 	}
 
 
-	public void setState(int state) {
-		this.state = state;
+	public void setStateCode(int stateCode) {
+		this.stateCode = stateCode;
 	}
 
+	
 
+
+	public int getPaymentMethodId() {
+		return paymentMethodId;
+	}
+
+	public void setPaymentMethodId(int paymentMethodId) {
+		this.paymentMethodId = paymentMethodId;
+	}
+
+	
+	public String getDeliveryMsg() {
+		return deliveryMsg;
+	}
+
+	public void setDeliveryMsg(String deliveryMsg) {
+		this.deliveryMsg = deliveryMsg;
+	}
 
 	@Override
 	public String toString() {
 		return "ProductOrder [id=" + id + ", number=" + number + ", basketId=" + basketId + ", senderName=" + senderName
 				+ ", senderPhone=" + senderPhone + ", senderEmail=" + senderEmail + ", receiverName=" + receiverName
 				+ ", receiverPhone=" + receiverPhone + ", receiverAddress=" + receiverAddress + ", regdate=" + regdate
-				+ ", totalPrice=" + totalPrice + ", state=" + state + "]";
+				+ ", totalPrice=" + totalPrice + ", stateCode=" + stateCode + ", paymentMethodId=" + paymentMethodId
+				+ ", deliveryMsg=" + deliveryMsg + "]";
 	}
+
+
+
+
 
 
 

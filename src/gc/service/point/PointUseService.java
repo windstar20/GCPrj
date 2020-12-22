@@ -83,6 +83,11 @@ public class PointUseService {
 			startDate="\'" + startDate +"\'";
 		if(endDate!=null && !endDate.equals(""))
 			endDate="\'" + endDate +"\'";
+		
+		if(sortField==null||sortField.equals(""))
+			sortField="id";
+		if(sortOption==null||sortOption.equals(""))
+			sortOption="asc";
 		return pointUseDao.getViewList(startIndex, endIndex,field, query,startDate,endDate,sortField,sortOption);
 	};
 	

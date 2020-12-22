@@ -1,0 +1,25 @@
+.main{
+    height: 350px;
+    font-family: "Nanum Gothic", sans-serif;
+    font-size: 30px;
+    font-weight: bold ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+.main h1{
+}
+.main table{
+    border-spacing: 20px 20px;
+}
+
+.submit{
+    width: 100px;
+    height: 30px;
+}
+
+.submit:hover{
+    background: #00b2d2;
+    /* outline: none; */
+    
+}

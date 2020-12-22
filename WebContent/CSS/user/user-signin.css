@@ -1,59 +1,12 @@
-/* ================= 공통 ====================== */
-
-.main input{
-    outline: none;
-    
-}
-
-/* ============헤더============= */
-header {
-    width: 100%;
-    position: sticky;
-    top: 0;
-    background-color: #e8c6c5;
-    height: 75px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1;
-  }
-  header > h1 {
-    flex-grow: 1;
-  }
-  header > h1 > img {
-    width: 75px;
-    height: 75px;
-  }
-  header > nav:nth-child(2) {
-    flex-grow: 1;
-    text-align: center;
-  }
-  header > nav:last-child {
-    flex-grow: 1;
-    text-align: right;
-  }
-  
-  nav > ul {
-    display: flex;
-  }
-  nav:nth-child(2) > ul {
-    display: flex;
-    justify-content: space-around;
-  }
-  nav:last-child > ul {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 50px;
-  }
-  nav:last-child > ul > li {
-    margin-right: 20px;
-  }
-/* ============헤더============= */
-
-  /* ============main============= */
-  .main{ 
+ 
+ .main{ 
     min-height: 500px;
     display: flex;
+}
+
+.main input{
+
+  outline: none;
 }
 .main-container{
     flex-direction: column;
@@ -82,19 +35,14 @@ header {
             bottom: 0px;
         }
 
-        .signin-button-menu .be-button{
-            /* background: url(../../image/user/btn-prev.png) no-repeat center; */
+        .be-button,
+        .submit-button{
             width: 100px;
             height: 23px;
             
         }
 
-        .signin-button-menu .signin-button { 
-            /* background: url(../../image/user/btn-reg.png) no-repeat center; */
-            width: 100px;
-            height: 23px;
-           
-        }
+        
 
       
 
@@ -109,22 +57,4 @@ header {
           font-size:30px;   
         }
 
-  /* ============footer============= */
-  .footer {
-    background: #e8c6c5;
-    height: 100px;
-  }
-  .footer-copyright {
-    height: inherit;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
-  .footer-copyright table th,
-  .footer-copyright table td {
-    text-align: center;
-  }
   
-  .footer-copyright tr td {
-    width: 300px;
-  }

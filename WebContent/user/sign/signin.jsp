@@ -11,39 +11,40 @@
     <link href="../../CSS/user/user-signin.css" type="text/css" rel="stylesheet"> 
     <script src="../../js/admin/user/overlap.js"></script>
 </head>
+
 <body>
     <header id="header" class="header">
         <div class="header-container">
-            <h1><a href="">근손실처방전</a></h1>
+            <h1><img class="logo-img" src="../image/gc_logo.png" alt="근처" /></h1>
         
-            <section class="gc-form">
+            <!-- <section class="gc-form">
                 <form>
                     <h1 class="no-display">강좌검색폼</h1>
                     <label>위치 검색</label>
                     <input type="text" class="input">
                     <input class="img-button find-button" type="submit" value="검색">
                 </form>
-            </section>
+            </section> -->
             <nav class="member-menu">
                 <h1 class="no-display">회원메뉴</h1>
                 <ul class="member-menu-list">
                     <li><a href="../index.html">HOME</a></li>
-                    <li><a href="login.html">로그인</a></li>
-                    <li><a href="signin.html">회원가입</a></li>
+                    <li><a href="login.html">LOGIN</a></li>
+                    <li><a href="signin.html">SEARCH</a></li>
                  </ul>   
             </nav>
-            <nav class="shortcut-menu">
+            <!-- <nav class="shortcut-menu">
                 <h1 class="no-display">바로가기 메뉴</h1>
                 <ul class="shortcut-menu-list">
                     <li><a class="img-button mypage-button" href="">마이페이지</a></li>
                     <li><a class="img-button customer-button" href="list.html">고객센터</a></li>
                 </ul>
-            </nav>
+            </nav> -->
         </div>
     </header>
 
-    <section id="main" class="main">
-        <main class="main-container">
+    <main id="main" class="main">
+    <section class="main-container">
             <form class="main-contant">
                 <h1>필수정보</h1>
                     <table>
@@ -51,7 +52,7 @@
                             <th>아이디</th>
                             <td>
                                 <form action="overlap">
-                                    <input name="nicname" autocomplete="off" autofocus">
+                                    <input name="nicname" autocomplete="off" autofocus >
                                     <input class="overlap" type="submit" name="nicname" value="중복확인"><br>
                                  </form>
                                 <font color="red" size="1">*영어/숫자 혼합 6자리이상 입력</font>
@@ -149,19 +150,12 @@
                     <input class="img-button signin-button" type="submit" value="가입완료">
                 </div>
             </form>
-        </main>
-    
-                <!-- <div class="right-aside">
-                    <h1>약관동의</h1>
-
-                    <p>전체동의<input type="checkbox"></p>
-                    <p>*기업회원 약관에 동의 <u><i>상세보기</i></u><input type="checkbox"></p>
-                    <p>*개인정보 수집 및 이용에 동의 <u><i>상세보기</i></u><input type="checkbox"></p>
-                </div> -->
-    </section>
+        </section>
+    </main>
 <footer class="footer">
         <h1>footer 부분</h1>
 </footer>
 </body>
 
 </html>
+    

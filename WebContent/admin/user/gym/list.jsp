@@ -46,17 +46,18 @@
         <ul class="aside-menu">
           <li>회원관리</li>
           <ul>
-            <li><a href="userlist.html">회원 리스트</a></li>
-            <li><a href="usermana.html">회원등급 관리</a></li>
-            <li><a href="leaveuserlist.html">탈퇴회원 리스트</a></li>
-            <li><a href="point.html">적립금 설정</a></li>
+              <li><a href="userlist.html">회원 리스트</a></li>
+              <li><a href="usermana.html">회원등급 관리</a></li>
+              <li><a href="leaveuserlist.html">탈퇴회원 리스트</a></li>
+              <li><a href="point.html">적립금 설정</a></li>
           </ul>
-          <br />
+          <br>
           <li>제휴업체 관리</li>
           <ul>
-            <li><a href="">제휴업체 리스트</a></li>
-            <li><a href="">제휴업체 </a></li>
+              <li><a href="">제휴업체 리스트</a></li>
+              <li><a href="">제휴업체 </a></li>
           </ul>
+        </ul>
       </aside>
       <section class="main-section">
         <main id="main" class="main">
@@ -67,23 +68,23 @@
           <div class ="main-body">
           <section>
             <h1>제휴업체 검색</h1>
-           	<form action="list" method="post">
-	            <table border="1">         
-	              <tr>
-	                <th>검색 키워드</th>
-	                <td>
-	                  <select>
-	                    <option>사업자 명</option>                             
-	                    <option>시설 명</option>
-	                  </select>
-	                  <input class="sel-text" type="text">
-	                  <input type = "submit" value = "검색">
-	                </td>
-	              </tr>         
-	            </table>
+           	<form action="list" method="get">
+              <table border="1">
+                <tr>
+                  <th>검색 키워드</th>
+                  <td>
+                    <select name = "query">
+                      <option>이름</option>            
+                      <option>시설 명</option>
+                    </select>
+                    <input class="sel-text" type="text" name = "field">
+                    <input type = "submit" value = "검색">
+                  </td>
+                </tr>            
+              </table>
 	        </form> 
           </section>          
-            <div class = "del-button">
+            <div class = "del-button"> 
               <input type = "button" value = "삭제">
             </div>
           
@@ -92,9 +93,8 @@
                   <tr>
                     <td><input type="checkbox" class ="check-all"></td>
                     <td>번호</td>
-                    <td>사업자 명</td>       
-                    <td>시설 명</td>
-                    <td>회원등급</td>
+                    <td>이름</td>       
+                    <td>시설 명</td>               
                     <td>주소</td>
                     <td>연락처</td>
                     <td>시설 번호</td>
@@ -110,8 +110,7 @@
                       <td><input type="checkbox" class="check"></td>
                       <td>${g.id }</td>
                       <td>${g.name }</td>
-                      <td>${g.gymName }</td>
-                      <td>시설회원</td>
+                      <td>${g.gymName }</td>                   
                       <td>${g.adress }</td>
                       <td>${g.telephone }</td>
                       <td>${g.phone }</td>
@@ -130,7 +129,7 @@
                 </c:if>    
                 <ul>
                     <c:forEach var="i" begin ="1" end="${pageEnd }">
-                        <li><a href="list?page=${i}">${i}</a></li>
+                        <li><a href="list?page=${i}&size=${size}">${i}</a></li>
                       </c:forEach>
                   </ul>
                   <c:if test="${page != pageEnd }">

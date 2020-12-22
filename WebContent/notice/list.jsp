@@ -1,3 +1,9 @@
+<%@page import="gc.entity.notice.Notice"%>
+<%@page import="java.util.List"%>
+<%@page import="gc.dao.notice.jdbc.JdbcNoticeDao" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/reset.css">
     <link rel="stylesheet" href="../CSS/user.css">
-    <link rel="stylesheet" href="../CSS/notice/faq.css">
+    <link rel="stylesheet" href="../CSS/notice/list.css">
     <title>고객센터</title>
 </head>
 <body>
@@ -48,24 +54,27 @@
                     </div>
                 </a>
             </div>
-            <div class="question-content">
-                <ul>
-                    <span class="content-title">&nbsp;</span>
-                    <li>
-                        <span>Q. 회원가입은 어떻게 하는겁니까?</span>
-                        <p>회원가입 페이지를 통해서 하세요.</p>
-                    </li>
-                    <li>
-                        <span>Q. 결제가 되지 않아요?</span>
-                        <p>저도 모르겠습니다 휴먼.</p>
-                    </li>
-                    <li>
-                        <span>Q. 회원탈퇴는 어떻게 하나요?</span>
-                        <p>들어올 때는 마음대로였겠지만 나갈 때는 아니란다.</p>
-                    </li>
-                </ul>
+            <div class="notice-content">
+                <table class="notice">
+                    <thead>
+                        <tr>
+                            <td class="no">내용</td>
+                            <td class="no">작성자</td>
+                            <td class="no">등록일</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="n" items="${list}" >
+                        <tr>
+                            <td class="arti"><a href="detaul?id=${n.id }">${n.title }</a></td>
+                            <td class="no">${n.adminNicname }</td>
+                            <td class="date">${n.regDate }</td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
             </div>
-            <span class="info" style="font-size: 15px;">※ 자주 묻는 질문에 없는 문의의 경우, hmpark@gc.com로 메일 부탁드립니다.</span>
+
             <div class="contect-us">
                 <span>CONTECT US</span>
                 <span>근손실처방전은 고객님의 목소리를 최우선으로 생각합니다.</span>
@@ -79,7 +88,7 @@
                         <span>이메일<br>문의</span>
                     </div>
                     <div class="item">
-                        <a href="#"><img src="../image/call.png" alt="전화문의"></a>
+                        <a href="#"><img src="../image/call.png" alt="전화상담"></a>
                         <span>전화<br>상담</span>
                     </div>
                 </div>

@@ -1,0 +1,23 @@
+.main input{
+    outline: none;
+
+}
+
+.main input[type="submit"]:hover{
+    background: #00b2d2;
+}
+
+
+
+
+.container{
+min-height: 300px;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.container table{
+    border-spacing: 10px 5px;
+}

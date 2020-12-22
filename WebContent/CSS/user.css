@@ -39,7 +39,7 @@ header {
 header > h1 {
   flex-grow: 1;
 }
-header > h1 > img {
+header > h1  img {
   width: 140px;
   height: 140px;
 }

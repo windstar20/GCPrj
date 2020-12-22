@@ -1,0 +1,81 @@
+.container{
+    width: 70%;
+    margin: auto;
+}
+
+.main-head{
+    height: 400px;
+    overflow: hidden;
+}
+
+.main-head img{
+    width: 100%;
+    height: 200%;
+    transform: translateY(-250px);
+}
+
+.main-body{
+    border: 1px solid green;
+}
+
+    .main-body div{
+        padding: 20px 50px;
+    }
+
+    .main-body section{
+        border: 1px solid blue;
+    }
+
+    .title{
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .title div{
+        padding: 30px 50px;
+    }
+
+    .title .button{
+        align-self: flex-end;
+    }
+    
+    .price{
+        height: 700px;
+    }
+
+    .price .container div{
+        height: 150px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .contest,
+    .content,
+    .license{
+        height: 200px;
+    }
+
+    .gym{
+        height: 500px;
+    }
+
+    .gym .gym-img{
+        height: 400px;
+        overflow: hidden;
+    }
+
+        .gym-img img{
+            width: 100%;
+            transform: translateY(-300px);
+        }
+
+    .img-list{
+        display: flex;
+    }
+
+        .img-list div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid purple;
+        }

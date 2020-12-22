@@ -8,8 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-
 import gc.entity.Product;
 
 public class ProductListService {
@@ -21,13 +19,13 @@ public class ProductListService {
 		List<Product> list = new ArrayList<>();		
 		
 		try {
-			//1. ?“œ?¼?´ë²? ë¡œë“œ?•˜ê¸?
+			//1. ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½? ë¡œë“œ?ï¿½ï¿½ï¿½?
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			//2. ?—°ê²°í•˜ê¸?
+			//2. ?ï¿½ï¿½ê²°í•˜ï¿½?
 			Connection con = DriverManager.getConnection(url, "hm", "1026");
-			//3. ëª…ë ¹?–´ë¥? ?˜®ê²¨ì£¼ê¸? ?œ„?•œ ê°ì²´ ?ƒ?„±
+			//3. ëª…ë ¹?ï¿½ï¿½ï¿½? ?ï¿½ï¿½ê²¨ì£¼ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ ê°ì²´ ?ï¿½ï¿½?ï¿½ï¿½
 			Statement st = con.createStatement();
-			//4. ê²°ê³¼ì§‘í•© ?‚¬?š©?•˜ê¸?
+			//4. ê²°ê³¼ì§‘í•© ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½?
 			ResultSet rs = st.executeQuery(sql);
 			
 			while(rs.next()) {
@@ -37,13 +35,16 @@ public class ProductListService {
 				String brand = rs.getString("BRAND");
 				Date regdate = rs.getDate("REGDATE");
 				int price = rs.getInt("PRICE");
-				 
+				String image = rs.getString("IMAGE");
+						
 				Product p = new Product(
 						id,
 						productName,
 						brand,
 						regdate,
-						price
+						price,
+						image
+						
 				 );
 				list.add(p);		
 				
@@ -59,8 +60,8 @@ public class ProductListService {
 		return list;
 	}	
 	
-	public int insert(Product product) { //?…? ¥?ˆ˜? •?‚­? œ?Š” ë°˜í™˜?•˜?Š” ê°’ì´ ?ˆ?‹¤. =? ˆì½”ë“œê°œìˆ˜
-		int result = 0;				     //?“±ë¡? ?˜?´ì§??—?„œ DBë¡? insert
+	public int insert(Product product) { //?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ë°˜í™˜?ï¿½ï¿½?ï¿½ï¿½ ê°’ì´ ?ï¿½ï¿½?ï¿½ï¿½. =?ï¿½ï¿½ì½”ë“œê°œìˆ˜
+		int result = 0;				     //?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½ DBï¿½? insert
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		String sql = "INSERT INTO PRODUCT(PRODUCT_NAME, MANUFACTURER, BRAND, PRODUCT_MODEL, "
@@ -82,7 +83,7 @@ public class ProductListService {
 			st.setString(9, product.getSummaryExplain());
 			st.setString(10, product.getDetailExplain());
 			
-			result = st.executeUpdate();			//ResultSet rs = st.executeQuery(sql);   //??? ‰?Š¸ë¬¸ì—?„œë§? ?‹¤?–‰
+			result = st.executeUpdate();			//ResultSet rs = st.executeQuery(sql);   //???ï¿½ï¿½?ï¿½ï¿½ë¬¸ì—?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½
 			
 			st.close();
 			con.close();
@@ -146,8 +147,8 @@ public class ProductListService {
 		return p;
 	}	
 	
-	public int update(Product product) { //?…? ¥?ˆ˜? •?‚­? œ?Š” ë°˜í™˜?•˜?Š” ê°’ì´ ?ˆ?‹¤. = ? ˆì½”ë“œê°œìˆ˜
-		int result = 0;				     //?“±ë¡? ?˜?´ì§??—?„œ DBë¡? insert
+	public int update(Product product) { //?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ë°˜í™˜?ï¿½ï¿½?ï¿½ï¿½ ê°’ì´ ?ï¿½ï¿½?ï¿½ï¿½. = ?ï¿½ï¿½ì½”ë“œê°œìˆ˜
+		int result = 0;				     //?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½ DBï¿½? insert
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		String sql = "UPDATE PRODUCT SET PRODUCT_NAME=?, MANUFACTURER=?, BRAND=?, PRODUCT_MODEL=?"
@@ -170,7 +171,7 @@ public class ProductListService {
 			st.setString(10, product.getDetailExplain());
 			st.setInt(11, product.getId());
 			
-			result = st.executeUpdate();			//ResultSet rs = st.executeQuery(sql);   //??? ‰?Š¸ë¬¸ì—?„œë§? ?‹¤?–‰
+			result = st.executeUpdate();			//ResultSet rs = st.executeQuery(sql);   //???ï¿½ï¿½?ï¿½ï¿½ë¬¸ì—?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½
 			
 			st.close();
 			con.close();
@@ -193,12 +194,12 @@ public class ProductListService {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, "hm", "1026");
 			PreparedStatement st = con.prepareStatement(sql);
-			//result=?ˆ˜?–‰ê²°ê³¼ ë°˜í™˜, executeUpdate()=insert, update, delete ?¼?•Œ ?‹¤?–‰
+			//result=?ï¿½ï¿½?ï¿½ï¿½ê²°ê³¼ ë°˜í™˜, executeUpdate()=insert, update, delete ?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½
 			st.setInt(1, id);
 			
-			result = st.executeUpdate(); //?—¬ê¸°ì— sql ?‚¬?š©?•˜?Š”ê±? ?•„?‹˜ ì£¼ì˜!!
+			result = st.executeUpdate(); //?ï¿½ï¿½ê¸°ì— sql ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ ì£¼ì˜!!
 
-			//ResultSet rs = st.executeQuery(sql);   //??? ‰?Š¸ë¬¸ì—?„œë§? ?‹¤?–‰
+			//ResultSet rs = st.executeQuery(sql);   //???ï¿½ï¿½?ï¿½ï¿½ë¬¸ì—?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½
 
 			st.close();
 			con.close();

@@ -143,7 +143,7 @@
 				                  <li class="product-number-list">${p.id}</li>                  
 				                  <li class="product-name-list">
 				                    <div class="product-name-img">
-				                    	<img src="../../image/admin/product/${p.fileName}" alt="상품이미지" />
+				                    	<img src="../../static/notice/2020/${p.id}/${p.image}" alt="상품이미지" />
 				                    </div>
 				                    <div class="product-info">
 				                      <div class="product-code">${p.code}</div>

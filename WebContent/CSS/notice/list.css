@@ -51,10 +51,12 @@ main{
 .notice-content{
   display: flex;
   justify-content: space-around;
-  margin: 20px 0px;
+  margin-top: 20px; 
+  height: 700px;
+  font-size: 20px;
 }
 
-.notice-content th, tr, td{
+.notice-content td{
   border-bottom: 2px solid #444444;
   padding: 10px;
   text-align: center;
@@ -66,21 +68,22 @@ main{
 }
 
 .notice-content .notice{
+  margin-left: 170px;
   width: 100%;
-  margin: 0px 200px;
 }
 
 .pagelist{
   position: relative;
-  right: 900px;
-  top: 400px;
+  right: 865px;
+  top: 600px;
   margin: 0 10px;
+  width: 200px;
   display: flex;
   justify-content: center;
 }
 
 .pagelist div{
-  width: 40px;
+  width: 100px;
   height: 20px;
 }
 

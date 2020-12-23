@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/reset.css">
     <link rel="stylesheet" href="../CSS/user.css">
-    <link rel="stylesheet" href="../CSS/notice/list.css">
-    <title>공지사항</title>
+    <link rel="stylesheet" href="../CSS/notice/faq.css">
+    <title>FAQ</title>
 </head>
 <body>
     <header>
@@ -51,40 +51,24 @@
                     </div>
                 </a>
             </div>
-            <div class="notice-content">
-                <table class="notice">
-                    <thead>
-                        <tr>
-                            <td class="no">내용</td>
-                            <td class="no">작성자</td>
-                            <td class="no">등록일</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="n" items="${list}" >
-                        <tr>
-                            <td class="arti"><a href="detail?id=${n.id }">${n.title }</a></td>
-                            <td class="no">${n.adminNicname }</td>
-                            <td class="date">${n.regDate }</td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
-                <div class="pagelist">
-                    <c:if test="${page != 1}">
-                        <a class="img-button before-button" href="list?page=${page-1}">이전</a>
-                    </c:if>
-                    <ul>
-                        <c:forEach var="i" begin="1" end="${pageEnd}">
-                            <li><a href="list?page=${i}&size=${size}">${i}</a></li>
-                        </c:forEach>
-                    </ul>
-                    <c:if test="${page != pageEnd}">
-                        <a class="img-button next-button" href="list?page=${page+1}">다음</a>
-                    </c:if>
-                </div>
+            <div class="question-content">
+                <ul>
+                    <span class="content-title">&nbsp;</span>
+                    <li>
+                        <span>Q. 회원가입은 어떻게 하는겁니까?</span>
+                        <p>회원가입 페이지를 통해서 하세요.</p>
+                    </li>
+                    <li>
+                        <span>Q. 결제가 되지 않아요?</span>
+                        <p>저도 모르겠습니다 휴먼.</p>
+                    </li>
+                    <li>
+                        <span>Q. 회원탈퇴는 어떻게 하나요?</span>
+                        <p>들어올 때는 마음대로였겠지만 나갈 때는 아니란다.</p>
+                    </li>
+                </ul>
             </div>
-
+            <span class="info" style="font-size: 15px;">※ 자주 묻는 질문에 없는 문의의 경우, hmpark@gc.com로 메일 부탁드립니다.</span>
             <div class="contect-us">
                 <span>CONTECT US</span>
                 <span>근손실처방전은 고객님의 목소리를 최우선으로 생각합니다.</span>
@@ -98,7 +82,7 @@
                         <span>이메일<br>문의</span>
                     </div>
                     <div class="item">
-                        <a href="#"><img src="../image/call.png" alt="전화상담"></a>
+                        <a href="#"><img src="../image/call.png" alt="전화문의"></a>
                         <span>전화<br>상담</span>
                     </div>
                 </div>

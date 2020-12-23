@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../CSS/reset.css">
     <link rel="stylesheet" href="../CSS/user.css">
     <link rel="stylesheet" href="../CSS/notice/list.css">
-    <title>고객센터</title>
+    <title>공지사항</title>
 </head>
 
 <body>
@@ -44,7 +44,7 @@
                         자주 묻는 질문
                     </div>
                 </a>
-                <a href="../notice/notice.html">
+                <a href="../notice/list.html">
                     <div class="notice-btn">
                         공&nbsp;지&nbsp;사&nbsp;항
                     </div>
@@ -65,8 +65,6 @@
                             <td class="no">관리자</td>
                             <td class="date">2020-11-03</td>
                         </tr>
-                    </tbody>
-                    <tbody>
                         <tr>
                             <td class="arti"><a href="#">근손실처방전 운영정책 변경 안내</a></td>
                             <td class="no">관리자</td>
@@ -115,11 +113,17 @@
                     </tbody>
                 </table>
                 <div class="pagelist">
-                    <a class="img-button before-button" href="">이전</a>
+                    <c:if test="${page != 1}">
+                        <a class="img-button before-button" href="list?page=${page-1}">이전</a>
+                    </c:if>
                     <ul>
-                        <li><a href="">1</a></li>
+                        <c:forEach var="i" begin="1" end="${pageEnd}">
+                            <li><a href="list?page=${i}&size=${size}">${i}</a></li>
+                        </c:forEach>
                     </ul>
-                    <a class="img-button next-button" href="">다음</a>
+                    <c:if test="${page != pageEnd}">
+                        <a class="img-button next-button" href="list?page=${page+1}">다음</a>
+                    </c:if>
                 </div>
             </div>
 

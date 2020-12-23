@@ -450,7 +450,9 @@ h1.no-display {
             transition: 2s ease;
             background:  #b82525;
           }
-
+	.pager-box {
+		margin-bottom: 20px;
+	}
     .pager-menu, .pager-menu>ul{
       display: flex;
       align-items: center;

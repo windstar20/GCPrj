@@ -30,11 +30,11 @@
       <nav id="nav" class="nav">
         <h1 class="no-display">메뉴</h1>
         <ul>
-          <li><a href="#">기본설정</a></li>
-          <li><a href="list">상품관리</a></li>
-          <li><a href="#">주문관리</a></li>
-          <li><a href="#">회원관리</a></li>
-          <li><a href="#">게시판관리</a></li>
+          <li><a href="/admin/index.html">기본설정</a></li>
+          <li><a href="/admin/product/list">상품관리</a></li>
+          <li><a href="/admin/product-order/list">주문관리</a></li>
+          <li><a href="/admin/user/index.html">회원관리</a></li>
+          <li><a href="/admin/notice/list">게시판관리</a></li>
           <li><a href="#">고객센터</a></li>
         </ul>
       </nav>
@@ -99,8 +99,9 @@
 			                  </div>               
 			                </div>
 					        <div class="btn-search">
-					           <input type="submit" value="검색">
+					           <input type="submit" value="검색">					           
 					        </div>
+					        <%-- <span class="search-list">${count}개의 상품이 검색되었습니다.</span> --%>
 			           </form>
 		          </section>
 		          
@@ -143,7 +144,7 @@
 				                  <li class="product-number-list">${p.id}</li>                  
 				                  <li class="product-name-list">
 				                    <div class="product-name-img">
-				                    	<img src="../../static/notice/2020/${p.id}/${p.image}" alt="상품이미지" />
+				                    	<img src="/static/product/2020/${p.id}/${p.image}" alt="상품이미지" />
 				                    </div>
 				                    <div class="product-info">
 				                      <div class="product-code">${p.code}</div>

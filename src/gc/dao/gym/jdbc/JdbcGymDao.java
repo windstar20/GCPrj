@@ -281,7 +281,7 @@ public class JdbcGymDao implements GymDao {
 		String sql = "SELECT * FROM GYM_LIST_VIEW ";
 		
 		if(field != null && query != null && !field.equals("") && !query.equals("")) // 검색 구현
-			sql = "SELECT * FROM GYM_LIST_VIEW WHERE NAME LIKE '%"+field+"% AND GYM_NAME LIKE '%"+query+"%'";
+			sql += "WHERE " + field +" LIKE '%"+ query + "%'";
 		System.out.println(sql);
 		
 		if(startIndex!=0 && endIndex!=0)

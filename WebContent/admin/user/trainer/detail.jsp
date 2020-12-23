@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="/CSS/reset.css" type="text/CSS" rel="stylesheet">
     <link href="../../../CSS/admin/user/detail.css" type="text/CSS" rel="stylesheet">
     <script src="../../../js/userdetail.js"></script>
 </head>
@@ -18,15 +19,17 @@
         <h1>회원 상세정보</h1>
     </header>
     <main class="main">
+		<div class="main-head">
+			<h1>${t.name }님의 회원정보입니다.</h1>
+			<nav>
+				<ul>
+					<li><a href="detail?id=${t.id }"><span>회원정보</span></a></li>
+					<li><a href="comment?id=${t.id }"><span>댓글</span></a></li>
+				</ul>
+			</nav>
+        </div>        
         <form action="">
             <table>
-                <tr>
-                    <td>${t.name }님의 회원정보입니다.</td>
-                    <td>
-                        <a href="detail?id=${t.id }"><span>회원정보</span></a>
-                        <a href="comment?id=${t.id }"><span>댓글</span></a>
-                    </td>
-                </tr>
                 <tr>
                     <td> 이미지 </td>
                     <td>회원기본 정보</td>
@@ -123,7 +126,6 @@
                 </tr>
 
                 <tr>
-                    <td class="right-button">right-button</td>
                     <td>회원 이용정보</td>
                 </tr>
                 <tr>
@@ -145,21 +147,10 @@
             </table>
         </form>
            
+           
+           
+        <h1>소속 정보</h1>
         <table>
-            <tr>
-                <td class="right-button">right-button</td>
-                <td>회원 추가정보</td></tr>
-            <tr>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            
-        </table>
-        <table>
-            <tr>
-                <td>소속 정보</td>
-            </tr>
             <tr>
                 <th>사업자번호</th>
                 <td>
@@ -193,32 +184,8 @@
             <!-- ============================== -->
            
         </table>
-            <div>
-                <span class="right-button">right-button</span>
-                관리자 운영메모<br>
-                <textarea></textarea>
-                <input type="submit" value="등록">
-            </div>
 
             
-        <table>
-            <thead>
-                <th>내용</th>
-                <th>작성시각</th>
-                <th>작성자</th>
-                <th>관련정보</th>
-              <td>
-                  <input type="button" value="삭제">
-              </td>
-            </thead>
-            <tbody>
-                <td><input type="text"> </td>
-                <td><input type="text"> </td>
-                <td><input type="text"> </td>
-                <td><input type="text"> </td>
-            </tbody>
-        </table>
-        <div>1</div>
         <div>
             <input type="button" value="닫기">
         </div>

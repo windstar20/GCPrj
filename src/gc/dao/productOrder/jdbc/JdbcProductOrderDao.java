@@ -340,6 +340,7 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 		String url = DBContext.URL;
 		String sql = "SELECT N.* FROM PRODUCT_ORDER_VIEW N ";
 
+		
 
 		
 		if(field!=null && query != null && !field.equals("") && !query.equals(""))

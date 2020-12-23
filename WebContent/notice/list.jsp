@@ -1,6 +1,3 @@
-<%@page import="gc.entity.notice.Notice"%>
-<%@page import="java.util.List"%>
-<%@page import="gc.dao.notice.jdbc.JdbcNoticeDao" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
@@ -12,14 +9,14 @@
     <link rel="stylesheet" href="../CSS/reset.css">
     <link rel="stylesheet" href="../CSS/user.css">
     <link rel="stylesheet" href="../CSS/notice/list.css">
-    <title>고객센터</title>
+    <title>공지사항</title>
 </head>
 <body>
     <header>
-        <h1><img class="logo-img" src="../image/gc_logo.png" alt="근처" /></h1>
+        <h1><img class="logo-img" src="../image/gc_logo.png" alt="근처" /><a href="/index.html"></a></h1>
         <nav>
           <ul class="menu-bar">
-            <li><a href="">소개</a></li>
+            <li><a href="../info/info">소개</a></li>
             <li><a href="">시설</a></li>
             <li><a href="">트레이너</a></li>
             <li><a href="">쇼핑몰</a></li>
@@ -43,12 +40,12 @@
         </section>
         <section class="main-body">
             <div class="submenu">
-                <a href="../notice/faq.html">
+                <a href="faq">
                     <div class="question-btn">
                     자주 묻는 질문
                     </div>
                 </a>
-                <a href="../notice/notice.html">
+                <a href="list">
                     <div class="notice-btn">
                         공&nbsp;지&nbsp;사&nbsp;항
                     </div>
@@ -66,13 +63,26 @@
                     <tbody>
                     <c:forEach var="n" items="${list}" >
                         <tr>
-                            <td class="arti"><a href="detaul?id=${n.id }">${n.title }</a></td>
+                            <td class="arti"><a href="detail?id=${n.id }">${n.title }</a></td>
                             <td class="no">${n.adminNicname }</td>
                             <td class="date">${n.regDate }</td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
+                <div class="pagelist">
+                    <c:if test="${page != 1}">
+                        <a class="img-button before-button" href="list?page=${page-1}">이전</a>
+                    </c:if>
+                    <ul>
+                        <c:forEach var="i" begin="1" end="${pageEnd}">
+                            <li><a href="list?page=${i}&size=${size}">${i}</a></li>
+                        </c:forEach>
+                    </ul>
+                    <c:if test="${page != pageEnd}">
+                        <a class="img-button next-button" href="list?page=${page+1}">다음</a>
+                    </c:if>
+                </div>
             </div>
 
             <div class="contect-us">

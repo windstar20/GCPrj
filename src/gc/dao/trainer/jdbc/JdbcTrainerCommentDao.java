@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import gc.dao.jdbc.DBContext;
@@ -113,7 +114,7 @@ public class JdbcTrainerCommentDao implements TrainerCommentDao{
 		TrainerComment t = null;
 		
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM TRAINER_COMMET WHERE RESERVATION_NUMBER="+reservationNumber+" TRAINER_ID="+trainerId;
+		String sql = "SELECT * FROM TRAINER_COMMENT WHERE RESERVATION_NUMBER="+reservationNumber+" TRAINER_ID="+trainerId;
 		
 		try {
 			Class.forName(DBContext.DRIVER);
@@ -123,7 +124,16 @@ public class JdbcTrainerCommentDao implements TrainerCommentDao{
 			
 			while(rs.next()) {
 				
+				Date regdate = rs.getDate("regdate");
+				String content = rs.getString("content");
+				String title = rs.getString("title");
+				
 				t = new TrainerComment(
+						reservationNumber,
+						trainerId,
+						regdate,
+						content,
+						title
 				);
 				
 			}
@@ -140,6 +150,62 @@ public class JdbcTrainerCommentDao implements TrainerCommentDao{
 			e.printStackTrace();
 		}
 		return t;
+	}
+
+	@Override
+	public List<TrainerComment> getList() {
+		
+		return getList(0,10,"title","");
+	}
+
+	@Override
+	public List<TrainerComment> getList(int startIndex, int endIndex) {
+		
+		return getList(startIndex,endIndex,"title","");
+	}
+
+	@Override
+	public List<TrainerComment> getList(int startIndex, int endIndex, String field, String query){		
+		List<TrainerComment> list = new ArrayList<>();
+		
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM TRAINER_COMMENT WHERE "+field+" LIKE '%"+query+"%'";
+		
+		try {
+			Class.forName(DBContext.DRIVER);
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
+			while(rs.next()) {
+				int reservationNumber = rs.getInt("reservation_number");
+				int trainerId = rs.getInt("trainer_id");
+				Date regdate = rs.getDate("regdate");
+				String content = rs.getString("content");
+				String title = rs.getString("title");
+				
+				TrainerComment t = new TrainerComment(
+						reservationNumber,
+						trainerId,
+						regdate,
+						content,
+						title
+				);
+				list.add(t);
+			}
+			
+			rs.close();
+			st.close();
+			con.close();
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 

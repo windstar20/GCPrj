@@ -31,17 +31,19 @@
 		<nav id="nav" class="nav">
 			<h1 class="no-display">메뉴</h1>
 			<ul>
-				<li><a href="#">기본설정</a></li>
-				<li><a href="#">상품관리</a></li>
-				<li><a href="#">주문관리</a></li>
-				<li><a href="#">회원관리</a></li>
-				<li><a href="#">게시판관리</a></li>
+				<li><a href="/admin/index.html">기본설정</a></li>
+				<li><a href="/admin/product/list">상품관리</a></li>
+				<li><a href="/admin/product-order/list">주문관리</a></li>
+				<li><a href="/admin/user/index">회원관리</a></li>
+				<li><a href="/admin/notice/list">게시판관리</a></li>
 				<li><a href="#">고객센터</a></li>
 			</ul>
 		</nav>
 	</header>
 
+<!-- ======================== aside ======================== -->     
 	<div id="body" class="body">
+	
 		<aside class="aside">
 			<h1 class="aside-title img-button">주문관리</h1>
 			<ul class="aside-menu">
@@ -116,7 +118,7 @@
 								<!-- 네번째 줄 시작 -->
 								<tr>
 									<th>처리일자</th>
-									<td><select name="date-field">
+									<td><select>
 											<option value="order-regdate">주문일</option>
 									</select> <input type="date" class="start-date" name="start-date" value="2020-12-01"/> ~ <input type="date"
 										 class="end-date" name="end-date" />

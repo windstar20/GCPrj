@@ -15,9 +15,6 @@ public interface NoticeDao {
 	List<Notice> getList(int startIndex);
 	List<Notice> getList(int startIndex, int endIndex, String field, String query);
 	
-	int display(int id);
-	int displayAll(int[] ids);
-	
 	List<NoticeView> getViewList();
 	List<NoticeView> getViewList(int startIndex, int endIndex);
 	List<NoticeView> getViewList(int startIndex, int endIndex, String field, String query);

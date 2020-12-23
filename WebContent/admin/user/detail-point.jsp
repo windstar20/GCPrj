@@ -23,7 +23,7 @@
                     <li><a href="detail?id=${u.id }">회원정보</a></li>
                     <li><a href="order?id=${u.id }">주문정보</a></li>
                     <li><a href="detail-point?id=${u.id }">포인트</a></li>
-                    <li><a href="evaluaion?id=${u.id }">작성한 평가</a></li>
+                    <li><a href="evaluation?id=${u.id }">작성한 평가</a></li>
                 </ul>
             </nav>
         </div>

@@ -40,7 +40,7 @@ public class ListController extends HttpServlet{
 		
 		List<Notice> list = service.getList(page, size, field, query);
 //		List<NoticeView> list = service.getViewList(page, size, field, query);
-		int count = dao.getCount();//게시물의 수를 구하기(함수처리)		
+		int count = service.getCount();//게시물의 수를 구하기(함수처리)		
 		int lastPage = count/5;    //마지막 페이지(1)
 		lastPage = count%5 > 0 ? lastPage+1 : lastPage; //마지막 페이지(2)
 //		lastPage = count%10=0?lastPage:lastPage+1;		

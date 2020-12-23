@@ -25,14 +25,14 @@
                     <li><a href="detail?id=${u.id }">회원정보</a></li>
                     <li><a href="order?id=${u.id }">주문정보</a></li>
                     <li><a href="detail-point?id=${u.id }">포인트</a></li>
-                    <li><a href="evaluaion?id=${u.id }">작성한 평가</a></li>
+                    <li><a href="evaluation?id=${u.id }">작성한 평가</a></li>
                 </ul>
             </nav>
         </div>
         <form action="">
         <table>
                 <tr>
-                    <td class="right-button">right-button</td>
+                    
                     <td>회원기본 정보</td>
                     <td>회원정보 수정</td>
                 </tr>
@@ -89,7 +89,6 @@
                 </tr>
 
                 <tr>
-                    <td class="right-button">right-button</td>
                     <td>회원 이용정보</td>
                 </tr>
                 <tr>
@@ -119,80 +118,6 @@
             </table>
         </form>
            
-        <table>
-            <tr>
-                <td class="right-button">right-button</td>
-                <td>회원 추가정보</td></tr>
-            <tr>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            
-        </table>
-        <table>
-            <tr>
-                <td>사업자 정보</td>
-            </tr>
-            <tr>
-                <th>사업자번호</th>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <th>상호 법인명</th>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <th>성명</th>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <th>사업장 소재지</th>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <th>업종</th>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <!-- ============================== -->
-           
-        </table>
-            <div>
-                <span class="right-button">right-button</span>
-                관리자 운영메모<br>
-                <textarea></textarea>
-                <input type="submit" value="등록">
-            </div>
-
-            
-        <table>
-            <thead>
-                <td>내용</td>
-                <td>작성시각</td>
-                <td>작성자</td>
-                <td>관련정보</td>
-              <td>
-                  <input type="button" value="삭제">
-              </td>
-            </thead>
-            <tbody>
-                <td><input type="text"> </td>
-                <td><input type="text"> </td>
-                <td><input type="text"> </td>
-                <td><input type="text"> </td>
-            </tbody>
-        </table>
-        <div>1</div>
         <div>
             <input type="button" value="닫기">
         </div>

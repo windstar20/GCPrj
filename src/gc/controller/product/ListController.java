@@ -1,4 +1,4 @@
-package gc.controller.user;
+package gc.controller.product;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,9 +31,8 @@ public class ListController extends HttpServlet{
 		List <ProductView> list = service.getViewList(page, size);
 
 		int count = service.getCount();
-		int lastPage = count/15;
-		lastPage = count%15 > 0 ? lastPage+1 : lastPage; //마지막
-		pageEnd = lastPage;
+		int lastPage = count/size;
+		pageEnd = count%size > 0 ? lastPage+1 : lastPage; //마지막
 
 		request.setAttribute("list", list);
 		request.setAttribute("page", page);

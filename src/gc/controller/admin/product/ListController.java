@@ -43,11 +43,10 @@ public class ListController extends HttpServlet{
 		List<ProductView> list = service.getViewList(page, size, keyword, query, prevPrice, nextPrice);
 		
 		 int count = service.getCount();//게시물의 수를 구하기(함수처리) 
-		 int lastPage = count/10; //마지막 페이지구하기(1) 
-		 lastPage = count%10 > 0 ? lastPage+1 : lastPage; //마지막
+		 int lastPage = count/size; //마지막 페이지구하기(1) 
+		 pageEnd = count%size > 0 ? lastPage+1 : lastPage; //마지막
 		 //페이지구하기(2) // lastPage = count%10=0?lastPage:lastPage+1; pageEnd = lastPage;
 		 System.out.println("라스트: "+lastPage);
-		 pageEnd = lastPage;
 		 
 //		 if(list.size()%10==0)
 //			pageEnd = list.size();
@@ -60,6 +59,7 @@ public class ListController extends HttpServlet{
 		request.setAttribute("list", list);
 		request.setAttribute("page", page);
 		request.setAttribute("size", size);
+		request.setAttribute("count", count);
 		request.setAttribute("pageEnd", pageEnd);
 
 		request.getRequestDispatcher("/admin/product/list.jsp").forward(request, response);

@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/reset.css">
     <link rel="stylesheet" href="../CSS/user.css">
-    <link rel="stylesheet" href="../CSS/product/list.css">
+    <link rel="stylesheet" href="../CSS/product/detail.css">
+    <script src="../js/product/detail.js"></script>
     <title>시설검색</title>
 </head>
 
@@ -33,18 +34,50 @@
     </header>
 <!--?=======================main===============================-->
     <main>
-        <section class="location">
-            <div>
-                <span>홈>내 주변 운동시설</span><br>
-                <span>서울특별시 중구 명동</span>
-            </div>
-            <span>재설정|위치지정</span>
+        <section class="crumb">
+            <h1 class="display-none">경로</h1>
+            <span>메인 > 쇼핑몰</span>
+            <span>보충제 | 비타민 | 에너지바</span>
         </section>
-        <section class="list">
-            <h1 class="aside">가까운 제휴시설</h1>
-            <div class="item-list">
-                
-            </div>
+        <section class="product-block">
+            <h1 class="display-none">상품정보영역</h1>            
+                <div class="product-box">
+                    <div class="images">
+                        <div class="thumb">
+                            <img src="../image/admin/product/impactwhey.png" alt="대표이미지" />
+                        </div>
+                        <div class="little">
+                            <img src="" alt="대표이미지" />
+                        </div>                    
+                    </div>
+                    <div class="information">
+                        <div class="information-box">
+                            <h1 class="mt10">상품명</h1>
+                            <div class="mt10">브랜드</div>
+                            <div class="mt10">카테고리</div>
+                            <label class="option">옵 션: </label>
+                                <select class="select mt10" name="taste-select" size="1">
+                                    <option value="딸기">딸기</option>
+                                    <option value="바나나">바나나</option>
+                                </select><br>
+                            <label class="count mt10">수 량: </label> 
+                            <input class="input-text" type="text" name="count" value="1" />
+                            <button class="plus-btn" >+</button>
+                            <button class="minus-btn">-</button>
+                        </div>
+                        <div class="price-box">
+                            <div class="price price-box-common">
+                                <label>판매가: </label> 
+                                <label>XXX원 </label>
+                            </div>
+                            <input class="basket price-box-common" type="submit" value="장바구니 담기"></input>
+                            <input class="buy price-box-common" type="submit" value="상품구입"></input>
+                        </div>
+                    </div>                    
+                </div>
+        </section>
+        <section class="content-block">
+
         </section>
     </main>
 <!--?=======================footer===============================-->

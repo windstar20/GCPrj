@@ -9,9 +9,9 @@ public interface ProductBasketItemDao {
 
 	int insert(ProductBasketItem productBasketItem);
 	int update(ProductBasketItem productBasketItem );
-	int delete(int id);
+	int delete(int basketId,String productCode);
 	
-	ProductBasketItem get(int id);
-	
+	ProductBasketItem get(int basketId,String productCode);
+	ProductBasketItem getOnePersonList(int basketId);
 	List<ProductBasketItem> getList();
 }

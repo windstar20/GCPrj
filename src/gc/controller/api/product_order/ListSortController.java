@@ -1,6 +1,8 @@
 package gc.controller.api.product_order;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -33,6 +35,8 @@ public class ListSortController extends HttpServlet{
 		String endDate=null;
 		String sortField=null;
 		String sortOption=null;
+		String[] orderStates= null;
+		List<String> orderState = null;
 		ProductOrderService service = new ProductOrderService();
 
 
@@ -52,8 +56,11 @@ public class ListSortController extends HttpServlet{
 			sortField = request.getParameter("sort-field");
 		if(request.getParameter("sort-option")!=null)
 			sortOption = request.getParameter("sort-option");
-		
-		List<ProductOrderView> list = service.getViewList(page, size, field, query, startDate, endDate, sortField,sortOption); 
+		if(request.getParameter("order-state")!=null) {
+			orderStates = request.getParameterValues("order-state");
+			orderState = new ArrayList<String>(Arrays.asList(orderStates));
+		}
+		List<ProductOrderView> list = service.getViewList(page, size, field, query, orderState,startDate, endDate, sortField,sortOption); 
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd aa hh:mm").create();
 		String json = gson.toJson(list);
 		

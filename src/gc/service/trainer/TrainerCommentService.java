@@ -1,5 +1,7 @@
 package gc.service.trainer;
 
+import java.util.List;
+
 import gc.dao.trainer.TrainerCommentDao;
 import gc.dao.trainer.jdbc.JdbcTrainerCommentDao;
 import gc.entity.trainer.TrainerComment;
@@ -29,5 +31,10 @@ public class TrainerCommentService {
 	public TrainerComment get(int reservationNumber, int trainerId) {
 		
 		return trainerCommentDao.get(reservationNumber, trainerId);
+	}
+
+	public List<TrainerComment> getList(int startIndex,int endIndex,String field,String query) {
+
+		return trainerCommentDao.getList(startIndex, endIndex, field, query);
 	}
 }

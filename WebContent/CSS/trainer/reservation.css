@@ -1,0 +1,114 @@
+main{
+    width: 70%;
+    margin: auto;
+}
+
+.trainer{
+    height: 400px;
+    border: 1px solid #58595b;
+}
+
+    .trainer .container{
+        width: 80%;
+        height: 80%;
+        margin: 30px auto;
+        border: 1px solid red;
+        display: flex;
+    }
+
+    .trainer div{
+        
+        border: 1px solid red;
+    }
+
+    .trainer .img{
+        width: 300px;
+        height: 100%;
+        border: 1px solid red;
+    }
+
+    .inner-container{
+        display: flex;
+        width: 70%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .inner-container div{
+        width: 40%;
+    }
+
+    .inner-container div:nth-child(2){
+        text-align: right;
+    }
+
+    .inner-container div:nth-child(2) input{
+        width: 50px;
+        background: url("/image/call.png") no-repeat;
+        background-size: 50px;
+        border: none;
+    }
+
+.select{
+    height: 200px;
+    border: 1px solid #58595b;
+    display: flex;
+    flex-direction: column;
+}
+
+    .select h1{
+        padding: 30px 50px;
+        font-weight: bold;
+    }
+
+    .select-list{
+        align-self: center;
+        display: flex;
+    }
+
+        .select-list div{
+            height: 100px;
+            width: 300px;
+            border: 1px solid black;
+        }
+
+.price{
+    height: 200px;
+    border: 1px solid #58595b;
+}
+
+    .price div{
+        padding: 90px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .price span{
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .price div span:last-child{
+        color: #00b2d2;
+    }
+
+.select-button{
+    height: 300px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+    .submit-button{
+        margin-left: 10px;
+        width: 300px;
+        height: 70px;
+        transition: font-size 1s;
+    }
+
+    .submit-button:hover{
+        font-size: 25px;
+    }
+
+    

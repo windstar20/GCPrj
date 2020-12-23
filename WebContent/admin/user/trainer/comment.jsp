@@ -19,7 +19,6 @@
         <h1>회원 상세정보</h1>
     </header>
     <main class="main">
-        <form class="serch-form" action="">
             <div class="main-head">
                 <h1>${t.name }님의 회원정보입니다.</h1>
                 <div class="nav">
@@ -27,6 +26,7 @@
                     <a href="commet?id=${t.id }">댓글</a>
                 </div>               
             </div>
+        <form class="serch-form" method="post">
             <table>
                 <tr>
                     <th>검색키워드</th>
@@ -58,10 +58,14 @@
                 <td>관련정보</td>
             </thead>
             <tbody>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            <c:forEach var="c" items="${list }">
+            	<tr>
+	                <td>${c.title }</td>
+	                <td>${c.content }</td>
+	                <td>${c.regdate }</td>
+	                <td></td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
         

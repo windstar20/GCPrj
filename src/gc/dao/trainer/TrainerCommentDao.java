@@ -12,5 +12,11 @@ public interface TrainerCommentDao {
 	int delete(int id1,int id2);
 	
 	TrainerComment get(int id1, int id2);
+	
+	List<TrainerComment> getList();
+	
+	List<TrainerComment> getList(int startIndex,int endIndex);
+	
+	List<TrainerComment> getList(int startIndex,int endIndex,String field,String query);
 
 }

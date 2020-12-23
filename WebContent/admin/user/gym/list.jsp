@@ -68,16 +68,16 @@
           <div class ="main-body">
           <section>
             <h1>제휴업체 검색</h1>
-           	<form action="list" method="get">
+           	<form action="list">
               <table border="1">
                 <tr>
                   <th>검색 키워드</th>
                   <td>
-                    <select name = "query">
-                      <option>이름</option>            
-                      <option>시설 명</option>
+                  <select name = "field">
+                      <option value = "NAME">이름</option>            
+                      <option value ="GYM_NAME">시설 명</option>
                     </select>
-                    <input class="sel-text" type="text" name = "field">
+                    <input class="sel-text" type="text" name = "query">
                     <input type = "submit" value = "검색">
                   </td>
                 </tr>            

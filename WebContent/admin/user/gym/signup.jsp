@@ -1,155 +1,175 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입</title>
-    <link href = "../../../CSS/reset.css" type = "text/css" rel = "stylesheet">
-    <link href = "../../../CSS/admin/user/gym/signup.css" type = "text/css" rel = "stylesheet">
-</head>
-<body>
-    <header id = "header" class = "header">
-        <div class ="logo-bar">
-            <h1 class = "no-display">로고</h1>
-            <a href=""><div class ="logo"></div></a>
-        </div>
-    </header>
-    <div class = "body" >
-        <aside>
-
-        </aside>
-        <section>
-            <main id = "main" class = "main">
-                <h1>필수정보</h1>
-                <table border="1" class ="main-table">
-                
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../../../CSS/reset.css" type="text/css" rel="stylesheet">
+        <link href="../.././../CSS/style.css" type="text/css" rel="stylesheet">
+        <link href="../../../CSS/admin/user/gym/gym.css"  type="text/css" rel="stylesheet">
+        <link href="../../../CSS/admin/user/gym/gym-signup.css" type="text/css" rel="stylesheet"> 
+        <title>회원가입</title>
+    </head>
+    
+    <body>
+        <header>
+            <h1><img class="logo-img" src="../../../image/gc_logo2.png" alt="근처" /></h1>
+            <nav>
+                <ul class="menu-bar">
+                    <li>소개</li>
+                    <li>시설</li>
+                    <li>트레이너</li>
+                    <li>쇼핑몰</li>
+                </ul>
+            </nav>
+            <nav>
+                <ul class="menu-bar2">
+                    <li>HOME</li>
+                    <li>LOGIN</li>
+                    <li>SEARCH</li>
+                </ul>
+            </nav>
+        </header>
+    
+        <main id="main" class="main">
+            <section class="main-container">
+                <form class="main-contant">
+                    <h1>필수정보</h1>
+                        <table>
+                            <tr>
+                                <th>아이디</th>
+                                <td>
+                                    <form action="overlap">
+                                        <input type="text" name="nicname" autocomplete="off" autofocus  pattern="^\w{8,15}$" >
+                                        <input class="overlap" type="submit" name="nicname" value="중복확인" ><br>
+                                     </form>
+                                    <font color="red" size="1">*영어/숫자 혼합 8~15자리 입력하세요</font>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>비밀번호</th>
+                                <td><input type="password"  >
+                                    <font color="red" size="1">*영어/숫자 혼합 6자리이상 입력</font>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>비밀번호확인</th>
+                                <td>
+                                    <input type="password"  >
+        
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>이름</th>
+                                <td>
+                                    <input type="text"  >
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>시설 명</th>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>이메일</th>
+                                <td class="email">
+                                    <input type="text"  >@
+                                    <input type="text" name="EmailDomain"  >
+                                    <select onchange="this.form.EmailDomain.value=this[this.selectedIndex].value;">
+                                        <option value="" selected="selected">선택</option>
+                                        <option value="naver.com">네이버</option>
+                                        <option value="hanmail.net">한메일</option>
+                                        <option value="gmaile.com">구글</option>
+                                        <option value="nate.com">네이트</option>
+                                        <option value="empal.com">엠파스</option>
+                                        <option value="hotmail.com">핫메일</option>
+                                        <option value="yahoo.co.kr">야후</option>
+                                        <option value="hanmir.com">한미르</option>
+                                        <option value="">직접입력</option>
+                                    </select><br>
+                                    <input type="checkbox">
+                                    <font color="red" size="2"> 이벤트 및 소식지 등 유용한 정보를 수신하겠습니다.</font>
+                                </td>
+                            </tr>
+                      
+                            <tr>
+                                <th>생년월일</th>
+                                <td>
+                                    <input type="number" min="1940" max="2010" style="width: 70px;"  >년
+                                    <input type="number" min="1" max="12" style="width: 50px;"  >월
+                                    <input type="number" min="1" max="31" style="width: 50px;"  >일
+                                    <input type="checkbox">음력
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>휴대폰 번호</th>
+                                <td>
+                                    <input type="text" maxlength ="3" style="width: 50px;" autocomplete="off"  pattern="^01(?:0|1|[6-9])$" > -
+                                    <input type="text" maxlength ="4" style="width: 50px;" autocomplete="off"  pattern="^\d{4}$" > -
+                                    <input type="text" maxlength ="4" style="width: 50px;" autocomplete="off"  pattern="^\d{4}$" ><br>
+                                    <input type="checkbox">
+                                    <font color="red" size="2"> 거래 및 활동정보를 문자메시지(SMS)로 수신합니다.</font>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>시설 번호</th>
+                                <td>
+                                    <input type="text" maxlength="4" style ="width:50px">-
+                                    <input type="text" maxlength="4" style ="width:50px">-
+                                    <input type="text" maxlength="4" style ="width:50px">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>사업자 번호</th>
+                                <td>
+                                    <input type="text" maxlength = "6" style="width:50px">-
+                                    <input type="text" maxlength = "6" style="width:50px">-
+                                    <input type="text" maxlength = "6" style="width:50px">
+                                </td>
+                            </tr>
+                            <tr id="address">
+                                <th>주소</th>
+                                <td>
+                                    <input class="address2" type="text" style="width: 70px;" >
+                                    <input type="button" value="우편번호검색"> <br>
+                                    <input type="text" style="width: 400px;" >
+                                    <br>상세주소
+                                    <input type="text" style="width: 330px;"  >
+                                </td>
+                            </tr>
+                        </table>
+                           
+                    <div class="signin-button-menu">
+                        <a href="index.html"><input class="submit-button be-button" type="submit" value="이전"></a>
+                        <input class="submit-button signin-button " type="submit" value="가입완료">
+                    </div>
+                </form>
+            </section>
+        </main>
+    
+        <footer class="footer">
+            <div class="footer-copyright">
+                <table>
                     <tr>
-                        <th>아이디</th>
-                        <td>
-                            <input type = "text" maxlength = "10">
-                            <input type = "submit" value = "아이디 중복확인">
-                            <font color = "red" size = "2">10글자 이하로 작성해주세요</font>
-                        </td>
+                        <th>회사명</th>
+                        <th>대표자</th>
+                        <th>사업자등록번호</th>
+                        <th>소재지</th>
                     </tr>
-                
                     <tr>
-                        <th>비밀번호</th>
-                        <td>
-                            <input type = "password" maxlength = "8">
-                            <font color = "red" size = "2">8글자 이하로 적어주세요</font>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th>비밀번호 확인</th>
-                        <td>
-                            <input type = "password" maxlength = "8" >
-                            <font color = "red" size = "2">비밀번호를 다시 입력해주세요</font>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th>이름</th>
-                        <td><input type = "text"></td>
-                    </tr>
-
-                    <tr>
-                        <th>전화번호</th>
-                        <td>
-                            <select>
-                                <option>02</option>
-                                <option>031</option>
-                            </select>
-                            - <input type = "text" maxlength = "5" style = "width: 50px;">
-                            - <input type = "text" maxlength = "5" style = "width: 50px;"><br>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <th>휴대전화</th>
-                        <td>
-                            <select>
-                                <option>010</option>
-                                <option>011</option>
-                            </select>
-                            - <input type = "text" maxlength = "4" style = "width: 50px;" pattern = "\d{3,4}">
-                            - <input type = "text" maxlength = "4" style = "width: 50px;" pattern=  "\d{3}">
-                                <input type = "submit" value = "휴대폰 번호 인증" ><br>
-                                <input type = "checkbox"><font color = "red" size = "2">거래 및 활동정보를 문자메시지(SMS)로 수신합니다</font>
-                            
-                        </td>
-                    </tr>
-
-                    <tr>
-                    <th> 이메일</th>
-                    <td>
-                        <input type = "text">
-                        @
-                            <select>
-                                <option>직접입력</option>
-                                <option>naver.com</option>
-                                <option>daum.net</option>
-                                <option>gmail.com</option>
-                            </select>
-                            <input type = "submit" value = "메일 중복확인"><br>
-                            <input type = "checkbox"><font color = "red" size = "2">이벤트 및 소식지 등 유용한 정보를 수신하겠습니다</font>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th>업체 주소</th>
-                        <td>
-                            <input type = "text" style = "width: 30px;">
-                            -<input type = "text" style = "width: 30px;">
-                            <input type = "submit" value = "우편번호검색"><br>
-                            <input type = "text" style = "width: 200px;">
-                        </td>
-                    </tr>
-                
-                    <tr>
-                        <th>사업자 등록번호</th>
-                        <td>
-                        <input type = "text" style = "width: 40px;" maxlength = "3">
-                        - <input type = "text" style = "width: 40px;" maxlength = "2">
-                        - <input type = "text" style = "width: 40px;" maxlength = "5">
-                        <input type = "submit" value = "등록">
-                        </td>    
+                        <td>(주)근손실처방전</td>
+                        <td>박현민</td>
+                        <td>112-33-55555</td>
+                        <td>서울 종로구 종로 탑골공원 옆 15층</td>
                     </tr>
                 </table>
-
-                <h2>추가정보</h2>
-                <table class ="second-table">
-                    <tr>
-                        <th>추천인ID</th>
-                        <td>
-                            <input type ="text">
-                            <input type = "submit" value = "추천인확인">
-                        </td>
-                    </tr>
-                </table>
-                
-                    <h2>약관동의</h2>
-            
-                    전체동의<input type = "checkbox"><br>
-                    *기업회원 약관에 동의 <u><a href = "http://www.saramin.co.kr/zf_user/help/terms-of-service/company">상세보기</a></u><input type = "checkbox"><br>
-                    *개인정보 수집 및 이용에 동의<u><a href = "http://www.saramin.co.kr/zf_user/popup/clause-privacy?highlight = collectionAccess"> 상세보기</a></u><input type ="checkbox"><br>
-                    마케팅 정보 수신 동의 - 이메일 (선택) <input type = "checkbox"><br>
-                    마케팅 정보 수신 동의 - SMS/MMS (선택) <input type = "checkbox"><br>
-                    개인정보 제 3자 제공 및 위탁사항 이용약관<u><a href = "http://www.saramin.co.kr/zf_user/popup/clause-privacy?highlight=thirdParty"> 상세보기</a></u><br>
-                    정보보유기간<input type = "checkbox">1년
-                    <input type = "checkbox">3년
-                    <input type = "checkbox">5년
-                    <input type = "checkbox">탈퇴시<br>
-
-                    <a href = userpage.html><input type = "submit" value = "회원가입"></a>
-            </main>
-        </div>
-        </section>
-            <footer class = "footer">
-                <h1 class ="no-display">푸터</h1>
-                근처 고객님의 성공과 함께합니다
-            </footer>
-</body>
-</html>
+    
+                <span>고객센터 070-5555-2222 </span>
+            </div>
+        </footer>
+    </body>
+    
+    </html>

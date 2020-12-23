@@ -1,0 +1,61 @@
+ 
+ .main{ 
+    min-height: 500px;
+    display: flex;
+}
+
+.main input{
+
+  outline: none;
+}
+.main-container{
+    flex-direction: column;
+    flex: 1 0 auto;
+    padding: 30px; 
+    position: relative;
+    }
+        .main-container h1{  
+            font-size: 30px; 
+        }
+        .main>.main-container>.main-contant table{ 
+            border-top: 2px solid#979797;
+            width: 100%;
+            border-spacing : 0px 15px; 
+            
+        }
+        .main-contant>table th,
+        .main-contant>table td{ 
+        
+            border-bottom: 1px solid #e9e9e9;
+            }
+
+        .signin-button-menu{
+            position: absolute;
+            right: 250px;
+            bottom: 0px;
+        }
+
+        .be-button,
+        .submit-button{
+            width: 100px;
+            height: 30px;
+            margin-bottom: 8px;
+            
+        }
+
+        
+
+      
+
+    .main>.right-aside{   
+        border: 1px solid black; 
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 auto;
+        background: gray;
+    }
+        .right-aside>h1{  
+          font-size:30px;   
+        }
+
+  

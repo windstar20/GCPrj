@@ -17,7 +17,7 @@ import gc.service.user.GymService;
 @WebServlet("/admin/user/gym/list")
 public class GymListController extends HttpServlet{
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	 
 		int page = 1;
 		int size = 5;
@@ -43,8 +43,8 @@ public class GymListController extends HttpServlet{
 		
 		List<GymView> list = service.getViewList(page ,size ,field ,query);
 		int count = service.getCount();
-		int lastPage = count / 5;
-		lastPage = count % 5 > 0 ? lastPage + 1 : lastPage;
+		int lastPage = count / size;
+		lastPage = count % size > 0 ? lastPage + 1 : lastPage;
 		pageEnd = lastPage;
 		
 		request.setAttribute("list", list);

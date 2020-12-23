@@ -53,7 +53,15 @@ body{
         display: inline-block;
     }
     
-
+	.main-head{
+		display:flex;
+		justify-content: space-between;
+	}
+	
+	.main-head h1{
+		font-size:15px;
+		font-weight:bold;
+	}
 
     .main-head nav ul{
         display: flex;

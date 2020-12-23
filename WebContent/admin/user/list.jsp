@@ -29,12 +29,12 @@
       <nav id="nav" class="nav">
         <h1 class="no-display">메뉴</h1>
         <ul>
-          <li><a href="#">기본설정</a></li>
-          <li><a href="#">상품관리</a></li>
-          <li><a href="#">주문관리</a></li>
-          <li><a href="user.html">회원관리</a></li>
-          <li><a href="#">게시판관리</a></li>
-          <li><a href="#">고객센터</a></li>
+            <li><a href="/admin/index.html">기본설정</a></li>
+            <li><a href="/admin/product/list">상품관리</a></li>
+            <li><a href="/admin/product-order/list">주문관리</a></li>
+            <li><a href="/admin/user/index">회원관리</a></li>
+            <li><a href="/admin/notice/list">게시판관리</a></li>
+            <li><a href="#">고객센터</a></li>
         </ul>
       </nav>
     </header>
@@ -44,20 +44,24 @@
     </div>
     <div id="body" class="body">
       <aside class="aside">
-        <h1 class="img-button aside-title"><a href="user.html">회원관리</a></h1>
+        <a href="index"><h1 class="img-button user-button">회원관리</h1></a>
         <ul class="aside-menu">
-          <li>회원관리</li>
-          <ul>
-            <li><a href="list">회원 리스트</a></li>
-            <li><a href="leaveuserlist.html">탈퇴회원 리스트</a></li>
-            <li><a href="point.html">적립금 설정</a></li>
-          </ul>
-          <br />
-          <li>제휴업체 관리</li>
-          <ul>
-            <li><a href="">제휴업체 리스트</a></li>
-            <li><a href="">제휴업체 </a></li>
-          </ul>
+            <li>회원 관리</li>
+            <ul>
+                <li><a href="../list">회원 리스트</a></li>
+                <li><a href="../leave">탈퇴회원 리스트</a></li>
+            </ul>
+            <li>제휴시설 관리</li>
+            <ul>
+              <li><a href="">제휴업체 리스트</a></li>
+              <li><a href="">제휴업체 </a></li>
+          	</ul>
+            <li>트레이너회원 관리</li>
+            <ul>
+                <li><a href="trainer/list">트레이너회원 리스트</a></li>
+                <li><a href="trianer/dellist">트레이너회원 삭제</a></li>
+            </ul>
+        </ul>
       </aside>
       <section class="main-section">
         <main id="main" class="main">
@@ -141,7 +145,7 @@
               <div class="page-list">
                 <span><a href="">이전</a></span>
                 <ul>
-                  <c:forEach var="i" begin="0" end="4">
+                  <c:forEach var="i" begin="0" end="1">
 							<li>${i+1}</li>
 						</c:forEach>
                 </ul>

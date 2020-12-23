@@ -17,12 +17,12 @@ import gc.service.user.UserService;
 public class DetailController extends HttpServlet{
 
 	@Override
-	public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
-		 int id = Integer.parseInt(request.getParameter("id"));
-		    UserService service = new UserService();
-		    User u  = service.get(id);
-		
-		    request.setAttribute("u", u);
-		    request.getRequestDispatcher("/admin/user/detail.jsp").forward(request, response);
+	public void service(ServletRequest req, ServletResponse resp) throws ServletException, IOException {
+		int id = Integer.parseInt(req.getParameter("id"));
+	    UserService service = new UserService();
+	    User u  = service.get(id);
+	
+	    req.setAttribute("u", u);
+	    req.getRequestDispatcher("/admin/user/detail.jsp").forward(req, resp);
 	}
 }

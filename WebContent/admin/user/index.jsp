@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>admin Page</title>
 
-    <link rel="stylesheet" href="../../CSS/reset.css">
-    <link rel="stylesheet" href="../../CSS/style.css">
-    <link rel="stylesheet" href="../../CSS/admin/admin.css">
-    <link rel="stylesheet" href="../../CSS/admin/user/user.css">
+    <link rel="stylesheet" href="/CSS/reset.css">
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="/CSS/admin/admin.css">
+    <link rel="stylesheet" href="../../../CSS/admin/user/index.css">
 </head>
 <body>
 <header id="header" class="header">
@@ -26,12 +26,12 @@
     <nav id="nav" class="nav">
         <h1 class="no-display">메뉴</h1>
         <ul>
-        <li><a href="#">기본설정</a></li>
-        <li><a href="#">상품관리</a></li>
-        <li><a href="#">주문관리</a></li>
-        <li><a href="index">회원관리</a></li>
-        <li><a href="#">게시판관리</a></li>
-        <li><a href="#">고객센터</a></li>
+        	<li><a href="/admin/index.html">기본설정</a></li>
+            <li><a href="/admin/product/list">상품관리</a></li>
+            <li><a href="/admin/product-order/list">주문관리</a></li>
+            <li><a href="/admin/user/index">회원관리</a></li>
+            <li><a href="/admin/notice/list">게시판관리</a></li>
+            <li><a href="#">고객센터</a></li>
         </ul>
     </nav>
 
@@ -44,13 +44,19 @@
         <ul class="aside-menu">
             <li>회원 관리</li>
             <ul>
-                <li><a href="list.html">회원 리스트</a></li>
-                <li><a href="mana.html">회원등급 관리</a></li>
+                <li><a href="list">회원 리스트</a></li>
                 <li><a href="leave">탈퇴회원 리스트</a></li>
-                <li><a href="point">적립금 설정</a></li>
             </ul>
-            <li>2</li>
-            <li>3</li>
+            <li>제휴시설 관리</li>
+            <ul>
+              <li><a href="">제휴업체 리스트</a></li>
+              <li><a href="">제휴업체 </a></li>
+          	</ul>
+            <li>트레이너회원 관리</li>
+            <ul>
+                <li><a href="trainer/list">트레이너회원 리스트</a></li>
+                <li><a href="trainer/dellist">트레이너회원 삭제</a></li>
+            </ul>
         </ul>
     </aside>
 
@@ -81,12 +87,8 @@
                                         <td>${gymLength }</td>
                                     </tr>
                                     <tr>
-                                        <th>2단계</th>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr>
-                                        <th>1단계</th>
-                                        <td>0</td>
+                                        <th>등록 트레이너</th>
+                                        <td>${trainerLength }</td>
                                     </tr>
                                     <tr>
                                         <th>일반 회원</th>

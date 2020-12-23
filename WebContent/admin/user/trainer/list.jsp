@@ -29,12 +29,12 @@
     <nav id="nav" class="nav">
         <h1 class="no-display">메뉴</h1>
         <ul>
-        <li><a href="#">기본설정</a></li>
-        <li><a href="#">상품관리</a></li>
-        <li><a href="#">주문관리</a></li>
-        <li><a href="../index.html">회원관리</a></li>
-        <li><a href="#">게시판관리</a></li>
-        <li><a href="#">고객센터</a></li>
+       		<li><a href="/admin/index.html">기본설정</a></li>
+            <li><a href="/admin/product/list">상품관리</a></li>
+            <li><a href="/admin/product-order/list">주문관리</a></li>
+            <li><a href="/admin/user/index">회원관리</a></li>
+            <li><a href="/admin/notice/list">게시판관리</a></li>
+            <li><a href="#">고객센터</a></li>
         </ul>
     </nav>
 
@@ -43,16 +43,18 @@
 
 <div id="body" class="body">
     <aside class="aside">
-        <a href="../index.html"><h1 class="img-button user-button">회원관리</h1></a>
+        <a href="../index"><h1 class="img-button user-button">회원관리</h1></a>
         <ul class="aside-menu">
             <li>회원 관리</li>
             <ul>
-                <li><a href="../list.html">회원 리스트</a></li>
-                <li><a href="../mana.html">회원등급 관리</a></li>
-                <li><a href="../leave.html">탈퇴회원 리스트</a></li>
-                <li><a href="../point.html">적립금 설정</a></li>
+                <li><a href="../list">회원 리스트</a></li>
+                <li><a href="../leave">탈퇴회원 리스트</a></li>
             </ul>
             <li>제휴시설 관리</li>
+            <ul>
+              <li><a href="">제휴업체 리스트</a></li>
+              <li><a href="">제휴업체 </a></li>
+          	</ul>
             <li>트레이너회원 관리</li>
             <ul>
                 <li><a href="list">트레이너회원 리스트</a></li>

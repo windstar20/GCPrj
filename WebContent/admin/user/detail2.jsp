@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +14,7 @@
     <script src="../../js/admin/admin/detail.js"></script>
 </head>
 
-<body class="body">
+<body>
     <header class="header">
         <h1>회원 상세정보</h1>
         <div>닫기</div>

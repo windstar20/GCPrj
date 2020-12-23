@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,11 +66,11 @@
                 </tr>
                 <tr>
                     <td>아이디를 잃어버리셨나요?</td>
-                    <td><a href="find.html.html"><input type="submit" value="아이디 찾기"></a></td>
+                    <td><a href="find.html"><input type="submit" value="아이디 찾기"></a></td>
                 </tr>
                 <tr>
                     <td>비밀번호를 잃어버리셨나요?</td>
-                    <td><a href="find.html.html"><input type="submit" value="비밀번호 찾기"></a></td>
+                    <td><a href="find.html"><input type="submit" value="비밀번호 찾기"></a></td>
                 </tr>
             </table>
         </section>

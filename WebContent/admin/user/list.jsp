@@ -32,7 +32,7 @@
           <li><a href="#">기본설정</a></li>
           <li><a href="#">상품관리</a></li>
           <li><a href="#">주문관리</a></li>
-          <li><a href="user.html">회원관리</a></li>
+          <li><a href="#">회원관리</a></li>
           <li><a href="#">게시판관리</a></li>
           <li><a href="#">고객센터</a></li>
         </ul>

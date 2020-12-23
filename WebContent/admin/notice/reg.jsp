@@ -27,12 +27,12 @@
         <nav id="nav" class="nav">
             <h1 class="no-display">메뉴</h1>
             <ul>
-                <li><a href="#">기본설정</a></li>
-                <li><a href="#">상품관리</a></li>
-                <li><a href="#">주문관리</a></li>
-                <li><a href="#">회원관리</a></li>
-                <li><a href="list">게시판관리</a></li>
-                <li><a href="#">고객센터</a></li>
+                <li><a href="/admin/index.html">기본설정</a></li>
+	            <li><a href="/admin/product/list">상품관리</a></li>
+	            <li><a href="/admin/product-order/list">주문관리</a></li>
+	            <li><a href="/admin/user/index">회원관리</a></li>
+	            <li><a href="/admin/notice/list">게시판관리</a></li>
+	            <li><a href="#">고객센터</a></li>
             </ul>
         </nav>
     </header>
@@ -76,7 +76,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="4">
-                                        <textarea class="texta" name="content"></textarea>
+                                        <textarea class="texta" name="content" cols="50" rows="50"></textarea>
                                     </td>
                                 </tr>
                             </table>

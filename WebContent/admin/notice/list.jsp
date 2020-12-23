@@ -1,7 +1,4 @@
 <%-- <%@page import="gc.service.notice.NoticeService"%> --%>
-<%@page import="gc.entity.notice.Notice"%>
-<%@page import="java.util.List"%>
-<%@page import="gc.dao.notice.jdbc.JdbcNoticeDao" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -31,12 +28,12 @@
         <nav id="nav" class="nav">
             <h1 class="no-display">메뉴</h1>
             <ul>
-                <li><a href="#">기본설정</a></li>
-                <li><a href="#">상품관리</a></li>
-                <li><a href="#">주문관리</a></li>
-                <li><a href="#">회원관리</a></li>
-                <li><a href="list">게시판관리</a></li>
-                <li><a href="#">고객센터</a></li>
+	            <li><a href="/admin/index.html">기본설정</a></li>
+	            <li><a href="/admin/product/list">상품관리</a></li>
+	            <li><a href="/admin/product-order/list">주문관리</a></li>
+	            <li><a href="/admin/user/index">회원관리</a></li>
+	            <li><a href="/admin/notice/list">게시판관리</a></li>
+	            <li><a href="#">고객센터</a></li>
             </ul>
         </nav>
     </header>

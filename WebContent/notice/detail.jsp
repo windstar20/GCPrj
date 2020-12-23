@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,41 +9,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/reset.css">
     <link rel="stylesheet" href="../CSS/user.css">
-    <link rel="stylesheet" href="../CSS/notice/list.css">
-    <title>공지사항</title>
+    <link rel="stylesheet" href="../CSS/notice/detail.css">
+    <title>Detail</title>
 </head>
 <body>
     <header>
         <h1><img class="logo-img" src="../image/gc_logo.png" alt="근처" /><a href="/index.html"></a></h1>
         <nav>
-          <ul class="menu-bar">
-            <li><a href="../info/info">소개</a></li>
-            <li><a href="">시설</a></li>
-            <li><a href="">트레이너</a></li>
-            <li><a href="">쇼핑몰</a></li>
-          </ul>
+            <ul class="menu-bar">
+                <li><a href="../info/info">소개</a></li>
+                <li><a href="">시설</a></li>
+                <li><a href="">트레이너</a></li>
+                <li><a href="">쇼핑몰</a></li>
+            </ul>
         </nav>
         <nav>
-          <ul class="menu-bar2">
-            <li><a href="">LOGIN</a></li>
-            <li><a href="">JOIN</a></li>
-            <li><a href="">SEARCH</a></li>
-          </ul>
+            <ul class="menu-bar2">
+                <li><a href="">LOGIN</a></li>
+                <li><a href="">JOIN</a></li>
+                <li><a href="">SEARCH</a></li>
+            </ul>
         </nav>
-      </header>
-    
+    </header>
+
     <main>
         <section class="main-head">
             <span>
                 언제나 고객님께 귀를<br>
                 기울이고 있습니다.
-            </span>      
+            </span>
         </section>
         <section class="main-body">
             <div class="submenu">
                 <a href="faq">
                     <div class="question-btn">
-                    자주 묻는 질문
+                        자주 묻는 질문
                     </div>
                 </a>
                 <a href="list">
@@ -52,38 +53,34 @@
                 </a>
             </div>
             <div class="notice-content">
-                <table class="notice">
-                    <thead>
-                        <tr>
-                            <td class="no">내용</td>
-                            <td class="no">작성자</td>
-                            <td class="no">등록일</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="n" items="${list}" >
-                        <tr>
-                            <td class="arti"><a href="detail?id=${n.id }">${n.title }</a></td>
-                            <td class="no">${n.adminNicname }</td>
-                            <td class="date">${n.regDate }</td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
+                <table class="notice-detail">
+                    <tr>
+                        <th class="th-short">작&nbsp;성&nbsp;자</th>
+                        <td class="td-short">&nbsp;&nbsp;관리자</td>
+                        <th class="th-short">등&nbsp;록&nbsp;일</th>
+                        <td class="td-short"><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd a hh:mm:ss"/></td>
+                    </tr>
+                    <tr>
+                        <th class="th-short">제&nbsp;&nbsp;&nbsp;&nbsp;목</th>
+                        <td colspan="3">&nbsp;&nbsp;${n.title}</td>
+                    </tr>
+                    <tr>
+                        <th class="th-short">내&nbsp;&nbsp;&nbsp;&nbsp;용</th>
+                        <td colspan="4">&nbsp;&nbsp;${n.content}</td>
+                    </tr>
+                    <tr>
+                        <th class="th-short">첨&nbsp;부&nbsp;파&nbsp;일</th>
+                        <td colspan="3">
+                                <c:forTokens var="fileName" items="${n.files}" delims="," varStatus="st">
+                                <fmt:formatDate var="year" value="${n.regDate}" pattern="yyyy"/>
+                                    <a download href="/static/notice/${year}/${n.id}/${fileName}">${fileName}</a> 
+                                    <c:if test="${st.last == false}">
+                                        /
+                                    </c:if>
+                                </c:forTokens>
+                                </td>
+                    </tr>
                 </table>
-                <div class="pagelist">
-                    <c:if test="${page != 1}">
-                        <a class="img-button before-button" href="list?page=${page-1}">이전</a>
-                    </c:if>
-                    <ul>
-                        <c:forEach var="i" begin="1" end="${pageEnd}">
-                            <li><a href="list?page=${i}&size=${size}">${i}</a></li>
-                        </c:forEach>
-                    </ul>
-                    <c:if test="${page != pageEnd}">
-                        <a class="img-button next-button" href="list?page=${page+1}">다음</a>
-                    </c:if>
-                </div>
-            </div>
 
             <div class="contect-us">
                 <span>CONTECT US</span>
@@ -128,6 +125,7 @@
             <span>고객센터 070-5555-2222 </span>
         </div>
     </footer>
-    
+
 </body>
+
 </html>

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,16 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/reset.css">
     <link rel="stylesheet" href="../CSS/user.css">
-    <link rel="stylesheet" href="../CSS/intro/intro.css">
+    <link rel="stylesheet" href="../CSS/info/info.css">
+    <script src="../js/info/jquery-1.12.3.js"></script>
+    <script src="../js/info/info.js"></script>
     <title>소개</title>
 </head>
 
 <body>
     <header>
-        <h1><img class="logo-img" src="../image/gc_logo.png" alt="근처" /></h1>
+        <h1><img class="logo-img" src="../image/gc_logo.png" alt="근처" /><a href="/index.html"></a></h1>
         <nav>
             <ul class="menu-bar">
-                <li><a href="">소개</a></li>
+                <li><a href="info">소개</a></li>
                 <li><a href="">시설</a></li>
                 <li><a href="">트레이너</a></li>
                 <li><a href="">쇼핑몰</a></li>
@@ -31,11 +35,16 @@
     </header>
     <main>
         <section class="main-head">
-            <div class="main-head-text">
+            <div class="slide_wrap">
+                <li class="slideimg"><span>기술과 사람이 만드는 더 나은 세상</span><img src="http://via.placeholder.com/1980x500" alt="이미지1"></li>
+                <li class="slideimg"><span>이미지2</span><img src="http://via.placeholder.com/1980x500" alt="이미지2"></li>
+                <li class="slideimg"><span>슬라이드를 바꿀까?</span><img src="http://via.placeholder.com/1980x500" alt="이미지3"></li>
+            </div>
+            <!-- <div class="main-head-text">
                 <span>
                     기술과 사람이 만드는 더 나은 세상
                 </span>
-            </div>
+            </div> -->
         </section>
 
         <section class="main-body">

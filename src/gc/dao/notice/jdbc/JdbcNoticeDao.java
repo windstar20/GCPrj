@@ -154,15 +154,51 @@ public class JdbcNoticeDao implements NoticeDao {
 
 	@Override
 	public List<Notice> getList() {
-		
-		return null;
+		List<Notice> list = new ArrayList<>(); // ArrayList
+
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM NOTICE"; 
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement st = con.prepareStatement(sql);
+	        
+	        ResultSet rs = st.executeQuery();
+	        
+			while (rs.next()) {
+				int id = rs.getInt("ID");
+				String title = rs.getString("TITLE");
+				String content = rs.getString("CONTENT");
+				Date regDate = rs.getDate("REGDATE");
+				String adminNicname = rs.getString("ADMIN_NICNAME");
+				String files = rs.getString("FILES");
+
+				Notice n = new Notice(id, title, content, regDate, adminNicname, files);
+
+				list.add(n);
+			}
+
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return list;
 	}
 
 	
 	@Override
 	public List<Notice> getList(int startIndex) {
 		// TODO Auto-generated method stub
-		return null;
+		return getList(startIndex, 10, "title", "");
 	}
 
 	   @Override
@@ -255,7 +291,6 @@ public class JdbcNoticeDao implements NoticeDao {
 				String title = rs.getString("TITLE");
 				Date regDate = rs.getDate("REGDATE");
 				String nicname = rs.getString("NICNAME");
-				String files = rs.getString("FILES");
 
 				NoticeView n = new NoticeView(title, regDate, nicname);
 
@@ -323,45 +358,4 @@ public class JdbcNoticeDao implements NoticeDao {
 		return n;
 	}
 
-	@Override
-	public int display(int id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int displayAll(int[] ids) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int getCount() {
-		int count = 0;
-		String url = DBContext.URL;
-		String sql = "SELECT COUNT(ID) COUNT FROM NOTICE";
-		
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
-			Statement st = con.createStatement();						
-			ResultSet rs = st.executeQuery(sql);
-
-			if(rs.next())			
-				count = rs.getInt("COUNT");
-			
-			rs.close();
-			st.close();
-			con.close();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		return count;
-	}
-	
-
-	
-	
 }

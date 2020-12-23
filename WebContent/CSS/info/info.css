@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
-
+li{
+    list-style: none;
+}
 /* ============main============= */
 main{
 font-family: "JUA", sans-serif;
@@ -8,21 +10,50 @@ font-family: "JUA", sans-serif;
 
     .main-head {
         height: 500px;
-        background: url(http://via.placeholder.com/1980x500) no-repeat;
+        /* background: url(http://via.placeholder.com/1980x500) no-repeat;
         background-size: 100% 100%;
         background-position: center;
-        position: relative;
+        position: relative; */
         width: 100%;
-        margin: auto;
+        /* margin: auto; */
     }
 
-        .main-head-text span{
+        .slide_wrap{
+            position: relative;
+        }
+        
+        .slide_wrap .slideimg {
+            position: relative;
+        }
+
+        .slide_wrap li.slideimg::marker{
+            display: none;
+        }
+        
+        .slide_wrap .slideimg span{
+            position: absolute;
+            left: 25%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            background: rgba(255,255,255,0.5);
+            padding: 10px 30px;
+            border-radius: 25px;
+            font-size: 40px;
+        }
+        
+        .slide_wrap .slideimg img{
+            display: block;
+            width: 100%;
+            height: 500px;
+        }
+
+        /* .main-head-text span{
             position: absolute;
             width: 60%;
             left: 100px;
             top: 250px;
             font-size: 40px;
-        }
+        } */
 
     .main-body{
         position: relative;

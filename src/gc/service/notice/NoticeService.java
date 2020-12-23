@@ -33,7 +33,7 @@ public class NoticeService {
 	public List<Notice> getList(int page, int size, String field, String qurey) {
 
 		int startIndex = 1 + (page - 1) * size; // 1, 11, 21, 31.....
-		int endIndex = page * 5; // 10, 20, 30, 50 ,60.....
+		int endIndex = page * size; // 10, 20, 30, 50 ,60.....
 
 		return noticeDao.getList(startIndex, endIndex, field, qurey);
 	}
@@ -119,6 +119,11 @@ public class NoticeService {
 		
 		
 		return n.getId();
+	}
+
+	public int getCount() {
+		List<Notice> list = noticeDao.getList();
+		return list.size();
 	}
 
 //	public Notice getLast() {

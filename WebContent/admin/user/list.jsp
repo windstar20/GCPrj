@@ -50,8 +50,8 @@
         <ul class="aside-menu">
             <li>회원 관리</li>
             <ul>
-                <li><a href="../list">회원 리스트</a></li>
-                <li><a href="../leave">탈퇴회원 리스트</a></li>
+                <li><a href="list">회원 리스트</a></li>
+                <li><a href="leave">탈퇴회원 리스트</a></li>
             </ul>
             <li>제휴시설 관리</li>
             <ul>
@@ -74,7 +74,7 @@
           <div class="main-body">
             <section>
               <h1>기본검색</h1>
-              <form>
+              <form method="post">
 				<table>
 				  <tr>
 				    <th>회원등급</th>
@@ -94,16 +94,12 @@
 				  <tr>
 				    <th>검색 키워드</th>
 				    <td>
-				      <select>
-				        <option>이름</option>
-				        <option>아이디</option>
-				        <option>이메일</option>
-				        <option>휴대폰</option>
-				        <option>전화번호</option>
-				        <option>주소</option>
-				        <option>추천인ID</option>
+				      <select name="field">
+				        <option value="name">이름</option>
+				        <option value="nicname">아이디</option>
+				        <option value="phone">휴대폰</option>
 				      </select>
-				      <input class="sel-text" type="text">
+				      <input class="sel-text" type="text" name="query">
 				    </td>
 				  </tr>
 				</table>

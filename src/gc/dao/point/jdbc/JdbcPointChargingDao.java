@@ -349,4 +349,65 @@ public class JdbcPointChargingDao implements PointChargingDao{
 
 		return list;
 	}
+
+	@Override
+	public List<PointCharging> getList(String nicname) {
+		String driver = "oracle.jdbc.driver.OracleDriver";
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM POINT_CHARGING WHERE MEMBER_NICNAME = '"+nicname+"'";
+
+		List<PointCharging> list = new ArrayList<>();
+		//1. 드라이버 로드하기
+		try {
+			Class.forName(driver);
+			//2. 연결하기
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			//3. 명령어를 옮겨주기 위한 객체 생성
+			Statement st = con.createStatement();
+			//4. 결과집합 사용하기
+			ResultSet rs = st.executeQuery(sql);
+
+			while(rs.next()) {
+				int id;
+				String memberNicname;
+				int amount;
+				String content;
+				Date regdate;
+
+
+				id = rs.getInt("id");
+				memberNicname = rs.getString("member_nicname");
+				amount = rs.getInt("amount");
+				content = rs.getString("content");
+				regdate = rs.getDate("regdate");
+
+
+				PointCharging c = new PointCharging(
+						id,
+						memberNicname,
+						regdate,
+						amount,
+						content
+						);
+			
+
+
+
+				list.add(c);
+			}
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+		return list;
+	}
 }

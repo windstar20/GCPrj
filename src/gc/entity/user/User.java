@@ -17,13 +17,14 @@ public class User {
 	private int warningCount;
 	private String recommendName;
 	private int ratingId;
+	private int leave;
 
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public User(int id, String nicname, String pwd, String name, String gender, int age, String phone, Date regdate,
-			String email, String address, int warningCount, String recommendName, int ratingId) {
+			String email, String address, int warningCount, String recommendName, int ratingId,int leave) {
 		super();
 		this.id = id;
 		this.nicname = nicname;
@@ -38,7 +39,9 @@ public class User {
 		this.warningCount = warningCount;
 		this.recommendName = recommendName;
 		this.ratingId = ratingId;
+		this.leave = leave;
 	}
+
 
 
 	@Override
@@ -46,7 +49,15 @@ public class User {
 		return "User [id=" + id + ", nicname=" + nicname + ", pwd=" + pwd + ", name=" + name + ", gender=" + gender
 				+ ", age=" + age + ", phone=" + phone + ", regdate=" + regdate + ", email=" + email + ", address="
 				+ address + ", warningCount=" + warningCount + ", recommendName=" + recommendName + ", ratingId="
-				+ ratingId + "]";
+				+ ratingId + ", leave=" + leave + "]";
+	}
+
+	public int getLeave() {
+		return leave;
+	}
+
+	public void setLeave(int leave) {
+		this.leave = leave;
 	}
 
 	public int getId() {

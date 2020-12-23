@@ -45,4 +45,9 @@ public class UserService {
 			return false;		
 		
 	}
+
+	public List<User> getList(String field, String query,int leave) {
+
+		return userDao.getList(field,query,leave);
+	}
 }

@@ -16,5 +16,6 @@ public interface UserDao {
 	
 	User get(int id);
 	List<User> getList();
+	List<User> getList(String field,String query,int leave);
 	
 }

@@ -22,24 +22,23 @@ public class JdbcUserDao implements UserDao {
 		
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
-		String sql = "INSERT INTO USER_MEMBER(ID,NICNAME,PWD,NAME,GENDER,AGE,PHONE,EMAIL,ADDRESS,RECOMMEND_NAME)"
-				+ "VALUES(?,?,?,?,?,?,?,?,?,?)"; 
+		String sql = "INSERT INTO USER_MEMBER(NICNAME,PWD,NAME,GENDER,AGE,PHONE,EMAIL,ADDRESS,RECOMMEND_NAME)"
+				+ "VALUES(?,?,?,?,?,?,?,?,?)"; 
 		
 		try {   
 			Class.forName(driver);
 			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);
 			
-			st.setInt(1, user.getId());
-			st.setString(2, user.getNicname());
-			st.setString(3, user.getPwd());
-			st.setString(4, user.getName());
-			st.setString(5, user.getGender());
-			st.setInt(6, user.getAge());
-			st.setString(7, user.getPhone());
-			st.setString(8, user.getEmail());
-			st.setString(9, user.getAddress());
-			st.setString(10, user.getRecommendName());
+			st.setString(1, user.getNicname());
+			st.setString(2, user.getPwd());
+			st.setString(3, user.getName());
+			st.setString(4, user.getGender());
+			st.setInt(5, user.getAge());
+			st.setString(6, user.getPhone());
+			st.setString(7, user.getEmail());
+			st.setString(8, user.getAddress());
+			st.setString(9, user.getRecommendName());
 			
 			result = st.executeUpdate();  
 			
@@ -158,6 +157,7 @@ public class JdbcUserDao implements UserDao {
 			     String recommendName = rs.getString("recommend_name");
 			     int ratingId = rs.getInt("rating_id");
 			     int warningCount = rs.getInt("warning_count");
+			     int leave = rs.getInt("leave");
 			     
 			      u = new User(
 			    		 	id,
@@ -172,7 +172,8 @@ public class JdbcUserDao implements UserDao {
 			    		    address,
 			    		    warningCount,
 			    		    recommendName,
-			    		    ratingId
+			    		    ratingId,
+			    		    leave
 			    		    );
 			     
 			     
@@ -194,11 +195,11 @@ public class JdbcUserDao implements UserDao {
 
 	@Override
 	public List<User> getList() {
+		List<User>list = new ArrayList<>();
+		
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = DBContext.URL;
 		String sql = "SELECT * FROM USER_MEMBER"; 
-	
-		List<User>list = new ArrayList<>();
 		
 		try {
 			Class.forName(driver);
@@ -221,6 +222,7 @@ public class JdbcUserDao implements UserDao {
 			     String recommendName = rs.getString("recommend_name");
 			     int ratingId = rs.getInt("rating_id");
 			     int warningCount = rs.getInt("warning_count");
+			     int leave = rs.getInt("leave");
 			     
 			     User u = new User(
 			    		 	id,
@@ -235,7 +237,8 @@ public class JdbcUserDao implements UserDao {
 			    		    address,
 			    		    warningCount,
 			    		    recommendName,
-			    		    ratingId
+			    		    ratingId,
+			    		    leave
 			    		    );
 			     
 			     list.add(u);
@@ -285,6 +288,7 @@ public class JdbcUserDao implements UserDao {
 			     String recommendName = rs.getString("recommend_name");
 			     int ratingId = rs.getInt("rating_id");
 			     int warningCount = rs.getInt("warning_count");
+			     int leave = rs.getInt("leave");
 			     
 			      u = new User(
 			    		 	id,
@@ -299,7 +303,8 @@ public class JdbcUserDao implements UserDao {
 			    		    address,
 			    		    warningCount,
 			    		    recommendName,
-			    		    ratingId
+			    		    ratingId,
+			    		    leave
 			    		    );
 			     
 			     
@@ -317,6 +322,68 @@ public class JdbcUserDao implements UserDao {
 		
 		
 		return u;
+	}
+
+	@Override
+	public List<User> getList(String field, String query, int leave) {
+List<User>list = new ArrayList<>();
+		
+		String driver = "oracle.jdbc.driver.OracleDriver";
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM USER_MEMBER WHERE "+field+" LIKE '%"+query+"%' AND LEAVE = "+leave; 
+		
+		try {
+			Class.forName(driver);
+			Connection con = DriverManager.getConnection(url,DBContext.UID, DBContext.PWD);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
+			
+			while(rs.next()){
+				 int id = rs.getInt("id");
+			     String nicname = rs.getString("nicname");
+			     String pwd = "1";
+			     String name = rs.getString("name");
+			     String gender = rs.getString("gender");
+			     int age = rs.getInt("age");
+			     String phone = rs.getString("phone");
+			     Date regdate = rs.getDate("regdate") ;
+			     String email = rs.getString("email");
+			     String address = rs.getString("address");
+			     String recommendName = rs.getString("recommend_name");
+			     int ratingId = rs.getInt("rating_id");
+			     int warningCount = rs.getInt("warning_count");
+			     
+			     User u = new User(
+			    		 	id,
+			    		    nicname,
+			    		    pwd,
+			    		    name,
+			    		    gender,
+			    		    age,
+			    		    phone,
+			    		    regdate,
+			    		    email,
+			    		    address,
+			    		    warningCount,
+			    		    recommendName,
+			    		    ratingId,
+			    		    leave
+			    		    );
+			     
+			     list.add(u);
+			}
+			
+			
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return list;
 	}
 
 

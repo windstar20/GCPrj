@@ -154,7 +154,7 @@ public class RegController extends HttpServlet{
 						
 			//2. 물리경로를 알아내기
 										//context=문맥=서블릿간의 교류를 위해 필요한 공동자원이 안에있음
-			String pathTemp = request.getServletContext().getRealPath("/static/notice/2020/"+newId+"/");  
+			String pathTemp = request.getServletContext().getRealPath("/static/product/2020/"+newId+"/");  
 			System.out.println(pathTemp);	          	//realpath=물리경로를 알아내주는 녀석
 
 			//3. 알아낸 경로를 절대 경로로 변경.

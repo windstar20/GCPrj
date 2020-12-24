@@ -27,7 +27,7 @@
             <ul class="menu-bar2">
                 <li><a href="">LOGIN</a></li>
                 <li><a href="">JOIN</a></li>
-                <li><a href="">SEARCH</a></li>
+                <li><a href="/notice/faq">SEARCH</a></li>
             </ul>
         </nav>
     </header>

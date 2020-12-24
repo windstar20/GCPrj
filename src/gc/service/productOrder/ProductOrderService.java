@@ -64,6 +64,7 @@ public class ProductOrderService {
 		int startIndex=0;
 		int endIndex=0;
 
+		
 		if(orderState!=null) {
 			if(orderState.get(0).equals("all"))
 				orderState = new ArrayList<>(Arrays.asList("1","2","3","4","5","6","7","8","9","10","11","12"));
@@ -80,8 +81,14 @@ public class ProductOrderService {
 		}
 		if(startDate!=null && !startDate.equals(""))
 			startDate="\'" + startDate +"\'";
-		if(endDate!=null && !endDate.equals(""))
-			endDate="\'" + endDate +"\'";
+		if(endDate!=null && !endDate.equals("")) {
+		char c = endDate.charAt(9);
+		String s = Character.toString(c);
+		int d = Integer.parseInt(s)+1;
+		Integer.toString(d);
+		endDate = endDate.substring(0, 9)+d;
+		endDate="\'" + endDate +"\'";
+		}
 		return productOrderDao.getViewList(startIndex, endIndex,field, query, orderState,startDate,endDate);
 	};
 
@@ -107,10 +114,15 @@ public class ProductOrderService {
 
 		if(startDate!=null && !startDate.equals(""))
 			startDate="\'" + startDate +"\'";
-		if(endDate!=null && !endDate.equals(""))
-			endDate="\'" + endDate +"\'";
-
-
+		
+		if(endDate!=null && !endDate.equals("")) {
+		char c = endDate.charAt(9);
+		String s = Character.toString(c);
+		int d = Integer.parseInt(s)+1;
+		Integer.toString(d);
+		endDate = endDate.substring(0, 9)+d;
+		endDate="\'" + endDate +"\'";
+		}
 
 		if(sortField==null||sortField.equals(""))
 			sortField="number";

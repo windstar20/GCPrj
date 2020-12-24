@@ -1,0 +1,58 @@
+#product-slide * {
+   box-sizing: border-box;
+}
+
+#product-slide>h1{
+    color: rgb(128, 128, 128);
+}
+
+
+#product-slide .servlet{
+    display: flex;
+    --border: solid 1px rgb(184, 26, 189);
+    overflow: hidden;
+    width: 750px;
+
+}
+#product-slide .servlet > ul{
+    display: flex;
+    padding: 0px;
+    height: 250px;
+
+    transform: translateX(0px);
+    transition: transform 500ms ease-out;
+}
+#product-slide .servlet  li{
+    list-style-type: none;
+    flex-basis: 250px;
+    overflow: hidden;
+    --flex-shrink: 0;
+    opacity: 0.8;
+    --border: orange solid 1px;
+}
+#product-slide .servlet img{
+    width: 250px;
+    height: 250px;
+    
+}    
+#product-slide ul li.current{
+    opacity: 1;
+    --border: 1px solid blue;
+}
+#product-slide .btn{
+    width: 750px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#product-slide .btn>input{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+    color: honeydew;
+    background: #e3ae4b;
+    
+}

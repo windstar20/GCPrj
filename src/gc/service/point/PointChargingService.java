@@ -91,6 +91,11 @@ public class PointChargingService {
 		if(sortOption==null||sortOption.equals(""))
 			sortOption="asc";
 		return pointChargingDao.getViewList(startIndex, endIndex,field, query,startDate,endDate,sortField,sortOption);
+	}
+
+	public List<PointCharging> getList(String nicname) {
+
+		return pointChargingDao.getList(nicname);
 	};
 
 

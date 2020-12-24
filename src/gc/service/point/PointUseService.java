@@ -89,6 +89,11 @@ public class PointUseService {
 		if(sortOption==null||sortOption.equals(""))
 			sortOption="asc";
 		return pointUseDao.getViewList(startIndex, endIndex,field, query,startDate,endDate,sortField,sortOption);
+	}
+
+	public List<PointUse> getList(String nicname) {
+
+		return pointUseDao.getList(nicname);
 	};
 	
 	

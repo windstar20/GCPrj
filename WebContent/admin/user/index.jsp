@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,22 +16,22 @@
 <header id="header" class="header">
        
     <div class="logo-bar">
-        <h1 class="no-display">±ÙÃ³</h1>
+        <h1 class="no-display">ê·¼ì²˜</h1>
         <a href="../index.html"><div class="logo"></div></a>
         <ul>
-          <li><button class="logout">·Î±×¾Æ¿ô</button></li>
+          <li><button class="logout">ë¡œê·¸ì•„ì›ƒ</button></li>
         </ul>
     </div>
 
     <nav id="nav" class="nav">
-        <h1 class="no-display">¸Þ´º</h1>
+        <h1 class="no-display">ë©”ë‰´</h1>
         <ul>
-        	<li><a href="/admin/index.html">±âº»¼³Á¤</a></li>
-            <li><a href="/admin/product/list">»óÇ°°ü¸®</a></li>
-            <li><a href="/admin/product-order/list">ÁÖ¹®°ü¸®</a></li>
-            <li><a href="/admin/user/index">È¸¿ø°ü¸®</a></li>
-            <li><a href="/admin/notice/list">°Ô½ÃÆÇ°ü¸®</a></li>
-            <li><a href="#">°í°´¼¾ÅÍ</a></li>
+        	<li><a href="/admin/index.html">ê¸°ë³¸ì„¤ì •</a></li>
+            <li><a href="/admin/product/list">ìƒí’ˆê´€ë¦¬</a></li>
+            <li><a href="/admin/product-order/list">ì£¼ë¬¸ê´€ë¦¬</a></li>
+            <li><a href="/admin/user/index">íšŒì›ê´€ë¦¬</a></li>
+            <li><a href="/admin/notice/list">ê²Œì‹œíŒê´€ë¦¬</a></li>
+            <li><a href="#">ê³ ê°ì„¼í„°</a></li>
         </ul>
     </nav>
 
@@ -40,22 +40,22 @@
 
 <div id="body" class="body">
     <aside class="aside">
-        <a href="index"><h1 class="img-button user-button">È¸¿ø°ü¸®</h1></a>
+        <a href="index"><h1 class="img-button user-button">íšŒì›ê´€ë¦¬</h1></a>
         <ul class="aside-menu">
-            <li>È¸¿ø °ü¸®</li>
+            <li>íšŒì› ê´€ë¦¬</li>
             <ul>
-                <li><a href="list">È¸¿ø ¸®½ºÆ®</a></li>
-                <li><a href="leave">Å»ÅðÈ¸¿ø ¸®½ºÆ®</a></li>
+                <li><a href="list">íšŒì› ë¦¬ìŠ¤íŠ¸</a></li>
+                <li><a href="leave">íƒˆí‡´íšŒì› ë¦¬ìŠ¤íŠ¸</a></li>
             </ul>
-            <li>Á¦ÈÞ½Ã¼³ °ü¸®</li>
+            <li>ì œíœ´ì‹œì„¤ ê´€ë¦¬</li>
             <ul>
-              <li><a href="">Á¦ÈÞ¾÷Ã¼ ¸®½ºÆ®</a></li>
-              <li><a href="">Á¦ÈÞ¾÷Ã¼ </a></li>
+              <li><a href="">ì œíœ´ì—…ì²´ ë¦¬ìŠ¤íŠ¸</a></li>
+              <li><a href="">ì œíœ´ì—…ì²´ </a></li>
           	</ul>
-            <li>Æ®·¹ÀÌ³ÊÈ¸¿ø °ü¸®</li>
+            <li>íŠ¸ë ˆì´ë„ˆíšŒì› ê´€ë¦¬</li>
             <ul>
-                <li><a href="trainer/list">Æ®·¹ÀÌ³ÊÈ¸¿ø ¸®½ºÆ®</a></li>
-                <li><a href="trainer/dellist">Æ®·¹ÀÌ³ÊÈ¸¿ø »èÁ¦</a></li>
+                <li><a href="trainer/list">íŠ¸ë ˆì´ë„ˆíšŒì› ë¦¬ìŠ¤íŠ¸</a></li>
+                <li><a href="trainer/dellist">íŠ¸ë ˆì´ë„ˆíšŒì› ì‚­ì œ</a></li>
             </ul>
         </ul>
     </aside>
@@ -63,40 +63,40 @@
     <section class="main-section">
         <main class="main">
             <div class="main-head">
-                <h1>È¸¿ø °ü¸®</h1>
-                <span>home > È¸¿ø°ü¸®</span>
+                <h1>íšŒì› ê´€ë¦¬</h1>
+                <span>home > íšŒì›ê´€ë¦¬</span>
             </div>
             <div class="main-body">
                 <section>
-                    <h1>È¸¿ø Åë°è</h1>
+                    <h1>íšŒì› í†µê³„</h1>
                     <table class="main-table">
                         <tr>
-                            <th>½Å±ÔÈ¸¿ø Åë°è</th>
-                            <td>¿À´Ã 0¸í/¾îÁ¦ 0¸í/ÀÌ¹øÁÖ 0¸í/ÀÌ¹ø´Þ 0¸í</td>
+                            <th>ì‹ ê·œíšŒì› í†µê³„</th>
+                            <td>ì˜¤ëŠ˜ 0ëª…/ì–´ì œ 0ëª…/ì´ë²ˆì£¼ 0ëª…/ì´ë²ˆë‹¬ 0ëª…</td>
                         </tr>
                         <tr>
-                            <th>È¸¿ø Á¾·ù</th>
+                            <th>íšŒì› ì¢…ë¥˜</th>
                             <td>
                                 <table class="inner-table">
                                     <tr>
-                                        <th>È¸¿ø±¸ºÐ</th>
-                                        <th>ÀÎ¿ø</th>
+                                        <th>íšŒì›êµ¬ë¶„</th>
+                                        <th>ì¸ì›</th>
                                     </tr>
                                     <tr>
-                                        <th>Á¦ÈÞ ½Ã¼³</th>
+                                        <th>ì œíœ´ ì‹œì„¤</th>
                                         <td>${gymLength }</td>
                                     </tr>
                                     <tr>
-                                        <th>µî·Ï Æ®·¹ÀÌ³Ê</th>
+                                        <th>ë“±ë¡ íŠ¸ë ˆì´ë„ˆ</th>
                                         <td>${trainerLength }</td>
                                     </tr>
                                     <tr>
-                                        <th>ÀÏ¹Ý È¸¿ø</th>
+                                        <th>ì¼ë°˜ íšŒì›</th>
                                         <td>${userLength }<i class="fas fa-angle-double-right"></i></td>
                                         
                                     </tr>
                                     <tr>
-                                        <th>°¡ÀÔ ½ÅÃ»ÀÚ</th>
+                                        <th>ê°€ìž… ì‹ ì²­ìž</th>
                                         <td>0</td>
                                     </tr>
                                 </table>
@@ -106,31 +106,31 @@
                 </section>
 
                 <section class="table-section event-table">
-                    <h1>È¸¿ø ÀÌº¥Æ®</h1>
+                    <h1>íšŒì› ì´ë²¤íŠ¸</h1>
                     <table>
                         <tr>
-                            <th>»ýÀÏ</th>
-                            <td>¿À´Ã 0¸í / ÀÌ¹ø ÁÖ 0¸í / ÀÌ¹ø ´Þ 0¸í</td>
+                            <th>ìƒì¼</th>
+                            <td>ì˜¤ëŠ˜ 0ëª… / ì´ë²ˆ ì£¼ 0ëª… / ì´ë²ˆ ë‹¬ 0ëª…</td>
                         </tr>
                     </table>
                 </section>
 
                 <section class="table-section">
-                    <h1>È¸¿ø°ü·Ã ¼³Á¤</h1>
+                    <h1>íšŒì›ê´€ë ¨ ì„¤ì •</h1>
                     <table>
                         <tr>
-                            <th>È¸¿ø°¡ÀÔ½Ã ÇýÅÃ	</th>
+                            <th>íšŒì›ê°€ìž…ì‹œ í˜œíƒ	</th>
                             <td>
-                                Àû¸³±Ý Áö±Þ&nbsp;&nbsp;	:&nbsp;&nbsp; Àû¸³±Ý±â´É <a href="point.html" class="point-url">¹Ì»ç¿ë</a>
+                                ì ë¦½ê¸ˆ ì§€ê¸‰&nbsp;&nbsp;	:&nbsp;&nbsp; ì ë¦½ê¸ˆê¸°ëŠ¥ <a href="point.html" class="point-url">ë¯¸ì‚¬ìš©</a>
                             </td>
                         </tr>
                         <tr>
-                            <th>È¸¿øÀÎÁõ ¹æ½Ä</th>
-                            <td>ÀÎÁõ ¾ÈÇÔ </td>
+                            <th>íšŒì›ì¸ì¦ ë°©ì‹</th>
+                            <td>ì¸ì¦ ì•ˆí•¨ </td>
                         </tr>
                         <tr>
-                            <th>Å»Åð¼³Á¤</th>
-                            <td>Áï½ÃÅ»Åð</td>
+                            <th>íƒˆí‡´ì„¤ì •</th>
+                            <td>ì¦‰ì‹œíƒˆí‡´</td>
                         </tr>
                     </table>
                 </section> 

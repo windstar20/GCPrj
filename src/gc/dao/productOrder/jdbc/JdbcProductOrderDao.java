@@ -336,6 +336,8 @@ public class JdbcProductOrderDao implements ProductOrderDao{
 		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE; // 2020-12-16 형태로 포맷
 		String nowDate = "\'"+current.format(formatter)+"\'";
 		
+		
+		
 		// 동적 쿼리
 		String url = DBContext.URL;
 		String sql = "SELECT N.* FROM PRODUCT_ORDER_VIEW N ";

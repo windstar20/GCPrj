@@ -26,7 +26,7 @@
           <ul class="menu-bar2">
             <li><a href="">LOGIN</a></li>
             <li><a href="">JOIN</a></li>
-            <li><a href="">SEARCH</a></li>
+            <li><a href="/notice/faq">SEARCH</a></li>
           </ul>
         </nav>
       </header>
@@ -68,7 +68,7 @@
                     </li>
                 </ul>
             </div>
-            <span class="info" style="font-size: 15px;">※ 자주 묻는 질문에 없는 문의의 경우, hmpark@gc.com로 메일 부탁드립니다.</span>
+            <span class="info" style="font-size: 15px; margin: 30px 0px;">※ 자주 묻는 질문에 없는 문의의 경우, hmpark@gc.com로 메일 부탁드립니다.</span>
             <div class="contect-us">
                 <span>CONTECT US</span>
                 <span>근손실처방전은 고객님의 목소리를 최우선으로 생각합니다.</span>

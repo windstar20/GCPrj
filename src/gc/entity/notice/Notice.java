@@ -2,6 +2,7 @@ package gc.entity.notice;
 
 import java.util.Date;
 
+
 public class Notice {
 	private int id;
 	private String title;

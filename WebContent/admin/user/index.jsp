@@ -49,7 +49,7 @@
             </ul>
             <li>제휴시설 관리</li>
             <ul>
-              <li><a href="">제휴업체 리스트</a></li>
+              <li><a href="gym/list">제휴업체 리스트</a></li>
               <li><a href="">제휴업체 </a></li>
           	</ul>
             <li>트레이너회원 관리</li>

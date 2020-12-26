@@ -51,12 +51,14 @@
 	            <span class="search-list">${count}개의 상품이 검색되었습니다.</span>
 	            <div class="item-list">
 		        	<c:forEach var="p" items="${list}">
-		                <div class="item">
-		                    <img src="../static/product/2020/${p.id}/${p.image}" alt="상품이미지" />
-		                    <span>상품명: ${p.name}</span>
-		                    <span>후기: hit</span>
-		                    <span>가격: ${p.price}</span>
-		                </div>
+		                <a href="detail?id=${p.id}">
+			                <div class="item">
+			                    <img src="../static/product/2020/${p.id}/${p.image}" alt="상품이미지" />
+			                    <span>상품명: ${p.name}</span>
+			                    <span>후기: hit</span>
+			                    <span>가격: ${p.price}</span>
+			                </div>
+		                </a>
 		            </c:forEach>              
 	           	</div>
       		</form>

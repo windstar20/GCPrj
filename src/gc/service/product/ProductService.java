@@ -155,5 +155,10 @@ public class ProductService {
 		return productDao.getCount();
 	}
 
+	public Product getView(int id) {
+		// TODO Auto-generated method stub
+		return productDao.getView(id);
+	}
+
 	
 }

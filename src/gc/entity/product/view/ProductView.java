@@ -23,6 +23,8 @@ public class ProductView extends Product{
 	}
 	
 
+	
+
 	@Override
 	public String toString() {
 		return "ProductView [brand=" + brand + ", category=" + category + ", delivery=" + delivery + "]";

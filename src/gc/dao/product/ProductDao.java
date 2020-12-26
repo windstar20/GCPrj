@@ -27,6 +27,7 @@ public interface ProductDao {
 	
 	
 	Product get(int id);
+	Product getView(int id); //상품디테일을 위한 메소드
 	
 	Product getLast();
 }

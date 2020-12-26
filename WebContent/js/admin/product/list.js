@@ -17,7 +17,7 @@ window.addEventListener("load", function(){
 });
 
 
-//PAGER 클릭시 선택 번호 효과
+/*//PAGER 클릭시 선택 번호 효과
 window.addEventListener("load", function(){
 	var pagerMenu = document.querySelector(".pager-menu");
 	var ul = pagerMenu.querySelector("ul"); 
@@ -51,4 +51,4 @@ window.addEventListener("load", function(){
 		console.log("다음");		
 	};  
 	
-});
+});*/

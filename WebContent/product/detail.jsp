@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="gc.entity.product.Product" %>
+<%@page import="gc.service.product.ProductService" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -45,7 +48,7 @@
                 <div class="product-box">
                     <div class="images">
                         <div class="thumb">
-                            <img src="../image/admin/product/impactwhey.png" alt="대표이미지" />
+                            <img src="../static/product/2020/${p.id}/${p.image}" alt="대표이미지" />
                         </div>
                         <div class="little">
                             <img src="" alt="대표이미지" />
@@ -53,20 +56,23 @@
                     </div>
                     <div class="information">
                         <div class="information-box">
-                            <h1 class="mt10">상품명</h1>
-                            <div class="mt10">브랜드</div>
-                            <div class="mt10">카테고리</div>
+                            <h1 class="mt10">${p.name}</h1>
+                            <div class="mt10">브랜드: &nbsp&nbsp ${p.brand}</div>
+                            <div class="mt10">카테고리: &nbsp&nbsp ${p.category}</div>
                             <label class="option">옵 션: </label>
                                 <select class="select mt10" name="taste-select" size="1">
-                                    <option value="딸기">딸기</option>
-                                    <option value="바나나">바나나</option>
+                                	<c:forEach var="c" items="${tList}">
+	                                    <option value="${c.productCode}">${c.name}</option>	                                    
+                                    </c:forEach>
                                 </select><br>
-                            <label class="count mt10">수 량: </label> 
+                            <label class="count mt10">수 량: </label>
+                                                  
                             <input class="input-text" type="text" name="count" value="1" />
                             <button class="plus-btn" >+</button>
                             <button class="minus-btn">-</button><br>
+                            <label class="count mt10">재 고: &nbsp&nbsp ${p.inventory}</label><br>
                             <label class="price-label">판매가: </label>
-                            <label class="price"> XXX원 </label> 
+                            <label class="price"> ${p.price} </label>원 
                         </div>
                         <div class="buy-box">
                             <input class="basket buy-box-common" type="submit" value="장바구니 담기"></input>

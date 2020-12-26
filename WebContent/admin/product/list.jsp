@@ -33,7 +33,7 @@
           <li><a href="/admin/index.html">기본설정</a></li>
           <li><a href="/admin/product/list">상품관리</a></li>
           <li><a href="/admin/product-order/list">주문관리</a></li>
-          <li><a href="/admin/user/index.html">회원관리</a></li>
+          <li><a href="/admin/user/index">회원관리</a></li>
           <li><a href="/admin/notice/list">게시판관리</a></li>
           <li><a href="#">고객센터</a></li>
         </ul>

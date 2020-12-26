@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import gc.dao.product.jdbc.JdbcProductDao;
-import gc.entity.notice.Notice;
 import gc.entity.product.Brand;
 import gc.entity.product.Category;
 import gc.entity.product.Product;

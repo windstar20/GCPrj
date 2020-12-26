@@ -203,6 +203,56 @@ public class JdbcProductDao implements ProductDao{
 		}
 		return p;
 	}	
+	
+	@Override
+	public Product getView(int id) {
+		ProductView p = null;
+
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM PRODUCT_VIEW WHERE ID="+id;
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
+			if(rs.next()) {
+
+				String name = rs.getString("NAME");
+				Date regdate = rs.getDate("REGDATE"); 
+				String code = rs.getString("CODE");
+				int price = rs.getInt("PRICE");
+				String brand = rs.getString("BRAND");
+				String category = rs.getString("CATEGORY");
+				int inventory = rs.getInt("INVENTORY");
+				String delivery = rs.getString("DELIVERY");
+				String image = rs.getString("IMAGE");
+
+				p = new ProductView();
+				p.setId(id);
+				p.setName(name);
+				p.setRegdate(regdate);
+				p.setCode(code);
+				p.setPrice(price);
+				p.setBrand(brand);
+				p.setCategory(category);
+				p.setInventory(inventory);
+				p.setDelivery(delivery);
+				p.setImage(image);				
+				
+			}
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return p;
+	}	
 
 	@Override
 	public List<Product> getList() {

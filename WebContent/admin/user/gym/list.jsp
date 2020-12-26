@@ -44,19 +44,21 @@
       <aside class="aside">
         <h1 class="aside-title"><a href="user.html"><img src="../../../image/admin/member-aside.png" alt="회원관리"></a></h1>
         <ul class="aside-menu">
-          <li>회원관리</li>
-          <ul>
-              <li><a href="userlist.html">회원 리스트</a></li>
-              <li><a href="usermana.html">회원등급 관리</a></li>
-              <li><a href="leaveuserlist.html">탈퇴회원 리스트</a></li>
-              <li><a href="point.html">적립금 설정</a></li>
-          </ul>
-          <br>
-          <li>제휴업체 관리</li>
-          <ul>
-              <li><a href="">제휴업체 리스트</a></li>
+            <li>회원 관리</li>
+            <ul>
+                <li><a href="list">회원 리스트</a></li>
+                <li><a href="leave">탈퇴회원 리스트</a></li>
+            </ul>
+            <li>제휴시설 관리</li>
+            <ul>
+              <li><a href="gym/list">제휴업체 리스트</a></li>
               <li><a href="">제휴업체 </a></li>
-          </ul>
+          	</ul>
+            <li>트레이너회원 관리</li>
+            <ul>
+                <li><a href="trainer/list">트레이너회원 리스트</a></li>
+                <li><a href="trainer/dellist">트레이너회원 삭제</a></li>
+            </ul>
         </ul>
       </aside>
       <section class="main-section">

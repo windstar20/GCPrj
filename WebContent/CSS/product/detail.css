@@ -40,7 +40,7 @@ main{
     }
     .information-box{
         background: rgb(246, 242, 242);
-        height: 280px;
+        height: 300px;
         font-size: 17px;
         padding: 10px 35px;
     }
@@ -84,7 +84,7 @@ main{
 .buy-box{
     
     width: 100%;
-    height: 100px;
+    height: 80px;
     --display: flex;
     --border: blue 1px solid;
     display: flex;

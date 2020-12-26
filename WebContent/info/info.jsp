@@ -36,9 +36,9 @@
     <main>
         <section class="main-head">
             <div class="slide_wrap">
-                <li class="slideimg"><span>기술과 사람이 만드는 더 나은 세상</span><img src="http://via.placeholder.com/1980x500" alt="이미지1"></li>
-                <li class="slideimg"><span>근처에서 먼저 맛보고 바로 결제해보세요</span><img src="http://via.placeholder.com/1980x500" alt="이미지2"></li>
-                <li class="slideimg"><span>근처마켓 런칭! 최저가로 사러 가기</span><img src="http://via.placeholder.com/1980x500" alt="이미지3"></li>
+                <li class="slideimg"><span>기술과 사람이 만드는 더 나은 세상</span><img src="../image/main03.jpg" alt="이미지1"></li>
+                <li class="slideimg"><span>근처에서 먼저 맛보고 바로 결제해보세요</span><img src="../image/main01.png" alt="이미지2"></li>
+                <li class="slideimg"><span>근처마켓 런칭! 최저가로 사러 가기</span><img src="../image/main02.png" alt="이미지3"></li>
             </div>
             <!-- <div class="main-head-text">
                 <span>
@@ -60,7 +60,8 @@
                 앞으로도 우리는 근처스러움에서 고민을 시작하고, 답을 찾을 것입니다.
             </div>
             <div class="first-img">
-                <img src="http://via.placeholder.com/600x300" alt="">
+                <!-- <img src="http://via.placeholder.com/600x300" alt=""> -->
+                <img alt="" src="../image/lion.jpg">
             </div>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -76,8 +77,8 @@
                 국내 최다 운동 시설 DB를 제공하고 있습니다.
             </div>
             <div class="second-img">
-                <img src="http://via.placeholder.com/300x300" alt="">
-                <img src="http://via.placeholder.com/300x300" alt="">
+                <img src="../image/phone.jpg" alt="">
+                <img src="../image/work.jpg" alt="">
             </div>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -95,7 +96,7 @@
                 간편하게 찾고, 바로 운동하세요!
             </div>
             <div class="thrid-img">
-                <img src="http://via.placeholder.com/600x300" alt="">
+                <img src="../image/c1.jpg" alt="">
             </div>
             <p>&nbsp;</p>
             <p>&nbsp;</p>

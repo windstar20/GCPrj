@@ -85,12 +85,12 @@
 			                  <div class="search-cell">
 			                    <select name="keyword" id="" size="1">
 			                      <option value="">[선택]</option>
-			                      <option value="name">상품명</option>  
-			                      <option value="category">카테고리</option>
-			                      <option value="inventory">재고</option>                                
+			                      <option ${(param.keyword == "name")?"selected":"" } value="name">상품명</option>  
+			                      <option ${(param.keyword == "category")?"selected":"" } value="category">카테고리</option>
+			                      <option ${(param.keyword == "inventory")?"selected":"" } value="inventory">재고</option>                                
 			                    </select>
-			                        <input type="text" name="query" placeholder="검색">&nbsp ※재고는 비교 수량보다 작은 값 검색
-			                  </div>
+			                        <input type="text" name="query" value="${param.query}" placeholder="검색">&nbsp ※재고는 비교 수량보다 작은 값 검색
+			                  </div>A
 			                </div>
 			                <div class="sale-row">
 			                  <div class="sale-head">판매가</div>
@@ -190,21 +190,32 @@
 		              <!-- <div class="before-page"> -->
 		                <!-- </div> -->
 		              <nav class="pager-menu">
-		                <c:if test="${page != 1}">
+		                <c:if test="${page > 1}">
 		             		<a class="before-button img-button" href="list?page=${page-1}">이전</a>
 		             	</c:if>
+		             	<c:if test="${page <= 1}">
+		             		<a class="before-button img-button" onclick="alert('처음페이지입니다.');">이전</a>
+		             	</c:if>
+		             	
 		                <ul>
+		                	<c:set var="pageNumber" value="${(empty page)?1:page}" />
 			                <c:forEach var="i" begin="1" end="${pageEnd}"> 
-			                    <li><a href="list?page=${i}&size=${size}">${i}</a></li>
+			                    <li><a class="${(pageNumber == i)?'red':''} bold" href="list?page=${i}&size=${size}&keyword=${param.keyword}&query=${param.query}">${i}</a></li>
 			                </c:forEach>
 		                </ul>           
-		                <c:if test="${page != pageEnd}">     
+		                
+		                <c:if test="${page < pageEnd}">     
 		               		<a class="next-button img-button" href="list?page=${page+1}">다음</a>
-		                </c:if>	
+		                </c:if>
+		                <c:if test="${page >= pageEnd}">     
+		               		<a class="next-button img-button" onclick="alert('마지막페이지입니다.');">다음</a>
+		                </c:if>
 		              </nav>    
 		                <!-- <div class="next-page"> -->
 		                <!-- </div> -->
+		                
 		              <div class="product-reg">
+		                <span class="red"> ${(empty param.page)?1:page} </span> <span> / ${(pageEnd)} pages </span>
 		                <a href="reg">상품등록</a>
 		              </div>   
 		            </div>

@@ -150,9 +150,9 @@ public class ProductService {
 		return productDao.getLast();
 	}
 
-	public int getCount() {
+	public int getCount(String field, String query) {
 		
-		return productDao.getCount();
+		return productDao.getCount(field, query);
 	}
 
 	public Product getView(int id) {

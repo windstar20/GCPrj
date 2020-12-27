@@ -311,11 +311,18 @@ public class JdbcProductDao implements ProductDao{
 		return list;
 	}
 
-	@Override //게시된 ID의 수 구하기: 게시물의 전체 수.
-	public int getCount() {
+	@Override //검색값 구하기: 게시물의 전체 수 또는 검색한 게시물의 수 count 값 구하기
+	public int getCount(String field, String query) {
 		int count = 0;
 		String url = DBContext.URL;
-		String sql = "SELECT COUNT(ID) COUNT FROM PRODUCT_VIEW";
+		String sql = "SELECT COUNT(ID) COUNT FROM ";
+				
+		if(!field.equals("") && field != null){
+			sql += " (SELECT ROWNUM NUM, P.* "
+				+ " FROM(SELECT * FROM PRODUCT_VIEW WHERE "+field+" LIKE '%"+query+"%' ORDER BY ID) P)"; 
+		} else {
+			sql += " PRODUCT_VIEW";
+		}
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -503,6 +510,125 @@ public class JdbcProductDao implements ProductDao{
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		return p;
+	}
+	
+	@Override
+	public Product getNextProduct(int id) {
+		ProductView p = null;
+		
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM PRODUCT "
+				+ " WHERE ID = ("
+				+ "    SELECT ID FROM (SELECT * FROM PRODUCT ORDER BY REGDATE) "
+				+ "    WHERE REGDATE >(SELECT REGDATE FROM PRODUCT WHERE ID = ?) "
+				+ "    AND ROWNUM =1 "
+				+ ")";
+		
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement st = con.prepareStatement(sql);
+			
+			st.setInt(1, id);
+			
+			ResultSet rs = st.executeQuery();
+			
+			if(rs.next()) {
+
+				String name = rs.getString("NAME");
+				Date regdate = rs.getDate("REGDATE"); 
+				String code = rs.getString("CODE");
+				int price = rs.getInt("PRICE");
+				String brand = rs.getString("BRAND");
+				String category = rs.getString("CATEGORY");
+				int inventory = rs.getInt("INVENTORY");
+				String delivery = rs.getString("DELIVERY");
+				String image = rs.getString("IMAGE");
+
+				p = new ProductView();
+				p.setId(id);
+				p.setName(name);
+				p.setRegdate(regdate);
+				p.setCode(code);
+				p.setPrice(price);
+				p.setBrand(brand);
+				p.setCategory(category);
+				p.setInventory(inventory);
+				p.setDelivery(delivery);
+				p.setImage(image);				
+				
+			}
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return p;
+	}
+	
+	@Override
+	public Product getPrevProduct(int id) {
+		ProductView p  = null;
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM PRODUCT_VIEW "
+				+ " WHERE ID = ( "
+				+ "    SELECT ID FROM (SELECT * FROM PRODUCT_VIEW ORDER BY REGDATE DESC) "
+				+ "    WHERE REGDATE < (SELECT REGDATE FROM PRODUCT_VIEW WHERE ID =?) "
+				+ "    AND ROWNUM =1 "
+				+ "    )";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement st = con.prepareStatement(sql);
+			
+			st.setInt(1, id);
+			
+			ResultSet rs = st.executeQuery();
+			
+			if(rs.next()) {
+
+				String name = rs.getString("NAME");
+				Date regdate = rs.getDate("REGDATE"); 
+				String code = rs.getString("CODE");
+				int price = rs.getInt("PRICE");
+				String brand = rs.getString("BRAND");
+				String category = rs.getString("CATEGORY");
+				int inventory = rs.getInt("INVENTORY");
+				String delivery = rs.getString("DELIVERY");
+				String image = rs.getString("IMAGE");
+
+				p = new ProductView();
+				p.setId(id);
+				p.setName(name);
+				p.setRegdate(regdate);
+				p.setCode(code);
+				p.setPrice(price);
+				p.setBrand(brand);
+				p.setCategory(category);
+				p.setInventory(inventory);
+				p.setDelivery(delivery);
+				p.setImage(image);				
+				
+			}
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 		return p;
 	}
 

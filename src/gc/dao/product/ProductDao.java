@@ -13,8 +13,12 @@ public interface ProductDao {
 	int insert(Product product);
 	int update(Product product);
 	int delete(int id);
-	int getCount();
+	int getCount(String field, String query);
 	int display(int id);
+	
+	Product getNextProduct(int id);
+	Product getPrevProduct(int id);
+	
 	
 	
 //	Product get(int id);
